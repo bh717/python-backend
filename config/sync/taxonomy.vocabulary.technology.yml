@@ -1,0 +1,9 @@
+uuid: b76c90bf-0b60-4f96-a788-948e484fee86
+langcode: en
+status: true
+dependencies: {  }
+name: Technology
+vid: technology
+description: 'This vocabulary stores various technologies that are used in contribution.'
+hierarchy: 0
+weight: 0

@@ -1,0 +1,17 @@
+uuid: f15bbb5f-0f12-486c-8dee-16c9334c9fd2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.event_contributions
+  module:
+    - user
+id: node.event_contributions.teaser
+targetEntityType: node
+bundle: event_contributions
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden: {  }

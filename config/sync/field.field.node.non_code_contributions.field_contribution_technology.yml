@@ -1,0 +1,28 @@
+uuid: 66092608-74d5-4bcf-89f7-8c747604011b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contribution_technology
+    - node.type.non_code_contributions
+    - taxonomy.vocabulary.technology
+id: node.non_code_contributions.field_contribution_technology
+field_name: field_contribution_technology
+entity_type: node
+bundle: non_code_contributions
+label: Technology
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      technology: technology
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,19 @@
+uuid: 44f80f96-a073-4a40-b78e-3ff7a01b31cc
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_contribution_comments
+field_name: field_contribution_comments
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

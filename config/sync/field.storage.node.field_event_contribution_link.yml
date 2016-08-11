@@ -1,0 +1,19 @@
+uuid: be01fd36-369c-4aab-b748-805dd8f34eff
+langcode: en
+status: true
+dependencies:
+  module:
+    - link
+    - node
+id: node.field_event_contribution_link
+field_name: field_event_contribution_link
+entity_type: node
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

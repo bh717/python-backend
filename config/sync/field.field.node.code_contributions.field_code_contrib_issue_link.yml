@@ -1,0 +1,23 @@
+uuid: b9b84aee-795f-4845-b897-86dd14c1f959
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_code_contrib_issue_link
+    - node.type.code_contributions
+  module:
+    - link
+id: node.code_contributions.field_code_contrib_issue_link
+field_name: field_code_contrib_issue_link
+entity_type: node
+bundle: code_contributions
+label: 'Contribution Issue Link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 1
+field_type: link

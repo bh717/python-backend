@@ -1,0 +1,21 @@
+uuid: bf9eb8a9-868a-4dbd-a16a-8e41ed5b9ee9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_code_contrib_issue_status
+    - node.type.code_contributions
+  module:
+    - options
+id: node.code_contributions.field_code_contrib_issue_status
+field_name: field_code_contrib_issue_status
+entity_type: node
+bundle: code_contributions
+label: 'Issue Status'
+description: 'This is the issue status at the time of comment or contribution.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

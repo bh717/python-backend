@@ -1,0 +1,9 @@
+uuid: ebad3510-a16c-43e3-b448-738920a1722f
+langcode: en
+status: true
+dependencies: {  }
+name: 'Event Type'
+vid: event_type
+description: 'This vocabulary stores various event types like DrupalCamp, Drupalcon, meetup etc.'
+hierarchy: 0
+weight: 0

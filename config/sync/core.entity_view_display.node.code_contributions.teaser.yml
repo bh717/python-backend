@@ -1,0 +1,29 @@
+uuid: e24b5f32-5265-4444-be51-8c001788106f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.code_contributions.field_code_contrib_issue_link
+    - field.field.node.code_contributions.field_code_contrib_issue_status
+    - field.field.node.code_contributions.field_code_contrib_project
+    - field.field.node.code_contributions.field_contribution_date
+    - field.field.node.code_contributions.field_contribution_description
+    - field.field.node.code_contributions.field_contribution_technology
+    - node.type.code_contributions
+  module:
+    - user
+id: node.code_contributions.teaser
+targetEntityType: node
+bundle: code_contributions
+mode: teaser
+content:
+  links:
+    weight: 100
+hidden:
+  field_code_contrib_issue_link: true
+  field_code_contrib_issue_status: true
+  field_code_contrib_project: true
+  field_contribution_date: true
+  field_contribution_description: true
+  field_contribution_technology: true

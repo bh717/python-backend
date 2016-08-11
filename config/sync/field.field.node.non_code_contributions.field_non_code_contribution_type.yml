@@ -1,0 +1,21 @@
+uuid: 29af27c8-14c6-4dbf-98f8-e68fbb09a1a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_non_code_contribution_type
+    - node.type.non_code_contributions
+  module:
+    - options
+id: node.non_code_contributions.field_non_code_contribution_type
+field_name: field_non_code_contribution_type
+entity_type: node
+bundle: non_code_contributions
+label: Type
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

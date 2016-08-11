@@ -1,0 +1,22 @@
+uuid: dc4c179d-b90c-4a6b-b400-8ac791d4036b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.code_contributions
+id: node.code_contributions.promote
+field_name: promote
+entity_type: node
+bundle: code_contributions
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

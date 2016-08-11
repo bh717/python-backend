@@ -1,0 +1,20 @@
+uuid: de8f6633-0ad1-4e33-a2cc-0af36bf1338a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_non_code_contrib_credit
+field_name: field_non_code_contrib_credit
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

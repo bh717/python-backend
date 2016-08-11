@@ -1,0 +1,109 @@
+uuid: e046c501-2598-4ba5-9f5d-eb03819542d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.code_contributions.field_code_contrib_issue_link
+    - field.field.node.code_contributions.field_code_contrib_issue_status
+    - field.field.node.code_contributions.field_code_contrib_project
+    - field.field.node.code_contributions.field_contribution_author
+    - field.field.node.code_contributions.field_contribution_date
+    - field.field.node.code_contributions.field_contribution_description
+    - field.field.node.code_contributions.field_contribution_technology
+    - node.type.code_contributions
+  module:
+    - datetime
+    - link
+    - path
+    - text
+id: node.code_contributions.default
+targetEntityType: node
+bundle: code_contributions
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  field_code_contrib_issue_link:
+    weight: 33
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  field_code_contrib_issue_status:
+    weight: 37
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+  field_code_contrib_project:
+    weight: 35
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_contribution_author:
+    weight: 38
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_contribution_date:
+    weight: 32
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  field_contribution_description:
+    weight: 36
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+  field_contribution_technology:
+    weight: 34
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  path:
+    type: path
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

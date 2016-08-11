@@ -1,0 +1,20 @@
+uuid: 1f448a2e-71d5-4bfb-b444-a8de469e3fad
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_contribution_technology
+field_name: field_contribution_technology
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

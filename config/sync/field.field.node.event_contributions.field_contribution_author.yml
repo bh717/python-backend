@@ -1,0 +1,29 @@
+uuid: 283c16bc-b387-47bb-9f99-07ea874290d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contribution_author
+    - node.type.event_contributions
+id: node.event_contributions.field_contribution_author
+field_name: field_contribution_author
+entity_type: node
+bundle: event_contributions
+label: 'Contribution Author'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: false
+    filter:
+      type: _none
+    target_bundles: null
+    sort:
+      field: name
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

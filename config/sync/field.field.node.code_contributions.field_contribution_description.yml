@@ -1,0 +1,21 @@
+uuid: 04904e3c-e1a5-4f55-9215-8dd5bf9c82f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contribution_description
+    - node.type.code_contributions
+  module:
+    - text
+id: node.code_contributions.field_contribution_description
+field_name: field_contribution_description
+entity_type: node
+bundle: code_contributions
+label: 'Contribution Details'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

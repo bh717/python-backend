@@ -1,0 +1,18 @@
+uuid: dd723a53-1817-4457-90aa-13f64e223fa9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.event_contributions
+id: node.event_contributions.title
+field_name: title
+entity_type: node
+bundle: event_contributions
+label: 'Event contribution title'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

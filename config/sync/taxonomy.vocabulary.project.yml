@@ -1,0 +1,9 @@
+uuid: 2e9cad9a-8ed3-40db-918d-ae91e0333bb3
+langcode: en
+status: true
+dependencies: {  }
+name: Project
+vid: project
+description: 'Stores projects for various community contributions.'
+hierarchy: 0
+weight: 0

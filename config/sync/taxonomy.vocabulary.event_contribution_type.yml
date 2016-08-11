@@ -1,0 +1,9 @@
+uuid: 749be643-4821-4f31-aea9-99fa0aeef5f6
+langcode: en
+status: true
+dependencies: {  }
+name: 'Event Contribution Type'
+vid: event_contribution_type
+description: 'This stores various event contribution types like session, volunteering, training, session selection panel etc.'
+hierarchy: 0
+weight: 0
