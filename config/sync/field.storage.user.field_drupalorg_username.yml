@@ -1,0 +1,23 @@
+uuid: 3a0a7ce4-af6f-4ea5-a11d-fa87f2847803
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+_core:
+  default_config_hash: kmTNecGQhBGvA1Wu6tzeaOB7amL1k-APe9juE7A2CL8
+id: user.field_drupalorg_username
+field_name: field_drupalorg_username
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
