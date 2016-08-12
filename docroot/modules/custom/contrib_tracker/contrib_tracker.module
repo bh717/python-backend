@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ */
+function contrib_tracker_cron() {
+  $queue = \Drupal::queue('contrib_tracker_process_users');
+
+  $query = \Drupal::entityQuery('user')
+    ->condition('field_drupalorg_username', '', '!=');
+  $uids = $query->execute();
+
+  $users = \Drupal::entityTypeManager()->getStorage('user')->loadMultiple($uids);
+  array_walk($users, function ($user) use ($queue) {
+    $queue->createItem($user->field_drupalorg_username[0]->getValue()['value']);
+  });
+}

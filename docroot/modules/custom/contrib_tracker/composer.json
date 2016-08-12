@@ -1,0 +1,9 @@
+{
+    "name": "drupal/contrib_tracker",
+    "description": "Track contributions from drupal.org",
+    "type": "drupal-custom-module",
+    "license": "GPL-2.0",
+    "require": {
+        "hussainweb/drupal-api-client": "^0.9"
+    }
+}

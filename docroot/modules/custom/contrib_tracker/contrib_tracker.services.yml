@@ -1,0 +1,6 @@
+services:
+  contrib_tracker.do_client:
+    class: Drupal\contrib_tracker\DrupalOrg\Client
+  contrib_tracker.user_resolver:
+    class: Drupal\contrib_tracker\DrupalOrg\UserResolver
+    arguments: ['@contrib_tracker.do_client', '@cache.data']

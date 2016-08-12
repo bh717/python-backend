@@ -16,4 +16,10 @@ content:
   links:
     weight: 100
 hidden:
+  field_contribution_author: true
+  field_contribution_comments: true
+  field_contribution_date: true
   field_contribution_technology: true
+  field_non_code_contrib_credit: true
+  field_non_code_contrib_profile: true
+  field_non_code_contribution_type: true

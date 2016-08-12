@@ -14,4 +14,11 @@ mode: teaser
 content:
   links:
     weight: 100
-hidden: {  }
+hidden:
+  field_contribution_author: true
+  field_contribution_comments: true
+  field_contribution_date: true
+  field_contribution_technology: true
+  field_event_contrib_event_type: true
+  field_event_contribution_link: true
+  field_event_contribution_type: true
