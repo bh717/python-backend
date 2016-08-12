@@ -1,0 +1,14 @@
+uuid: 2fc476cc-1e82-4b26-be38-24d368ad0059
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.contribution_moderator
+  module:
+    - user
+id: user_remove_role_action.contribution_moderator
+label: 'Remove the Contribution Moderator role from the selected users'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: contribution_moderator

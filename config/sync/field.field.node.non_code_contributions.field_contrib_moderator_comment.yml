@@ -1,0 +1,21 @@
+uuid: dc18818a-9d19-4bd7-9347-74209553adaf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contrib_moderator_comment
+    - node.type.non_code_contributions
+  module:
+    - text
+id: node.non_code_contributions.field_contrib_moderator_comment
+field_name: field_contrib_moderator_comment
+entity_type: node
+bundle: non_code_contributions
+label: 'Moderator Comments'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -13,12 +13,15 @@ module:
   dynamic_page_cache: 0
   editor: 0
   field: 0
+  field_permissions: 0
   field_ui: 0
   file: 0
   filter: 0
+  flag: 0
   help: 0
   history: 0
   image: 0
+  inline_entity_form: 0
   link: 0
   menu_ui: 0
   node: 0

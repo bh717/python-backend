@@ -1,12 +1,11 @@
-uuid: b9b84aee-795f-4845-b897-86dd14c1f959
+uuid: 6df14683-7d52-40b6-9ed6-a6eefe12ae7b
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_code_contrib_issue_link
     - node.type.code_contributions
-  module:
-    - link
+    - node.type.issue
 id: node.code_contributions.field_code_contrib_issue_link
 field_name: field_code_contrib_issue_link
 entity_type: node
@@ -18,6 +17,12 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  link_type: 16
-  title: 1
-field_type: link
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      issue: issue
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

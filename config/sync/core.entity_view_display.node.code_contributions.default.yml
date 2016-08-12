@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.code_contributions.field_code_contrib_issue_link
     - field.field.node.code_contributions.field_code_contrib_issue_status
     - field.field.node.code_contributions.field_code_contrib_project
+    - field.field.node.code_contributions.field_contrib_moderator_comment
     - field.field.node.code_contributions.field_contribution_author
     - field.field.node.code_contributions.field_contribution_date
     - field.field.node.code_contributions.field_contribution_description
@@ -13,7 +14,6 @@ dependencies:
     - node.type.code_contributions
   module:
     - datetime
-    - link
     - options
     - text
     - user
@@ -23,38 +23,40 @@ bundle: code_contributions
 mode: default
 content:
   field_code_contrib_issue_link:
-    weight: 103
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    type: link
-  field_code_contrib_issue_status:
-    weight: 107
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: list_default
-  field_code_contrib_project:
-    weight: 105
+    weight: 9
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+  field_code_contrib_issue_status:
+    weight: 6
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_code_contrib_project:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_contrib_moderator_comment:
+    weight: 10
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
   field_contribution_author:
-    weight: 108
+    weight: 7
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   field_contribution_date:
-    weight: 102
+    weight: 1
     label: above
     settings:
       format_type: medium
@@ -62,18 +64,24 @@ content:
     third_party_settings: {  }
     type: datetime_default
   field_contribution_description:
-    weight: 106
+    weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
   field_contribution_technology:
-    weight: 104
+    weight: 3
     label: above
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+  flag_contribution_approval:
+    weight: 8
+    settings: {  }
+    third_party_settings: {  }
   links:
-    weight: 100
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
 hidden: {  }

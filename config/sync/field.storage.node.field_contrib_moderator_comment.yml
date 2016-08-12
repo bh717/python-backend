@@ -1,20 +1,20 @@
-uuid: 75f59d1b-8012-45e4-bbab-1c205b2ea8ac
+uuid: 95087fd7-29d2-494f-9c33-5f24ba92c39a
 langcode: en
 status: true
 dependencies:
   module:
     - field_permissions
     - node
+    - text
 third_party_settings:
   field_permissions:
-    permission_type: public
-id: node.field_code_contrib_issue_link
-field_name: field_code_contrib_issue_link
+    permission_type: custom
+id: node.field_contrib_moderator_comment
+field_name: field_contrib_moderator_comment
 entity_type: node
-type: entity_reference
-settings:
-  target_type: node
-module: core
+type: text_long
+settings: {  }
+module: text
 locked: false
 cardinality: 1
 translatable: true

@@ -1,0 +1,14 @@
+uuid: a1cbc740-0233-46f8-91c5-79bf88acd2ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.contribution_moderator
+  module:
+    - user
+id: user_add_role_action.contribution_moderator
+label: 'Add the Contribution Moderator role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: contribution_moderator
