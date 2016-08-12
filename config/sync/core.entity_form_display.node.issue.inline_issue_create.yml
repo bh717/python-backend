@@ -1,0 +1,45 @@
+uuid: f21a7482-546e-4a2e-ac1e-954671966ad0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.node.inline_issue_create
+    - field.field.node.issue.body
+    - field.field.node.issue.field_issue_link
+    - node.type.issue
+  module:
+    - link
+    - text
+id: node.issue.inline_issue_create
+targetEntityType: node
+bundle: issue
+mode: inline_issue_create
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 1
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_issue_link:
+    weight: 2
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  path: true
+  promote: true
+  sticky: true
+  uid: true

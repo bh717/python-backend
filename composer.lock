@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "de8c9cfbbaf89948262fbb88cc27b015",
-    "content-hash": "f52cc08b749b4a48390290285f9e5ef6",
+    "hash": "4609091919b0c6b1d51cb43b65ed02df",
+    "content-hash": "7fcb57a4889b86646f8a01c54ebe9765",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -910,7 +910,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/config_installer-8.x-1.3.zip",
-                "reference": null,
+                "reference": "071213c9a7507bddcd6f6018d3f24217c13bb9d7",
                 "shasum": null
             },
             "require": {
@@ -1188,6 +1188,103 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "time": "2016-08-03 14:09:08"
+        },
+        {
+            "name": "drupal/field_permissions",
+            "version": "8.1.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/field_permissions",
+                "reference": "b8dab935ead70cd43b96ed08eb85dba9adbb04b8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/field_permissions-8.x-1.0-beta1.zip",
+                "reference": "b8dab935ead70cd43b96ed08eb85dba9adbb04b8",
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Set field-level permissions to create, update or view fields.",
+            "homepage": "https://www.drupal.org/project/field_permissions",
+            "time": "2016-07-19 19:48:08"
+        },
+        {
+            "name": "drupal/flag",
+            "version": "dev-8.x-4.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/flag",
+                "reference": "16657d8f84b9c87144615e4fbe551ad9a893ad75"
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "replace": {
+                "drupal/flag_bookmark": "self.version",
+                "drupal/flag_follower": "self.version"
+            },
+            "suggest": {
+                "drupal/core": "Required by drupal/flag_bookmark, drupal/flag_follower",
+                "drupal/node": "Required by drupal/flag_bookmark, drupal/flag_follower",
+                "drupal/user": "Required by drupal/flag_follower",
+                "drupal/views": "Required by drupal/flag_bookmark, drupal/flag_follower"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-4.x": "8.4.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Create customized flags that users can set on entities.",
+            "homepage": "https://www.drupal.org/project/flag",
+            "time": "2016-07-29 08:54:21"
+        },
+        {
+            "name": "drupal/inline_entity_form",
+            "version": "8.1.0-alpha6",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/inline_entity_form",
+                "reference": "27af4de9fd961fa6ae1369604d05fec8b06db867"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/inline_entity_form-8.x-1.0-alpha6.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Provides a widget for inline management (creation, modification, removal) of referenced entities. ",
+            "homepage": "https://www.drupal.org/project/inline_entity_form",
+            "time": "2016-04-18 21:57:48"
         },
         {
             "name": "drush/drush",
@@ -4478,6 +4575,38 @@
                 "instantiate"
             ],
             "time": "2015-06-14 21:17:01"
+        },
+        {
+            "name": "drupal/field_collection",
+            "version": "8.1.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/field_collection",
+                "reference": "8eac83accfecf28eec4d3bf0afe3c047762649fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/field_collection-8.x-1.0-alpha1.zip",
+                "reference": "8eac83accfecf28eec4d3bf0afe3c047762649fc",
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*",
+                "drupal/field": "8.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Provides a field collection field, to which any number of fields can be attached.",
+            "homepage": "https://www.drupal.org/project/field_collection",
+            "time": "2016-04-05 13:53:48"
         },
         {
             "name": "fabpot/goutte",

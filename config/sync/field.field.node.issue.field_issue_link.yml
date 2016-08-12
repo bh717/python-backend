@@ -1,0 +1,23 @@
+uuid: 71db92bc-33f0-4706-b40e-f4977c5603e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_issue_link
+    - node.type.issue
+  module:
+    - link
+id: node.issue.field_issue_link
+field_name: field_issue_link
+entity_type: node
+bundle: issue
+label: Link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

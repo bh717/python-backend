@@ -1,0 +1,21 @@
+uuid: a74eeba5-dc4f-4f61-84a1-31a709f1bbf7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contrib_moderator_comment
+    - node.type.event_contributions
+  module:
+    - text
+id: node.event_contributions.field_contrib_moderator_comment
+field_name: field_contrib_moderator_comment
+entity_type: node
+bundle: event_contributions
+label: 'Moderator Comments'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

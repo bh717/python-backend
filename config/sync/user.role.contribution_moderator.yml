@@ -1,0 +1,16 @@
+uuid: 3c27aa02-460b-42bd-91b4-27c43e4f8fa9
+langcode: en
+status: true
+dependencies: {  }
+id: contribution_moderator
+label: 'Contribution Moderator'
+weight: 3
+is_admin: null
+permissions:
+  - 'flag contribution_approval'
+  - 'unflag contribution_approval'
+  - 'create field_contrib_moderator_comment'
+  - 'edit own field_contrib_moderator_comment'
+  - 'edit field_contrib_moderator_comment'
+  - 'view own field_contrib_moderator_comment'
+  - 'view field_contrib_moderator_comment'

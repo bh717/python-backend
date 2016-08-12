@@ -1,0 +1,36 @@
+uuid: 8aa6001d-f1b2-45c5-85ad-6c2038260661
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: contribution_approval
+label: 'Contribution Approval'
+bundles:
+  - code_contributions
+  - event_contributions
+  - non_code_contributions
+entity_type: node
+enabled: true
+global: false
+weight: 0
+flag_short: Approve
+flag_long: 'Approve Contribution'
+flag_message: ''
+unflag_short: Unapprove
+unflag_long: 'Unapprove Contribution'
+unflag_message: ''
+unflag_denied_text: ''
+flag_type: 'entity:node'
+link_type: ajax_link
+flagTypeConfig:
+  show_in_links:
+    full: full
+  show_as_field: 1
+  show_on_form: 0
+  show_contextual_link: 0
+  access_author: ''
+linkTypeConfig:
+  flag_confirmation: 'Enter flagging details'
+  edit_flagging: 'Edit flagging details'
+  unflag_confirmation: 'Unflag this content?'

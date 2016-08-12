@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.event_contributions.field_contrib_moderator_comment
     - field.field.node.event_contributions.field_contribution_author
     - field.field.node.event_contributions.field_contribution_comments
     - field.field.node.event_contributions.field_contribution_date
@@ -26,6 +27,13 @@ content:
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_contrib_moderator_comment:
+    weight: 39
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
   field_contribution_author:
     weight: 38
     settings:

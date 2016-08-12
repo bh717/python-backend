@@ -21,7 +21,10 @@
         "drupal/core": "~8.0",
         "drush/drush": "~8.0",
         "drupal/console": "~1.0",
-        "drupal/config_installer": "8.*"
+        "drupal/config_installer": "8.*",
+        "drupal/flag": "8.*",
+        "drupal/field_permissions": "8.*",
+        "drupal/inline_entity_form": "8.*"
     },
     "require-dev": {
         "behat/mink": "~1.7",

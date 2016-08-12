@@ -1,0 +1,10 @@
+uuid: 6b3a2744-8cbd-4cab-90b1-fbca73985724
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.inline_issue_create
+label: 'Inline Issue Create'
+targetEntityType: node
+cache: true

@@ -1,0 +1,12 @@
+uuid: 63d898ec-077d-4930-8feb-ddc380767fa8
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.contribution_approval
+id: flagging.contribution_approval.default
+targetEntityType: flagging
+bundle: contribution_approval
+mode: default
+content: {  }
+hidden: {  }

@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.event_contributions.field_contrib_moderator_comment
     - field.field.node.event_contributions.field_contribution_author
     - field.field.node.event_contributions.field_contribution_comments
     - field.field.node.event_contributions.field_contribution_date
@@ -21,6 +22,12 @@ targetEntityType: node
 bundle: event_contributions
 mode: default
 content:
+  field_contrib_moderator_comment:
+    weight: 109
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
   field_contribution_author:
     weight: 108
     label: above
@@ -74,6 +81,8 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+  flag_contribution_approval:
+    weight: 10
   links:
     weight: 100
 hidden: {  }
