@@ -6,6 +6,7 @@ dependencies:
     - core.entity_form_mode.node.inline_issue_create
     - field.field.node.code_contributions.field_code_contrib_issue_link
     - field.field.node.code_contributions.field_code_contrib_issue_status
+    - field.field.node.code_contributions.field_code_contrib_link
     - field.field.node.code_contributions.field_code_contrib_project
     - field.field.node.code_contributions.field_contrib_moderator_comment
     - field.field.node.code_contributions.field_contribution_author
@@ -16,7 +17,7 @@ dependencies:
   module:
     - datetime
     - inline_entity_form
-    - path
+    - link
     - text
 id: node.code_contributions.default
 targetEntityType: node
@@ -25,11 +26,11 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 11
     settings: {  }
     third_party_settings: {  }
   field_code_contrib_issue_link:
-    weight: 39
+    weight: 8
     settings:
       form_mode: inline_issue_create
       label_singular: ''
@@ -41,12 +42,19 @@ content:
     third_party_settings: {  }
     type: inline_entity_form_complex
   field_code_contrib_issue_status:
-    weight: 37
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_select
+  field_code_contrib_link:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
   field_code_contrib_project:
-    weight: 35
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
@@ -54,14 +62,14 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_contrib_moderator_comment:
-    weight: 40
+    weight: 9
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
   field_contribution_author:
-    weight: 38
+    weight: 2
     settings:
       match_operator: CONTAINS
       size: 60
@@ -69,55 +77,41 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
   field_contribution_date:
-    weight: 32
+    weight: 3
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
   field_contribution_description:
-    weight: 36
+    weight: 7
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
   field_contribution_technology:
-    weight: 34
+    weight: 4
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
-  path:
-    type: path
-    weight: 30
-    settings: {  }
-    third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 15
-    third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 16
-    third_party_settings: {  }
   title:
     type: string_textfield
-    weight: -5
+    weight: 0
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 10
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  path: true
+  promote: true
+  sticky: true

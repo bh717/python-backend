@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.code_contributions.field_code_contrib_issue_link
     - field.field.node.code_contributions.field_code_contrib_issue_status
+    - field.field.node.code_contributions.field_code_contrib_link
     - field.field.node.code_contributions.field_code_contrib_project
     - field.field.node.code_contributions.field_contrib_moderator_comment
     - field.field.node.code_contributions.field_contribution_author
@@ -14,6 +15,7 @@ dependencies:
     - node.type.code_contributions
   module:
     - datetime
+    - link
     - options
     - text
     - user
@@ -35,6 +37,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: list_default
+  field_code_contrib_link:
+    weight: 11
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
   field_code_contrib_project:
     weight: 4
     label: above
