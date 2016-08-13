@@ -56,7 +56,7 @@ class ContributionRetriever implements ContributionRetrieverInterface {
     }
     else {
       $request = new UserCollectionRequest([
-        'name' => 'hussainweb',
+        'name' => $username,
       ]);
 
       /** @var \Hussainweb\DrupalApi\Entity\Collection\UserCollection $users */
