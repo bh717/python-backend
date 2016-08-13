@@ -79,13 +79,30 @@ class ContributionRetriever implements ContributionRetrieverInterface {
    * {@inheritdoc}
    */
   public function getDrupalOrgCommentsByAuthor($uid) {
-    // @TODO: Support multiple pages and use generators to return results.
-    $req = new CommentCollectionRequest([
-      'author' => $uid,
-    ]);
-    /** @var \Hussainweb\DrupalApi\Entity\Collection\CommentCollection $comments */
-    $comments = $this->client->getEntity($req);
-    return $comments;
+    $page = 0;
+    do {
+      $req = new CommentCollectionRequest([
+        'author' => $uid,
+        'sort' => 'created',
+        'direction' => 'DESC',
+        'page' => $page,
+      ]);
+      /** @var \Hussainweb\DrupalApi\Entity\Collection\CommentCollection $comments */
+      $comments = $this->client->getEntity($req);
+      foreach ($comments as $comment) {
+        yield $comment;
+      }
+
+      // Get the next page.
+      if ($next_url = $comments->getNextLink()) {
+        $next_url_params = [];
+        parse_str($next_url->getQuery(), $next_url_params);
+        $page = $next_url_params['page'];
+      }
+      else {
+        break;
+      }
+    } while ($page > 0);
   }
 
 }

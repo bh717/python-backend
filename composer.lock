@@ -5757,6 +5757,8 @@
     "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.6"
+    },
     "platform-dev": []
 }
