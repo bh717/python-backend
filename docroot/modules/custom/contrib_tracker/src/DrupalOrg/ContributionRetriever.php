@@ -9,18 +9,37 @@ use Hussainweb\DrupalApi\Request\Collection\CommentCollectionRequest;
 use Hussainweb\DrupalApi\Request\Collection\UserCollectionRequest;
 use Hussainweb\DrupalApi\Request\NodeRequest;
 
+/**
+ * Contribution retriever service class.
+ *
+ * This class is responsible for retrieving data from drupal.org API's using
+ * the drupal.org client service. It provides methods to return information
+ * relevant to the application.
+ */
 class ContributionRetriever implements ContributionRetrieverInterface {
 
   /**
+   * Drupal.org client service.
+   *
    * @var \Drupal\contrib_tracker\DrupalOrg\Client
    */
   protected $client;
 
   /**
+   * Cache backend service.
+   *
    * @var \Drupal\Core\Cache\CacheBackendInterface
    */
   protected $cache;
 
+  /**
+   * ContributionRetriever constructor.
+   *
+   * @param \Drupal\contrib_tracker\DrupalOrg\Client $client
+   *   The injected drupal.org client.
+   * @param \Drupal\Core\Cache\CacheBackendInterface $cacheBackend
+   *   The injected cache backend service.
+   */
   public function __construct(Client $client, CacheBackendInterface $cacheBackend) {
     $this->client = $client;
     $this->cache = $cacheBackend;

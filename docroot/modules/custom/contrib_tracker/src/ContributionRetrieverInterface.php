@@ -4,6 +4,9 @@ namespace Drupal\contrib_tracker;
 
 use Drupal\Core\Cache\Cache;
 
+/**
+ * Interface for Contribution Retriever service.
+ */
 interface ContributionRetrieverInterface {
 
   /**
@@ -28,6 +31,7 @@ interface ContributionRetrieverInterface {
    *   The cache expiry for the item.
    *
    * @return \Hussainweb\DrupalApi\Entity\Node
+   *   The node data from drupal.org.
    */
   public function getDrupalOrgNode($nid, $skip_cache = FALSE, $cache_expiry = Cache::PERMANENT);
 
@@ -38,6 +42,7 @@ interface ContributionRetrieverInterface {
    *   The uid of the user on drupal.org.
    *
    * @return \Hussainweb\DrupalApi\Entity\Collection\CommentCollection
+   *   List of comments from drupal.org.
    */
   public function getDrupalOrgCommentsByAuthor($uid);
 

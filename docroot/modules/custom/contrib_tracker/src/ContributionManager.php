@@ -4,23 +4,45 @@ namespace Drupal\contrib_tracker;
 
 use Drupal\user\UserInterface;
 
+/**
+ * Contribution manager service class.
+ *
+ * This class holds logic to retrieve contribution information from drupal.org
+ * API and store it using the storage service. This service may be used to
+ * perform broad operations on a particular drupal.org user.
+ */
 class ContributionManager implements ContributionManagerInterface {
 
   /**
+   * Contribution storage service.
+   *
    * @var \Drupal\contrib_tracker\ContributionStorageInterface
    */
   protected $contributionStorage;
 
   /**
+   * Contribution retriever service.
+   *
    * @var \Drupal\contrib_tracker\ContributionRetrieverInterface
    */
   protected $contributionRetriever;
 
+  /**
+   * ContributionManager constructor.
+   *
+   * @param \Drupal\contrib_tracker\ContributionStorageInterface $contribution_storage
+   *   The injected contribution storage service.
+   * @param \Drupal\contrib_tracker\ContributionRetrieverInterface $retriever
+   *   The injected contribution retriever service.
+   */
   public function __construct(ContributionStorageInterface $contribution_storage, ContributionRetrieverInterface $retriever) {
     $this->contributionStorage = $contribution_storage;
     $this->contributionRetriever = $retriever;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function storeCommentsByDrupalOrgUser($uid, UserInterface $user) {
     /** @var \Hussainweb\DrupalApi\Entity\Comment $comment */
     foreach ($this->contributionRetriever->getDrupalOrgCommentsByAuthor($uid) as $comment) {
@@ -28,7 +50,7 @@ class ContributionManager implements ContributionManagerInterface {
       $link = sprintf("https://www.drupal.org/node/%s", $nid);
       $comment_link = sprintf("https://www.drupal.org/node/%s#comment-%s", $nid, $comment->getId());
 
-      // If we have stored this comment, we have stored everything after it as well.
+      // If we have stored this comment, we have stored everything after it.
       if ($this->contributionStorage->getNodeForDrupalOrgIssueComment($comment_link)) {
         break;
       }

@@ -11,25 +11,47 @@ use Hussainweb\DrupalApi\Entity\Node as DrupalOrgNode;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
+/**
+ * Contribution storage service class.
+ *
+ * This class is responsible for storing contribution information in various
+ * nodes and terms. It provides methods to store the information in specific
+ * content types and vocabularies corresponding to the type of the contribution
+ * being stored.
+ */
 class ContributionStorage implements ContributionStorageInterface, ContainerAwareInterface {
 
   use ContainerAwareTrait;
 
   /**
+   * Node storage controller.
+   *
    * @var \Drupal\node\NodeStorageInterface
    */
   protected $nodeStorage;
 
   /**
+   * Term storage controller.
+   *
    * @var \Drupal\taxonomy\TermStorageInterface
    */
   protected $termStorage;
 
   /**
+   * Contribution Retriever service.
+   *
    * @var \Drupal\contrib_tracker\ContributionRetrieverInterface
    */
   protected $contributionRetriever;
 
+  /**
+   * ContributionStorage constructor.
+   *
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The injected entity type manager service.
+   * @param \Drupal\contrib_tracker\ContributionRetrieverInterface $retriever
+   *   The injected contribution retriever service.
+   */
   public function __construct(EntityTypeManagerInterface $entity_type_manager, ContributionRetrieverInterface $retriever) {
     $this->nodeStorage = $entity_type_manager->getStorage('node');
     $this->termStorage = $entity_type_manager->getStorage('taxonomy_term');
@@ -53,6 +75,7 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
       $comment_title = 'Comment on ' . $issue_node->getTitle();
     }
 
+    // @TODO: Store issue status, number of files in the comment, etc...
     $node = $this->nodeStorage->create([
       'type' => 'code_contribution',
       'title' => $comment_title,
@@ -109,14 +132,34 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
     return (count($nodes) > 0) ? $this->nodeStorage->load(reset($nodes)) : NULL;
   }
 
+  /**
+   * Get the id of the Drupal term in technology vocabulary.
+   *
+   * @return int
+   *   The term id for Drupal term.
+   */
   protected function getDrupalTechnologyId() {
     return $this->getOrCreateTerm('Drupal', 'technology')->id();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getProjectTerm($project_name) {
     return $this->getOrCreateTerm($project_name, 'project');
   }
 
+  /**
+   * Get (or create) a term in a specified vocabulary.
+   *
+   * @param string $term_name
+   *   Name of the term to be retrieved or created.
+   * @param string $vocabulary
+   *   Machine name of the vocabulary.
+   *
+   * @return \Drupal\taxonomy\TermInterface
+   *   The term with the given name in the given vocabulary.
+   */
   protected function getOrCreateTerm($term_name, $vocabulary) {
     $terms = $this->termStorage->getQuery()
       ->condition('name', $term_name)

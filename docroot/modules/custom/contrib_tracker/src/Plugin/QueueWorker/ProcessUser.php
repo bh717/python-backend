@@ -5,14 +5,13 @@ namespace Drupal\contrib_tracker\Plugin\QueueWorker;
 use Drupal\contrib_tracker\ContributionManagerInterface;
 use Drupal\contrib_tracker\ContributionRetrieverInterface;
 use Drupal\contrib_tracker\ContributionStorageInterface;
-use Drupal\contrib_tracker\UserResolverInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Queue\QueueWorkerBase;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Retrieve user's information from drupal.org
+ * Retrieve user's information from drupal.org.
  *
  * @QueueWorker(
  *   id = "contrib_tracker_process_users",
@@ -23,16 +22,22 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInterface {
 
   /**
+   * Contribution manager service.
+   *
    * @var \Drupal\contrib_tracker\ContributionManagerInterface
    */
   protected $contributionManager;
 
   /**
+   * Contribution retriever service.
+   *
    * @var \Drupal\contrib_tracker\ContributionRetrieverInterface
    */
   protected $contributionRetriever;
 
   /**
+   * Contribution storage service.
+   *
    * @var \Drupal\contrib_tracker\ContributionStorageInterface
    */
   protected $contributionStorage;
@@ -51,6 +56,9 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
     }
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, ContributionManagerInterface $manager, ContributionRetrieverInterface $retriever, ContributionStorageInterface $contribution_storage) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
@@ -62,7 +70,7 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition ) {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
       $configuration,
       $plugin_id,
@@ -72,4 +80,5 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
       $container->get('contrib_tracker_storage')
     );
   }
+
 }

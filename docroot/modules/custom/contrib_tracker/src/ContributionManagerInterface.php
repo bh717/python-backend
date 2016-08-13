@@ -4,6 +4,9 @@ namespace Drupal\contrib_tracker;
 
 use Drupal\user\UserInterface;
 
+/**
+ * Interface for Contribution Manager service.
+ */
 interface ContributionManagerInterface {
 
   /**
