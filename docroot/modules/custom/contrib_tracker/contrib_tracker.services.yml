@@ -1,0 +1,13 @@
+services:
+  contrib_tracker.do_client:
+    class: Drupal\contrib_tracker\DrupalOrg\Client
+  contrib_tracker_storage:
+    class: Drupal\contrib_tracker\ContributionStorage
+    parent: container.trait
+    arguments: ['@entity_type.manager', '@contrib_tracker_retriever']
+  contrib_tracker_retriever:
+    class: Drupal\contrib_tracker\DrupalOrg\ContributionRetriever
+    arguments: ['@contrib_tracker.do_client', '@cache.data']
+  contrib_tracker_manager:
+    class: Drupal\contrib_tracker\ContributionManager
+    arguments: ['@contrib_tracker_storage', '@contrib_tracker_retriever']

@@ -1,0 +1,28 @@
+uuid: a8c6d6d2-9046-408a-ab70-cf375be9030f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.non_code_contribution.field_contribution_technology
+    - node.type.non_code_contribution
+  module:
+    - user
+id: node.non_code_contribution.teaser
+targetEntityType: node
+bundle: non_code_contribution
+mode: teaser
+content:
+  flag_contribution_approval:
+    weight: 10
+  links:
+    weight: 100
+hidden:
+  field_contrib_moderator_comment: true
+  field_contribution_author: true
+  field_contribution_comments: true
+  field_contribution_date: true
+  field_contribution_technology: true
+  field_non_code_contrib_credit: true
+  field_non_code_contrib_profile: true
+  field_non_code_contribution_type: true

@@ -1,0 +1,28 @@
+uuid: f2517116-2e00-4704-86df-5ad1e35f7454
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_contribution_type
+    - node.type.event_contribution
+    - taxonomy.vocabulary.event_contribution_type
+id: node.event_contribution.field_event_contribution_type
+field_name: field_event_contribution_type
+entity_type: node
+bundle: event_contribution
+label: 'Contribution Type'
+description: 'Select appropriate contribution type like session, volunteering, training, session selection panel etc.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      event_contribution_type: event_contribution_type
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

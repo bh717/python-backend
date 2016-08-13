@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_drupalorg_username
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -15,11 +16,20 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
+  field_drupalorg_username:
+    type: string
+    weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   member_for:
-    weight: 5
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
   user_picture:
     type: image
-    weight: 0
+    weight: 1
     settings:
       image_style: thumbnail
       image_link: content

@@ -1,0 +1,21 @@
+uuid: 8635724c-1c74-4cc3-9687-e5af8ceae141
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contribution_date
+    - node.type.non_code_contribution
+  module:
+    - datetime
+id: node.non_code_contribution.field_contribution_date
+field_name: field_contribution_date
+entity_type: node
+bundle: non_code_contribution
+label: 'Contribution Date'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

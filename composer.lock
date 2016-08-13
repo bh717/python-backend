@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4609091919b0c6b1d51cb43b65ed02df",
-    "content-hash": "7fcb57a4889b86646f8a01c54ebe9765",
+    "hash": "52bd4b5fc9ae51693bd3682ed3fadc59",
+    "content-hash": "bd35d4ce49cbec84c3100f4fb1878804",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1200,7 +1200,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/field_permissions-8.x-1.0-beta1.zip",
-                "reference": "b8dab935ead70cd43b96ed08eb85dba9adbb04b8",
+                "reference": null,
                 "shasum": null
             },
             "require": {
@@ -1714,6 +1714,59 @@
                 "uri"
             ],
             "time": "2016-06-24 23:00:38"
+        },
+        {
+            "name": "hussainweb/drupal-api-client",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hussainweb/drupal-api-client.git",
+                "reference": "d15de9591a3d5181b4d44c2e50235fb98b3d3448"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hussainweb/drupal-api-client/zipball/d15de9591a3d5181b4d44c2e50235fb98b3d3448",
+                "reference": "d15de9591a3d5181b4d44c2e50235fb98b3d3448",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.1",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0|~5.0",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hussainweb\\DrupalApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Hussain Abbas",
+                    "email": "hussainweb@gmail.com",
+                    "homepage": "http://hussainweb.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Convenient wrapper on Guzzle to access Drupal.org API",
+            "keywords": [
+                "Guzzle",
+                "api",
+                "drupal"
+            ],
+            "time": "2016-08-13 18:14:18"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -4152,6 +4205,55 @@
             "time": "2016-05-30 09:11:59"
         },
         {
+            "name": "wikimedia/composer-merge-plugin",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wikimedia/composer-merge-plugin.git",
+                "reference": "0bdf8543d445ee067c9ba7d5d4a5dde70b9785f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wikimedia/composer-merge-plugin/zipball/0bdf8543d445ee067c9ba7d5d4a5dde70b9785f4",
+                "reference": "0bdf8543d445ee067c9ba7d5d4a5dde70b9785f4",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "composer/composer": "1.0.*@dev",
+                "jakub-onderka/php-parallel-lint": "~0.8",
+                "phpunit/phpunit": "~4.8|~5.0",
+                "squizlabs/php_codesniffer": "~2.1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                },
+                "class": "Wikimedia\\Composer\\MergePlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wikimedia\\Composer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bryan Davis",
+                    "email": "bd808@wikimedia.org"
+                }
+            ],
+            "description": "Composer plugin to merge multiple composer.json files",
+            "time": "2016-03-08 17:11:37"
+        },
+        {
             "name": "zendframework/zend-diactoros",
             "version": "1.3.5",
             "source": {
@@ -4575,38 +4677,6 @@
                 "instantiate"
             ],
             "time": "2015-06-14 21:17:01"
-        },
-        {
-            "name": "drupal/field_collection",
-            "version": "8.1.0-alpha1",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupal.org/project/field_collection",
-                "reference": "8eac83accfecf28eec4d3bf0afe3c047762649fc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/field_collection-8.x-1.0-alpha1.zip",
-                "reference": "8eac83accfecf28eec4d3bf0afe3c047762649fc",
-                "shasum": null
-            },
-            "require": {
-                "drupal/core": "8.*",
-                "drupal/field": "8.*"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-8.x-1.x": "8.1.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.drupal-composer.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "description": "Provides a field collection field, to which any number of fields can be attached.",
-            "homepage": "https://www.drupal.org/project/field_collection",
-            "time": "2016-04-05 13:53:48"
         },
         {
             "name": "fabpot/goutte",
@@ -5689,6 +5759,8 @@
     "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.6"
+    },
     "platform-dev": []
 }

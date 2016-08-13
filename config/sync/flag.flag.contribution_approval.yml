@@ -7,9 +7,9 @@ dependencies:
 id: contribution_approval
 label: 'Contribution Approval'
 bundles:
-  - code_contributions
-  - event_contributions
-  - non_code_contributions
+  - code_contribution
+  - event_contribution
+  - non_code_contribution
 entity_type: node
 enabled: true
 global: false

@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.user.user.field_drupalorg_username
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -16,18 +17,31 @@ bundle: user
 mode: default
 content:
   account:
-    weight: -10
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
   contact:
     weight: 5
+  field_drupalorg_username:
+    type: string_textfield
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   language:
-    weight: 0
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
   timezone:
-    weight: 6
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
   user_picture:
     type: image_image
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    weight: -1
+    weight: 2
 hidden: {  }
