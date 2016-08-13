@@ -1,0 +1,27 @@
+uuid: f15bbb5f-0f12-486c-8dee-16c9334c9fd2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.event_contribution
+  module:
+    - user
+id: node.event_contribution.teaser
+targetEntityType: node
+bundle: event_contribution
+mode: teaser
+content:
+  flag_contribution_approval:
+    weight: 10
+  links:
+    weight: 100
+hidden:
+  field_contrib_moderator_comment: true
+  field_contribution_author: true
+  field_contribution_comments: true
+  field_contribution_date: true
+  field_contribution_technology: true
+  field_event_contrib_event_type: true
+  field_event_contribution_link: true
+  field_event_contribution_type: true

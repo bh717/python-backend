@@ -1,0 +1,21 @@
+uuid: 715b2c14-68c3-4158-ad87-234fb5ae90fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contribution_comments
+    - node.type.non_code_contribution
+  module:
+    - text
+id: node.non_code_contribution.field_contribution_comments
+field_name: field_contribution_comments
+entity_type: node
+bundle: non_code_contribution
+label: 'Contribution Comments'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,28 @@
+uuid: 2c917af2-a9f1-4fb4-a4d3-a92266cca296
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_code_contrib_project
+    - node.type.code_contribution
+    - taxonomy.vocabulary.project
+id: node.code_contribution.field_code_contrib_project
+field_name: field_code_contrib_project
+entity_type: node
+bundle: code_contribution
+label: 'Contribution Project'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      project: project
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
