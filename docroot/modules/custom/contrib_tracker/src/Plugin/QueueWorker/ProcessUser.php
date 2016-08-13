@@ -42,6 +42,7 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
       $do_user = $this->contributionRetriever->getUserInformation($do_username);
       $uid = $do_user->getId();
 
+      // @TODO: Refactor into another service.
       /** @var \Hussainweb\DrupalApi\Entity\Comment $comment */
       foreach ($this->contributionRetriever->getDrupalOrgCommentsByAuthor($uid) as $comment) {
         $nid = $comment->node->id;

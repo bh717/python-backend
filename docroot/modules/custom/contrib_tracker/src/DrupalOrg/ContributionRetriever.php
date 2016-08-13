@@ -79,6 +79,7 @@ class ContributionRetriever implements ContributionRetrieverInterface {
    * {@inheritdoc}
    */
   public function getDrupalOrgCommentsByAuthor($uid) {
+    // @TODO: Support multiple pages and use generators to return results.
     $req = new CommentCollectionRequest([
       'author' => $uid,
     ]);

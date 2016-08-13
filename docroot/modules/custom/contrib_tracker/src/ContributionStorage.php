@@ -33,6 +33,7 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
   public function __construct(EntityTypeManagerInterface $entity_type_manager, ContributionRetrieverInterface $retriever) {
     $this->nodeStorage = $entity_type_manager->getStorage('node');
     $this->termStorage = $entity_type_manager->getStorage('taxonomy_term');
+    // @TODO: Consider removing contrib retriever from this class.
     $this->contributionRetriever = $retriever;
   }
 
@@ -50,10 +51,6 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
     else {
       $comment_body = '';
       $comment_title = 'Comment on ' . $issue_node->getTitle();
-    }
-
-    if (!$comment_title) {
-      var_dump($comment);
     }
 
     $node = $this->nodeStorage->create([
