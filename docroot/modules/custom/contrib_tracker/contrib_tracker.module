@@ -12,6 +12,6 @@ function contrib_tracker_cron() {
 
   $users = \Drupal::entityTypeManager()->getStorage('user')->loadMultiple($uids);
   array_walk($users, function ($user) use ($queue) {
-    $queue->createItem($user->field_drupalorg_username[0]->getValue()['value']);
+    $queue->createItem($user);
   });
 }
