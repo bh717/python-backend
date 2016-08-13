@@ -1717,16 +1717,16 @@
         },
         {
             "name": "hussainweb/drupal-api-client",
-            "version": "0.9.1",
+            "version": "1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hussainweb/drupal-api-client.git",
-                "reference": "e3a8455762039d5d7c36a2e64b7aa546554fb74b"
+                "reference": "d15de9591a3d5181b4d44c2e50235fb98b3d3448"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hussainweb/drupal-api-client/zipball/e3a8455762039d5d7c36a2e64b7aa546554fb74b",
-                "reference": "e3a8455762039d5d7c36a2e64b7aa546554fb74b",
+                "url": "https://api.github.com/repos/hussainweb/drupal-api-client/zipball/d15de9591a3d5181b4d44c2e50235fb98b3d3448",
+                "reference": "d15de9591a3d5181b4d44c2e50235fb98b3d3448",
                 "shasum": ""
             },
             "require": {
@@ -1740,7 +1740,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.9.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "autoload": {
@@ -1762,9 +1762,11 @@
             ],
             "description": "Convenient wrapper on Guzzle to access Drupal.org API",
             "keywords": [
+                "Guzzle",
+                "api",
                 "drupal"
             ],
-            "time": "2016-07-16 19:14:26"
+            "time": "2016-08-13 18:14:18"
         },
         {
             "name": "ircmaxell/password-compat",
