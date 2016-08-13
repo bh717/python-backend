@@ -1,11 +1,14 @@
-uuid: 8723fbcd-eb92-4cd5-af63-be213368d72f
+uuid: 2a017604-62ed-41b8-98f2-83cb697d17fe
 langcode: en
 status: true
 dependencies:
+  enforced:
+    module:
+      - contrib_tracker
   module:
     - user
 _core:
-  default_config_hash: kmTNecGQhBGvA1Wu6tzeaOB7amL1k-APe9juE7A2CL8
+  default_config_hash: leyinUInv6KVAyrgL6za8JnBPsXU2Crdeqb39yjtKqs
 id: user.field_drupalorg_username
 field_name: field_drupalorg_username
 entity_type: user

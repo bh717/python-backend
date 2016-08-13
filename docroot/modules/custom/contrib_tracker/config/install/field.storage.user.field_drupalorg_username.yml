@@ -3,6 +3,9 @@ status: true
 dependencies:
   module:
     - user
+  enforced:
+    module:
+      - contrib_tracker
 id: user.field_drupalorg_username
 field_name: field_drupalorg_username
 entity_type: user
