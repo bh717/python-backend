@@ -24,11 +24,17 @@ interface ContributionStorageInterface {
    *   The project term this comment belongs to.
    * @param \Drupal\user\UserInterface $user
    *   The user contributing the comment.
+   * @param int $patch_files
+   *   Number of patches in the comment.
+   * @param int $total_files
+   *   Number of files in the comment.
+   * @param string $status
+   *   Issue status at the time of this comment.
    *
    * @return \Drupal\node\NodeInterface
    *   The comment node created based on passed in data.
    */
-  public function saveIssueComment(DrupalOrgComment $comment, NodeInterface $issue_node, TermInterface $project_term, UserInterface $user);
+  public function saveIssueComment(DrupalOrgComment $comment, NodeInterface $issue_node, TermInterface $project_term, UserInterface $user, $patch_files, $total_files, $status);
 
   /**
    * Save issue.

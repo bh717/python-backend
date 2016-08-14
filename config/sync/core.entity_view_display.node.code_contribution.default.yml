@@ -3,9 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.code_contribution.field_code_contrib_files_count
     - field.field.node.code_contribution.field_code_contrib_issue_link
     - field.field.node.code_contribution.field_code_contrib_issue_status
     - field.field.node.code_contribution.field_code_contrib_link
+    - field.field.node.code_contribution.field_code_contrib_patches_count
     - field.field.node.code_contribution.field_code_contrib_project
     - field.field.node.code_contribution.field_contrib_moderator_comment
     - field.field.node.code_contribution.field_contribution_author
@@ -24,6 +26,14 @@ targetEntityType: node
 bundle: code_contribution
 mode: default
 content:
+  field_code_contrib_files_count:
+    weight: 12
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
   field_code_contrib_issue_link:
     weight: 9
     label: above
@@ -48,6 +58,14 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+  field_code_contrib_patches_count:
+    weight: 13
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
   field_code_contrib_project:
     weight: 4
     label: above

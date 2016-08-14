@@ -3,6 +3,7 @@
 namespace Drupal\contrib_tracker;
 
 use Drupal\user\UserInterface;
+use Hussainweb\DrupalApi\Entity\File as DrupalOrgFile;
 
 /**
  * Contribution manager service class.
@@ -46,6 +47,7 @@ class ContributionManager implements ContributionManagerInterface {
   public function storeCommentsByDrupalOrgUser($uid, UserInterface $user) {
     /** @var \Hussainweb\DrupalApi\Entity\Comment $comment */
     foreach ($this->contributionRetriever->getDrupalOrgCommentsByAuthor($uid) as $comment) {
+      // @TODO: Breakup this code block.
       $nid = $comment->node->id;
       $link = sprintf("https://www.drupal.org/node/%s", $nid);
       $comment_link = sprintf("https://www.drupal.org/node/%s#comment-%s", $nid, $comment->getId());
@@ -56,12 +58,47 @@ class ContributionManager implements ContributionManagerInterface {
       }
 
       // This is a new comment. Get the issue node first.
-      $issue_data = $this->contributionRetriever->getDrupalOrgNode($nid, FALSE, REQUEST_TIME + 600);
+      $issue_data = $this->contributionRetriever->getDrupalOrgNode($nid, FALSE, REQUEST_TIME + 180);
       if (isset($issue_data->type) && $issue_data->type == 'project_issue') {
         $issue_node = $this->contributionStorage->getNodeForDrupalOrgIssue($link);
         if (!$issue_node) {
           $issue_node = $this->contributionStorage->saveIssue($issue_data, $user);
         }
+
+        // Get the files in the reverse order.
+        $patch_files = $total_files = 0;
+        $matched = FALSE;
+        if (!empty($issue_data->field_issue_files)) {
+          foreach (array_reverse($issue_data->field_issue_files) as $file_record) {
+            $file_id = $file_record->file->id;
+            $file_data = $this->contributionRetriever->getFile($file_id);
+            if ($file_data->timestamp == $comment->created) {
+              $total_files++;
+              if ($this->isPatchFile($file_data)) {
+                $patch_files++;
+              }
+
+              // We have found the file.
+              $matched = TRUE;
+            }
+            elseif ($matched) {
+              // We have matched at least one file. If we don't have a match
+              // anymore, stop looking for more.
+              break;
+            }
+          }
+        }
+
+        // Try to determine the status.
+        // Since we cannot access the revisions directly, we will see if the
+        // issue was updated at the same time as this comment (by using the
+        // 'changed' field). If it was, it is a safe assumption that the issue
+        // status reflects the status set in the comment.
+        // This is not accurate, especially for historic scans, but it is fairly
+        // accurate for new issues and comments.
+        $status = ($comment->created == $issue_data->changed) ?
+          $this->getStatusFromCode((int) $issue_data->field_issue_status) :
+          '';
 
         // Now, get the project for the issue.
         $project_data = $this->contributionRetriever->getDrupalOrgNode($issue_data->field_project->id, FALSE, REQUEST_TIME + (6 * 3600));
@@ -70,10 +107,52 @@ class ContributionManager implements ContributionManagerInterface {
 
           // We have everything we need. Save the issue comment as a code
           // contribution node.
-          $this->contributionStorage->saveIssueComment($comment, $issue_node, $project_term, $user);
+          $this->contributionStorage->saveIssueComment($comment, $issue_node, $project_term, $user, $patch_files, $total_files, $status);
         }
       }
     }
+  }
+
+  /**
+   * Determine if this is a patch file.
+   *
+   * @param \Hussainweb\DrupalApi\Entity\File $file_record
+   *   The file data returned from API.
+   *
+   * @return bool
+   *   TRUE if this is a patch file, else FALSE.
+   */
+  protected function isPatchFile(DrupalOrgFile $file_record) {
+    return $file_record->mime == 'text/x-diff';
+  }
+
+  /**
+   * Translate the status id to text.
+   *
+   * @param int $status_id
+   *   Issue status id.
+   *
+   * @return string
+   *   Readable text corresponding to the status id.
+   */
+  protected function getStatusFromCode($status_id) {
+    $status_map = [
+      1 => 'active',
+      2 => 'fixed',
+      3 => 'closed',
+      4 => 'postponed',
+      5 => 'closed',
+      6 => 'closed',
+      // This is actually closed (fixed), but let's call it fixed.
+      7 => 'fixed',
+      8 => 'needs review',
+      13 => 'needs work',
+      14 => 'rtbc',
+      15 => 'patch',
+      16 => 'postponed',
+      18 => 'closed',
+    ];
+    return (isset($status_map[$status_id])) ? $status_map[$status_id] : '';
   }
 
 }

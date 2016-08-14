@@ -1,0 +1,25 @@
+uuid: 89cfc4c8-da16-4adb-b506-2566319f4948
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_code_contrib_patches_count
+    - node.type.code_contribution
+id: node.code_contribution.field_code_contrib_patches_count
+field_name: field_code_contrib_patches_count
+entity_type: node
+bundle: code_contribution
+label: 'Patches count'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

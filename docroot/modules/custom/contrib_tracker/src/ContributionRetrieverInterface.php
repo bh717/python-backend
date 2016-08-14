@@ -46,4 +46,15 @@ interface ContributionRetrieverInterface {
    */
   public function getDrupalOrgCommentsByAuthor($uid);
 
+  /**
+   * Get file data from drupal.org.
+   *
+   * @param int $fid
+   *   The fid of the file on drupal.org.
+   *
+   * @return \Hussainweb\DrupalApi\Entity\File
+   *   The file data from drupal.org.
+   */
+  public function getFile($fid);
+
 }

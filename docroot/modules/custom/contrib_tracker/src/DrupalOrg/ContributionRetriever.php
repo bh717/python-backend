@@ -7,6 +7,7 @@ use Drupal\Core\Cache\Cache;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Hussainweb\DrupalApi\Request\Collection\CommentCollectionRequest;
 use Hussainweb\DrupalApi\Request\Collection\UserCollectionRequest;
+use Hussainweb\DrupalApi\Request\FileRequest;
 use Hussainweb\DrupalApi\Request\NodeRequest;
 
 /**
@@ -122,6 +123,27 @@ class ContributionRetriever implements ContributionRetrieverInterface {
         break;
       }
     } while ($page > 0);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getFile($fid) {
+    $cid = 'contrib_tracker:file:' . $fid;
+
+    if ($cache = $this->cache->get($cid)) {
+      $file = $cache->data;
+    }
+    else {
+      $req = new FileRequest($fid);
+      $file = $this->client->getEntity($req);
+
+      if ($file) {
+        $this->cache->set($cid, $file, Cache::PERMANENT);
+      }
+    }
+
+    return $file;
   }
 
 }

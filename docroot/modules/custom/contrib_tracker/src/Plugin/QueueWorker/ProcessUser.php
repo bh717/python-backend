@@ -51,6 +51,7 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
       $do_user = $this->contributionRetriever->getUserInformation($do_username);
       $uid = $do_user->getId();
 
+      // @TODO: Add logging across the operation.
       // Store all comments by the user.
       $this->contributionManager->storeCommentsByDrupalOrgUser($uid, $data);
     }

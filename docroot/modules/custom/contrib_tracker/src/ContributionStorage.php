@@ -62,7 +62,7 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
   /**
    * {@inheritdoc}
    */
-  public function saveIssueComment(DrupalOrgComment $comment, NodeInterface $issue_node, TermInterface $project_term, UserInterface $user) {
+  public function saveIssueComment(DrupalOrgComment $comment, NodeInterface $issue_node, TermInterface $project_term, UserInterface $user, $patch_files, $total_files, $status) {
     if (!empty($comment->comment_body->value)) {
       $comment_body = $comment->comment_body->value;
       $comment_title = strip_tags($comment_body);
@@ -75,7 +75,6 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
       $comment_title = 'Comment on ' . $issue_node->getTitle();
     }
 
-    // @TODO: Store issue status, number of files in the comment, etc...
     $node = $this->nodeStorage->create([
       'type' => 'code_contribution',
       'title' => $comment_title,
@@ -85,8 +84,10 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
       'field_contribution_description' => $comment_body,
       'field_code_contrib_issue_link' => $issue_node->id(),
       'field_code_contrib_project' => $project_term->id(),
-//      'field_code_contrib_issue_status' => '',
+      'field_code_contrib_issue_status' => $status,
       'field_contribution_technology' => $this->getDrupalTechnologyId(),
+      'field_code_contrib_files_count' => $total_files,
+      'field_code_contrib_patches_count' => $patch_files,
     ]);
     $node->save();
     return $node;

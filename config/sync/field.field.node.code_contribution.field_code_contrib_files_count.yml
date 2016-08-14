@@ -1,0 +1,25 @@
+uuid: 27b5b6c3-b896-4e38-b5b7-86d79d9d8eef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_code_contrib_files_count
+    - node.type.code_contribution
+id: node.code_contribution.field_code_contrib_files_count
+field_name: field_code_contrib_files_count
+entity_type: node
+bundle: code_contribution
+label: 'Files count'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
