@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "52bd4b5fc9ae51693bd3682ed3fadc59",
-    "content-hash": "bd35d4ce49cbec84c3100f4fb1878804",
+    "hash": "3dad75b153011227ea08607847e61677",
+    "content-hash": "5b4727b673aa58fb76777a0f431dc8f3",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -900,6 +900,32 @@
             "time": "2016-05-25 21:59:48"
         },
         {
+            "name": "drupal/better_exposed_filters",
+            "version": "dev-8.x-3.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/better_exposed_filters",
+                "reference": "93629766cf62d2c7f2a34a83866e74c7564ff707"
+            },
+            "require": {
+                "drupal/core": "8.*",
+                "drupal/views": "8.*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-3.x": "8.3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Provides advanced options (such as links, checkboxes, or jQueryUI widgets) for exposed Views elements.",
+            "homepage": "https://www.drupal.org/project/better_exposed_filters",
+            "time": "2016-08-14 23:42:01"
+        },
+        {
             "name": "drupal/config_installer",
             "version": "8.1.3",
             "source": {
@@ -1200,7 +1226,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/field_permissions-8.x-1.0-beta1.zip",
-                "reference": null,
+                "reference": "b8dab935ead70cd43b96ed08eb85dba9adbb04b8",
                 "shasum": null
             },
             "require": {
@@ -1266,7 +1292,7 @@
             "dist": {
                 "type": "zip",
                 "url": "https://ftp.drupal.org/files/projects/inline_entity_form-8.x-1.0-alpha6.zip",
-                "reference": null,
+                "reference": "27af4de9fd961fa6ae1369604d05fec8b06db867",
                 "shasum": null
             },
             "require": {
@@ -5756,7 +5782,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "drupal/better_exposed_filters": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

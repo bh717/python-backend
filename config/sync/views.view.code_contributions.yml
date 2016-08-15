@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.storage.node.field_code_contrib_issue_link
+    - field.storage.node.field_code_contrib_files_count
+    - field.storage.node.field_code_contrib_issue_status
     - field.storage.node.field_code_contrib_link
+    - field.storage.node.field_code_contrib_patches_count
     - field.storage.node.field_code_contrib_project
     - field.storage.node.field_contribution_author
     - field.storage.node.field_contribution_date
@@ -15,9 +17,11 @@ dependencies:
     - taxonomy.vocabulary.project
     - taxonomy.vocabulary.technology
   module:
+    - better_exposed_filters
     - datetime
     - link
     - node
+    - options
     - taxonomy
     - user
 id: code_contributions
@@ -51,15 +55,59 @@ display:
           query_comment: ''
           query_tags: {  }
       exposed_form:
-        type: basic
+        type: bef
         options:
           submit_button: Apply
-          reset_button: false
+          reset_button: 0
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
+          expose_sort_order: 1
           sort_asc_label: Asc
           sort_desc_label: Desc
+          bef:
+            general:
+              allow_secondary: 0
+              secondary_label: 'Advanced options'
+              autosubmit: 0
+              autosubmit_hide: 0
+            field_code_contrib_issue_status_value:
+              bef_format: default
+              more_options:
+                bef_select_all_none: 0
+                bef_collapsible: 0
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
+            field_contribution_technology_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: 0
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
+            field_code_contrib_project_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: 0
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
+            uid:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: 0
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
+            field_contribution_date_value:
+              bef_format: bef_datepicker
+              more_options:
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
       pager:
         type: full
         options:
@@ -94,6 +142,14 @@ display:
           description: ''
           columns:
             title: title
+            field_code_contrib_files_count: field_code_contrib_files_count
+            field_code_contrib_patches_count: field_code_contrib_patches_count
+            field_contribution_date: field_contribution_date
+            field_code_contrib_link: field_code_contrib_link
+            field_contribution_author: field_contribution_author
+            field_code_contrib_project: field_code_contrib_project
+            field_code_contrib_issue_status: field_code_contrib_issue_status
+            field_contribution_technology: field_contribution_technology
           info:
             title:
               sortable: false
@@ -102,21 +158,73 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-          default: '-1'
+            field_code_contrib_files_count:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_code_contrib_patches_count:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_contribution_date:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_code_contrib_link:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_contribution_author:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_code_contrib_project:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_code_contrib_issue_status:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_contribution_technology:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: field_contribution_date
           empty_table: false
       row:
         type: 'entity:node'
         options:
           view_mode: teaser
       fields:
-        field_code_contrib_issue_link:
-          id: field_code_contrib_issue_link
-          table: node__field_code_contrib_issue_link
-          field: field_code_contrib_issue_link
+        title:
+          id: title
+          table: node_field_data
+          field: title
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Issue Link'
+          label: Title
           exclude: false
           alter:
             alter_text: false
@@ -157,11 +265,77 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
+          click_sort_column: value
+          type: string
           settings:
-            link: true
-          group_column: target_id
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+        field_code_contrib_files_count:
+          id: field_code_contrib_files_count
+          table: node__field_code_contrib_files_count
+          field: field_code_contrib_files_count
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: Files
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -172,14 +346,14 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_contribution_author:
-          id: field_contribution_author
-          table: node__field_contribution_author
-          field: field_contribution_author
+        field_code_contrib_patches_count:
+          id: field_code_contrib_patches_count
+          table: node__field_code_contrib_patches_count
+          field: field_code_contrib_patches_count
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Contribution Author'
+          label: Patches
           exclude: false
           alter:
             alter_text: false
@@ -220,11 +394,12 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
+          click_sort_column: value
+          type: number_integer
           settings:
-            link: true
-          group_column: target_id
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -366,6 +541,69 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
+        field_contribution_author:
+          id: field_contribution_author
+          table: node__field_contribution_author
+          field: field_contribution_author
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Contribution Author'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
         field_code_contrib_project:
           id: field_code_contrib_project
           table: node__field_code_contrib_project
@@ -419,6 +657,68 @@ display:
           settings:
             link: true
           group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_code_contrib_issue_status:
+          id: field_code_contrib_issue_status
+          table: node__field_code_contrib_issue_status
+          field: field_code_contrib_issue_status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Issue Status'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
+          settings: {  }
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -514,6 +814,47 @@ display:
           entity_field: type
           plugin_id: bundle
           group: 1
+        field_code_contrib_issue_status_value:
+          id: field_code_contrib_issue_status_value
+          table: node__field_code_contrib_issue_status
+          field: field_code_contrib_issue_status_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_code_contrib_issue_status_value_op
+            label: 'Issue Status'
+            description: ''
+            use_operator: false
+            operator: field_code_contrib_issue_status_value_op
+            identifier: field_code_contrib_issue_status_value
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+              contribution_moderator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          plugin_id: list_field
         field_contribution_technology_target_id:
           id: field_contribution_technology_target_id
           table: node__field_contribution_technology
@@ -655,7 +996,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: '='
+          operator: between
           value:
             min: ''
             max: ''
@@ -667,7 +1008,7 @@ display:
             operator_id: field_contribution_date_value_op
             label: 'Contribution Date'
             description: ''
-            use_operator: true
+            use_operator: false
             operator: field_contribution_date_value_op
             identifier: field_contribution_date_value
             required: false
@@ -692,21 +1033,19 @@ display:
             group_items: {  }
           plugin_id: datetime
       sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
+        field_contribution_date_value:
+          id: field_contribution_date_value
+          table: node__field_contribution_date
+          field: field_contribution_date_value
           relationship: none
           group_type: group
           admin_label: ''
+          order: DESC
           exposed: false
           expose:
             label: ''
           granularity: second
+          plugin_id: datetime
       title: 'Code Contributions'
       header: {  }
       footer: {  }
@@ -738,8 +1077,10 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_code_contrib_issue_link'
+        - 'config:field.storage.node.field_code_contrib_files_count'
+        - 'config:field.storage.node.field_code_contrib_issue_status'
         - 'config:field.storage.node.field_code_contrib_link'
+        - 'config:field.storage.node.field_code_contrib_patches_count'
         - 'config:field.storage.node.field_code_contrib_project'
         - 'config:field.storage.node.field_contribution_author'
         - 'config:field.storage.node.field_contribution_date'
@@ -772,8 +1113,10 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_code_contrib_issue_link'
+        - 'config:field.storage.node.field_code_contrib_files_count'
+        - 'config:field.storage.node.field_code_contrib_issue_status'
         - 'config:field.storage.node.field_code_contrib_link'
+        - 'config:field.storage.node.field_code_contrib_patches_count'
         - 'config:field.storage.node.field_code_contrib_project'
         - 'config:field.storage.node.field_contribution_author'
         - 'config:field.storage.node.field_contribution_date'

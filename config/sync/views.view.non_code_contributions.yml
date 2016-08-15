@@ -13,6 +13,7 @@ dependencies:
     - system.menu.main
     - taxonomy.vocabulary.technology
   module:
+    - better_exposed_filters
     - datetime
     - link
     - node
@@ -50,15 +51,43 @@ display:
           query_comment: ''
           query_tags: {  }
       exposed_form:
-        type: basic
+        type: bef
         options:
           submit_button: Apply
-          reset_button: false
+          reset_button: 0
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
+          expose_sort_order: 1
           sort_asc_label: Asc
           sort_desc_label: Desc
+          bef:
+            general:
+              allow_secondary: 0
+              secondary_label: 'Advanced options'
+              autosubmit: 0
+              autosubmit_hide: 0
+            field_contribution_technology_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: 0
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
+            uid:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: 0
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
+            field_contribution_date_value:
+              bef_format: bef_datepicker
+              more_options:
+                is_secondary: 0
+                rewrite:
+                  filter_rewrite_values: ''
       pager:
         type: full
         options:
@@ -82,6 +111,71 @@ display:
           quantity: 9
       style:
         type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          override: true
+          sticky: false
+          caption: ''
+          summary: ''
+          description: ''
+          columns:
+            title: title
+            field_contribution_author: field_contribution_author
+            field_contribution_date: field_contribution_date
+            field_non_code_contrib_credit: field_non_code_contrib_credit
+            field_non_code_contrib_profile: field_non_code_contrib_profile
+            field_contribution_technology: field_contribution_technology
+            field_non_code_contribution_type: field_non_code_contribution_type
+          info:
+            title:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_contribution_author:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_contribution_date:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_non_code_contrib_credit:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_non_code_contrib_profile:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_contribution_technology:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_non_code_contribution_type:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          default: field_contribution_date
+          empty_table: false
       row:
         type: fields
       fields:
@@ -632,7 +726,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: '='
+          operator: between
           value:
             min: ''
             max: ''
@@ -644,7 +738,7 @@ display:
             operator_id: field_contribution_date_value_op
             label: 'Contribution Date'
             description: ''
-            use_operator: true
+            use_operator: false
             operator: field_contribution_date_value_op
             identifier: field_contribution_date_value
             required: false
@@ -669,21 +763,19 @@ display:
             group_items: {  }
           plugin_id: datetime
       sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
+        field_contribution_date_value:
+          id: field_contribution_date_value
+          table: node__field_contribution_date
+          field: field_contribution_date_value
           relationship: none
           group_type: group
           admin_label: ''
+          order: DESC
           exposed: false
           expose:
             label: ''
           granularity: second
+          plugin_id: datetime
       title: 'Non code contributions'
       header: {  }
       footer: {  }
