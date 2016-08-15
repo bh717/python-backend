@@ -1,6 +1,9 @@
 services:
   contrib_tracker.do_client:
     class: Drupal\contrib_tracker\DrupalOrg\Client
+  logger.channel.contrib_tracker:
+    parent: logger.channel_base
+    arguments: ['contrib_tracker']
   contrib_tracker_storage:
     class: Drupal\contrib_tracker\ContributionStorage
     parent: container.trait
@@ -10,4 +13,4 @@ services:
     arguments: ['@contrib_tracker.do_client', '@cache.data']
   contrib_tracker_manager:
     class: Drupal\contrib_tracker\ContributionManager
-    arguments: ['@contrib_tracker_storage', '@contrib_tracker_retriever']
+    arguments: ['@contrib_tracker_storage', '@contrib_tracker_retriever', '@logger.channel.contrib_tracker']

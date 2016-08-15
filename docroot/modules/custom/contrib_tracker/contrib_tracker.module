@@ -11,6 +11,7 @@ function contrib_tracker_cron() {
   $uids = $query->execute();
 
   $users = \Drupal::entityTypeManager()->getStorage('user')->loadMultiple($uids);
+  \Drupal::logger('contrib_tracker')->notice('Queuing @count users for processing.', ['@count' => count($users)]);
   array_walk($users, function ($user) use ($queue) {
     $queue->createItem($user);
   });

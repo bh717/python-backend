@@ -5,6 +5,7 @@ namespace Drupal\contrib_tracker\Plugin\QueueWorker;
 use Drupal\contrib_tracker\ContributionManagerInterface;
 use Drupal\contrib_tracker\ContributionRetrieverInterface;
 use Drupal\contrib_tracker\ContributionStorageInterface;
+use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Queue\QueueWorkerBase;
 use Drupal\user\UserInterface;
@@ -43,6 +44,13 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
   protected $contributionStorage;
 
   /**
+   * The logger interface.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelInterface
+   */
+  protected $logger;
+
+  /**
    * {@inheritdoc}
    */
   public function processItem($data) {
@@ -51,7 +59,11 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
       $do_user = $this->contributionRetriever->getUserInformation($do_username);
       $uid = $do_user->getId();
 
-      // @TODO: Add logging across the operation.
+      $this->logger->notice('Processing user with d.o uid @username (@uid)...', [
+        '@username' => $do_username,
+        '@uid' => $uid,
+      ]);
+
       // Store all comments by the user.
       $this->contributionManager->storeCommentsByDrupalOrgUser($uid, $data);
     }
@@ -60,12 +72,13 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ContributionManagerInterface $manager, ContributionRetrieverInterface $retriever, ContributionStorageInterface $contribution_storage) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, ContributionManagerInterface $manager, ContributionRetrieverInterface $retriever, ContributionStorageInterface $contribution_storage, LoggerChannelInterface $logger) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->contributionManager = $manager;
     $this->contributionRetriever = $retriever;
     $this->contributionStorage = $contribution_storage;
+    $this->logger = $logger;
   }
 
   /**
@@ -78,7 +91,8 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
       $plugin_definition,
       $container->get('contrib_tracker_manager'),
       $container->get('contrib_tracker_retriever'),
-      $container->get('contrib_tracker_storage')
+      $container->get('contrib_tracker_storage'),
+      $container->get('logger.channel.contrib_tracker')
     );
   }
 
