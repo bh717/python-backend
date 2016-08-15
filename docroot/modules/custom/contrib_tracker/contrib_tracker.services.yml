@@ -4,7 +4,7 @@ services:
   contrib_tracker_storage:
     class: Drupal\contrib_tracker\ContributionStorage
     parent: container.trait
-    arguments: ['@entity_type.manager', '@contrib_tracker_retriever']
+    arguments: ['@entity_type.manager']
   contrib_tracker_retriever:
     class: Drupal\contrib_tracker\DrupalOrg\ContributionRetriever
     arguments: ['@contrib_tracker.do_client', '@cache.data']

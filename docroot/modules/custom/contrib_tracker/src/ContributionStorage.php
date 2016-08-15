@@ -38,25 +38,14 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
   protected $termStorage;
 
   /**
-   * Contribution Retriever service.
-   *
-   * @var \Drupal\contrib_tracker\ContributionRetrieverInterface
-   */
-  protected $contributionRetriever;
-
-  /**
    * ContributionStorage constructor.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The injected entity type manager service.
-   * @param \Drupal\contrib_tracker\ContributionRetrieverInterface $retriever
-   *   The injected contribution retriever service.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, ContributionRetrieverInterface $retriever) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
     $this->nodeStorage = $entity_type_manager->getStorage('node');
     $this->termStorage = $entity_type_manager->getStorage('taxonomy_term');
-    // @TODO: Consider removing contrib retriever from this class.
-    $this->contributionRetriever = $retriever;
   }
 
   /**
