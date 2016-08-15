@@ -58,7 +58,7 @@ display:
         type: bef
         options:
           submit_button: Apply
-          reset_button: 0
+          reset_button: 1
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: 1
@@ -136,7 +136,7 @@ display:
           row_class: ''
           default_row_class: true
           override: true
-          sticky: false
+          sticky: true
           caption: ''
           summary: ''
           description: ''
