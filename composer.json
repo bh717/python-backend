@@ -25,7 +25,8 @@
         "drupal/config_installer": "8.*",
         "drupal/flag": "8.*",
         "drupal/field_permissions": "8.*",
-        "drupal/inline_entity_form": "8.*"
+        "drupal/inline_entity_form": "8.*",
+        "drupal/better_exposed_filters": "8.3.x-dev"
     },
     "require-dev": {
         "behat/mink": "~1.7",

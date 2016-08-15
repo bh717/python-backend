@@ -12,7 +12,7 @@ _core:
   default_config_hash: NeHSoqm4XFqA7_0bDmR429ZZQt3LRbZMNRJTMsFyOfI
 id: bartik_tools
 theme: bartik
-region: sidebar_first
+region: '-1'
 weight: 0
 provider: null
 plugin: 'system_menu_block:tools'
