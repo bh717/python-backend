@@ -6,7 +6,7 @@ _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
 label: 'Authenticated user'
-weight: 1
+weight: -9
 is_admin: false
 permissions:
   - 'access content'
@@ -27,3 +27,6 @@ permissions:
   - 'delete own non_code_contribution content'
   - 'edit own non_code_contribution content'
   - 'view own field_contrib_moderator_comment'
+  - 'create issue content'
+  - 'delete own issue content'
+  - 'edit own issue content'

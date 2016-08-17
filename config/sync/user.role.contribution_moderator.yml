@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 id: contribution_moderator
 label: 'Contribution Moderator'
-weight: 3
+weight: -8
 is_admin: null
 permissions:
   - 'flag contribution_approval'
@@ -14,3 +14,26 @@ permissions:
   - 'edit field_contrib_moderator_comment'
   - 'view own field_contrib_moderator_comment'
   - 'view field_contrib_moderator_comment'
+  - 'delete any code_contribution content'
+  - 'delete code_contribution revisions'
+  - 'edit any code_contribution content'
+  - 'revert code_contribution revisions'
+  - 'view code_contribution revisions'
+  - 'delete any event_contribution content'
+  - 'delete event_contribution revisions'
+  - 'edit any event_contribution content'
+  - 'revert event_contribution revisions'
+  - 'view event_contribution revisions'
+  - 'create issue content'
+  - 'delete any issue content'
+  - 'delete own issue content'
+  - 'delete issue revisions'
+  - 'edit any issue content'
+  - 'edit own issue content'
+  - 'revert issue revisions'
+  - 'view issue revisions'
+  - 'delete any non_code_contribution content'
+  - 'delete non_code_contribution revisions'
+  - 'edit any non_code_contribution content'
+  - 'revert non_code_contribution revisions'
+  - 'view non_code_contribution revisions'

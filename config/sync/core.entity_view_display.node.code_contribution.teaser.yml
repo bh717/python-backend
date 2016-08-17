@@ -23,9 +23,11 @@ content:
   links:
     weight: 100
 hidden:
+  field_code_contrib_files_count: true
   field_code_contrib_issue_link: true
   field_code_contrib_issue_status: true
   field_code_contrib_link: true
+  field_code_contrib_patches_count: true
   field_code_contrib_project: true
   field_contrib_moderator_comment: true
   field_contribution_author: true
