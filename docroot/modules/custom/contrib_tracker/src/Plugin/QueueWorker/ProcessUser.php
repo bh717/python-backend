@@ -56,7 +56,20 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
   public function processItem($data) {
     if (is_a($data, UserInterface::class)) {
       $do_username = $data->field_drupalorg_username[0]->getValue()['value'];
-      $do_user = $this->contributionRetriever->getUserInformation($do_username);
+      if (!$do_username) {
+        // We shouldn't really reach here, but if we do, leave quietly.
+        return;
+      }
+
+      try {
+        $do_user = $this->contributionRetriever->getUserInformation($do_username);
+      }
+      catch (\RuntimeException $ex) {
+        // @TODO: Use a better exception class, and then rearrange catch blocks.
+        $this->logger->error('User with d.o username "@username" not found', ['@username' => $do_username]);
+        return;
+      }
+
       $uid = $do_user->getId();
 
       $this->logger->notice('Processing user with d.o uid @username (@uid)...', [
