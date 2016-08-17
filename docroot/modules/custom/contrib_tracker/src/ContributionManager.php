@@ -82,7 +82,7 @@ class ContributionManager implements ContributionManagerInterface {
         $patch_files = $total_files = 0;
         $matched = FALSE;
         if (!empty($issue_data->field_issue_files)) {
-          $this->logger->info('Found @files for the issue.', [
+          $this->logger->info('Found @files files for the issue.', [
             '@files' => count($issue_data->field_issue_files),
           ]);
           foreach (array_reverse($issue_data->field_issue_files) as $file_record) {
@@ -122,7 +122,7 @@ class ContributionManager implements ContributionManagerInterface {
           '';
 
         // Now, get the project for the issue.
-        $this->logger->info('Getting project @nid...', ['@nid' => $issue_data->project->id]);
+        $this->logger->info('Getting project @nid...', ['@nid' => $issue_data->field_project->id]);
         $project_data = $this->contributionRetriever->getDrupalOrgNode($issue_data->field_project->id, FALSE, REQUEST_TIME + (6 * 3600));
         if (!empty($project_data->title)) {
           $project_term = $this->contributionStorage->getProjectTerm($project_data->title);
