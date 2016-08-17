@@ -7,7 +7,8 @@ function contrib_tracker_cron() {
   $queue = \Drupal::queue('contrib_tracker_process_users');
 
   $query = \Drupal::entityQuery('user')
-    ->condition('field_drupalorg_username', '', '!=');
+    ->condition('field_drupalorg_username', '', '!=')
+    ->condition('status', 1);
   $uids = $query->execute();
 
   $users = \Drupal::entityTypeManager()->getStorage('user')->loadMultiple($uids);
