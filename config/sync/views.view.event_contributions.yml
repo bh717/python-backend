@@ -804,8 +804,8 @@ display:
         title: 'Event Contributions'
         description: ''
         expanded: false
-        parent: ''
-        weight: 0
+        parent: 'views_view:views.all_contributions.page_1'
+        weight: -49
         context: '0'
         menu_name: main
     cache_metadata:

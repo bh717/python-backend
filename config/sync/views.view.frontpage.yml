@@ -261,8 +261,8 @@ display:
       sitename_title: true
       path: rss.xml
       displays:
-        page_1: page_1
-        default: ''
+        default: '0'
+        page_1: '0'
       pager:
         type: some
         options:

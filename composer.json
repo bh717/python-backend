@@ -26,7 +26,9 @@
         "drupal/flag": "8.*",
         "drupal/field_permissions": "8.*",
         "drupal/inline_entity_form": "8.*",
-        "drupal/better_exposed_filters": "8.3.x-dev"
+        "drupal/better_exposed_filters": "8.3.x-dev",
+        "drupal/bootstrap": "~8.3",
+        "drupal/admin_toolbar": "8.*"
     },
     "require-dev": {
         "behat/mink": "~1.7",

@@ -720,11 +720,12 @@ display:
         type: normal
         title: 'All Contributions'
         description: ''
-        expanded: false
+        expanded: true
         parent: ''
-        weight: 0
+        weight: -50
         context: '0'
         menu_name: main
+        enabled: true
     cache_metadata:
       max-age: 0
       contexts:

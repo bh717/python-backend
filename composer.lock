@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3dad75b153011227ea08607847e61677",
-    "content-hash": "5b4727b673aa58fb76777a0f431dc8f3",
+    "hash": "5b5bbde9715741076f7257c38c5dd852",
+    "content-hash": "068593265a0603256252c32cdcda9a31",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -900,6 +900,50 @@
             "time": "2016-05-25 21:59:48"
         },
         {
+            "name": "drupal/admin_toolbar",
+            "version": "8.1.16",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/admin_toolbar.git",
+                "reference": "53a3c9fbb3709d5629b0992df63ffb1f43c94d2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/admin_toolbar-8.x-1.16.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*",
+                "drupal/toolbar": "8.*"
+            },
+            "replace": {
+                "drupal/admin_toolbar_tools": "self.version"
+            },
+            "suggest": {
+                "drupal/core": "Required by drupal/admin_toolbar_tools"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-1.x": "8.1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Anis Taktak",
+                    "homepage": "https://www.drupal.org/u/matio89"
+                }
+            ],
+            "description": "Provides a drop-down menu interface to the core Drupal Toolbar.",
+            "homepage": "http://drupal.org/project/admin_toolbar",
+            "time": "2016-07-28 09:57:05"
+        },
+        {
             "name": "drupal/better_exposed_filters",
             "version": "dev-8.x-3.x",
             "source": {
@@ -924,6 +968,37 @@
             "description": "Provides advanced options (such as links, checkboxes, or jQueryUI widgets) for exposed Views elements.",
             "homepage": "https://www.drupal.org/project/better_exposed_filters",
             "time": "2016-08-14 23:42:01"
+        },
+        {
+            "name": "drupal/bootstrap",
+            "version": "8.3.0-rc2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/bootstrap",
+                "reference": "29fe3af2a9b01a90674abea068073c9ca3f1293f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/bootstrap-8.x-3.0-rc2.zip",
+                "reference": "29fe3af2a9b01a90674abea068073c9ca3f1293f",
+                "shasum": null
+            },
+            "require": {
+                "drupal/core": "8.*"
+            },
+            "type": "drupal-theme",
+            "extra": {
+                "branch-alias": {
+                    "dev-8.x-3.x": "8.3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Built to use Bootstrap, a sleek, intuitive, and powerful front-end framework for faster and easier web development.",
+            "homepage": "https://www.drupal.org/project/bootstrap",
+            "time": "2016-08-03 05:45:18"
         },
         {
             "name": "drupal/config_installer",

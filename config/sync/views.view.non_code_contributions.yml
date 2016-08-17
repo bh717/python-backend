@@ -826,8 +826,8 @@ display:
         title: 'Non Code Contributions'
         description: ''
         expanded: false
-        parent: ''
-        weight: 0
+        parent: 'views_view:views.all_contributions.page_1'
+        weight: -48
         context: '0'
         menu_name: main
     cache_metadata:
