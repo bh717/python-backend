@@ -70,7 +70,10 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
       'field_code_contrib_link' => $comment->url,
       'field_contribution_author' => $user->id(),
       'field_contribution_date' => date('Y-m-d', $comment->created),
-      'field_contribution_description' => $comment_body,
+      'field_contribution_description' => [
+        'value' => $comment_body,
+        'format' => 'basic_html',
+      ],
       'field_code_contrib_issue_link' => $issue_node->id(),
       'field_code_contrib_project' => $project_term->id(),
       'field_code_contrib_issue_status' => $status,
