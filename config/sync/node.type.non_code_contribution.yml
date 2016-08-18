@@ -6,13 +6,12 @@ dependencies:
     - menu_ui
 third_party_settings:
   menu_ui:
-    available_menus:
-      - main
-    parent: 'main:'
+    available_menus: {  }
+    parent: ''
 name: 'Non Code Contributions'
 type: non_code_contribution
 description: 'Use <em>Non code contributions</em> content type to create and capture non code related contributions.'
-help: ''
+help: 'A non-code contribution is a contribution that does not involve contributing or reviewing code. Typical examples include blog posts, answering questions on StackExchange or other forums, etc...'
 new_revision: false
 preview_mode: 1
-display_submitted: true
+display_submitted: false

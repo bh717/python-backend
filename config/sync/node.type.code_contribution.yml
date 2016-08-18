@@ -6,13 +6,12 @@ dependencies:
     - menu_ui
 third_party_settings:
   menu_ui:
-    available_menus:
-      - main
-    parent: 'main:'
-name: 'Code Contributions'
+    available_menus: {  }
+    parent: ''
+name: 'Code contributions'
 type: code_contribution
-description: 'Use <em>Code contributions</em> content type captures various code contributions.'
-help: ''
+description: 'Use <em>Code contributions</em> content type to capture various code contributions.'
+help: 'Code contributions represent a single contribution to an open source project. Example include a single comment on a issue in drupal.org. Correspondingly, the code contribution can hold multiple patches and files.'
 new_revision: false
 preview_mode: 1
-display_submitted: true
+display_submitted: false

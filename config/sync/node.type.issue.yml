@@ -6,13 +6,12 @@ dependencies:
     - menu_ui
 third_party_settings:
   menu_ui:
-    available_menus:
-      - main
-    parent: 'main:'
+    available_menus: {  }
+    parent: ''
 name: Issue
 type: issue
-description: 'USer <em>issue</em> content type to create new issues. It can be bug, task, feature request etc.'
-help: ''
+description: 'Use <em>issue</em> content type to create new issues. It can be bug, task, feature request etc.'
+help: 'The primary reason to create an issue is to link it to a code contribution.'
 new_revision: false
 preview_mode: 1
-display_submitted: true
+display_submitted: false
