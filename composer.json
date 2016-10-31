@@ -11,7 +11,7 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://packagist.drupal-composer.org"
+            "url": "https://packages.drupal.org/8"
         }
     ],
     "require": {
@@ -22,13 +22,15 @@
         "drush/drush": "~8.0",
         "drupal/console": "~1.0",
         "wikimedia/composer-merge-plugin": "~1.3",
-        "drupal/config_installer": "8.*",
-        "drupal/flag": "8.*",
-        "drupal/field_permissions": "8.*",
-        "drupal/inline_entity_form": "8.*",
-        "drupal/better_exposed_filters": "8.3.x-dev",
-        "drupal/bootstrap": "~8.3",
-        "drupal/admin_toolbar": "8.*"
+
+        "drupal/config_installer": "~1.0",
+
+        "drupal/flag": "4.*",
+        "drupal/field_permissions": "~1.0",
+        "drupal/inline_entity_form": "~1.0",
+        "drupal/better_exposed_filters": "3.x-dev",
+        "drupal/bootstrap": "~3.0",
+        "drupal/admin_toolbar": "~1.0"
     },
     "require-dev": {
         "behat/mink": "~1.7",
