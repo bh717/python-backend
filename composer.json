@@ -90,9 +90,6 @@
     },
     "extra": {
         "patches": {
-            "drupal/social_auth": {
-                "Fatal error: drupalSetMessage not found": "https://www.drupal.org/files/issues/fatal_error-2847918-2.patch"
-            },
             "drupal/social_auth_google": {
                 "Attempts to create an user even if it already exists": "https://www.drupal.org/files/issues/2847914-2.patch"
             }
