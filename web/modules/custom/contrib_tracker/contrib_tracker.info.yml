@@ -4,3 +4,5 @@ description: 'Track contributions from drupal.org'
 core: 8.x
 package: Contrib Tracker
 php: 5.6
+dependencies:
+  - slack

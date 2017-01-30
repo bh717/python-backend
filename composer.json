@@ -49,6 +49,7 @@
         "drupal/admin_toolbar": "~1.0",
         "drupal/inline_entity_form": "~1.0",
         "drupal/better_exposed_filters": "3.x-dev",
+        "drupal/slack": "1.x-dev",
 
         "drupal/bootstrap": "~3.0",
 
@@ -92,6 +93,9 @@
         "patches": {
             "drupal/social_auth_google": {
                 "Attempts to create an user even if it already exists": "https://www.drupal.org/files/issues/2847914-2.patch"
+            },
+            "drupal/slack": {
+                "Multiple links corrupts the message": "https://www.drupal.org/files/issues/multiple_links_corrupts-2848176-2.patch"
             }
         },
         "installer-paths": {

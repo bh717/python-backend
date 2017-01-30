@@ -13,4 +13,4 @@ services:
     arguments: ['@contrib_tracker.do_client', '@cache.data']
   contrib_tracker_manager:
     class: Drupal\contrib_tracker\ContributionManager
-    arguments: ['@contrib_tracker_storage', '@contrib_tracker_retriever', '@logger.channel.contrib_tracker']
+    arguments: ['@contrib_tracker_storage', '@contrib_tracker_retriever', '@slack.slack_service', '@logger.channel.contrib_tracker']

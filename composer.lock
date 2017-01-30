@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "76d7567186c58f454c38b4094246066f",
+    "content-hash": "ce5b6a392702bae509be110b024a1177",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1837,6 +1837,63 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/inline_entity_form"
             }
+        },
+        {
+            "name": "drupal/slack",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/slack",
+                "reference": "628b4bb65580eb44b3eb6b0d7418d02da623bd7b"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.1+2-dev",
+                    "datestamp": "1481103784"
+                },
+                "patches_applied": {
+                    "Multiple links corrupts the message": "https://www.drupal.org/files/issues/multiple_links_corrupts-2848176-2.patch"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Serge_Konst",
+                    "homepage": "https://www.drupal.org/user/3285403"
+                },
+                {
+                    "name": "adci_contributor",
+                    "homepage": "https://www.drupal.org/user/1830536"
+                },
+                {
+                    "name": "adcillc",
+                    "homepage": "https://www.drupal.org/user/366450"
+                },
+                {
+                    "name": "hxdef",
+                    "homepage": "https://www.drupal.org/user/2622115"
+                },
+                {
+                    "name": "novartema",
+                    "homepage": "https://www.drupal.org/user/2474324"
+                }
+            ],
+            "description": "Integration with Slack.com service.",
+            "homepage": "https://www.drupal.org/project/slack",
+            "support": {
+                "source": "http://cgit.drupalcode.org/slack"
+            },
+            "time": "2016-12-07 09:38:31"
         },
         {
             "name": "drupal/social_api",
@@ -6956,7 +7013,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/social_auth_google": 20,
-        "drupal/better_exposed_filters": 20
+        "drupal/better_exposed_filters": 20,
+        "drupal/slack": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

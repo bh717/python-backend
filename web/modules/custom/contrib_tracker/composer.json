@@ -5,6 +5,7 @@
     "license": "GPL-2.0",
     "require": {
         "php": ">=5.6",
-        "hussainweb/drupal-api-client": "~1.0"
+        "hussainweb/drupal-api-client": "~1.0",
+        "drupal/slack": "1.x-dev"
     }
 }

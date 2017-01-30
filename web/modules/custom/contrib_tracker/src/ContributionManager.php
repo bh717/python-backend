@@ -3,8 +3,12 @@
 namespace Drupal\contrib_tracker;
 
 use Drupal\Core\Logger\LoggerChannelInterface;
+use Drupal\node\NodeInterface;
+use Drupal\slack\Slack;
 use Drupal\user\UserInterface;
+use Hussainweb\DrupalApi\Entity\Comment as DrupalOrgComment;
 use Hussainweb\DrupalApi\Entity\File as DrupalOrgFile;
+use Hussainweb\DrupalApi\Entity\Node as DrupalOrgNode;
 
 /**
  * Contribution manager service class.
@@ -30,6 +34,13 @@ class ContributionManager implements ContributionManagerInterface {
   protected $contributionRetriever;
 
   /**
+   * Slack service.
+   *
+   * @var \Drupal\slack\Slack
+   */
+  protected $slackService;
+
+  /**
    * Logger interface.
    *
    * @var \Drupal\Core\Logger\LoggerChannelInterface
@@ -43,12 +54,15 @@ class ContributionManager implements ContributionManagerInterface {
    *   The injected contribution storage service.
    * @param \Drupal\contrib_tracker\ContributionRetrieverInterface $retriever
    *   The injected contribution retriever service.
+   * @param \Drupal\slack\Slack $slack_service
+   *   Slack service.
    * @param \Drupal\Core\Logger\LoggerChannelInterface $logger
    *   The logger channel service.
    */
-  public function __construct(ContributionStorageInterface $contribution_storage, ContributionRetrieverInterface $retriever, LoggerChannelInterface $logger) {
+  public function __construct(ContributionStorageInterface $contribution_storage, ContributionRetrieverInterface $retriever, Slack $slack_service, LoggerChannelInterface $logger) {
     $this->contributionStorage = $contribution_storage;
     $this->contributionRetriever = $retriever;
+    $this->slackService = $slack_service;
     $this->logger = $logger;
   }
 
@@ -58,7 +72,7 @@ class ContributionManager implements ContributionManagerInterface {
   public function storeCommentsByDrupalOrgUser($uid, UserInterface $user) {
     /** @var \Hussainweb\DrupalApi\Entity\Comment $comment */
     foreach ($this->contributionRetriever->getDrupalOrgCommentsByAuthor($uid) as $comment) {
-      // @TODO: Breakup this code block.
+      // @TODO: Breakup this code block. This could go in a different class.
       $nid = $comment->node->id;
       $link = sprintf("https://www.drupal.org/node/%s", $nid);
       $comment_link = sprintf("https://www.drupal.org/node/%s#comment-%s", $nid, $comment->getId());
@@ -131,9 +145,40 @@ class ContributionManager implements ContributionManagerInterface {
           // contribution node.
           $this->logger->notice('Saving issue comment @link...', ['@link' => $comment_link]);
           $this->contributionStorage->saveIssueComment($comment, $issue_node, $project_term, $user, $patch_files, $total_files, $status);
+
+          $this->sendSlackNotification($user, $uid, $comment, $issue_node, $project_data, $patch_files, $total_files, $status);
         }
       }
     }
+  }
+
+  protected function sendSlackNotification(UserInterface $user, $uid, DrupalOrgComment $comment, NodeInterface $issue_node, DrupalOrgNode $project, $patch_files, $total_files, $status) {
+    // @TODO: Refactor this whole method to take lesser parameters.
+    // Only send a notification if the comment was posted in the last hour.
+    if ($comment->created < time() - 3600) {
+      return;
+    }
+
+    $comment_body = (!empty($comment->comment_body->value)) ? $comment->comment_body->value : '';
+
+    // First generate the message.
+    $msg = sprintf('<a href="https://www.drupal.org/user/%s">%s</a>', $uid, $user->getDisplayName());
+    $msg .= sprintf(' posted a comment on <a href="%s">%s</a>', $comment->url, $issue_node->getTitle());
+    $msg .= sprintf(' in project <a href="%s">%s</a>', $project->url, $project->title);
+
+    if ($total_files > 0) {
+      $msg .= sprintf(' with %d files (%d patch(es))', $total_files, $patch_files);
+    }
+
+    if ($status) {
+      $msg .= sprintf(' and changed the status to %s', $status);
+    }
+
+    $msg .= ".\n";
+    $msg .= strip_tags($comment_body);
+
+    // And finally send the message.
+    $this->slackService->sendMessage($msg);
   }
 
   /**
