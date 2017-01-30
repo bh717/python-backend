@@ -12,6 +12,22 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "drupal/social_auth_google",
+                "version": "1.x-dev",
+                "type": "drupal-module",
+                "source": {
+                    "type": "git",
+                    "url": "https://git.drupal.org/sandbox/gvso/2763739.git",
+                    "reference": "8.x-1.x"
+                },
+                "require": {
+                    "drupal/social_auth": "1.x-dev"
+                }
+            }
         }
     ],
     "require": {
@@ -27,10 +43,16 @@
 
         "drupal/flag": "4.*",
         "drupal/field_permissions": "~1.0",
+
+        "drupal/social_auth_google": "1.x-dev",
+
+        "drupal/admin_toolbar": "~1.0",
         "drupal/inline_entity_form": "~1.0",
         "drupal/better_exposed_filters": "3.x-dev",
+
         "drupal/bootstrap": "~3.0",
-        "drupal/admin_toolbar": "~1.0"
+
+        "google/apiclient": "^2.0"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -67,6 +89,14 @@
         ]
     },
     "extra": {
+        "patches": {
+            "drupal/social_auth": {
+                "Fatal error: drupalSetMessage not found": "https://www.drupal.org/files/issues/fatal_error-2847918-2.patch"
+            },
+            "drupal/social_auth_google": {
+                "Attempts to create an user even if it already exists": "https://www.drupal.org/files/issues/2847914-2.patch"
+            }
+        },
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": ["type:drupal-library"],
