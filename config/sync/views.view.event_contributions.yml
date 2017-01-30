@@ -53,46 +53,46 @@ display:
         type: bef
         options:
           submit_button: Apply
-          reset_button: 1
+          reset_button: true
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: 1
+          expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
           bef:
             general:
-              allow_secondary: 0
+              allow_secondary: false
               secondary_label: 'Advanced options'
-              autosubmit: 0
-              autosubmit_hide: 0
+              autosubmit: false
+              autosubmit_hide: false
             field_event_contrib_event_type_target_id:
               bef_format: default
               more_options:
                 bef_select_all_none: false
-                bef_collapsible: 0
-                is_secondary: 0
+                bef_collapsible: false
+                is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
             field_contribution_technology_target_id:
               bef_format: default
               more_options:
-                bef_select_all_none: 0
-                bef_collapsible: 0
-                is_secondary: 0
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
             uid:
               bef_format: default
               more_options:
                 bef_select_all_none: false
-                bef_collapsible: 0
-                is_secondary: 0
+                bef_collapsible: false
+                is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
             field_contribution_date_value:
               bef_format: bef_datepicker
               more_options:
-                is_secondary: 0
+                is_secondary: false
                 rewrite:
                   filter_rewrite_values: ''
       pager:
@@ -544,7 +544,7 @@ display:
           plugin_id: field
       filters:
         status:
-          value: true
+          value: '1'
           table: node_field_data
           field: status
           plugin_id: boolean

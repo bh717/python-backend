@@ -11,7 +11,6 @@ bundles:
   - event_contribution
   - non_code_contribution
 entity_type: node
-enabled: true
 global: false
 weight: 0
 flag_short: Approve
@@ -26,9 +25,9 @@ link_type: ajax_link
 flagTypeConfig:
   show_in_links:
     full: full
-  show_as_field: 1
-  show_on_form: 0
-  show_contextual_link: 0
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
   access_author: ''
 linkTypeConfig:
   flag_confirmation: 'Enter flagging details'

@@ -1,0 +1,10 @@
+auth:
+  social_auth_google:
+    route: social_auth_google.redirect_to_google
+    img_path: modules/contrib/social_auth_google/img/google_logo.svg
+post_login_path: user
+redirect_user_form: false
+disable_admin_login: true
+disabled_roles: {  }
+_core:
+  default_config_hash: gWr-VFlbZ8kgEfBF580G_ZijpGfBRbh5IUSYijEDZ3E
