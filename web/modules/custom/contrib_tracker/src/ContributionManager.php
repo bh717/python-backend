@@ -159,7 +159,11 @@ class ContributionManager implements ContributionManagerInterface {
       return;
     }
 
-    $comment_body = (!empty($comment->comment_body->value)) ? $comment->comment_body->value : '';
+    $comment_body = '';
+    if (!empty($comment->comment_body->value)) {
+      $comment_body = $comment->comment_body->value;
+      $comment_body = (strlen($comment_body) > 80) ? (substr($comment_body, 0, 77) . '...') : '';
+    }
 
     // First generate the message.
     $msg = sprintf('<a href="https://www.drupal.org/user/%s">%s</a>', $uid, $user->getDisplayName());
