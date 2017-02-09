@@ -12,22 +12,6 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "drupal/social_auth_google",
-                "version": "1.x-dev",
-                "type": "drupal-module",
-                "source": {
-                    "type": "git",
-                    "url": "https://git.drupal.org/sandbox/gvso/2763739.git",
-                    "reference": "8.x-1.x"
-                },
-                "require": {
-                    "drupal/social_auth": "1.x-dev"
-                }
-            }
         }
     ],
     "require": {
