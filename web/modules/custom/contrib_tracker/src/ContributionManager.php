@@ -75,11 +75,10 @@ class ContributionManager implements ContributionManagerInterface {
       // @TODO: Breakup this code block. This could go in a different class.
       $nid = $comment->node->id;
       $link = sprintf("https://www.drupal.org/node/%s", $nid);
-      $comment_link = sprintf("https://www.drupal.org/node/%s#comment-%s", $nid, $comment->getId());
 
       // If we have stored this comment, we have stored everything after it.
-      if ($this->contributionStorage->getNodeForDrupalOrgIssueComment($comment_link)) {
-        $this->logger->notice('Skipping @comment, and all after it.', ['@comment' => $comment_link]);
+      if ($this->contributionStorage->getNodeForDrupalOrgIssueComment($comment->url)) {
+        $this->logger->notice('Skipping @comment, and all after it.', ['@comment' => $comment->url]);
         break;
       }
 
@@ -143,7 +142,7 @@ class ContributionManager implements ContributionManagerInterface {
 
           // We have everything we need. Save the issue comment as a code
           // contribution node.
-          $this->logger->notice('Saving issue comment @link...', ['@link' => $comment_link]);
+          $this->logger->notice('Saving issue comment @link...', ['@link' => $comment->url]);
           $this->contributionStorage->saveIssueComment($comment, $issue_node, $project_term, $user, $patch_files, $total_files, $status);
 
           $this->sendSlackNotification($user, $uid, $comment, $issue_node, $project_data, $patch_files, $total_files, $status);
