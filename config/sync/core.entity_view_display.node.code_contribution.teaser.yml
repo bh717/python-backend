@@ -4,8 +4,13 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.code_contribution.field_code_contrib_files_count
+    - field.field.node.code_contribution.field_code_contrib_issue_link
     - field.field.node.code_contribution.field_code_contrib_issue_status
+    - field.field.node.code_contribution.field_code_contrib_link
+    - field.field.node.code_contribution.field_code_contrib_patches_count
     - field.field.node.code_contribution.field_code_contrib_project
+    - field.field.node.code_contribution.field_contrib_moderator_comment
     - field.field.node.code_contribution.field_contribution_author
     - field.field.node.code_contribution.field_contribution_date
     - field.field.node.code_contribution.field_contribution_description
@@ -20,8 +25,10 @@ mode: teaser
 content:
   flag_contribution_approval:
     weight: 10
+    region: content
   links:
     weight: 100
+    region: content
 hidden:
   field_code_contrib_files_count: true
   field_code_contrib_issue_link: true

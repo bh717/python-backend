@@ -29,6 +29,7 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_contribution_author:
     weight: 108
     label: above
@@ -36,12 +37,14 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_contribution_comments:
     weight: 106
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_contribution_date:
     weight: 107
     label: above
@@ -50,6 +53,7 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_contribution_technology:
     weight: 102
     label: above
@@ -57,6 +61,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_non_code_contrib_credit:
     weight: 105
     label: above
@@ -65,6 +70,7 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_integer
+    region: content
   field_non_code_contrib_profile:
     weight: 104
     label: above
@@ -76,14 +82,18 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
   field_non_code_contribution_type:
     weight: 103
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   flag_contribution_approval:
     weight: 10
+    region: content
   links:
     weight: 100
+    region: content
 hidden: {  }

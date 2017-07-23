@@ -25,6 +25,7 @@ content:
       image_link: content
     third_party_settings: {  }
     label: hidden
+    region: content
 hidden:
   field_drupalorg_username: true
   member_for: true

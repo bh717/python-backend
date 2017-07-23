@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.issue.body
+    - field.field.node.issue.field_issue_link
     - node.type.issue
   module:
     - text
@@ -21,7 +22,9 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    region: content
   links:
     weight: 100
+    region: content
 hidden:
   field_issue_link: true

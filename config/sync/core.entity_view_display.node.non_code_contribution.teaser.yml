@@ -4,7 +4,14 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.non_code_contribution.field_contrib_moderator_comment
+    - field.field.node.non_code_contribution.field_contribution_author
+    - field.field.node.non_code_contribution.field_contribution_comments
+    - field.field.node.non_code_contribution.field_contribution_date
     - field.field.node.non_code_contribution.field_contribution_technology
+    - field.field.node.non_code_contribution.field_non_code_contrib_credit
+    - field.field.node.non_code_contribution.field_non_code_contrib_profile
+    - field.field.node.non_code_contribution.field_non_code_contribution_type
     - node.type.non_code_contribution
   module:
     - user
@@ -15,8 +22,10 @@ mode: teaser
 content:
   flag_contribution_approval:
     weight: 10
+    region: content
   links:
     weight: 100
+    region: content
 hidden:
   field_contrib_moderator_comment: true
   field_contribution_author: true

@@ -20,8 +20,10 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
   contact:
     weight: 5
+    region: content
   field_drupalorg_username:
     type: string_textfield
     weight: 1
@@ -29,14 +31,17 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   language:
     weight: 3
     settings: {  }
     third_party_settings: {  }
+    region: content
   timezone:
     weight: 4
     settings: {  }
     third_party_settings: {  }
+    region: content
   user_picture:
     type: image_image
     settings:
@@ -44,4 +49,5 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     weight: 2
+    region: content
 hidden: {  }

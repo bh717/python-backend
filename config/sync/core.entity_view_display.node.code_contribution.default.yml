@@ -34,6 +34,7 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_integer
+    region: content
   field_code_contrib_issue_link:
     weight: 9
     label: above
@@ -41,12 +42,14 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_code_contrib_issue_status:
     weight: 6
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
+    region: content
   field_code_contrib_link:
     weight: 11
     label: above
@@ -58,6 +61,7 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
   field_code_contrib_patches_count:
     weight: 13
     label: above
@@ -66,6 +70,7 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     type: number_integer
+    region: content
   field_code_contrib_project:
     weight: 4
     label: above
@@ -73,12 +78,14 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_contrib_moderator_comment:
     weight: 10
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_contribution_author:
     weight: 7
     label: above
@@ -86,6 +93,7 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   field_contribution_date:
     weight: 1
     label: above
@@ -94,12 +102,14 @@ content:
       timezone_override: ''
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_contribution_description:
     weight: 5
     label: above
     settings: {  }
     third_party_settings: {  }
     type: text_default
+    region: content
   field_contribution_technology:
     weight: 3
     label: above
@@ -107,12 +117,15 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
   flag_contribution_approval:
     weight: 8
     settings: {  }
     third_party_settings: {  }
+    region: content
   links:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+    region: content
 hidden: {  }

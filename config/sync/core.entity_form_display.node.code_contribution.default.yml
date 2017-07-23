@@ -31,12 +31,14 @@ content:
     weight: 13
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_code_contrib_files_count:
     weight: 8
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
+    region: content
   field_code_contrib_issue_link:
     weight: 10
     settings:
@@ -49,11 +51,13 @@ content:
       override_labels: false
     third_party_settings: {  }
     type: inline_entity_form_complex
+    region: content
   field_code_contrib_issue_status:
     weight: 6
     settings: {  }
     third_party_settings: {  }
     type: options_select
+    region: content
   field_code_contrib_link:
     weight: 1
     settings:
@@ -61,12 +65,14 @@ content:
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
+    region: content
   field_code_contrib_patches_count:
     weight: 7
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
+    region: content
   field_code_contrib_project:
     weight: 5
     settings:
@@ -75,6 +81,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
   field_contrib_moderator_comment:
     weight: 11
     settings:
@@ -82,6 +89,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_contribution_author:
     weight: 2
     settings:
@@ -90,11 +98,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
   field_contribution_date:
     weight: 3
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
   field_contribution_description:
     weight: 9
     settings:
@@ -102,6 +112,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: text_textarea
+    region: content
   field_contribution_technology:
     weight: 4
     settings:
@@ -110,6 +121,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
   title:
     type: string_textfield
     weight: 0
@@ -117,6 +129,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
   uid:
     type: entity_reference_autocomplete
     weight: 12
@@ -125,6 +138,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
 hidden:
   path: true
   promote: true

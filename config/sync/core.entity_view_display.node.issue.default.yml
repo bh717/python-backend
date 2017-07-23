@@ -21,6 +21,7 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
   field_issue_link:
     weight: 102
     label: above
@@ -32,6 +33,8 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
   links:
     weight: 100
+    region: content
 hidden: {  }
