@@ -1,20 +1,44 @@
 ---
-# Composer project settings.
-drupal_build_composer_project: false
+
+vagrant_box: geerlingguy/ubuntu1404
+vagrant_hostname: contrib.axelerant.dev
+vagrant_machine_name: contribtracker
+vagrant_ip: 0.0.0.0
+
+# Configure the synced folder.
+vagrant_synced_folders:
+  - local_path: .
+    destination: /var/www/drupal
+    type: nfs
+    create: true
+
+drupal_build_makefile: false
 drupal_build_composer: false
-drupal_composer_dependencies: []
+drupal_build_composer_project: false
+drupal_install_site: false
+
+drupal_core_path: "/var/www/docroot"
 
 # Drupal install settings.
 drupal_site_name: "Contrib Tracker"
 drupal_core_path: "/var/www/drupal/web"
-drupal_install_site: false
 
-# Other overrides.
-php_version: "7.1"
-php_packages_extra:
-  - "php{{ php_version }}-bz2"
+installed_extras:
+  - adminer
+  - drupalconsole
+  - drush
+  - mailhog
+  - pimpmylog
+  - xdebug
+  - xhprof
 
-php_sendmail_path: "/usr/sbin/sendmail -t -i"
+# Remove this section if you want to use MySQL.
+mysql_packages:
+  - mariadb-client
+  - mariadb-server
+  - python-mysqldb
+
+drush_version: "8.1.12"
 
 # Restrict the firewall to only ports that are required for external services.
 firewall_allowed_tcp_ports:
@@ -30,16 +54,13 @@ firewall_allowed_tcp_ports:
   - "8443"
   - "8983"
   - "9200"
-firewall_log_dropped_packets: true
 
-# Remove this section if you want to use MySQL.
-mysql_packages:
-  - mariadb-client
-  - mariadb-server
-  - python-mysqldb
+# Other overrides.
+php_version: "7.1"
+php_packages_extra:
+  - "php{{ php_version }}-bz2"
 
-# This is required for front-end building tools.
-nodejs_version: "8.x"
+php_sendmail_path: "/opt/mailhog/mhsendmail"
 
 # XDebug configuration.
 # Change this value to 1 in order to enable xdebug by default.
@@ -59,4 +80,5 @@ composer_global_packages:
   - { name: drupal/coder }
   - { name: davidrjonas/composer-lock-diff, release: '^1.0@dev' }
 
-drush_version: "8.1.12"
+# This is required for front-end building tools.
+nodejs_version: "8.x"
