@@ -1,0 +1,62 @@
+---
+# Composer project settings.
+drupal_build_composer_project: false
+drupal_build_composer: false
+drupal_composer_dependencies: []
+
+# Drupal install settings.
+drupal_site_name: "Contrib Tracker"
+drupal_core_path: "/var/www/drupal/web"
+drupal_install_site: false
+
+# Other overrides.
+php_version: "7.1"
+php_packages_extra:
+  - "php{{ php_version }}-bz2"
+
+php_sendmail_path: "/usr/sbin/sendmail -t -i"
+
+# Restrict the firewall to only ports that are required for external services.
+firewall_allowed_tcp_ports:
+  - "22"
+  - "25"
+  - "80"
+  - "81"
+  - "443"
+  - "3306"
+  - "4444"
+  - "8025"
+  - "8080"
+  - "8443"
+  - "8983"
+  - "9200"
+firewall_log_dropped_packets: true
+
+# Remove this section if you want to use MySQL.
+mysql_packages:
+  - mariadb-client
+  - mariadb-server
+  - python-mysqldb
+
+# This is required for front-end building tools.
+nodejs_version: "8.x"
+
+# XDebug configuration.
+# Change this value to 1 in order to enable xdebug by default.
+php_xdebug_default_enable: 0
+php_xdebug_coverage_enable: 0
+# Change this value to 1 in order to enable xdebug on the cli.
+php_xdebug_cli_enable: 0
+php_xdebug_remote_enable: 1
+php_xdebug_remote_connect_back: 1
+# Use PHPSTORM for PHPStorm, sublime.xdebug for Sublime Text.
+php_xdebug_idekey: PHPSTORM
+php_xdebug_max_nesting_level: 256
+php_xdebug_remote_port: "9000"
+
+composer_global_packages:
+  - { name: hirak/prestissimo, release: '^0.3' }
+  - { name: drupal/coder }
+  - { name: davidrjonas/composer-lock-diff, release: '^1.0@dev' }
+
+drush_version: "8.1.12"

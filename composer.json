@@ -2,6 +2,9 @@
     "name": "axelerant/contrib-tracker",
     "description": "Contribution Tracker for Organizations",
     "type": "project",
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "hussainweb",
@@ -17,8 +20,8 @@
     "require": {
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.1",
-        "cweagans/composer-patches": "~1.0",
-        "drupal/core": "~8.0",
+        "cweagans/composer-patches": "^1.6.0",
+        "drupal/core": "~8.3",
         "drush/drush": "~8.0",
         "drupal/console": "~1.0",
         "wikimedia/composer-merge-plugin": "~1.3",
@@ -41,6 +44,7 @@
         "google/apiclient": "^2.0"
     },
     "require-dev": {
+        "geerlingguy/drupal-vm": "~4.6",
         "behat/mink": "~1.7",
         "behat/mink-goutte-driver": "~1.2",
         "jcalderonzumba/gastonjs": "~1.0.2",
@@ -92,6 +96,7 @@
             "include": [
                 "web/modules/custom/contrib_tracker/composer.json"
             ]
-        }
+        },
+        "enable-patching": true
     }
 }
