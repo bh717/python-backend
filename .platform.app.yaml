@@ -4,7 +4,7 @@
 # See https://docs.platform.sh/user_guide/reference/platform-app-yaml.html
 
 # The name of this app. Must be unique within a project.
-name: 'app'
+name: 'contrib-tracker'
 
 # The runtime the application uses.
 type: 'php:7.1'
@@ -15,6 +15,14 @@ build:
 
 access:
     ssh: admin
+
+# The build-time dependencies of the app.
+dependencies:
+    php:
+        "drush/drush": "^8.0"
+    nodejs:
+        gulp-cli: "*"
+        yarn: "*"
 
 # The relationships of the application with services or other applications.
 #
