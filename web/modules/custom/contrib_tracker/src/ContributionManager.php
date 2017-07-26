@@ -151,6 +151,9 @@ class ContributionManager implements ContributionManagerInterface {
     }
   }
 
+  /**
+   * Sends Slack message to project group.
+   */
   protected function sendSlackNotification(UserInterface $user, $uid, DrupalOrgComment $comment, NodeInterface $issue_node, DrupalOrgNode $project, $patch_files, $total_files, $status) {
     // @TODO: Refactor this whole method to take lesser parameters.
     // Only send a notification if the comment was posted in the last hour.

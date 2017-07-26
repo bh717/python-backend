@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Custom contribution tracker module.
+ */
 
 /**
  * Implements hook_cron().
