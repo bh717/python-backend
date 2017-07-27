@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# For latest version of this script goto:
+# http://code.projspace.com/axelerant/platform-template
 set -e
 
 setremote() {
