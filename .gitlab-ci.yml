@@ -26,3 +26,18 @@ pushtoplatform:
   tags:
     - autoscaler
 
+# Job to perform static code analysis.
+codequality:
+  image: hussainweb/drupal-code-quality:latest
+  stage: test
+  allow_failure: true
+  script:
+    - phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme --ignore=/node_modules/ web/modules/custom
+    - phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme --ignore=/node_modules/ web/modules/custom
+    - phpcs --standard=DrupalSecure --extensions=php,module,inc,install,test,profile,theme --ignore=/node_modules/ web/modules/custom
+    - php /usr/local/lib/php-code-quality/vendor/bin/phpmd web/modules/custom/ text cleancode,codesize,design,naming,unusedcode
+    - codespell -S **/node_modules/* web/modules/custom/
+    - eslint --ignore-pattern node_modules --ignore-pattern *.min.js web/modules/custom
+    - stylelint web/themes/custom/**/*.scss
+  tags:
+    - autoscaler
