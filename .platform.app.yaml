@@ -3,7 +3,7 @@
 #
 # See https://docs.platform.sh/user_guide/reference/platform-app-yaml.html
 #
-#  For latest version of this script goto:
+# For latest version of this script goto:
 # http://code.projspace.com/axelerant/platform-template
 
 # The name of this app. Must be unique within a project.
