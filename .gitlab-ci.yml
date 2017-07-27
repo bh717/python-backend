@@ -38,6 +38,5 @@ codequality:
     - php /usr/local/lib/php-code-quality/vendor/bin/phpmd web/modules/custom/ text cleancode,codesize,design,naming,unusedcode --ignore-violations-on-exit
     - codespell -S **/node_modules/* web/modules/custom/
     - eslint --ignore-pattern node_modules --ignore-pattern *.min.js web/modules/custom
-    - stylelint web/themes/custom/**/*.scss
   tags:
     - autoscaler
