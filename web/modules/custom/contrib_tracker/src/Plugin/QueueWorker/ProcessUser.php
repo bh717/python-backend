@@ -27,21 +27,21 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
    *
    * @var \Drupal\contrib_tracker\ContributionManagerInterface
    */
-  protected $contributionManager;
+  protected $contribManager;
 
   /**
    * Contribution retriever service.
    *
    * @var \Drupal\contrib_tracker\ContributionRetrieverInterface
    */
-  protected $contributionRetriever;
+  protected $contribRetriever;
 
   /**
    * Contribution storage service.
    *
    * @var \Drupal\contrib_tracker\ContributionStorageInterface
    */
-  protected $contributionStorage;
+  protected $contribStorage;
 
   /**
    * The logger interface.
@@ -62,7 +62,7 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
       }
 
       try {
-        $do_user = $this->contributionRetriever->getUserInformation($do_username);
+        $do_user = $this->contribRetriever->getUserInformation($do_username);
       }
       catch (\RuntimeException $ex) {
         // @TODO: Use a better exception class, and then rearrange catch blocks.
@@ -78,7 +78,7 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
       ]);
 
       // Store all comments by the user.
-      $this->contributionManager->storeCommentsByDrupalOrgUser($uid, $data);
+      $this->contribManager->storeCommentsByDrupalOrgUser($uid, $data);
     }
   }
 
@@ -88,9 +88,9 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
   public function __construct(array $configuration, $plugin_id, $plugin_definition, ContributionManagerInterface $manager, ContributionRetrieverInterface $retriever, ContributionStorageInterface $contribution_storage, LoggerChannelInterface $logger) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
-    $this->contributionManager = $manager;
-    $this->contributionRetriever = $retriever;
-    $this->contributionStorage = $contribution_storage;
+    $this->contribManager = $manager;
+    $this->contribRetriever = $retriever;
+    $this->contribStorage = $contribution_storage;
     $this->logger = $logger;
   }
 

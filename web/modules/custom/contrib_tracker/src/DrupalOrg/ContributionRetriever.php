@@ -52,23 +52,23 @@ class ContributionRetriever implements ContributionRetrieverInterface {
   public function getUserInformation($username) {
     $cid = 'contrib_tracker:user:' . $username;
 
-    if ($cache = $this->cache->get($cid)) {
-      $user = $cache->data;
+    $cache = $this->cache->get($cid);
+    if ($cache) {
+      return $cache->data;
     }
-    else {
-      $request = new UserCollectionRequest([
-        'name' => $username,
-      ]);
 
-      /** @var \Hussainweb\DrupalApi\Entity\Collection\UserCollection $users */
-      $users = $this->client->getEntity($request);
-      if (count($users) != 1) {
-        throw new \RuntimeException("No user found");
-      }
+    $request = new UserCollectionRequest([
+      'name' => $username,
+    ]);
 
-      $user = $users->current();
-      $this->cache->set($cid, $user);
+    /** @var \Hussainweb\DrupalApi\Entity\Collection\UserCollection $users */
+    $users = $this->client->getEntity($request);
+    if (count($users) != 1) {
+      throw new \RuntimeException("No user found");
     }
+
+    $user = $users->current();
+    $this->cache->set($cid, $user);
 
     return $user;
   }
@@ -80,16 +80,15 @@ class ContributionRetriever implements ContributionRetrieverInterface {
     $cid = 'contrib_tracker:node:' . $nid;
 
     if (!$skip_cache && $cache = $this->cache->get($cid)) {
-      $node = $cache->data;
+      return $cache->data;
     }
-    else {
-      $req = new NodeRequest($nid);
-      $node = $this->client->getEntity($req);
 
-      // Save to cache only if $skip_cache was set to FALSE.
-      if (!$skip_cache) {
-        $this->cache->set($cid, $node, $cache_expiry);
-      }
+    $req = new NodeRequest($nid);
+    $node = $this->client->getEntity($req);
+
+    // Save to cache only if $skip_cache was set to FALSE.
+    if (!$skip_cache) {
+      $this->cache->set($cid, $node, $cache_expiry);
     }
 
     return $node;
@@ -114,14 +113,14 @@ class ContributionRetriever implements ContributionRetrieverInterface {
       }
 
       // Get the next page.
-      if ($next_url = $comments->getNextLink()) {
-        $next_url_params = [];
-        parse_str($next_url->getQuery(), $next_url_params);
-        $page = $next_url_params['page'];
-      }
-      else {
+      $next_url = $comments->getNextLink();
+      if (!$next_url) {
         break;
       }
+
+      $next_url_params = [];
+      parse_str($next_url->getQuery(), $next_url_params);
+      $page = $next_url_params['page'];
     } while ($page > 0);
   }
 
@@ -131,16 +130,16 @@ class ContributionRetriever implements ContributionRetrieverInterface {
   public function getFile($fid) {
     $cid = 'contrib_tracker:file:' . $fid;
 
-    if ($cache = $this->cache->get($cid)) {
-      $file = $cache->data;
+    $cache = $this->cache->get($cid);
+    if ($cache) {
+      return $cache->data;
     }
-    else {
-      $req = new FileRequest($fid);
-      $file = $this->client->getEntity($req);
 
-      if ($file) {
-        $this->cache->set($cid, $file, Cache::PERMANENT);
-      }
+    $req = new FileRequest($fid);
+    $file = $this->client->getEntity($req);
+
+    if ($file) {
+      $this->cache->set($cid, $file, Cache::PERMANENT);
     }
 
     return $file;

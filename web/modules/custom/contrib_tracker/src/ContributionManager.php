@@ -24,14 +24,14 @@ class ContributionManager implements ContributionManagerInterface {
    *
    * @var \Drupal\contrib_tracker\ContributionStorageInterface
    */
-  protected $contributionStorage;
+  protected $contribStorage;
 
   /**
    * Contribution retriever service.
    *
    * @var \Drupal\contrib_tracker\ContributionRetrieverInterface
    */
-  protected $contributionRetriever;
+  protected $contribRetriever;
 
   /**
    * Slack service.
@@ -60,8 +60,8 @@ class ContributionManager implements ContributionManagerInterface {
    *   The logger channel service.
    */
   public function __construct(ContributionStorageInterface $contribution_storage, ContributionRetrieverInterface $retriever, Slack $slack_service, LoggerChannelInterface $logger) {
-    $this->contributionStorage = $contribution_storage;
-    $this->contributionRetriever = $retriever;
+    $this->contribStorage = $contribution_storage;
+    $this->contribRetriever = $retriever;
     $this->slackService = $slack_service;
     $this->logger = $logger;
   }
@@ -71,24 +71,24 @@ class ContributionManager implements ContributionManagerInterface {
    */
   public function storeCommentsByDrupalOrgUser($uid, UserInterface $user) {
     /** @var \Hussainweb\DrupalApi\Entity\Comment $comment */
-    foreach ($this->contributionRetriever->getDrupalOrgCommentsByAuthor($uid) as $comment) {
+    foreach ($this->contribRetriever->getDrupalOrgCommentsByAuthor($uid) as $comment) {
       // @TODO: Breakup this code block. This could go in a different class.
       $nid = $comment->node->id;
       $link = sprintf("https://www.drupal.org/node/%s", $nid);
 
       // If we have stored this comment, we have stored everything after it.
-      if ($this->contributionStorage->getNodeForDrupalOrgIssueComment($comment->url)) {
+      if ($this->contribStorage->getNodeForDrupalOrgIssueComment($comment->url)) {
         $this->logger->notice('Skipping @comment, and all after it.', ['@comment' => $comment->url]);
         break;
       }
 
       // This is a new comment. Get the issue node first.
       $this->logger->info('Retrieving issue @nid...', ['@nid' => $nid]);
-      $issue_data = $this->contributionRetriever->getDrupalOrgNode($nid, FALSE, REQUEST_TIME + 180);
+      $issue_data = $this->contribRetriever->getDrupalOrgNode($nid, FALSE, REQUEST_TIME + 180);
       if (isset($issue_data->type) && $issue_data->type == 'project_issue') {
-        $issue_node = $this->contributionStorage->getNodeForDrupalOrgIssue($link);
+        $issue_node = $this->contribStorage->getNodeForDrupalOrgIssue($link);
         if (!$issue_node) {
-          $issue_node = $this->contributionStorage->saveIssue($issue_data, $user);
+          $issue_node = $this->contribStorage->saveIssue($issue_data, $user);
         }
 
         // Get the files in the reverse order.
@@ -101,7 +101,7 @@ class ContributionManager implements ContributionManagerInterface {
           foreach (array_reverse($issue_data->field_issue_files) as $file_record) {
             $file_id = $file_record->file->id;
             $this->logger->info('Getting file @fid...', ['@fid' => $file_id]);
-            $file_data = $this->contributionRetriever->getFile($file_id);
+            $file_data = $this->contribRetriever->getFile($file_id);
             if ($file_data->timestamp == $comment->created) {
               $total_files++;
               if ($this->isPatchFile($file_data)) {
@@ -136,14 +136,14 @@ class ContributionManager implements ContributionManagerInterface {
 
         // Now, get the project for the issue.
         $this->logger->info('Getting project @nid...', ['@nid' => $issue_data->field_project->id]);
-        $project_data = $this->contributionRetriever->getDrupalOrgNode($issue_data->field_project->id, FALSE, REQUEST_TIME + (6 * 3600));
+        $project_data = $this->contribRetriever->getDrupalOrgNode($issue_data->field_project->id, FALSE, REQUEST_TIME + (6 * 3600));
         if (!empty($project_data->title)) {
-          $project_term = $this->contributionStorage->getProjectTerm($project_data->title);
+          $project_term = $this->contribStorage->getProjectTerm($project_data->title);
 
           // We have everything we need. Save the issue comment as a code
           // contribution node.
           $this->logger->notice('Saving issue comment @link...', ['@link' => $comment->url]);
-          $this->contributionStorage->saveIssueComment($comment, $issue_node, $project_term, $user, $patch_files, $total_files, $status);
+          $this->contribStorage->saveIssueComment($comment, $issue_node, $project_term, $user, $patch_files, $total_files, $status);
 
           $this->sendSlackNotification($user, $uid, $comment, $issue_node, $project_data, $patch_files, $total_files, $status);
         }

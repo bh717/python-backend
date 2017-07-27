@@ -52,16 +52,15 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
    * {@inheritdoc}
    */
   public function saveIssueComment(DrupalOrgComment $comment, NodeInterface $issue_node, TermInterface $project_term, UserInterface $user, $patch_files, $total_files, $status) {
+    $comment_body = '';
+    $comment_title = 'Comment on ' . $issue_node->getTitle();
+
     if (!empty($comment->comment_body->value)) {
       $comment_body = $comment->comment_body->value;
       $comment_title = strip_tags($comment_body);
       if (strlen($comment_title) > 80) {
         $comment_title = substr($comment_title, 0, 77) . '...';
       }
-    }
-    else {
-      $comment_body = '';
-      $comment_title = 'Comment on ' . $issue_node->getTitle();
     }
 
     $node = $this->nodeStorage->create([
