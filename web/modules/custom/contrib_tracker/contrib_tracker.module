@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Custom contribution tracker module.
+ */
+
+/**
  * Implements hook_cron().
  */
 function contrib_tracker_cron() {

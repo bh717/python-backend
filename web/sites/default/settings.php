@@ -734,10 +734,6 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * example.org, with all subdomains included.
  */
 
-$settings['trusted_host_patterns'] = [
-  '^(www\.)?contrib.axelerant.(com|dev)$',
-];
-
 /**
  * The default list of directories that will be ignored by Drupal's file API.
  *
@@ -757,6 +753,9 @@ $settings['file_scan_ignore_directories'] = [
 if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
   include $app_root . '/' . $site_path . '/settings.platformsh.php';
 }
+
+// Platform settings has already set some trusted host patterns. Add on to that.
+$settings['trusted_host_patterns'][] = '^(www\.)?contrib.axelerant.(com|dev)$';
 
 /**
  * Load local development override configuration, if available.

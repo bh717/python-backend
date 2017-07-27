@@ -54,9 +54,11 @@ if (isset($_ENV['PLATFORM_APP_DIR'])) {
 }
 
 // Set trusted hosts based on Platform.sh routes.
-if (isset($_ENV['PLATFORM_ROUTES']) && !isset($settings['trusted_host_patterns'])) {
+if (isset($_ENV['PLATFORM_ROUTES'])) {
   $routes = json_decode(base64_decode($_ENV['PLATFORM_ROUTES']), TRUE);
-  $settings['trusted_host_patterns'] = [];
+  if (!isset($settings['trusted_host_patterns'])) {
+    $settings['trusted_host_patterns'] = [];
+  }
   foreach ($routes as $url => $route) {
     $host = parse_url($url, PHP_URL_HOST);
     if ($host !== FALSE && $route['type'] == 'upstream' && $route['upstream'] == $_ENV['PLATFORM_APPLICATION_NAME']) {

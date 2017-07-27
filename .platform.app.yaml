@@ -2,6 +2,9 @@
 # in the same project.
 #
 # See https://docs.platform.sh/user_guide/reference/platform-app-yaml.html
+#
+# For latest version of this script goto:
+# http://code.projspace.com/axelerant/platform-template
 
 # The name of this app. Must be unique within a project.
 name: 'app'
@@ -15,6 +18,11 @@ build:
 
 access:
     ssh: admin
+
+# The build-time dependencies of the app.
+dependencies:
+    php:
+        "drush/drush": "^8.0"
 
 # The relationships of the application with services or other applications.
 #
