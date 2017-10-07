@@ -1,9 +1,13 @@
 ---
 
-vagrant_box: geerlingguy/ubuntu1404
+vagrant_box: geerlingguy/ubuntu1604
 vagrant_hostname: contrib.axelerant.dev
 vagrant_machine_name: contribtracker
 vagrant_ip: 0.0.0.0
+
+vagrant_plugins:
+  - name: vagrant-vbguest
+  - name: vagrant-hostmanager
 
 # Configure the synced folder.
 vagrant_synced_folders:
