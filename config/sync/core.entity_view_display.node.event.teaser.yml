@@ -7,12 +7,11 @@ dependencies:
     - field.field.node.event.body
     - field.field.node.event.field_event_active
     - field.field.node.event.field_event_contrib_event_type
-    - field.field.node.event.field_event_contribution_link
     - field.field.node.event.field_event_dates
+    - field.field.node.event.field_event_link
     - node.type.event
   module:
     - datetime_range
-    - link
     - text
     - user
 id: node.event.teaser
@@ -46,18 +45,6 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-  field_event_contribution_link:
-    type: link
-    weight: 2
-    region: content
-    label: inline
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
   field_event_dates:
     type: daterange_default
     weight: 3
@@ -73,4 +60,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  field_event_link: true

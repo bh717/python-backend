@@ -9,10 +9,12 @@ dependencies:
     - field.field.node.event_contribution.field_contribution_date
     - field.field.node.event_contribution.field_contribution_technology
     - field.field.node.event_contribution.field_event
+    - field.field.node.event_contribution.field_event_contribution_link
     - field.field.node.event_contribution.field_event_contribution_type
     - node.type.event_contribution
   module:
     - datetime
+    - link
     - text
     - user
 id: node.event_contribution.default
@@ -66,6 +68,18 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_event_contribution_link:
+    weight: 112
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
     region: content
   field_event_contribution_type:
     weight: 111

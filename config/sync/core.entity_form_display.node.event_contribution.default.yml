@@ -9,10 +9,12 @@ dependencies:
     - field.field.node.event_contribution.field_contribution_date
     - field.field.node.event_contribution.field_contribution_technology
     - field.field.node.event_contribution.field_event
+    - field.field.node.event_contribution.field_event_contribution_link
     - field.field.node.event_contribution.field_event_contribution_type
     - node.type.event_contribution
   module:
     - datetime
+    - link
     - text
 id: node.event_contribution.default
 targetEntityType: node
@@ -21,12 +23,12 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 4
+    weight: 10
     settings: {  }
     third_party_settings: {  }
     region: content
   field_contrib_moderator_comment:
-    weight: 9
+    weight: 8
     settings:
       rows: 5
       placeholder: ''
@@ -34,7 +36,7 @@ content:
     type: text_textarea
     region: content
   field_contribution_author:
-    weight: 8
+    weight: 7
     settings:
       match_operator: CONTAINS
       size: 60
@@ -43,7 +45,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_contribution_comments:
-    weight: 6
+    weight: 5
     settings:
       rows: 5
       placeholder: ''
@@ -51,13 +53,13 @@ content:
     type: text_textarea
     region: content
   field_contribution_date:
-    weight: 7
+    weight: 6
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_contribution_technology:
-    weight: 5
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
@@ -71,6 +73,14 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
+  field_event_contribution_link:
+    weight: 4
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+    region: content
   field_event_contribution_type:
     weight: 2
     settings: {  }
@@ -81,7 +91,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 10
+    weight: 11
     region: content
     third_party_settings: {  }
   title:
@@ -94,7 +104,7 @@ content:
     region: content
   uid:
     type: entity_reference_autocomplete
-    weight: 3
+    weight: 9
     settings:
       match_operator: CONTAINS
       size: 60

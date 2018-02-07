@@ -6,8 +6,8 @@ dependencies:
     - field.field.node.event.body
     - field.field.node.event.field_event_active
     - field.field.node.event.field_event_contrib_event_type
-    - field.field.node.event.field_event_contribution_link
     - field.field.node.event.field_event_dates
+    - field.field.node.event.field_event_link
     - node.type.event
   module:
     - datetime_range
@@ -47,19 +47,19 @@ content:
     third_party_settings: {  }
     type: options_select
     region: content
-  field_event_contribution_link:
+  field_event_dates:
+    weight: 7
+    settings: {  }
+    third_party_settings: {  }
+    type: daterange_default
+    region: content
+  field_event_link:
     weight: 6
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
-    region: content
-  field_event_dates:
-    weight: 7
-    settings: {  }
-    third_party_settings: {  }
-    type: daterange_default
     region: content
   path:
     type: path
