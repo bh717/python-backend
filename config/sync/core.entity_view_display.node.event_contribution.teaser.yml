@@ -9,8 +9,7 @@ dependencies:
     - field.field.node.event_contribution.field_contribution_comments
     - field.field.node.event_contribution.field_contribution_date
     - field.field.node.event_contribution.field_contribution_technology
-    - field.field.node.event_contribution.field_event_contrib_event_type
-    - field.field.node.event_contribution.field_event_contribution_link
+    - field.field.node.event_contribution.field_event
     - field.field.node.event_contribution.field_event_contribution_type
     - node.type.event_contribution
   module:
@@ -32,6 +31,5 @@ hidden:
   field_contribution_comments: true
   field_contribution_date: true
   field_contribution_technology: true
-  field_event_contrib_event_type: true
-  field_event_contribution_link: true
+  field_event: true
   field_event_contribution_type: true

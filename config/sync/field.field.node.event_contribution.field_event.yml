@@ -1,0 +1,29 @@
+uuid: 741aeab8-cc9c-411b-b1d4-5c429b51985f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event
+    - node.type.event
+    - node.type.event_contribution
+id: node.event_contribution.field_event
+field_name: field_event
+entity_type: node
+bundle: event_contribution
+label: Event
+description: 'Select the event where you contributed. If you can''t find the event, please contact Parth or Hussain to add the event to the system.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      event: event
+    sort:
+      field: field_event_dates.value
+      direction: DESC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

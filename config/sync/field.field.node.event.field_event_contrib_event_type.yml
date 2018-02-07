@@ -1,19 +1,19 @@
-uuid: ce1b1bd9-4b47-4cd3-b270-347e26818e34
+uuid: c7ce2926-6518-4eff-ad24-017f70eb025e
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_event_contrib_event_type
-    - node.type.event_contribution
+    - node.type.event
     - taxonomy.vocabulary.event_type
-id: node.event_contribution.field_event_contrib_event_type
+id: node.event.field_event_contrib_event_type
 field_name: field_event_contrib_event_type
 entity_type: node
-bundle: event_contribution
+bundle: event
 label: 'Event Type'
-description: 'Event types like Drupal Camp, Drupal Con, Wordpress Camp, Meetup etc.'
+description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -22,7 +22,8 @@ settings:
     target_bundles:
       event_type: event_type
     sort:
-      field: _none
-    auto_create: true
+      field: name
+      direction: asc
+    auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

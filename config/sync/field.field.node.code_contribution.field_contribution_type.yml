@@ -1,26 +1,26 @@
-uuid: b18ebb2c-6cfb-46c1-95de-360ca26f9f79
+uuid: 4cbf0f4e-aa52-4e31-9ff3-f8d4033f6a96
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_event_contribution_type
-    - node.type.event_contribution
-    - taxonomy.vocabulary.event_contribution_type
-id: node.event_contribution.field_event_contribution_type
-field_name: field_event_contribution_type
+    - field.storage.node.field_contribution_type
+    - node.type.code_contribution
+    - taxonomy.vocabulary.contribution_type
+id: node.code_contribution.field_contribution_type
+field_name: field_contribution_type
 entity_type: node
-bundle: event_contribution
+bundle: code_contribution
 label: 'Contribution Type'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      event_contribution_type: event_contribution_type
+      contribution_type: contribution_type
     sort:
       field: name
       direction: asc

@@ -1,20 +1,20 @@
-uuid: 6e96d921-a284-4dfc-aea4-20561ec8ca09
+uuid: b5688856-c3a2-49a1-aff3-ff49fa5dd7e8
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_event_contribution_link
-    - node.type.event_contribution
+    - node.type.event
   module:
     - link
-id: node.event_contribution.field_event_contribution_link
+id: node.event.field_event_contribution_link
 field_name: field_event_contribution_link
 entity_type: node
-bundle: event_contribution
+bundle: event
 label: 'Event Link'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

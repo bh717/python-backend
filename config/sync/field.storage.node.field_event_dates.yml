@@ -1,21 +1,21 @@
-uuid: 9f47ff93-ba70-4ccb-a686-c05366b28d8c
+uuid: 4fbed369-91c7-4844-99d3-873a5f3399c2
 langcode: en
 status: true
 dependencies:
   module:
+    - datetime_range
     - field_permissions
     - node
-    - taxonomy
 third_party_settings:
   field_permissions:
     permission_type: public
-id: node.field_event_contrib_event_type
-field_name: field_event_contrib_event_type
+id: node.field_event_dates
+field_name: field_event_dates
 entity_type: node
-type: entity_reference
+type: daterange
 settings:
-  target_type: taxonomy_term
-module: core
+  datetime_type: datetime
+module: datetime_range
 locked: false
 cardinality: 1
 translatable: true

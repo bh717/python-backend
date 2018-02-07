@@ -1,0 +1,9 @@
+uuid: c4dc4c08-814c-4ed0-b1c1-ba95c2d276bf
+langcode: en
+status: true
+dependencies: {  }
+name: 'Contribution Type'
+vid: contribution_type
+description: 'This stores various contribution types like submitting a patch, porting a module, etc.'
+hierarchy: 0
+weight: 0

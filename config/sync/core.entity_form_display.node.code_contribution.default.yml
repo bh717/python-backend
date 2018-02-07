@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.code_contribution.field_contribution_date
     - field.field.node.code_contribution.field_contribution_description
     - field.field.node.code_contribution.field_contribution_technology
+    - field.field.node.code_contribution.field_contribution_type
     - node.type.code_contribution
   module:
     - datetime
@@ -28,19 +29,19 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 13
+    weight: 14
     settings: {  }
     third_party_settings: {  }
     region: content
   field_code_contrib_files_count:
-    weight: 8
+    weight: 9
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_code_contrib_issue_link:
-    weight: 10
+    weight: 11
     settings:
       form_mode: inline_issue_create
       label_singular: ''
@@ -53,7 +54,7 @@ content:
     type: inline_entity_form_complex
     region: content
   field_code_contrib_issue_status:
-    weight: 6
+    weight: 7
     settings: {  }
     third_party_settings: {  }
     type: options_select
@@ -67,14 +68,14 @@ content:
     type: link_default
     region: content
   field_code_contrib_patches_count:
-    weight: 7
+    weight: 8
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_code_contrib_project:
-    weight: 5
+    weight: 6
     settings:
       match_operator: CONTAINS
       size: 60
@@ -83,7 +84,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_contrib_moderator_comment:
-    weight: 11
+    weight: 12
     settings:
       rows: 5
       placeholder: ''
@@ -91,7 +92,7 @@ content:
     type: text_textarea
     region: content
   field_contribution_author:
-    weight: 2
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60
@@ -100,13 +101,13 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_contribution_date:
-    weight: 3
+    weight: 4
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_contribution_description:
-    weight: 9
+    weight: 10
     settings:
       rows: 5
       placeholder: ''
@@ -114,7 +115,7 @@ content:
     type: text_textarea
     region: content
   field_contribution_technology:
-    weight: 4
+    weight: 5
     settings:
       match_operator: CONTAINS
       size: 60
@@ -122,6 +123,19 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_contribution_type:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    region: content
+    third_party_settings: {  }
   title:
     type: string_textfield
     weight: 0
@@ -132,7 +146,7 @@ content:
     region: content
   uid:
     type: entity_reference_autocomplete
-    weight: 12
+    weight: 13
     settings:
       match_operator: CONTAINS
       size: 60

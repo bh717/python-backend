@@ -1,23 +1,27 @@
-uuid: 5f99153f-8644-4219-afec-eb5b25ff0346
+uuid: 3f9ed47b-e6ab-4d0f-b4cb-e95ed4d84811
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.issue.body
-    - field.field.node.issue.field_issue_link
-    - node.type.issue
+    - field.field.node.event.body
+    - field.field.node.event.field_event_active
+    - field.field.node.event.field_event_contrib_event_type
+    - field.field.node.event.field_event_contribution_link
+    - field.field.node.event.field_event_dates
+    - node.type.event
   module:
+    - datetime_range
     - link
     - path
     - text
-id: node.issue.default
+id: node.event.default
 targetEntityType: node
-bundle: issue
+bundle: event
 mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 31
+    weight: 9
     settings:
       rows: 9
       summary_rows: 3
@@ -26,60 +30,67 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 2
+    region: content
     settings: {  }
     third_party_settings: {  }
+  field_event_active:
+    weight: 8
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
     region: content
-  field_issue_link:
-    weight: 32
+  field_event_contrib_event_type:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_event_contribution_link:
+    weight: 6
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
     type: link_default
     region: content
-  path:
-    type: path
-    weight: 30
+  field_event_dates:
+    weight: 7
     settings: {  }
     third_party_settings: {  }
+    type: daterange_default
     region: content
-  promote:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 15
+  path:
+    type: path
+    weight: 3
+    region: content
+    settings: {  }
     third_party_settings: {  }
-    region: content
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 120
+    weight: 4
     region: content
     third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    settings:
-      display_label: true
-    weight: 16
-    third_party_settings: {  }
-    region: content
   title:
     type: string_textfield
-    weight: -5
+    weight: 0
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    region: content
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 1
     settings:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-    third_party_settings: {  }
     region: content
-hidden: {  }
+    third_party_settings: {  }
+hidden:
+  promote: true
+  sticky: true

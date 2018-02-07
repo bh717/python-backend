@@ -1,0 +1,17 @@
+uuid: a41d55d0-6ba5-42c4-b35b-2b3ae1806878
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Event
+type: event
+description: 'Use <em>Event</em> content type to create events that may be referred to in event contributions.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false
