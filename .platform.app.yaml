@@ -11,6 +11,9 @@ name: 'app'
 
 # The runtime the application uses.
 type: 'php:7.1'
+runtime:
+    extensions:
+        - redis
 
 # Configuration of the build of this application.
 build:
@@ -32,7 +35,7 @@ dependencies:
 relationships:
     database: 'mysqldb:mysql'
 #    solr: 'solrsearch:solr'
-#    redis: 'rediscache:redis'
+    redis: 'rediscache:redis'
 
 # The configuration of app when it is exposed to the web.
 web:
@@ -85,6 +88,9 @@ web:
                 # Provide a longer TTL (2 weeks) for aggregated CSS and JS files.
                 '^/sites/default/files/(css|js)':
                     expires: 2w
+
+rediscache:
+    type: redis:3.2
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048

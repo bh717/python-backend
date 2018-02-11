@@ -33,6 +33,7 @@ module:
   page_cache: 0
   path: 0
   quickedit: 0
+  redis: 0
   shortcut: 0
   slack: 0
   social_api: 0
