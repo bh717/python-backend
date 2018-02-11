@@ -89,9 +89,6 @@ web:
                 '^/sites/default/files/(css|js)':
                     expires: 2w
 
-rediscache:
-    type: redis:3.2
-
 # The size of the persistent disk of the application (in MB).
 disk: 2048
 
