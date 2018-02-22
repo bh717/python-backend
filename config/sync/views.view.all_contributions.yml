@@ -647,6 +647,9 @@ display:
               anonymous: '0'
               administrator: '0'
               contribution_moderator: '0'
+            placeholder: ''
+            min_placeholder: ''
+            max_placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -695,7 +698,7 @@ display:
         groups:
           1: AND
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
@@ -727,7 +730,7 @@ display:
         menu_name: main
         enabled: true
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'

@@ -26,7 +26,7 @@
         "drupal/bootstrap": "^3.0",
         "drupal/config_installer": "^1.0",
         "drupal/console": "^1.0.1",
-        "drupal/core": "~8.4",
+        "drupal/core": "^8.5",
         "drupal/field_permissions": "^1.0",
         "drupal/flag": "^4.0",
         "drupal/inline_entity_form": "^1.0",
