@@ -13,9 +13,12 @@ entity_type: node
 bundle: non_code_contribution
 label: 'Contribution Date'
 description: ''
-required: false
+required: true
 translatable: true
-default_value: {  }
+default_value:
+  -
+    default_date_type: now
+    default_date: now
 default_value_callback: ''
 settings: {  }
 field_type: datetime
