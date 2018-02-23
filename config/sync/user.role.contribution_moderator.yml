@@ -8,6 +8,7 @@ weight: -8
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access content overview'
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'access user profiles'
@@ -67,4 +68,5 @@ permissions:
   - 'view issue revisions'
   - 'view non_code_contribution revisions'
   - 'view own field_contrib_moderator_comment'
+  - 'view own unpublished content'
   - 'view the administration theme'
