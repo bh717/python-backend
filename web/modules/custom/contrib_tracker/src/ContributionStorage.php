@@ -94,7 +94,7 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
     $node = $this->nodeStorage->create([
       'type' => 'issue',
       'title' => $title,
-      'field_issue_link' => $issue_data->url,
+      'field_issue_link' => sprintf("https://www.drupal.org/node/%s", $issue_data->getId()),
     ]);
     $node->save();
     return $node;
