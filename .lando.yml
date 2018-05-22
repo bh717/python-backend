@@ -27,4 +27,4 @@ tooling:
 config:
   via: nginx
   webroot: web
-  database: mariadb:10.2
+  database: mariadb:10.3

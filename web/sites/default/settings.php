@@ -778,7 +778,7 @@ if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
 
 // Platform settings has already set some trusted host patterns. Add on to that.
 $settings['trusted_host_patterns'][] = '^(www\.)?contrib.axelerant.(com|dev)$';
-$settings['trusted_host_patterns'][] = '^contrib-tracker.lndo.site$';
+$settings['trusted_host_patterns'][] = '^contribtracker.lndo.site$';
 
 /**
  * Load local development override configuration, if available.
