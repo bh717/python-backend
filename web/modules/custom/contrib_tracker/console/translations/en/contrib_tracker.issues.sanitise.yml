@@ -1,0 +1,5 @@
+description: 'Go over all issue nodes and sanitise (remove) if duplicates are detected.'
+options: {}
+arguments: {}
+messages:
+    success: 'Issue nodes sanitised.'

@@ -1,0 +1,6 @@
+services:
+  contrib_tracker.contrib_tracker_issues_sanitise:
+    class: Drupal\contrib_tracker\Command\IssuesSanitiseCommand
+    arguments: ['@contrib_tracker_storage', '@entity_type.manager', '@database']
+    tags:
+      - { name: drupal.command }
