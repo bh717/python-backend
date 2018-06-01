@@ -111,7 +111,7 @@ class IssuesSanitiseCommand extends Command {
     // SELECT entity_id, SUBSTRING_INDEX(field_issue_link_uri, "/", -1) AS nid,
     // COUNT(*) as c FROM node__field_issue_link GROUP BY nid HAVING c > 1
     // ORDER BY c DESC;
-    $q = $this->database->query("SELECT SUBSTRING_INDEX(field_issue_link_uri, '/', -1) AS doissueid, COUNT(entity_id) as c FROM {node__field_issue_link} GROUP BY doissueid HAVING c > 1 ORDER BY c DESC;");
+    $q = $this->database->query("SELECT SUBSTRING_INDEX(field_issue_link_uri, '/', -1) AS doissueid, COUNT(entity_id) as c FROM {node__field_issue_link} GROUP BY doissueid HAVING COUNT(entity_id) > 1 ORDER BY c DESC;");
     return $q->fetchCol(0);
   }
 
