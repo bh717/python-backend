@@ -163,7 +163,7 @@ class ContributionManager implements ContributionManagerInterface {
 
     $comment_body = '';
     if (!empty($comment->comment_body->value)) {
-      $comment_body = $comment->comment_body->value;
+      $comment_body = strip_tags($comment->comment_body->value);
       $comment_body = (strlen($comment_body) > 80) ? (substr($comment_body, 0, 77) . '...') : '';
     }
 
@@ -181,7 +181,7 @@ class ContributionManager implements ContributionManagerInterface {
     }
 
     $msg .= ".\n";
-    $msg .= strip_tags($comment_body);
+    $msg .= $comment_body;
 
     // And finally send the message.
     $this->slackService->sendMessage($msg);
