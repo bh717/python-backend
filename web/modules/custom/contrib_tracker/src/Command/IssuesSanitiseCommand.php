@@ -2,14 +2,15 @@
 
 namespace Drupal\contrib_tracker\Command;
 
+// @codingStandardsIgnoreLine
+use Drupal\Console\Annotations\DrupalCommand;
+use Drupal\Console\Core\Command\Command;
+use Drupal\contrib_tracker\ContributionStorageInterface;
+use Drupal\Core\Database\Connection;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Drupal\Console\Core\Command\Command;
-use Drupal\Console\Annotations\DrupalCommand;
-use Drupal\contrib_tracker\ContributionStorageInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Database\Connection;
 
 /**
  * Class IssuesSanitiseCommand.
@@ -42,6 +43,16 @@ class IssuesSanitiseCommand extends Command {
    */
   protected $database;
 
+  /**
+   * IssuesSanitiseCommand constructor.
+   *
+   * @param \Drupal\contrib_tracker\ContributionStorageInterface $contrib_tracker_storage
+   *   The contrib tracker storage service.
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   *   The entity type manager service.
+   * @param \Drupal\Core\Database\Connection $database
+   *   The database connection.
+   */
   public function __construct(ContributionStorageInterface $contrib_tracker_storage, EntityTypeManagerInterface $entity_type_manager, Connection $database) {
     $this->contribTrackerStorage = $contrib_tracker_storage;
     $this->entityTypeManager = $entity_type_manager;
@@ -107,19 +118,34 @@ class IssuesSanitiseCommand extends Command {
     $this->getIo()->info($this->trans('commands.contrib_tracker.issues.sanitise.messages.success'));
   }
 
+  /**
+   * Get a list of IDs which are duplicated.
+   *
+   * @return string[]
+   *   Array of IDs which are duplicated.
+   */
   protected function getDuplicateIssueDoIds() {
     // SELECT entity_id, SUBSTRING_INDEX(field_issue_link_uri, "/", -1) AS nid,
     // COUNT(*) as c FROM node__field_issue_link GROUP BY nid HAVING c > 1
-    // ORDER BY c DESC;
+    // ORDER BY c DESC;.
     $q = $this->database->query("SELECT SUBSTRING_INDEX(field_issue_link_uri, '/', -1) AS doissueid, COUNT(entity_id) as c FROM {node__field_issue_link} GROUP BY doissueid HAVING COUNT(entity_id) > 1 ORDER BY c DESC;");
     return $q->fetchCol(0);
   }
 
+  /**
+   * Get node ids linked to a d.o issue.
+   *
+   * @param string $issueId
+   *   The d.o issue ID.
+   *
+   * @return int[]
+   *   Array of node ids.
+   */
   protected function getNidsForDoIssue($issueId) {
     // SELECT DISTINCT n.nid FROM node__field_issue_link il
-    //   INNER JOIN node_field_data n ON il.entity_id = n.nid
+    // INNER JOIN node_field_data n ON il.entity_id = n.nid
     // WHERE SUBSTRING_INDEX(field_issue_link_uri, "/", -1) = '$issueId'
-    // ORDER BY created ASC;
+    // ORDER BY created ASC;.
     $sql = "SELECT DISTINCT n.nid FROM {node__field_issue_link} il
             INNER JOIN {node_field_data} n ON il.entity_id = n.nid
             WHERE SUBSTRING_INDEX(field_issue_link_uri, '/', -1) = :doissueid
@@ -129,7 +155,18 @@ class IssuesSanitiseCommand extends Command {
     ])->fetchCol(0);
   }
 
-  protected function updateReferencesForIssueNid($issueNids, $originalNid) {
+  /**
+   * Replace references to various node ids with a different node id.
+   *
+   * @param int[] $issueNids
+   *   The node ids to be searched and replaced.
+   * @param int[] $originalNid
+   *   The updated node id value.
+   *
+   * @return int
+   *   Number of records updated.
+   */
+  protected function updateReferencesForIssueNid(array $issueNids, array $originalNid) {
     return $this->database->update('node__field_code_contrib_issue_link')
       ->fields([
         'field_code_contrib_issue_link_target_id' => $originalNid,
@@ -137,4 +174,5 @@ class IssuesSanitiseCommand extends Command {
       ->condition('field_code_contrib_issue_link_target_id', $issueNids, 'IN')
       ->execute();
   }
+
 }
