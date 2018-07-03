@@ -21,6 +21,9 @@ settings:
     -
       value: stackoverflow
       label: 'Stack Overflow'
+    -
+      value: localisation
+      label: Localisation
   allowed_values_function: ''
 module: options
 locked: false
