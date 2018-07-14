@@ -6,8 +6,9 @@ post_login_path: user
 redirect_user_form: false
 disable_admin_login: true
 disabled_roles:
-  contribution_moderator: 0
-  administrator: 0
+  contribution_moderator: '0'
+  administrator: '0'
 _core:
   default_config_hash: gWr-VFlbZ8kgEfBF580G_ZijpGfBRbh5IUSYijEDZ3E
 post_login: '<front>'
+user_allowed: register
