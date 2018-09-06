@@ -41,3 +41,4 @@ hidden:
   field_contribution_date: true
   field_contribution_description: true
   field_contribution_technology: true
+  field_contribution_type: true

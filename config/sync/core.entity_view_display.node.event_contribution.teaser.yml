@@ -32,4 +32,5 @@ hidden:
   field_contribution_date: true
   field_contribution_technology: true
   field_event: true
+  field_event_contribution_link: true
   field_event_contribution_type: true

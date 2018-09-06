@@ -30,6 +30,7 @@
         "drupal/field_permissions": "^1.0",
         "drupal/flag": "^4.0",
         "drupal/inline_entity_form": "^1.0",
+        "drupal/raven": "^2.6",
         "drupal/redis": "^1.0",
         "drupal/slack": "1.x-dev",
         "drupal/social_auth": "^2.0",
