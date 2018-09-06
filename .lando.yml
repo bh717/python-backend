@@ -25,6 +25,7 @@ tooling:
     service: cache
 
 config:
+  php: 7.2
   via: nginx
   webroot: web
   database: mariadb:10.3
