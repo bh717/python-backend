@@ -20,7 +20,8 @@ tooling:
     cmd:
       - /var/www/.platformsh/bin/platform
     options:
-      passthrough: true
+      platform:
+        passthrough: true
   redis-cli:
     service: cache
 
