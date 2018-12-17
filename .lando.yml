@@ -9,7 +9,7 @@ services:
       - cd $LANDO_MOUNT && composer install
       - "curl -sS https://platform.sh/cli/installer | php"
   cache:
-    type: redis:3.2
+    type: redis:4.0
 
 # The following entry creates a `lando platform` command that will run
 # any Platform CLI command from inside the container if desired.
