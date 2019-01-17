@@ -43,7 +43,6 @@
         "wikimedia/composer-merge-plugin": "~1.3"
     },
     "require-dev": {
-        "geerlingguy/drupal-vm": "^4.6",
         "behat/mink": "~1.7",
         "behat/mink-goutte-driver": "~1.2",
         "jcalderonzumba/gastonjs": "~1.0.2",
