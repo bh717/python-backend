@@ -18,15 +18,16 @@
         }
     ],
     "require": {
+        "php": ">=7.1",
         "composer/installers": "^1.2",
-        "cweagans/composer-patches": "^1.6",
-        "drupal-composer/drupal-scaffold": "^2.2",
+        "cweagans/composer-patches": "^1.6.5",
+        "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/admin_toolbar": "^1.0",
         "drupal/better_exposed_filters": "3.x-dev",
         "drupal/bootstrap": "^3.0",
         "drupal/config_installer": "^1.0",
-        "drupal/console": "^1.0.1",
-        "drupal/core": "^8.5",
+        "drupal/console": "^1.0.2",
+        "drupal/core": "^8.7.0",
         "drupal/field_permissions": "^1.0",
         "drupal/flag": "^4.0",
         "drupal/inline_entity_form": "^1.0",
@@ -35,21 +36,18 @@
         "drupal/slack": "1.x-dev",
         "drupal/social_auth": "^2.0",
         "drupal/social_auth_google": "^2.0",
-        "drush/drush": "~9.0",
+        "drush/drush": "^9.0.0",
         "google/apiclient": "^2.0",
         "hussainweb/drupal-composer-helper": "^1.0",
+        "platformsh/config-reader": "^2.2",
+        "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
-        "wikimedia/composer-merge-plugin": "~1.3"
+        "wikimedia/composer-merge-plugin": "~1.3",
+        "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
-        "behat/mink": "~1.7",
-        "behat/mink-goutte-driver": "~1.2",
-        "jcalderonzumba/gastonjs": "~1.0.2",
-        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
-        "mikey179/vfsstream": "~1.2",
-        "phpunit/phpunit": ">=4.8.28 <5",
-        "symfony/css-selector": "~2.8"
+        "webflo/drupal-core-require-dev": "^8.7.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -57,10 +55,10 @@
     "autoload": {
         "classmap": [
             "scripts/composer/ScriptHandler.php"
-        ]
+        ],
+        "files": ["load.environment.php"]
     },
     "scripts": {
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
@@ -75,6 +73,10 @@
         ]
     },
     "extra": {
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
         "patches": {
         },
         "drupal-composer-helper": {
@@ -88,7 +90,12 @@
                 "web/modules/custom/contrib_tracker/composer.json"
             ]
         },
-        "enable-patching": true
+        "drupal-scaffold": {
+            "initial": {
+                ".editorconfig": "../.editorconfig",
+                ".gitattributes": "../.gitattributes"
+            }
+        }
     },
     "config": {
         "sort-packages": true,
