@@ -9,11 +9,17 @@ services:
       - cd $LANDO_MOUNT && composer install
       - "curl -sS https://platform.sh/cli/installer | php"
   cache:
-    type: redis:4.0
+    type: redis:5
 
 # The following entry creates a `lando platform` command that will run
 # any Platform CLI command from inside the container if desired.
 tooling:
+  drush:
+    service: appserver
+    cmd: /app/vendor/bin/drush
+  drupal:
+    service: appserver
+    cmd: /app/vendor/bin/drupal
   platform:
     service: appserver
     description: Run Platform CLI commands
@@ -26,7 +32,9 @@ tooling:
     service: cache
 
 config:
-  php: 7.2
+  php: 7.3
   via: nginx
   webroot: web
   database: mariadb:10.3
+  conf:
+    php: .lando/php.ini
