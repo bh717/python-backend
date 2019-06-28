@@ -26,6 +26,7 @@ module:
   history: 0
   image: 0
   inline_entity_form: 0
+  jsonapi: 0
   link: 0
   menu_ui: 0
   node: 0
@@ -35,6 +36,7 @@ module:
   quickedit: 0
   raven: 0
   redis: 0
+  serialization: 0
   shortcut: 0
   slack: 0
   social_api: 0
