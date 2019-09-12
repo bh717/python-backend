@@ -78,6 +78,9 @@
             "drupal/core": "-p2"
         },
         "patches": {
+            "drupal/redis": {
+                "Not compatible with php-redis 5 [https://www.drupal.org/project/redis/issues/3068810]": "https://www.drupal.org/files/issues/2019-08-12/3068810-21.redis_.D8-Not-compatible-with-phpredis-5.patch"
+            }
         },
         "drupal-composer-helper": {
             "web-prefix": "web"
