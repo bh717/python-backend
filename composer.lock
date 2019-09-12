@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a57ea1093cd0175a2b836ebaae6a9c0e",
+    "content-hash": "8896451ba472c52c09a96114676fb090",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3142,11 +3142,14 @@
                 },
                 "drupal": {
                     "version": "8.x-1.1",
-                    "datestamp": "1541600580",
+                    "datestamp": "1568275684",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Not compatible with php-redis 5 [https://www.drupal.org/project/redis/issues/3068810]": "https://www.drupal.org/files/issues/2019-08-12/3068810-21.redis_.D8-Not-compatible-with-phpredis-5.patch"
                 }
             },
             "autoload": {
