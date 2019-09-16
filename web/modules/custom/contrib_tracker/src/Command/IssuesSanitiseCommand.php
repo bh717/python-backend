@@ -27,7 +27,7 @@ class IssuesSanitiseCommand extends Command {
    *
    * @var \Drupal\contrib_tracker\ContributionStorageInterface
    */
-  protected $contribTrackerStorage;
+  protected $contribTrackStorage;
 
   /**
    * Drupal\Core\Entity\EntityTypeManagerInterface definition.
@@ -46,15 +46,15 @@ class IssuesSanitiseCommand extends Command {
   /**
    * IssuesSanitiseCommand constructor.
    *
-   * @param \Drupal\contrib_tracker\ContributionStorageInterface $contrib_tracker_storage
+   * @param \Drupal\contrib_tracker\ContributionStorageInterface $contribTrackStorage
    *   The contrib tracker storage service.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager service.
    * @param \Drupal\Core\Database\Connection $database
    *   The database connection.
    */
-  public function __construct(ContributionStorageInterface $contrib_tracker_storage, EntityTypeManagerInterface $entity_type_manager, Connection $database) {
-    $this->contribTrackerStorage = $contrib_tracker_storage;
+  public function __construct(ContributionStorageInterface $contribTrackStorage, EntityTypeManagerInterface $entity_type_manager, Connection $database) {
+    $this->$contribTrackStorage = $contribTrackStorage;
     $this->entityTypeManager = $entity_type_manager;
     $this->database = $database;
     parent::__construct();
@@ -128,8 +128,8 @@ class IssuesSanitiseCommand extends Command {
     // SELECT entity_id, SUBSTRING_INDEX(field_issue_link_uri, "/", -1) AS nid,
     // COUNT(*) as c FROM node__field_issue_link GROUP BY nid HAVING c > 1
     // ORDER BY c DESC;.
-    $q = $this->database->query("SELECT SUBSTRING_INDEX(field_issue_link_uri, '/', -1) AS doissueid, COUNT(entity_id) as c FROM {node__field_issue_link} GROUP BY doissueid HAVING COUNT(entity_id) > 1 ORDER BY c DESC;");
-    return $q->fetchCol(0);
+    $results = $this->database->query("SELECT SUBSTRING_INDEX(field_issue_link_uri, '/', -1) AS doissueid, COUNT(entity_id) as c FROM {node__field_issue_link} GROUP BY doissueid HAVING COUNT(entity_id) > 1 ORDER BY c DESC;");
+    return $results->fetchCol(0);
   }
 
   /**
