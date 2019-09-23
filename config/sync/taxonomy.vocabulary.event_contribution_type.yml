@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Event Contribution Type'
 vid: event_contribution_type
 description: 'This stores various event contribution types like session, volunteering, training, session selection panel etc.'
-hierarchy: 0
 weight: 0

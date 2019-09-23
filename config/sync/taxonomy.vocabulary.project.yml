@@ -5,5 +5,4 @@ dependencies: {  }
 name: Project
 vid: project
 description: 'Stores projects for various community contributions.'
-hierarchy: 0
 weight: 0
