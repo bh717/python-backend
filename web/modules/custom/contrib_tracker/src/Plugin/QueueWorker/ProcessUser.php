@@ -55,25 +55,25 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
    */
   public function processItem($data) {
     if (is_a($data, UserInterface::class)) {
-      $do_username = $data->field_drupalorg_username[0]->getValue()['value'];
-      if (!$do_username) {
+      $doUsername = $data->field_drupalorg_username[0]->getValue()['value'];
+      if (!$doUsername) {
         // We shouldn't really reach here, but if we do, leave quietly.
         return;
       }
 
       try {
-        $do_user = $this->contribRetriever->getUserInformation($do_username);
+        $doUser = $this->contribRetriever->getUserInformation($doUsername);
       }
       catch (\RuntimeException $ex) {
         // @TODO: Use a better exception class, and then rearrange catch blocks.
-        $this->logger->error('User with d.o username "@username" not found', ['@username' => $do_username]);
+        $this->logger->error('User with d.o username "@username" not found', ['@username' => $doUsername]);
         return;
       }
 
-      $uid = $do_user->getId();
+      $uid = $doUser->getId();
 
       $this->logger->notice('Processing user with d.o uid @username (@uid)...', [
-        '@username' => $do_username,
+        '@username' => $doUsername,
         '@uid' => $uid,
       ]);
 
@@ -85,23 +85,23 @@ class ProcessUser extends QueueWorkerBase implements ContainerFactoryPluginInter
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ContributionManagerInterface $manager, ContributionRetrieverInterface $retriever, ContributionStorageInterface $contribution_storage, LoggerChannelInterface $logger) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
+  public function __construct(array $configuration, $pluginId, $pluginDefinition, ContributionManagerInterface $manager, ContributionRetrieverInterface $retriever, ContributionStorageInterface $contributionStorage, LoggerChannelInterface $logger) {
+    parent::__construct($configuration, $pluginId, $pluginDefinition);
 
     $this->contribManager = $manager;
     $this->contribRetriever = $retriever;
-    $this->contribStorage = $contribution_storage;
+    $this->contribStorage = $contributionStorage;
     $this->logger = $logger;
   }
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+  public static function create(ContainerInterface $container, array $configuration, $pluginId, $pluginDefinition) {
     return new static(
       $configuration,
-      $plugin_id,
-      $plugin_definition,
+      $pluginId,
+      $pluginDefinition,
       $container->get('contrib_tracker_manager'),
       $container->get('contrib_tracker_retriever'),
       $container->get('contrib_tracker_storage'),
