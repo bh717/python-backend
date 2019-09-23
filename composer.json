@@ -78,6 +78,9 @@
             "drupal/core": "-p2"
         },
         "patches": {
+            "drupal/core": {
+                "Add new permission to view user email field": "https://www.drupal.org/files/issues/2019-09-15/2799049-46.patch"
+            }
         },
         "drupal-composer-helper": {
             "web-prefix": "web"
