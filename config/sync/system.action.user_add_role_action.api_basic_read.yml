@@ -1,0 +1,14 @@
+uuid: 9f4c4975-40a2-4b28-bb8f-daefa759c796
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.api_basic_read
+  module:
+    - user
+id: user_add_role_action.api_basic_read
+label: 'Add the API basic read role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: api_basic_read

@@ -1,0 +1,14 @@
+uuid: ecc612a1-532c-4e48-8d7d-aa290e529daa
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.api_basic_read
+  module:
+    - user
+id: user_remove_role_action.api_basic_read
+label: 'Remove the API basic read role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: api_basic_read
