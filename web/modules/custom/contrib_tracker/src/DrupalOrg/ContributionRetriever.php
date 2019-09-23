@@ -76,19 +76,19 @@ class ContributionRetriever implements ContributionRetrieverInterface {
   /**
    * {@inheritdoc}
    */
-  public function getDrupalOrgNode($nid, $skip_cache = FALSE, $cache_expiry = Cache::PERMANENT) {
+  public function getDrupalOrgNode($nid, $skipCache = FALSE, $cacheExpiry = Cache::PERMANENT) {
     $cid = 'contrib_tracker:node:' . $nid;
 
-    if (!$skip_cache && $cache = $this->cache->get($cid)) {
+    if (!$skipCache && $cache = $this->cache->get($cid)) {
       return $cache->data;
     }
 
     $req = new NodeRequest($nid);
     $node = $this->client->getEntity($req);
 
-    // Save to cache only if $skip_cache was set to FALSE.
-    if (!$skip_cache) {
-      $this->cache->set($cid, $node, $cache_expiry);
+    // Save to cache only if $skipCache was set to FALSE.
+    if (!$skipCache) {
+      $this->cache->set($cid, $node, $cacheExpiry);
     }
 
     return $node;
@@ -113,14 +113,14 @@ class ContributionRetriever implements ContributionRetrieverInterface {
       }
 
       // Get the next page.
-      $next_url = $comments->getNextLink();
-      if (!$next_url) {
+      $nextUrl = $comments->getNextLink();
+      if (!$nextUrl) {
         break;
       }
 
-      $next_url_params = [];
-      parse_str($next_url->getQuery(), $next_url_params);
-      $page = $next_url_params['page'];
+      $nextUrlParams = [];
+      parse_str($nextUrl->getQuery(), $nextUrlParams);
+      $page = $nextUrlParams['page'];
     } while ($page > 0);
   }
 

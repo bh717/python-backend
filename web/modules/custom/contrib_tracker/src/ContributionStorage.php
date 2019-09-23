@@ -40,45 +40,45 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
   /**
    * ContributionStorage constructor.
    *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The injected entity type manager service.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
-    $this->nodeStorage = $entity_type_manager->getStorage('node');
-    $this->termStorage = $entity_type_manager->getStorage('taxonomy_term');
+  public function __construct(EntityTypeManagerInterface $entityTypeManager) {
+    $this->nodeStorage = $entityTypeManager->getStorage('node');
+    $this->termStorage = $entityTypeManager->getStorage('taxonomy_term');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function saveIssueComment(DrupalOrgComment $comment, NodeInterface $issue_node, TermInterface $project_term, UserInterface $user, $patch_files, $total_files, $status) {
-    $comment_body = '';
-    $comment_title = 'Comment on ' . $issue_node->getTitle();
+  public function saveIssueComment(DrupalOrgComment $comment, NodeInterface $issueNode, TermInterface $projectTerm, UserInterface $user, $patchFiles, $totalFiles, $status) {
+    $commentBody = '';
+    $commentTitle = 'Comment on ' . $issueNode->getTitle();
 
     if (!empty($comment->comment_body->value)) {
-      $comment_body = $comment->comment_body->value;
-      $comment_title = strip_tags($comment_body);
-      if (strlen($comment_title) > 80) {
-        $comment_title = substr($comment_title, 0, 77) . '...';
+      $commentBody = $comment->comment_body->value;
+      $commentTitle = strip_tags($commentBody);
+      if (strlen($commentTitle) > 80) {
+        $commentTitle = substr($commentTitle, 0, 77) . '...';
       }
     }
 
     $node = $this->nodeStorage->create([
       'type' => 'code_contribution',
-      'title' => $comment_title,
+      'title' => $commentTitle,
       'field_code_contrib_link' => $comment->url,
       'field_contribution_author' => $user->id(),
       'field_contribution_date' => date('Y-m-d', $comment->created),
       'field_contribution_description' => [
-        'value' => $comment_body,
+        'value' => $commentBody,
         'format' => 'basic_html',
       ],
-      'field_code_contrib_issue_link' => $issue_node->id(),
-      'field_code_contrib_project' => $project_term->id(),
+      'field_code_contrib_issue_link' => $issueNode->id(),
+      'field_code_contrib_project' => $projectTerm->id(),
       'field_code_contrib_issue_status' => $status,
       'field_contribution_technology' => $this->getDrupalTechnologyId(),
-      'field_code_contrib_files_count' => $total_files,
-      'field_code_contrib_patches_count' => $patch_files,
+      'field_code_contrib_files_count' => $totalFiles,
+      'field_code_contrib_patches_count' => $patchFiles,
     ]);
     $node->save();
     return $node;
@@ -87,14 +87,14 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
   /**
    * {@inheritdoc}
    */
-  public function saveIssue(DrupalOrgNode $issue_data, UserInterface $user) {
-    $title = isset($issue_data->title) ? $issue_data->title : '(not found)';
+  public function saveIssue(DrupalOrgNode $issueData, UserInterface $user) {
+    $title = isset($issueData->title) ? $issueData->title : '(not found)';
 
     // Create an issue.
     $node = $this->nodeStorage->create([
       'type' => 'issue',
       'title' => $title,
-      'field_issue_link' => sprintf("https://www.drupal.org/node/%s", $issue_data->getId()),
+      'field_issue_link' => sprintf("https://www.drupal.org/node/%s", $issueData->getId()),
     ]);
     $node->save();
     return $node;
@@ -103,10 +103,10 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
   /**
    * {@inheritdoc}
    */
-  public function getNodeForDrupalOrgIssue($issue_link) {
+  public function getNodeForDrupalOrgIssue($issueLink) {
     $issues = $this->nodeStorage->getQuery()
       ->condition('type', 'issue')
-      ->condition('field_issue_link', $issue_link)
+      ->condition('field_issue_link', $issueLink)
       ->execute();
 
     return (count($issues) > 0) ? $this->nodeStorage->load(reset($issues)) : NULL;
@@ -115,10 +115,10 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
   /**
    * {@inheritdoc}
    */
-  public function getNodeForDrupalOrgIssueComment($comment_link) {
+  public function getNodeForDrupalOrgIssueComment($commentLink) {
     $nodes = $this->nodeStorage->getQuery()
       ->condition('type', 'code_contribution')
-      ->condition('field_code_contrib_link', $comment_link)
+      ->condition('field_code_contrib_link', $commentLink)
       ->execute();
 
     return (count($nodes) > 0) ? $this->nodeStorage->load(reset($nodes)) : NULL;
@@ -137,14 +137,14 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
   /**
    * {@inheritdoc}
    */
-  public function getProjectTerm($project_name) {
-    return $this->getOrCreateTerm($project_name, 'project');
+  public function getProjectTerm($projectName) {
+    return $this->getOrCreateTerm($projectName, 'project');
   }
 
   /**
    * Get (or create) a term in a specified vocabulary.
    *
-   * @param string $term_name
+   * @param string $termName
    *   Name of the term to be retrieved or created.
    * @param string $vocabulary
    *   Machine name of the vocabulary.
@@ -152,15 +152,15 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
    * @return \Drupal\taxonomy\TermInterface
    *   The term with the given name in the given vocabulary.
    */
-  protected function getOrCreateTerm($term_name, $vocabulary) {
+  protected function getOrCreateTerm($termName, $vocabulary) {
     $terms = $this->termStorage->getQuery()
-      ->condition('name', $term_name)
+      ->condition('name', $termName)
       ->condition('vid', $vocabulary)
       ->execute();
 
     if (count($terms) == 0) {
       $term = $this->termStorage->create([
-        'name' => $term_name,
+        'name' => $termName,
         'vid' => $vocabulary,
       ]);
       $term->save();

@@ -46,16 +46,16 @@ class IssuesSanitiseCommand extends Command {
   /**
    * IssuesSanitiseCommand constructor.
    *
-   * @param \Drupal\contrib_tracker\ContributionStorageInterface $contribTrackStorage
+   * @param \Drupal\contrib_tracker\ContributionStorageInterface $contribTrackerStorage
    *   The contrib tracker storage service.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The entity type manager service.
    * @param \Drupal\Core\Database\Connection $database
    *   The database connection.
    */
-  public function __construct(ContributionStorageInterface $contribTrackStorage, EntityTypeManagerInterface $entity_type_manager, Connection $database) {
-    $this->$contribTrackStorage = $contribTrackStorage;
-    $this->entityTypeManager = $entity_type_manager;
+  public function __construct(ContributionStorageInterface $contribTrackerStorage, EntityTypeManagerInterface $entityTypeManager, Connection $database) {
+    $this->contribTrackerStorage = $contribTrackerStorage;
+    $this->entityTypeManager = $entityTypeManager;
     $this->database = $database;
     parent::__construct();
   }
@@ -75,45 +75,45 @@ class IssuesSanitiseCommand extends Command {
    */
   protected function execute(InputInterface $input, OutputInterface $output) {
     $this->getIo()->info('Beginning to sanitize all duplicate issues.');
-    $node_storage = $this->entityTypeManager->getStorage('node');
+    $nodeStorage = $this->entityTypeManager->getStorage('node');
 
-    $chunk_size = $input->getOption('chunk');
+    $chunkSize = $input->getOption('chunk');
 
     // Identify the duplicate nodes.
     // First, get the list of issue IDs that seem to have a duplicate.
-    $duplicate_issue_ids = $this->getDuplicateIssueDoIds();
-    $this->getIo()->info(sprintf("Found %d issues duplicated.", count($duplicate_issue_ids)));
+    $duplicateIssueIds = $this->getDuplicateIssueDoIds();
+    $this->getIo()->info(sprintf("Found %d issues duplicated.", count($duplicateIssueIds)));
 
     // Pick the oldest need as the "keeper" and prepare to delete the rest.
-    array_map(function ($do_issue_id) use ($node_storage, $chunk_size) {
-      $this->getIo()->info(sprintf("Getting all nodes for issue ID %s", $do_issue_id));
-      $nids = $this->getNidsForDoIssue($do_issue_id);
+    array_map(function ($doIssueId) use ($nodeStorage, $chunkSize) {
+      $this->getIo()->info(sprintf("Getting all nodes for issue ID %s", $doIssueId));
+      $nids = $this->getNidsForDoIssue($doIssueId);
 
       // The function above returns nids sorted by created date. We want to keep
       // the oldest one and use it to fix any references.
-      $original_nid = array_shift($nids);
-      $this->getIo()->info(sprintf("Found %d nodes and preserving nid %d as our node of choice.", count($nids) + 1, $original_nid));
+      $originalNid = array_shift($nids);
+      $this->getIo()->info(sprintf("Found %d nodes and preserving nid %d as our node of choice.", count($nids) + 1, $originalNid));
 
       // Process only a few nodes at a time.
-      $chunks = array_chunk($nids, $chunk_size);
-      array_map(function ($chunk) use ($original_nid, $node_storage) {
+      $chunks = array_chunk($nids, $chunkSize);
+      array_map(function ($chunk) use ($originalNid, $nodeStorage) {
         $this->getIo()->info(sprintf("Updating references and deleting %d nodes in this chunk.", count($chunk)));
-        $this->updateReferencesForIssueNid($chunk, $original_nid);
-        $nodes = $node_storage->loadMultiple($chunk);
-        $node_storage->delete($nodes);
+        $this->updateReferencesForIssueNid($chunk, $originalNid);
+        $nodes = $nodeStorage->loadMultiple($chunk);
+        $nodeStorage->delete($nodes);
         unset($nodes);
       }, $chunks);
 
       // Fix the link format in the node we are keeping.
-      $issue_node = $node_storage->load($original_nid);
-      $issue_link = sprintf("https://www.drupal.org/node/%s", $do_issue_id);
-      if ($issue_node->field_issue_link != $issue_link) {
+      $issueNode = $nodeStorage->load($originalNid);
+      $issueLink = sprintf("https://www.drupal.org/node/%s", $doIssueId);
+      if ($issueNode->field_issue_link != $issueLink) {
         $this->getIo()->info("Updating the issue link in the original node we kept.");
-        $issue_node->field_issue_link = $issue_link;
-        $issue_node->save();
+        $issueNode->field_issue_link = $issueLink;
+        $issueNode->save();
       }
-      unset($issue_node);
-    }, $duplicate_issue_ids);
+      unset($issueNode);
+    }, $duplicateIssueIds);
 
     $this->getIo()->info($this->trans('commands.contrib_tracker.issues.sanitise.messages.success'));
   }
