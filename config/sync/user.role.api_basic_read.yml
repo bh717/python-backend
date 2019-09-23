@@ -1,0 +1,10 @@
+uuid: a7650648-a2a6-43e4-a6e1-600b0d23c89e
+langcode: en
+status: true
+dependencies: {  }
+id: api_basic_read
+label: 'API basic read'
+weight: -6
+is_admin: null
+permissions:
+  - 'view user mail field'
