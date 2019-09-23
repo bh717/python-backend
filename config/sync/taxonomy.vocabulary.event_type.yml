@@ -5,5 +5,4 @@ dependencies: {  }
 name: 'Event Type'
 vid: event_type
 description: 'This vocabulary stores various event types like DrupalCamp, Drupalcon, meetup etc.'
-hierarchy: 0
 weight: 0
