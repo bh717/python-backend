@@ -23,30 +23,36 @@ class CommentDetails {
   protected $contribRetriever;
 
   /**
-   * @var DrupalOrgCommment
+   * Comment details from d.o.
+   *
+   * @var \Hussainweb\DrupalApi\Entity\Comment
    */
   protected $comment;
 
   /**
-   * @var DrupalOrgNode
+   * Node details from d.o.
+   *
+   * @var \Hussainweb\DrupalApi\Entity\Node
    */
   protected $issueData;
 
   /**
    * Number of patches attached to the comment.
-   * 
+   *
    * @var int
    */
   protected $patchFilesCount;
 
   /**
    * Number of all files attached to the comment.
-   * 
+   *
    * @var int
    */
   protected $totalFilesCount;
 
   /**
+   * Issue status.
+   *
    * @var string
    */
   protected $issueStatus;
