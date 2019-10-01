@@ -29,6 +29,7 @@ platformsh:
     ALLOW_MASTER: '0'
   stage: deploy
   script:
-    - platform push --verbose --activate --project ${PLATFORM_PROJECT_ID} --target ${CI_COMMIT_REF_NAME}
+    - platform project:set-remote ${PLATFORM_PROJECT_ID}
+    - platform push --verbose --activate --target ${CI_COMMIT_REF_NAME}
   tags:
     - autoscaler
