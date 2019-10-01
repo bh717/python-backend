@@ -2,12 +2,12 @@
 
 namespace Drupal\contrib_tracker;
 
-use Drupal\Core\Logger\LoggerChannelInterface;
+use Drupal\contrib_tracker\DrupalOrg\CommentDetails;
 use Drupal\node\NodeInterface;
 use Drupal\slack\Slack;
 use Drupal\user\UserInterface;
+use Drupal\Core\Logger\LoggerChannelInterface;
 use Hussainweb\DrupalApi\Entity\Comment as DrupalOrgComment;
-use Hussainweb\DrupalApi\Entity\File as DrupalOrgFile;
 use Hussainweb\DrupalApi\Entity\Node as DrupalOrgNode;
 
 /**
@@ -72,10 +72,7 @@ class ContributionManager implements ContributionManagerInterface {
   public function storeCommentsByDrupalOrgUser($uid, UserInterface $user) {
     /** @var \Hussainweb\DrupalApi\Entity\Comment $comment */
     foreach ($this->contribRetriever->getDrupalOrgCommentsByAuthor($uid) as $comment) {
-      // @TODO: Breakup this code block. This could go in a different class.
       $nid = $comment->node->id;
-      $link = sprintf("https://www.drupal.org/node/%s", $nid);
-
       // If we have stored this comment, we have stored everything after it.
       if ($this->contribStorage->getNodeForDrupalOrgIssueComment($comment->url)) {
         $this->logger->notice('Skipping @comment, and all after it.', ['@comment' => $comment->url]);
@@ -85,76 +82,62 @@ class ContributionManager implements ContributionManagerInterface {
       // This is a new comment. Get the issue node first.
       $this->logger->info('Retrieving issue @nid...', ['@nid' => $nid]);
       $issueData = $this->contribRetriever->getDrupalOrgNode($nid, REQUEST_TIME + 180);
-      if (isset($issueData->type) && $issueData->type == 'project_issue') {
-        $issueNode = $this->contribStorage->getNodeForDrupalOrgIssue($link);
-        if (!$issueNode) {
-          $issueNode = $this->contribStorage->saveIssue($issueData, $user);
-        }
-
-        // Get the files in the reverse order.
-        $patchFiles = $totalFiles = 0;
-        $matched = FALSE;
-        if (!empty($issueData->field_issue_files)) {
-          $this->logger->info('Found @files files for the issue.', [
-            '@files' => count($issueData->field_issue_files),
-          ]);
-          foreach (array_reverse($issueData->field_issue_files) as $fileRecord) {
-            $fileId = $fileRecord->file->id;
-            $this->logger->info('Getting file @fid...', ['@fid' => $fileId]);
-            $fileData = $this->contribRetriever->getFile($fileId);
-            if ($fileData->timestamp == $comment->created) {
-              $totalFiles++;
-              if ($this->isPatchFile($fileData)) {
-                $patchFiles++;
-              }
-
-              // We have found the file.
-              $matched = TRUE;
-            }
-            elseif ($matched) {
-              // We have matched at least one file. If we don't have a match
-              // anymore, stop looking for more.
-              break;
-            }
-          }
-        }
-        $this->logger->info('Matched @total files, of which @patch are patches.', [
-          '@total' => $totalFiles,
-          '@patch' => $patchFiles,
-        ]);
-
-        // Try to determine the status.
-        // Since we cannot access the revisions directly, we will see if the
-        // issue was updated at the same time as this comment (by using the
-        // 'changed' field). If it was, it is a safe assumption that the issue
-        // status reflects the status set in the comment.
-        // This is not accurate, especially for historic scans, but it is fairly
-        // accurate for new issues and comments.
-        $status = ($comment->created == $issueData->changed) ?
-          $this->getStatusFromCode((int) $issueData->field_issue_status) :
-          '';
-
-        // Now, get the project for the issue.
-        $this->logger->info('Getting project @nid...', ['@nid' => $issueData->field_project->id]);
-        $projectData = $this->contribRetriever->getDrupalOrgNode($issueData->field_project->id, REQUEST_TIME + (6 * 3600));
-        if (!empty($projectData->title)) {
-          $projectTerm = $this->contribStorage->getProjectTerm($projectData->title);
-
-          // We have everything we need. Save the issue comment as a code
-          // contribution node.
-          $this->logger->notice('Saving issue comment @link...', ['@link' => $comment->url]);
-          $this->contribStorage->saveIssueComment($comment, $issueNode, $projectTerm, $user, $patchFiles, $totalFiles, $status);
-
-          $this->sendSlackNotification($user, $uid, $comment, $issueNode, $projectData, $patchFiles, $totalFiles, $status);
-        }
+      if (!isset($issueData->type) || $issueData->type != 'project_issue') {
+        // This is not an issue. Skip it.
+        continue;
       }
+
+      $commentDetails = new CommentDetails($this->contribRetriever, $comment, $issueData);
+      $issueNode = $this->getIssueNodeDetails($nid, $issueData, $user);
+
+      if (!empty($issueData->field_issue_files)) {
+        $this->logger->info('Found @files files for the issue.', [
+          '@files' => count($issueData->field_issue_files),
+        ]);
+        $this->logger->info('Matched @total files, of which @patch are patches.', [
+          '@total' => $commentDetails->getTotalFilesCount(),
+          '@patch' => $commentDetails->getPatchFilesCount(),
+        ]);
+      }
+
+      // Now, get the project for the issue.
+      $this->logger->info('Getting project @nid...', ['@nid' => $issueData->field_project->id]);
+      $projectData = $this->contribRetriever->getDrupalOrgNode($issueData->field_project->id, REQUEST_TIME + (6 * 3600));
+      if (empty($projectData->title)) {
+        // We couldn't get the project details for soem reason.
+        // Skip the rest of the steps.
+        $this->logger->warning('Failed to retrieve project data for @nid.', [
+          '@nid' => $issueData->field_project->id,
+        ]);
+        continue;
+      }
+
+      $projectTerm = $this->contribStorage->getProjectTerm($projectData->title);
+
+      // We have everything we need. Save the issue comment as a code
+      // contribution node.
+      $this->logger->notice('Saving issue comment @link...', ['@link' => $comment->url]);
+      $this->contribStorage->saveIssueComment($comment, $commentDetails, $issueNode, $projectTerm, $user);
+      $this->sendSlackNotification($comment, $commentDetails, $issueNode, $projectData, $user, $uid);
     }
+  }
+
+  /**
+   * Retrives the node id and data for every comment on an issue.
+   */
+  public function getIssueNodeDetails($nid, $issueData, $user) {
+    $link = sprintf("https://www.drupal.org/node/%s", $nid);
+    $issueNode = $this->contribStorage->getNodeForDrupalOrgIssue($link);
+    if (!$issueNode) {
+      $issueNode = $this->contribStorage->saveIssue($issueData, $user);
+    }
+    return $issueNode;
   }
 
   /**
    * Sends Slack message to project group.
    */
-  protected function sendSlackNotification(UserInterface $user, $uid, DrupalOrgComment $comment, NodeInterface $issueNode, DrupalOrgNode $project, $patchFiles, $totalFiles, $status) {
+  public function sendSlackNotification(DrupalOrgComment $comment, CommentDetails $commentDetails, NodeInterface $issueNode, DrupalOrgNode $project, UserInterface $user, $uid) {
     // @TODO: Refactor this whole method to take lesser parameters.
     // Only send a notification if the comment was posted in the last hour.
     if ($comment->created < time() - 3600) {
@@ -172,12 +155,12 @@ class ContributionManager implements ContributionManagerInterface {
     $msg .= sprintf(' posted a comment on <a href="%s">%s</a>', $comment->url, $issueNode->getTitle());
     $msg .= sprintf(' in project <a href="%s">%s</a>', $project->url, $project->title);
 
-    if ($totalFiles > 0) {
-      $msg .= sprintf(' with %d files (%d patch(es))', $totalFiles, $patchFiles);
+    if ($commentDetails->getTotalFilesCount() > 0) {
+      $msg .= sprintf(' with %d files (%d patch(es))', $commentDetails->getTotalFilesCount(), $commentDetails->getPatchFilesCount());
     }
 
-    if ($status) {
-      $msg .= sprintf(' and changed the status to %s', $status);
+    if ($commentDetails->getIssueStatus()) {
+      $msg .= sprintf(' and changed the status to %s', $commentDetails->getIssueStatus());
     }
 
     $msg .= ".\n";
@@ -185,48 +168,6 @@ class ContributionManager implements ContributionManagerInterface {
 
     // And finally send the message.
     $this->slackService->sendMessage($msg);
-  }
-
-  /**
-   * Determine if this is a patch file.
-   *
-   * @param \Hussainweb\DrupalApi\Entity\File $fileRecord
-   *   The file data returned from API.
-   *
-   * @return bool
-   *   TRUE if this is a patch file, else FALSE.
-   */
-  protected function isPatchFile(DrupalOrgFile $fileRecord) {
-    return $fileRecord->mime == 'text/x-diff';
-  }
-
-  /**
-   * Translate the status id to text.
-   *
-   * @param int $statusId
-   *   Issue status id.
-   *
-   * @return string
-   *   Readable text corresponding to the status id.
-   */
-  protected function getStatusFromCode($statusId) {
-    $statusMap = [
-      1 => 'active',
-      2 => 'fixed',
-      3 => 'closed',
-      4 => 'postponed',
-      5 => 'closed',
-      6 => 'closed',
-      // This is actually closed (fixed), but let's call it fixed.
-      7 => 'fixed',
-      8 => 'needs review',
-      13 => 'needs work',
-      14 => 'rtbc',
-      15 => 'patch',
-      16 => 'postponed',
-      18 => 'closed',
-    ];
-    return (isset($statusMap[$statusId])) ? $statusMap[$statusId] : '';
   }
 
 }

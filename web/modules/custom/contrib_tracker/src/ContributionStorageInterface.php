@@ -2,6 +2,7 @@
 
 namespace Drupal\contrib_tracker;
 
+use Drupal\contrib_tracker\DrupalOrg\CommentDetails;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\TermInterface;
 use Drupal\user\UserInterface;
@@ -18,23 +19,19 @@ interface ContributionStorageInterface {
    *
    * @param \Hussainweb\DrupalApi\Entity\Comment $comment
    *   The comment data from drupal.org.
+   * @param \Drupal\contrib_tracker\DrupalOrg\CommentDetails $commentDetails
+   *   The issue node this comment belongs to.
    * @param \Drupal\node\NodeInterface $issueNode
    *   The issue node this comment belongs to.
    * @param \Drupal\taxonomy\TermInterface $projectTerm
    *   The project term this comment belongs to.
    * @param \Drupal\user\UserInterface $user
    *   The user contributing the comment.
-   * @param int $patchFiles
-   *   Number of patches in the comment.
-   * @param int $totalFiles
-   *   Number of files in the comment.
-   * @param string $status
-   *   Issue status at the time of this comment.
    *
    * @return \Drupal\node\NodeInterface
    *   The comment node created based on passed in data.
    */
-  public function saveIssueComment(DrupalOrgComment $comment, NodeInterface $issueNode, TermInterface $projectTerm, UserInterface $user, $patchFiles, $totalFiles, $status);
+  public function saveIssueComment(DrupalOrgComment $comment, CommentDetails $commentDetails, NodeInterface $issueNode, TermInterface $projectTerm, UserInterface $user);
 
   /**
    * Save issue.

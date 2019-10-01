@@ -2,10 +2,11 @@
 
 namespace Drupal\contrib_tracker;
 
-use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\contrib_tracker\DrupalOrg\CommentDetails;
+use Drupal\user\UserInterface;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\TermInterface;
-use Drupal\user\UserInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Hussainweb\DrupalApi\Entity\Comment as DrupalOrgComment;
 use Hussainweb\DrupalApi\Entity\Node as DrupalOrgNode;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
@@ -51,7 +52,7 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
   /**
    * {@inheritdoc}
    */
-  public function saveIssueComment(DrupalOrgComment $comment, NodeInterface $issueNode, TermInterface $projectTerm, UserInterface $user, $patchFiles, $totalFiles, $status) {
+  public function saveIssueComment(DrupalOrgComment $comment, CommentDetails $commentDetails, NodeInterface $issueNode, TermInterface $projectTerm, UserInterface $user) {
     $commentBody = '';
     $commentTitle = 'Comment on ' . $issueNode->getTitle();
 
@@ -75,10 +76,10 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
       ],
       'field_code_contrib_issue_link' => $issueNode->id(),
       'field_code_contrib_project' => $projectTerm->id(),
-      'field_code_contrib_issue_status' => $status,
+      'field_code_contrib_issue_status' => $commentDetails->getIssueStatus(),
       'field_contribution_technology' => $this->getDrupalTechnologyId(),
-      'field_code_contrib_files_count' => $totalFiles,
-      'field_code_contrib_patches_count' => $patchFiles,
+      'field_code_contrib_files_count' => $commentDetails->getTotalFilesCount(),
+      'field_code_contrib_patches_count' => $commentDetails->getPatchFilesCount(),
     ]);
     $node->save();
     return $node;
