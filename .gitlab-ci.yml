@@ -1,42 +1,34 @@
-# For latest version of this script goto: http://code.projspace.com/axelerant/platform-template
-
 stages:
-- prep
-- install
+- build
 - test
 - deploy
-- qa
 
-variables:
-  DOCKER_DRIVER: overlay
-services:
-- docker:dind
+drupal_codequality:
+  image: hussainweb/drupalqa:latest
+  stage: test
+  script:
+    - phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme --ignore=/node_modules/ web/modules/custom
+    - phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme --ignore=/node_modules/ web/modules/custom
+    - phpmd web/modules/custom/ text cleancode,codesize,design,naming,unusedcode
+  tags:
+    - autoscaler
 
-# Push to platform.
-pushtoplatform:
-  image: maxc0d3r/platformshcli:axelerant
+platformsh:
+  image: pjcdawkins/platformsh-cli:latest
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
   variables:
     PLATFORMSH_CLI_UPDATES_CHECK: '0'
     PF_PARENT_ENV: "master"
     ALLOW_MASTER: '0'
   stage: deploy
   script:
-    - chmod +x scripts/platform
-    - script -q -e -c "./scripts/platform -c deploy"
-  tags:
-    - autoscaler
-
-# Job to perform static code analysis.
-codequality:
-  image: hussainweb/drupal-code-quality:latest
-  stage: test
-  script:
-    - phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme --ignore=/node_modules/ web/modules/custom
-    - phpcs --standard=DrupalPractice --extensions=php,module,inc,install,test,profile,theme --ignore=/node_modules/ web/modules/custom
-    - phpcs --standard=DrupalSecure --extensions=php,module,inc,install,test,profile,theme --ignore=/node_modules/ web/modules/custom
-#    Remove --ignore-violations-on-exit below once the violations have been fixed.
-    - php /usr/local/lib/php-code-quality/vendor/bin/phpmd web/modules/custom/ text cleancode,codesize,design,naming,unusedcode --ignore-violations-on-exit
-    - codespell -S **/node_modules/* web/modules/custom/
-    - eslint --ignore-pattern node_modules --ignore-pattern *.min.js web/modules/custom
+    - platform push --verbose --activate --project ${PLATFORM_PROJECT_ID} --target ${CI_COMMIT_REF_NAME}
   tags:
     - autoscaler
