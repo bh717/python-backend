@@ -25,15 +25,24 @@ interface ContributionRetrieverInterface {
    *
    * @param int $nid
    *   The nid of the node on drupal.org.
-   * @param bool $skipCache
-   *   Set to TRUE to skip checking the item in cache.
    * @param int $cacheExpiry
    *   The cache expiry for the item.
    *
    * @return \Hussainweb\DrupalApi\Entity\Node
    *   The node data from drupal.org.
    */
-  public function getDrupalOrgNode($nid, $skipCache = FALSE, $cacheExpiry = Cache::PERMANENT);
+  public function getDrupalOrgNode($nid, $cacheExpiry = Cache::PERMANENT);
+
+  /**
+   * Get node data from drupal.org.
+   *
+   * @param int $nid
+   *   The nid of the node on drupal.org.
+   *
+   * @return \Hussainweb\DrupalApi\Entity\Node
+   *   The node data from drupal.org.
+   */
+  public function getDrupalOrgNodeFromApi($nid);
 
   /**
    * Get comments by an user on drupal.org.

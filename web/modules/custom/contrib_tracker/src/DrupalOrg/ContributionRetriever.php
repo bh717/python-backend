@@ -76,22 +76,26 @@ class ContributionRetriever implements ContributionRetrieverInterface {
   /**
    * {@inheritdoc}
    */
-  public function getDrupalOrgNode($nid, $skipCache = FALSE, $cacheExpiry = Cache::PERMANENT) {
+  public function getDrupalOrgNode($nid, $cacheExpiry = Cache::PERMANENT) {
     $cid = 'contrib_tracker:node:' . $nid;
 
-    if (!$skipCache && $cache = $this->cache->get($cid)) {
+    $cache = $this->cache->get($cid);
+    if ($cache) {
       return $cache->data;
     }
 
-    $req = new NodeRequest($nid);
-    $node = $this->client->getEntity($req);
-
-    // Save to cache only if $skipCache was set to FALSE.
-    if (!$skipCache) {
-      $this->cache->set($cid, $node, $cacheExpiry);
-    }
+    $node = $this->getDrupalOrgNodeFromApi($nid);
+    $this->cache->set($cid, $node, $cacheExpiry);
 
     return $node;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getDrupalOrgNodeFromApi($nid) {
+    $req = new NodeRequest($nid);
+    return $this->client->getEntity($req);
   }
 
   /**

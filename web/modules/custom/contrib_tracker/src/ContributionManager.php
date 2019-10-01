@@ -84,7 +84,7 @@ class ContributionManager implements ContributionManagerInterface {
 
       // This is a new comment. Get the issue node first.
       $this->logger->info('Retrieving issue @nid...', ['@nid' => $nid]);
-      $issueData = $this->contribRetriever->getDrupalOrgNode($nid, FALSE, REQUEST_TIME + 180);
+      $issueData = $this->contribRetriever->getDrupalOrgNode($nid, REQUEST_TIME + 180);
       if (isset($issueData->type) && $issueData->type == 'project_issue') {
         $issueNode = $this->contribStorage->getNodeForDrupalOrgIssue($link);
         if (!$issueNode) {
@@ -136,7 +136,7 @@ class ContributionManager implements ContributionManagerInterface {
 
         // Now, get the project for the issue.
         $this->logger->info('Getting project @nid...', ['@nid' => $issueData->field_project->id]);
-        $projectData = $this->contribRetriever->getDrupalOrgNode($issueData->field_project->id, FALSE, REQUEST_TIME + (6 * 3600));
+        $projectData = $this->contribRetriever->getDrupalOrgNode($issueData->field_project->id, REQUEST_TIME + (6 * 3600));
         if (!empty($projectData->title)) {
           $projectTerm = $this->contribStorage->getProjectTerm($projectData->title);
 
