@@ -46,15 +46,15 @@ class IssuesSanitiseCommand extends Command {
   /**
    * IssuesSanitiseCommand constructor.
    *
-   * @param \Drupal\contrib_tracker\ContributionStorageInterface $contribTrackerStorage
+   * @param \Drupal\contrib_tracker\ContributionStorageInterface $ctStorage
    *   The contrib tracker storage service.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The entity type manager service.
    * @param \Drupal\Core\Database\Connection $database
    *   The database connection.
    */
-  public function __construct(ContributionStorageInterface $contribTrackerStorage, EntityTypeManagerInterface $entityTypeManager, Connection $database) {
-    $this->contribTrackerStorage = $contribTrackerStorage;
+  public function __construct(ContributionStorageInterface $ctStorage, EntityTypeManagerInterface $entityTypeManager, Connection $database) {
+    $this->contribTrackerStorage = $ctStorage;
     $this->entityTypeManager = $entityTypeManager;
     $this->database = $database;
     parent::__construct();
