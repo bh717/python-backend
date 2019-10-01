@@ -90,7 +90,6 @@ class ContributionManager implements ContributionManagerInterface {
           $this->logger->info('Found @files files for the issue.', [
             '@files' => count($issueData->field_issue_files),
           ]);
-          $commentDetails->getFileDetails($issueData, $comment);
           $this->logger->info('Matched @total files, of which @patch are patches.', [
             '@total' => $commentDetails->getTotalFilesCount(),
             '@patch' => $commentDetails->getPatchFilesCount(),
