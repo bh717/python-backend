@@ -2,12 +2,12 @@
 
 namespace Drupal\contrib_tracker;
 
+use Drupal\contrib_tracker\DrupalOrg\CommentDetails;
 use Drupal\node\NodeInterface;
 use Drupal\taxonomy\TermInterface;
 use Drupal\user\UserInterface;
 use Hussainweb\DrupalApi\Entity\Comment as DrupalOrgComment;
 use Hussainweb\DrupalApi\Entity\Node as DrupalOrgNode;
-use Drupal\contrib_tracker\DrupalOrg\CommentDetails;
 
 /**
  * Interface for Contribution Storage service.

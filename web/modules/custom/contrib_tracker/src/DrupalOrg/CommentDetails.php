@@ -23,6 +23,35 @@ class CommentDetails {
   protected $contribRetriever;
 
   /**
+   * @var DrupalOrgCommment
+   */
+  protected $comment;
+
+  /**
+   * @var DrupalOrgNode
+   */
+  protected $issueData;
+
+  /**
+   * Number of patches attached to the comment.
+   * 
+   * @var int
+   */
+  protected $patchFilesCount;
+
+  /**
+   * Number of all files attached to the comment.
+   * 
+   * @var int
+   */
+  protected $totalFilesCount;
+
+  /**
+   * @var string
+   */
+  protected $issueStatus;
+
+  /**
    * DrupalOrgCommentDetails constructor.
    *
    * @param \Drupal\contrib_tracker\ContributionRetrieverInterface $retriever
@@ -36,23 +65,46 @@ class CommentDetails {
     $this->contribRetriever = $retriever;
     $this->comment = $comment;
     $this->issueData = $issueData;
+
+    $this->processFileDetails();
+    $this->determineIssueStatus();
   }
 
   /**
-   * Check the type and number of files attached to a comment under a isssue.
+   * Get the number of patch files in this comment.
    */
-  public function getFileDetails($issueData, $comment) {
+  public function getPatchFilesCount(): int {
+    return $this->patchFilesCount;
+  }
 
+  /**
+   * Get the number of all files in this comment.
+   */
+  public function getTotalFilesCount(): int {
+    return $this->totalFilesCount;
+  }
+
+  /**
+   * Get the issue status.
+   */
+  public function getIssueStatus(): string {
+    return $this->issueStatus;
+  }
+
+  /**
+   * Check the type and number of files attached to a comment under a issue.
+   */
+  protected function processFileDetails(): void {
     // Get the files in the reverse order.
-    $patchFiles = $totalFiles = 0;
+    $this->patchFilesCount = $this->totalFilesCount = 0;
     $matched = FALSE;
-    foreach (array_reverse($issueData->field_issue_files) as $fileRecord) {
+    foreach (array_reverse($this->issueData->field_issue_files) as $fileRecord) {
       $fileId = $fileRecord->file->id;
       $fileData = $this->contribRetriever->getFile($fileId);
-      if ($fileData->timestamp == $comment->created) {
-        $totalFiles++;
+      if ($fileData->timestamp == $this->comment->created) {
+        $this->totalFilesCount++;
         if ($this->isPatchFile($fileData)) {
-          $patchFiles++;
+          $this->patchFilesCount++;
         }
 
         // We have found the file.
@@ -64,21 +116,23 @@ class CommentDetails {
         break;
       }
     }
-    $this->patchFiles = $patchFiles;
-    $this->totalFiles = $totalFiles;
-    $this->$fileId = $fileId;
-    return $this;
   }
 
   /**
-   * Determine the status of the Issue node.
+   * Determine the status of the issue.
    */
-  public function determineIssueStatus($comment, $issueData) {
-    $status = ($comment->created == $issueData->changed) ?
-    $this->getStatusFromCode((int) $issueData->field_issue_status) :
-    '';
+  protected function determineIssueStatus(): void {
+    // Try to determine the status.
+    // Since we cannot access the revisions directly, we will see if the
+    // issue was updated at the same time as this comment (by using the
+    // 'changed' field). If it was, it is a safe assumption that the issue
+    // status reflects the status set in the comment.
+    // This is not accurate, especially for historic scans, but it is fairly
+    // accurate for new issues and comments.
+    $status = ($this->comment->created == $this->issueData->changed) ?
+      $this->getStatusFromCode((int) $this->issueData->field_issue_status) :
+      '';
     $this->status = $status;
-    return $this;
   }
 
   /**
@@ -90,7 +144,7 @@ class CommentDetails {
    * @return string
    *   Readable text corresponding to the status id.
    */
-  protected function getStatusFromCode($statusId) {
+  protected function getStatusFromCode(int $statusId): string {
     $statusMap = [
       1 => 'active',
       2 => 'fixed',
@@ -119,7 +173,7 @@ class CommentDetails {
    * @return bool
    *   TRUE if this is a patch file, else FALSE.
    */
-  protected function isPatchFile(DrupalOrgFile $fileRecord) {
+  protected function isPatchFile(DrupalOrgFile $fileRecord): bool {
     return $fileRecord->mime == 'text/x-diff';
   }
 

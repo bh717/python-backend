@@ -2,15 +2,15 @@
 
 namespace Drupal\contrib_tracker;
 
-use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\contrib_tracker\DrupalOrg\CommentDetails;
 use Drupal\user\UserInterface;
+use Drupal\node\NodeInterface;
+use Drupal\taxonomy\TermInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Hussainweb\DrupalApi\Entity\Comment as DrupalOrgComment;
 use Hussainweb\DrupalApi\Entity\Node as DrupalOrgNode;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
-use Drupal\contrib_tracker\DrupalOrg\CommentDetails;
-use Drupal\node\NodeInterface;
-use Drupal\taxonomy\TermInterface;
-use Hussainweb\DrupalApi\Entity\Comment as DrupalOrgComment;
 
 /**
  * Contribution storage service class.
@@ -67,19 +67,19 @@ class ContributionStorage implements ContributionStorageInterface, ContainerAwar
     $node = $this->nodeStorage->create([
       'type' => 'code_contribution',
       'title' => $commentTitle,
-      'field_code_contrib_link' => $commentDetails->comment->url,
+      'field_code_contrib_link' => $comment->url,
       'field_contribution_author' => $user->id(),
-      'field_contribution_date' => date('Y-m-d', $commentDetails->comment->created),
+      'field_contribution_date' => date('Y-m-d', $comment->created),
       'field_contribution_description' => [
         'value' => $commentBody,
         'format' => 'basic_html',
       ],
       'field_code_contrib_issue_link' => $issueNode->id(),
       'field_code_contrib_project' => $projectTerm->id(),
-      'field_code_contrib_issue_status' => $commentDetails->status,
+      'field_code_contrib_issue_status' => $commentDetails->getIssueStatus(),
       'field_contribution_technology' => $this->getDrupalTechnologyId(),
-      'field_code_contrib_files_count' => $commentDetails->totalFiles,
-      'field_code_contrib_patches_count' => $commentDetails->patchFiles,
+      'field_code_contrib_files_count' => $commentDetails->getTotalFilesCount(),
+      'field_code_contrib_patches_count' => $commentDetails->getPatchFilesCount(),
     ]);
     $node->save();
     return $node;
