@@ -135,10 +135,9 @@ class CommentDetails {
     // status reflects the status set in the comment.
     // This is not accurate, especially for historic scans, but it is fairly
     // accurate for new issues and comments.
-    $status = ($this->comment->created == $this->issueData->changed) ?
+    $this->issueStatus = ($this->comment->created == $this->issueData->changed) ?
       $this->getStatusFromCode((int) $this->issueData->field_issue_status) :
       '';
-    $this->status = $status;
   }
 
   /**

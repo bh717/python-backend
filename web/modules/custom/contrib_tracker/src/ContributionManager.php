@@ -102,10 +102,13 @@ class ContributionManager implements ContributionManagerInterface {
 
       // Now, get the project for the issue.
       $this->logger->info('Getting project @nid...', ['@nid' => $issueData->field_project->id]);
-      $projectData = $this->contribRetriever->getDrupalOrgNode($issueData->field_project->id, FALSE, REQUEST_TIME + (6 * 3600));
-      if (!empty($projectData->title)) {
+      $projectData = $this->contribRetriever->getDrupalOrgNode($issueData->field_project->id, REQUEST_TIME + (6 * 3600));
+      if (empty($projectData->title)) {
         // We couldn't get the project details for soem reason.
         // Skip the rest of the steps.
+        $this->logger->warning('Failed to retrieve project data for @nid.', [
+          '@nid' => $issueData->field_project->id,
+        ]);
         continue;
       }
 
