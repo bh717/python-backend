@@ -82,33 +82,40 @@ class ContributionManager implements ContributionManagerInterface {
       // This is a new comment. Get the issue node first.
       $this->logger->info('Retrieving issue @nid...', ['@nid' => $nid]);
       $issueData = $this->contribRetriever->getDrupalOrgNode($nid, REQUEST_TIME + 180);
-      if (isset($issueData->type) && $issueData->type == 'project_issue') {
-        $commentDetails = new CommentDetails($this->contribRetriever, $comment, $issueData);
-        $issueNode = $this->getIssueNodeDetails($nid, $issueData, $user);
-
-        if (!empty($issueData->field_issue_files)) {
-          $this->logger->info('Found @files files for the issue.', [
-            '@files' => count($issueData->field_issue_files),
-          ]);
-          $this->logger->info('Matched @total files, of which @patch are patches.', [
-            '@total' => $commentDetails->getTotalFilesCount(),
-            '@patch' => $commentDetails->getPatchFilesCount(),
-          ]);
-        }
-
-        // Now, get the project for the issue.
-        $this->logger->info('Getting project @nid...', ['@nid' => $issueData->field_project->id]);
-        $projectData = $this->contribRetriever->getDrupalOrgNode($issueData->field_project->id, FALSE, REQUEST_TIME + (6 * 3600));
-        if (!empty($projectData->title)) {
-          $projectTerm = $this->contribStorage->getProjectTerm($projectData->title);
-
-          // We have everything we need. Save the issue comment as a code
-          // contribution node.
-          $this->logger->notice('Saving issue comment @link...', ['@link' => $comment->url]);
-          $this->contribStorage->saveIssueComment($comment, $commentDetails, $issueNode, $projectTerm, $user);
-          $this->sendSlackNotification($comment, $commentDetails, $issueNode, $projectData, $user, $uid);
-        }
+      if (!isset($issueData->type) || $issueData->type != 'project_issue') {
+        // This is not an issue. Skip it.
+        continue;
       }
+
+      $commentDetails = new CommentDetails($this->contribRetriever, $comment, $issueData);
+      $issueNode = $this->getIssueNodeDetails($nid, $issueData, $user);
+
+      if (!empty($issueData->field_issue_files)) {
+        $this->logger->info('Found @files files for the issue.', [
+          '@files' => count($issueData->field_issue_files),
+        ]);
+        $this->logger->info('Matched @total files, of which @patch are patches.', [
+          '@total' => $commentDetails->getTotalFilesCount(),
+          '@patch' => $commentDetails->getPatchFilesCount(),
+        ]);
+      }
+
+      // Now, get the project for the issue.
+      $this->logger->info('Getting project @nid...', ['@nid' => $issueData->field_project->id]);
+      $projectData = $this->contribRetriever->getDrupalOrgNode($issueData->field_project->id, FALSE, REQUEST_TIME + (6 * 3600));
+      if (!empty($projectData->title)) {
+        // We couldn't get the project details for soem reason.
+        // Skip the rest of the steps.
+        continue;
+      }
+
+      $projectTerm = $this->contribStorage->getProjectTerm($projectData->title);
+
+      // We have everything we need. Save the issue comment as a code
+      // contribution node.
+      $this->logger->notice('Saving issue comment @link...', ['@link' => $comment->url]);
+      $this->contribStorage->saveIssueComment($comment, $commentDetails, $issueNode, $projectTerm, $user);
+      $this->sendSlackNotification($comment, $commentDetails, $issueNode, $projectData, $user, $uid);
     }
   }
 
