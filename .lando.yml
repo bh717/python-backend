@@ -1,18 +1,15 @@
-name: contrib-tracker
+name: contribtracker
 recipe: drupal8
 
 # The following additional build step will install the Platform CLI
 # in the application container.
 services:
   appserver:
-    build:
-      - cd $LANDO_MOUNT && composer install
-      - "curl -sS https://platform.sh/cli/installer | php"
+    type: php:7.3
+    via: nginx
   cache:
     type: redis:5
 
-# The following entry creates a `lando platform` command that will run
-# any Platform CLI command from inside the container if desired.
 tooling:
   drush:
     service: appserver
@@ -20,14 +17,6 @@ tooling:
   drupal:
     service: appserver
     cmd: /app/vendor/bin/drupal
-  platform:
-    service: appserver
-    description: Run Platform CLI commands
-    cmd:
-      - /var/www/.platformsh/bin/platform
-    options:
-      platform:
-        passthrough: true
   redis-cli:
     service: cache
 
