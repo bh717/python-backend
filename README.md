@@ -19,6 +19,7 @@ The following tools are required for setting up the site. Ensure you are using t
    * [Lando](https://docs.lando.dev/basics/installation.html) - v3.0.0-rc.20
    * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) - v2.17.1
 
+
 *Note: Ensure you have sufficient RAM (ideally 16 GB, minimum 8 GB)*
 
 ## Local environment setup
@@ -60,7 +61,11 @@ You can access the site at: [https://contribtracker.lndo.site/](https://contribt
 
 ## Build and Deployment
 
-To be added
+To initiate a build, checkout to a branch, make the required changes and then proceed to push the changes. 
+
+You can see the changes by clicking on View this website in the Platform.sh management console. 
+
+Once a development branch is approved you need to create a merge request in the Platform.sh account by clicking on the Merge button. Steps to do this can be found in the official [documentation.](https://docs.platform.sh/frameworks/drupal8/developing-with-drupal.html#merge-code-changes-to-master).
 
 ## Resources
 
