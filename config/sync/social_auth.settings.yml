@@ -8,7 +8,8 @@ disable_admin_login: true
 disabled_roles:
   contribution_moderator: '0'
   administrator: '0'
+  api_basic_read: '0'
 _core:
   default_config_hash: gWr-VFlbZ8kgEfBF580G_ZijpGfBRbh5IUSYijEDZ3E
-post_login: '<front>'
+post_login: /user
 user_allowed: register
