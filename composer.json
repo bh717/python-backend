@@ -33,7 +33,7 @@
         "drupal/inline_entity_form": "^1.0",
         "drupal/raven": "^2.6",
         "drupal/redis": "^1.2",
-        "drupal/slack": "1.x-dev",
+        "drupal/slack": "^1.2.0",
         "drupal/social_auth": "^2.0",
         "drupal/social_auth_google": "^2.0",
         "drush/drush": "^9.0.0",
