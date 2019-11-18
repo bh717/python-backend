@@ -14,15 +14,11 @@ drupal_codequality:
     - autoscaler
 
 platformsh:
-  image: pjcdawkins/platformsh-cli:latest
+  image: axelerant/platformsh-cli:latest
   before_script:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-    - chmod 644 ~/.ssh/known_hosts
   variables:
     PLATFORMSH_CLI_UPDATES_CHECK: '0'
     PF_PARENT_ENV: "master"
