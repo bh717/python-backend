@@ -15,15 +15,15 @@ drupal_codequality:
 
 platformsh:
   image: axelerant/platformsh-cli:latest
-  before_script:
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  stage: deploy
   variables:
     PLATFORMSH_CLI_UPDATES_CHECK: '0'
     PF_PARENT_ENV: "master"
     ALLOW_MASTER: '0'
-  stage: deploy
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
   script:
     - platform project:set-remote ${PLATFORM_PROJECT_ID}
     - platform push --verbose --activate --target ${CI_COMMIT_REF_NAME}
