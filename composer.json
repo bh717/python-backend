@@ -3,8 +3,6 @@
     "description": "Contribution Tracker for Organizations",
     "type": "project",
     "license": "GPL-2.0+",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "authors": [
         {
             "name": "hussainweb",
@@ -47,10 +45,18 @@
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
+        "vijaycs85/drupal-quality-checker": "^1.2",
         "webflo/drupal-core-require-dev": "^8.7.0"
     },
     "conflict": {
         "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "apcu-autoloader": true
     },
     "autoload": {
         "classmap": [
@@ -99,10 +105,5 @@
                 ".gitattributes": "../.gitattributes"
             }
         }
-    },
-    "config": {
-        "sort-packages": true,
-        "optimize-autoloader": true,
-        "apcu-autoloader": true
     }
 }
