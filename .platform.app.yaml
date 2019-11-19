@@ -88,10 +88,12 @@ web:
                 # Provide a longer TTL (2 weeks) for aggregated CSS and JS files.
                 '^/sites/default/files/(css|js)':
                     expires: 2w
-                    
+
         # Block access to non Drupal specific urls to prevent spambots from booting Drupal
         '/wp-login.php':
-            allow: false   
+            allow: false
+        '/xmlrpc.php':
+            allow: false
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
