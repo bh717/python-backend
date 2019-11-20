@@ -1,7 +1,7 @@
 parameters:
   ascii:
-    failed: vendor/vijaycs85/drupal-quality-checker/resources/ascii/grumpy.txt
-    succeeded: vendor/vijaycs85/drupal-quality-checker/resources/ascii/happy.txt
+    failed: vendor/axelerant/drupal-quality-checker/resources/grumpy.txt
+    succeeded: vendor/axelerant/drupal-quality-checker/resources/happy.txt
   git_dir: .
   bin_dir: vendor/bin
   tasks:
@@ -36,5 +36,5 @@ parameters:
     phpmd:
       whitelist_patterns:
         - /^web\/modules\/custom\/(.*)/
-      ruleset: ['phpmd.xml']
+      ruleset: ['vendor/axelerant/drupal-quality-checker/phpmd.xml.dist']
       triggered_by: ['php']

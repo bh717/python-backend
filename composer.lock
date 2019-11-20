@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ad7dca1951cd779a9ca6db3bf12a5bc",
+    "content-hash": "9075fcecac44468b0d9d4e78dce9511e",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1153,6 +1153,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -7856,6 +7857,43 @@
     ],
     "packages-dev": [
         {
+            "name": "axelerant/drupal-quality-checker",
+            "version": "v1.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axelerant/drupal-quality-checker.git",
+                "reference": "d0ecc3566143e1928741042a45f9c711ae8a04fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axelerant/drupal-quality-checker/zipball/d0ecc3566143e1928741042a45f9c711ae8a04fb",
+                "reference": "d0ecc3566143e1928741042a45f9c711ae8a04fb",
+                "shasum": ""
+            },
+            "require": {
+                "composer/composer": "^1.0",
+                "dealerdirect/phpcodesniffer-composer-installer": "*",
+                "drupal/coder": "^8.2.12",
+                "jakub-onderka/php-parallel-lint": "^1.0",
+                "phpro/grumphp": "^0.16",
+                "sebastian/phpcpd": "^3.0"
+            },
+            "type": "project",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Hussain Abbas",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Code quality checking tools for Drupal project.",
+            "homepage": "https://github.com/axelerant/drupal-quality-checker",
+            "time": "2019-11-20T02:26:17+00:00"
+        },
+        {
             "name": "behat/mink",
             "version": "dev-master",
             "source": {
@@ -11195,6 +11233,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/better_exposed_filters": 20,
+        "axelerant/drupal-quality-checker": 10,
         "drupal/slack": 20
     },
     "prefer-stable": true,
