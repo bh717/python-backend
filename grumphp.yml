@@ -36,5 +36,5 @@ parameters:
     phpmd:
       whitelist_patterns:
         - /^web\/modules\/custom\/(.*)/
-      ruleset: ['vendor/axelerant/drupal-quality-checker/phpmd.xml.dist']
+      ruleset: ['phpmd.xml']
       triggered_by: ['php']
