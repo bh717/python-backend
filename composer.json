@@ -46,7 +46,6 @@
     },
     "require-dev": {
         "axelerant/drupal-quality-checker": "^1.0@beta",
-        "vijaycs85/drupal-quality-checker": "^1.2",
         "webflo/drupal-core-require-dev": "^8.7.0"
     },
     "conflict": {
