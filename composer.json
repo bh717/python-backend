@@ -19,7 +19,6 @@
         "php": ">=7.1",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/admin_toolbar": "^2.0",
         "drupal/better_exposed_filters": "3.x-dev",
         "drupal/bootstrap": "^3.0",
@@ -36,7 +35,6 @@
         "drupal/social_auth_google": "^2.0",
         "drush/drush": "^9.0.0",
         "google/apiclient": "^2.0",
-        "hussainweb/drupal-composer-helper": "^1.0",
         "platformsh/config-reader": "^2.2",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
@@ -45,8 +43,7 @@
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
-        "axelerant/drupal-quality-checker": "^1.0@beta",
-        "webflo/drupal-core-require-dev": "^8.7.0"
+        "axelerant/drupal-quality-checker": "^1.0@beta"
     },
     "conflict": {
         "drupal/drupal": "*"
