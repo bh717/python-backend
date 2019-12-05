@@ -24,7 +24,9 @@
         "drupal/bootstrap": "^3.0",
         "drupal/config_installer": "^1.0",
         "drupal/console": "^1.0.2",
-        "drupal/core": "^8.7.0",
+        "drupal/core": "^8.8",
+        "drupal/core-composer-scaffold": "^8.8",
+        "drupal/core-recommended": "^8.8",
         "drupal/field_permissions": "^1.0",
         "drupal/flag": "^4.0",
         "drupal/inline_entity_form": "^1.0",
@@ -82,14 +84,21 @@
         },
         "patches": {
             "drupal/core": {
-                "Add new permission to view user email field": "https://www.drupal.org/files/issues/2019-09-15/2799049-46.patch"
+                "Add new permission to view user email field": "https://www.drupal.org/files/issues/2019-09-19/2799049-50.patch"
             }
         },
         "drupal-composer-helper": {
             "web-prefix": "web"
         },
         "installer-paths": {
-            "web/core": ["type:drupal-core"]
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
         },
         "merge-plugin": {
             "include": [
@@ -97,6 +106,9 @@
             ]
         },
         "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            },
             "initial": {
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"
