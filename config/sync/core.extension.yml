@@ -34,6 +34,7 @@ module:
   options: 0
   page_cache: 0
   path: 0
+  path_alias: 0
   quickedit: 0
   raven: 0
   redis: 0
@@ -61,4 +62,4 @@ theme:
   bootstrap: 0
 _core:
   default_config_hash: m2GVq11UAOVuNgj8x0t5fMOPujpvQQ_zxLoaly1BMEU
-profile: null
+profile: standard
