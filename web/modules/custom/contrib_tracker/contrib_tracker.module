@@ -22,3 +22,21 @@ function contrib_tracker_cron() {
     $queue->createItem($user);
   });
 }
+
+/**
+ * Implements hook_mail_alter().
+ *
+ * CONT-36 Disable all mails in non prod environments.
+ *
+ * We ALLOW mail sending for non platformsh environments.
+ * We ALLOW mail for platformsh production envrionments.
+ * We DO NOT ALLOW mail sending for non production platformsh environments.
+ */
+function contrib_tracker_mail_alter(&$message) {
+  // Checking if we are on platformsh.
+  $projectId = getenv('PLATFORM_PROJECT');
+  $branch = getenv('PLATFORM_BRANCH');
+  if (!$projectId && $branch != 'master') {
+    $message['send'] = FALSE;
+  }
+}
