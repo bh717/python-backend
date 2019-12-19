@@ -38,7 +38,7 @@
         "drush/drush": "^9.0.0",
         "google/apiclient": "^2.0",
         "platformsh/config-reader": "^2.2",
-        "vlucas/phpdotenv": "^2.4",
+        "vlucas/phpdotenv": "^4.0",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
         "wikimedia/composer-merge-plugin": "~1.3",
