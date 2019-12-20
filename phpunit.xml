@@ -7,8 +7,7 @@
      to run alongside core's test types. -->
 <phpunit bootstrap="vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php">
     <php>
-        <env name="DTT_BASE_URL" value="http://example.com"/>
-        <env name="DTT_BASE_URL" value="http://appserver_nginx.contribtracker.internal"/>
+        <env name="DTT_BASE_URL" value="http://localhost"/>
         <!-- <env name="DTT_MINK_DRIVER_ARGS" value='["chrome", { "chromeOptions" : { "w3c": false } }, "http://localhost:4444/wd/hub"]'/> -->
         <env name="DTT_MINK_DRIVER_ARGS" value='["firefox", null, "http://localhost:4444/wd/hub"]'/>
         <env name="DTT_API_OPTIONS" value='{"socketTimeout": 360, "domWaitTimeout": 3600000}' />
@@ -34,6 +33,7 @@
         <testsuite name="existing-site">
             <!-- Assumes tests are namespaced as \Drupal\Tests\custom_foo\ExistingSite. -->
             <directory>./web/modules/custom/*/tests/src/ExistingSite</directory>
+            <directory>./tests/src/ExistingSite</directory>
             <!--<directory>./web/profiles/custom/*/tests/src/ExistingSite</directory>-->
         </testsuite>
         <testsuite name="existing-site-javascript">

@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Functional;
+namespace tests\ExistingSite;
 
 use weitzman\DrupalTestTraits\ExistingSiteBase;
 

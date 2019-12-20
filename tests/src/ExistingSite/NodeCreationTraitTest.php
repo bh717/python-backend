@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Functional;
+namespace tests\ExistingSite;
 
 use weitzman\DrupalTestTraits\ExistingSiteBase;
 
@@ -16,7 +16,7 @@ class NodeCreationTraitTest extends ExistingSiteBase {
     $content_type = ['code_contribution', 'event', 'event_contribution',
       'issue', 'non_code_contribution',
     ];
-    foreach ($content_type as $type => $value) {
+    foreach ($content_type as $value) {
       $node = $this->createNode([
         'title' => 'This is unpublished',
         'type' => $value,
