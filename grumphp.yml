@@ -5,16 +5,18 @@ parameters:
   git_dir: .
   bin_dir: vendor/bin
   tasks:
+    git_commit_message:
+      matchers:
+        Must contain issue number: /CONT-\d+/
     phplint: ~
     yamllint: ~
     composer: ~
     jsonlint: ~
     phpcpd:
-      directory: './web/modules/custom'
+      directory: ['./web/modules/custom']
     phpcs:
       standard:
-        - Drupal
-        - DrupalPractice
+        - vendor/axelerant/drupal-quality-checker/phpcs.xml.dist
       ignore_patterns:
         - .github
         - .gitlab
