@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains ct_user.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function ct_user_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the ct_user module.
+    case 'help.page.ct_user':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Handles all events occurring in Contrib Tracker') . '</p>';
+      return $output;
+
+    default:
+  }
+}

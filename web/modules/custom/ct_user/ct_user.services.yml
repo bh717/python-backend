@@ -1,0 +1,6 @@
+services:
+  ct_user.ct_user_social_event_listener:
+    class: Drupal\ct_user\EventSubscriber\ContribTrackerEventListener
+    arguments: ['@logger.factory']
+    tags:
+      - { name: event_subscriber }
