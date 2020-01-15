@@ -3001,7 +3001,7 @@
                 },
                 "drupal": {
                     "version": "8.x-2.0-rc1",
-                    "datestamp": "1562985486",
+                    "datestamp": "1576820588",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -3068,7 +3068,7 @@
                 },
                 "drupal": {
                     "version": "8.x-2.0-rc1",
-                    "datestamp": "1562986441",
+                    "datestamp": "1576820588",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "RC releases are not covered by Drupal security advisories."
@@ -3111,21 +3111,21 @@
         },
         {
             "name": "drupal/social_auth_google",
-            "version": "2.0.0-beta4",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/social_auth_google.git",
-                "reference": "8.x-2.0-beta4"
+                "reference": "8.x-2.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/social_auth_google-8.x-2.0-beta4.zip",
-                "reference": "8.x-2.0-beta4",
-                "shasum": "7000da42ef7bcc215b12e14e292179d7637da10e"
+                "url": "https://ftp.drupal.org/files/projects/social_auth_google-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "0dde33a4faaa7fe22e073f536d3b2352dd31e2c0"
             },
             "require": {
                 "drupal/core": "~8.0",
-                "drupal/social_auth": "^2",
+                "drupal/social_auth": "^2.0",
                 "league/oauth2-google": "^3.0"
             },
             "type": "drupal-module",
@@ -3134,17 +3134,17 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0-beta4",
-                    "datestamp": "1549435980",
+                    "version": "8.x-2.0",
+                    "datestamp": "1576821488",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Beta releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0+"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
