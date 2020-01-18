@@ -36,7 +36,7 @@ function contrib_tracker_mail_alter(&$message) {
   // Checking if we are on platformsh.
   $projectId = getenv('PLATFORM_PROJECT');
   $branch = getenv('PLATFORM_BRANCH');
-  if (!$projectId && $branch != 'master') {
+  if ($projectId && $branch != 'master') {
     $message['send'] = FALSE;
   }
 }
