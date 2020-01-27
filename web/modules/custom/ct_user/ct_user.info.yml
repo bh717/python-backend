@@ -1,7 +1,7 @@
-name: 'Contrib Tracker Events'
+name: 'Contrib Tracker Users'
 type: module
-description: 'Handles all Events occurring in Contrib Tracker'
+description: 'Handles user related processing in Contrib Tracker'
 core: 8.x
-package: 'Custom'
+package: Contrib Tracker
 dependencies:
   - social_auth
