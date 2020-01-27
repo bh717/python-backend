@@ -5,12 +5,16 @@ dependencies:
   config:
     - field.field.node.event.body
     - field.field.node.event.field_event_active
+    - field.field.node.event.field_event_address
     - field.field.node.event.field_event_contrib_event_type
     - field.field.node.event.field_event_dates
     - field.field.node.event.field_event_link
+    - field.field.node.event.field_event_location
     - node.type.event
   module:
+    - address
     - datetime_range
+    - geofield
     - link
     - text
     - user
@@ -35,6 +39,13 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     type: boolean
+    region: content
+  field_event_address:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
     region: content
   field_event_contrib_event_type:
     weight: 2
@@ -65,6 +76,15 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
+  field_event_location:
+    weight: 6
+    label: visually_hidden
+    settings:
+      output_format: json
+      output_escape: '1'
+    third_party_settings: {  }
+    type: geofield_default
     region: content
   links:
     weight: 0

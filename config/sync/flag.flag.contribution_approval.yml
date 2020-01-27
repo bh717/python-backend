@@ -28,6 +28,7 @@ flagTypeConfig:
   show_as_field: true
   show_on_form: false
   show_contextual_link: false
+  extra_permissions: {  }
   access_author: ''
 linkTypeConfig:
   flag_confirmation: 'Enter flagging details'

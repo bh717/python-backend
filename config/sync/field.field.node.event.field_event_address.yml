@@ -1,0 +1,49 @@
+uuid: 11a1ce02-2cc5-465a-b04c-67082b1d6efa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_address
+    - node.type.event
+  module:
+    - address
+    - geocoder_field
+third_party_settings:
+  geocoder_field:
+    method: source
+    weight: 0
+    geocode_field: body
+    reverse_geocode_field: field_event_location
+    skip_not_empty_value: 0
+    disabled: false
+    hidden: false
+    plugins:
+      - openstreetmap
+    dumper: geojson
+    delta_handling: default
+    failure:
+      handling: preserve
+      status_message: true
+      log: true
+id: node.event.field_event_address
+field_name: field_event_address
+entity_type: node
+bundle: event
+label: 'Event Address'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+  fields: {  }
+field_type: address

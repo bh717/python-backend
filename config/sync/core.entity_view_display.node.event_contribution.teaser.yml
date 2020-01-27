@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.event_contribution.field_contribution_date
     - field.field.node.event_contribution.field_contribution_technology
     - field.field.node.event_contribution.field_event
+    - field.field.node.event_contribution.field_event_contribution_link
     - field.field.node.event_contribution.field_event_contribution_type
     - node.type.event_contribution
   module:

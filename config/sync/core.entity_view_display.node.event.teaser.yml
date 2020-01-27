@@ -6,9 +6,11 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.event.body
     - field.field.node.event.field_event_active
+    - field.field.node.event.field_event_address
     - field.field.node.event.field_event_contrib_event_type
     - field.field.node.event.field_event_dates
     - field.field.node.event.field_event_link
+    - field.field.node.event.field_event_location
     - node.type.event
   module:
     - datetime_range
@@ -61,4 +63,6 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_event_address: true
   field_event_link: true
+  field_event_location: true
