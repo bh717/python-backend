@@ -1,0 +1,23 @@
+uuid: 4319e8f0-8f64-46a1-a936-4badd203e8ce
+langcode: en
+status: true
+dependencies:
+  module:
+    - address
+    - field_permissions
+    - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_event_address
+field_name: field_event_address
+entity_type: node
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

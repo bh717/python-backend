@@ -8,6 +8,7 @@ dependencies:
     - field.storage.node.field_contribution_technology
     - field.storage.node.field_event_contrib_event_type
     - field.storage.node.field_event_contribution_link
+    - field.storage.node.field_event_location
     - node.type.event_contribution
     - system.menu.main
     - taxonomy.vocabulary.event_type
