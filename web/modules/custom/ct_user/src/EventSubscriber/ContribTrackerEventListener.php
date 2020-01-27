@@ -39,6 +39,7 @@ class ContribTrackerEventListener implements EventSubscriberInterface {
 
       // Setting the user account status to be active by default.
       $user['status'] = 1;
+      $event->setUserFields($user);
       $this->loggerFactory->notice('Auto approved Axelerant user with mail id:  %user_email ', ['%user_email' => $user_email]);
     }
 
