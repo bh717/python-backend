@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.event.body
     - field.field.node.event.field_event_active
     - field.field.node.event.field_event_address
+    - field.field.node.event.field_event_additional_links
     - field.field.node.event.field_event_contrib_event_type
     - field.field.node.event.field_event_dates
     - field.field.node.event.field_event_link
@@ -46,6 +47,17 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: address_default
+  field_event_additional_links:
+    weight: 6
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
     region: content
   field_event_contrib_event_type:
     weight: 2
