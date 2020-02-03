@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0ed49b8ee49e5793004cfe515ecca7b",
+    "content-hash": "c9955440c91c4a33b66302bffee49c6d",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3404,6 +3404,9 @@
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
                     }
+                },
+                "patches_applied": {
+                    "Fix for slack add error": "https://www.drupal.org/files/issues/2020-02-03/fix-for-adderror-3110719_0.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
