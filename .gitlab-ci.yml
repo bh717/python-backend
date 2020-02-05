@@ -56,6 +56,6 @@ platformsh:
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
   script:
     - platform project:set-remote ${PLATFORM_PROJECT_ID}
-    - platform push --verbose --activate --target ${CI_COMMIT_REF_NAME}
+    - platform push --verbose --force --activate --target ${CI_COMMIT_REF_NAME}
   tags:
     - autoscaler
