@@ -13,6 +13,36 @@ drupal_codequality:
   tags:
     - autoscaler
 
+drupal_tests:
+  image: hussainweb/drupal-base:php7.3
+  services:
+    - mariadb:10.3
+  stage: test
+  tags:
+    - autoscaler
+  variables:
+    SITE_BASE_URL: 'http://localhost'
+    MYSQL_DATABASE: "contrib"
+    MYSQL_ROOT_PASSWORD: "contrib123"
+
+  before_script:
+    # Install MySQL ourselves for now.
+    - apt-get update && apt-get install mariadb-client -y
+    - curl https://www.dropbox.com/s/6yamghdnewls2bo/contrib-tracker-db.sql.gz?dl=1 -L --output contrib-tracker-db.sql.gz
+    - gunzip < contrib-tracker-db.sql.gz | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mariadb "$MYSQL_DATABASE"
+    - ./scripts/gitlab/ci.sh
+
+  script:
+    - composer install -o
+
+    # Clearing drush cache and importing configs
+    - ./vendor/drush/drush/drush cr
+    - ./vendor/drush/drush/drush -y updatedb
+    - ./vendor/drush/drush/drush -y config-import
+
+    #  Phpunit execution
+    - ./vendor/bin/phpunit --bootstrap=./vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php --configuration ./phpunit.xml --testsuite existing-site
+
 platformsh:
   image: axelerant/platformsh-cli:latest
   stage: deploy
