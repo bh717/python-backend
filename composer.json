@@ -28,7 +28,7 @@
         "drupal/better_exposed_filters": "3.x-dev",
         "drupal/bootstrap": "^3.0",
         "drupal/console": "^1.0.2",
-        "drupal/contrib_tracker": "dev-master",
+        "drupal/contrib_tracker": "*",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-recommended": "^8.8",
         "drupal/field_permissions": "^1.0",
