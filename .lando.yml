@@ -9,6 +9,8 @@ services:
     via: nginx
   cache:
     type: redis:5
+  database:
+    type: mariadb:10.3
 
 tooling:
   drush:
