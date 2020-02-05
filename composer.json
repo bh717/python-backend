@@ -13,10 +13,6 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        {
-            "type": "path",
-            "url": "web/modules/custom/contrib_tracker"
         }
     ],
     "require": {
@@ -28,7 +24,6 @@
         "drupal/better_exposed_filters": "3.x-dev",
         "drupal/bootstrap": "^3.0",
         "drupal/console": "^1.0.2",
-        "drupal/contrib_tracker": "*",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-recommended": "^8.8",
         "drupal/field_permissions": "^1.0",
@@ -47,6 +42,7 @@
         "vlucas/phpdotenv": "^4.0",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
+        "wikimedia/composer-merge-plugin": "^1.4",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
@@ -109,6 +105,11 @@
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
             "web/modules/custom/{$name}": ["type:drupal-custom-module"],
             "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
+        },
+        "merge-plugin": {
+            "include": [
+                "web/modules/custom/contrib_tracker/composer.json"
+            ]
         },
         "drupal-scaffold": {
             "locations": {
