@@ -5,8 +5,8 @@ dependencies:
   config:
     - field.field.node.event.body
     - field.field.node.event.field_event_active
-    - field.field.node.event.field_event_address
     - field.field.node.event.field_event_additional_links
+    - field.field.node.event.field_event_address
     - field.field.node.event.field_event_contrib_event_type
     - field.field.node.event.field_event_dates
     - field.field.node.event.field_event_link
@@ -41,12 +41,6 @@ content:
     third_party_settings: {  }
     type: boolean
     region: content
-  field_event_address:
-    weight: 7
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    type: address_default
   field_event_additional_links:
     weight: 6
     label: above
@@ -58,6 +52,13 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+    region: content
+  field_event_address:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
     region: content
   field_event_contrib_event_type:
     weight: 2
@@ -91,12 +92,11 @@ content:
     region: content
   field_event_location:
     weight: 6
-    label: visually_hidden
+    label: inline
     settings:
-      output_format: json
-      output_escape: '1'
+      output_format: decimal
     third_party_settings: {  }
-    type: geofield_default
+    type: geofield_latlon
     region: content
   links:
     weight: 0

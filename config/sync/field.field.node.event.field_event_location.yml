@@ -10,22 +10,20 @@ dependencies:
     - geofield
 third_party_settings:
   geocoder_field:
-    method: source
+    method: geocode
     weight: 0
-    geocode_field: field_event_address
-    reverse_geocode_field: ''
     skip_not_empty_value: 0
     disabled: false
     hidden: true
-    plugins:
-      - openstreetmap
-      - freegeoip
+    providers:
+      - nominatim
     dumper: wkt
-    delta_handling: default
     failure:
       handling: preserve
       status_message: true
       log: true
+    field: field_event_address
+    delta_handling: default
 id: node.event.field_event_location
 field_name: field_event_location
 entity_type: node

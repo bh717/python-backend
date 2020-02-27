@@ -64,8 +64,8 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_event_address: true
   field_additional_event_links: true
   field_event_additional_links: true
+  field_event_address: true
   field_event_link: true
   field_event_location: true
