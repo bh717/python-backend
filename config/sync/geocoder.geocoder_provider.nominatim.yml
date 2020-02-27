@@ -1,0 +1,14 @@
+uuid: 2b93421a-c339-419c-8a3c-29a6406a8da3
+langcode: en
+status: true
+dependencies: {  }
+id: nominatim
+label: Nominatim
+plugin: nominatim
+configuration:
+  rootUrl: nominatim.openstreetmap.org
+  userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0'
+  referer: contrib.axelerant.com
+  throttle:
+    period: null
+    limit: null

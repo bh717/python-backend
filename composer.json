@@ -37,6 +37,7 @@
         "drupal/social_auth": "^2.0",
         "drupal/social_auth_google": "^2.0",
         "drush/drush": "^9.0.0",
+        "geocoder-php/nominatim-provider": "^5.1",
         "google/apiclient": "^2.0",
         "platformsh/config-reader": "^2.2",
         "vlucas/phpdotenv": "^4.0",
