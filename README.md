@@ -1,4 +1,4 @@
-# Contribution Tracker 
+# Contribution Tracker
 
 Contribution tracker is a Drupal application built in Drupal 8 for managing community contributions done by the team members. It allows to log various contributions mentioned below.
 
@@ -27,7 +27,7 @@ The following tools are required for setting up the site. Ensure you are using t
 Once you have all the tools installed, proceed to run the following to clone the repository.
 
 ```bash
-$ git clone git@gitorious.xyz:contrib-tracker/backend.git
+$ git clone git@gitlab.axl8.xyz:contrib-tracker/backend.git
 $ cd backend
 ```
 
@@ -52,18 +52,18 @@ $ lando db-import <db-backup-name>.sql.gz
 ## Post Installation
 
 Clear the cache using drush
-    
+
 ```bash
 $ lando drush cr
 ```
-    
+
 You can access the site at: [https://contribtracker.lndo.site/](https://contribtracker.lndo.site/).
 
 ## Build and Deployment
 
-To initiate a build, checkout to a branch, make the required changes and then proceed to push the changes. 
+To initiate a build, checkout to a branch, make the required changes and then proceed to push the changes.
 
-You can see the changes by clicking on View this website in the Platform.sh management console. 
+You can see the changes by clicking on View this website in the Platform.sh management console.
 
 Once a development branch is approved you need to create a merge request in the Platform.sh account by clicking on the Merge button. Steps to do this can be found in the official [documentation.](https://docs.platform.sh/frameworks/drupal8/developing-with-drupal.html#merge-code-changes-to-master).
 
