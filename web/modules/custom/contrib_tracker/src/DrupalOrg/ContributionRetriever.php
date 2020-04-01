@@ -9,6 +9,7 @@ use Hussainweb\DrupalApi\Request\Collection\CommentCollectionRequest;
 use Hussainweb\DrupalApi\Request\Collection\UserCollectionRequest;
 use Hussainweb\DrupalApi\Request\FileRequest;
 use Hussainweb\DrupalApi\Request\NodeRequest;
+use RuntimeException;
 
 /**
  * Contribution retriever service class.
@@ -64,7 +65,7 @@ class ContributionRetriever implements ContributionRetrieverInterface {
     /** @var \Hussainweb\DrupalApi\Entity\Collection\UserCollection $users */
     $users = $this->client->getEntity($request);
     if (count($users) != 1) {
-      throw new \RuntimeException("No user found");
+      throw new RuntimeException("No user found");
     }
 
     $user = $users->current();
