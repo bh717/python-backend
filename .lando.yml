@@ -11,6 +11,8 @@ services:
     type: redis:5
   database:
     type: mariadb:10.3
+    overrides:
+      image: registry.axl8.xyz/contrib-tracker/backend/db:latest
 
 tooling:
   drush:
