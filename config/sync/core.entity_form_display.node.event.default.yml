@@ -84,7 +84,7 @@ content:
   field_event_location:
     weight: 26
     settings:
-      html5_geolocation: true
+      html5_geolocation: false
     third_party_settings: {  }
     type: geofield_latlon
     region: content

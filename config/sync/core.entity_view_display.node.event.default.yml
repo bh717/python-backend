@@ -5,8 +5,8 @@ dependencies:
   config:
     - field.field.node.event.body
     - field.field.node.event.field_event_active
-    - field.field.node.event.field_event_additional_links
     - field.field.node.event.field_event_address
+    - field.field.node.event.field_event_additional_links
     - field.field.node.event.field_event_contrib_event_type
     - field.field.node.event.field_event_dates
     - field.field.node.event.field_event_link
@@ -92,11 +92,12 @@ content:
     region: content
   field_event_location:
     weight: 6
-    label: inline
+    label: visually_hidden
     settings:
-      output_format: decimal
+      output_format: json
+      output_escape: '1'
     third_party_settings: {  }
-    type: geofield_latlon
+    type: geofield_default
     region: content
   links:
     weight: 0
