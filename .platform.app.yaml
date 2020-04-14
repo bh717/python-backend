@@ -10,10 +10,7 @@
 name: 'app'
 
 # The runtime the application uses.
-type: 'php:7.3'
-runtime:
-    extensions:
-        - redis
+type: 'php:7.4'
 
 # Configuration of the build of this application.
 build:
@@ -109,6 +106,9 @@ mounts:
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
+    build: |
+      set -e
+      bash scripts/install-redis.sh 5.2.1
     # The deploy hook runs after your application has been deployed and started.
     deploy: |
       cd web

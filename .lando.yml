@@ -5,7 +5,7 @@ recipe: drupal8
 # in the application container.
 services:
   appserver:
-    type: php:7.3
+    type: php:7.4
     via: nginx
   cache:
     type: redis:5
@@ -25,7 +25,7 @@ tooling:
     service: cache
 
 config:
-  php: 7.3
+  php: 7.4
   via: nginx
   webroot: web
   database: mariadb:10.3
