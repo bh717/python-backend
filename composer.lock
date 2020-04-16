@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d9ca3a2767d414c30db4e791cc87b63b",
+    "content-hash": "54beed52ebf8943c79b24051541da3fc",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -8721,6 +8721,52 @@
     ],
     "packages-dev": [
         {
+            "name": "axelerant/db-docker",
+            "version": "v1.0.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axelerant/db-docker.git",
+                "reference": "6c5978ddf9d404d43b0494ca1189c2c719ce6623"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axelerant/db-docker/zipball/6c5978ddf9d404d43b0494ca1189c2c719ce6623",
+                "reference": "6c5978ddf9d404d43b0494ca1189c2c719ce6623",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1",
+                "cypresslab/gitelephant": "^4.1"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Axelerant\\DbDocker\\Plugin",
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Axelerant\\DbDocker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "hw",
+                    "email": "hussainweb@gmail.com"
+                }
+            ],
+            "description": "Support tools for Database as docker images.",
+            "time": "2020-04-09T14:21:27+00:00"
+        },
+        {
             "name": "axelerant/drupal-quality-checker",
             "version": "v1.0-beta5",
             "source": {
@@ -9187,6 +9233,58 @@
                 }
             ],
             "time": "2020-03-01T12:26:26+00:00"
+        },
+        {
+            "name": "cypresslab/gitelephant",
+            "version": "v4.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matteosister/GitElephant.git",
+                "reference": "abec0aa26ce3d4f8932c352aa39e235f29c4a350"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matteosister/GitElephant/zipball/abec0aa26ce3d4f8932c352aa39e235f29c4a350",
+                "reference": "abec0aa26ce3d4f8932c352aa39e235f29c4a350",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0",
+                "phpcollection/phpcollection": "~0.4|~5.0",
+                "symfony/filesystem": "~2.8|~3.0|~4.0|~5.0",
+                "symfony/finder": "~2.8|~3.0|~4.0|~5.0",
+                "symfony/process": "~2.8|~3.0|~4.0|~5.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.1",
+                "php": ">=7.2.0",
+                "phpunit/phpunit": "~8.0|~9.0",
+                "rector/rector": "^0.7.6",
+                "symfony/var-dumper": "~3.0|~4.0|~5.0",
+                "symplify/easy-coding-standard": "^v7.2.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "GitElephant": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Matteo Giachino",
+                    "email": "matteog@gmail.com"
+                }
+            ],
+            "description": "An abstraction layer for git written in PHP",
+            "homepage": "http://gitelephant.cypresslab.net/",
+            "keywords": [
+                "git"
+            ],
+            "time": "2020-03-23T13:42:51+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -9778,6 +9876,54 @@
             ],
             "description": "Library for handling version information and constraints",
             "time": "2018-07-08T19:19:57+00:00"
+        },
+        {
+            "name": "phpcollection/phpcollection",
+            "version": "0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmittjoh/php-collection.git",
+                "reference": "f2bcff45c0da7c27991bbc1f90f47c4b7fb434a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmittjoh/php-collection/zipball/f2bcff45c0da7c27991bbc1f90f47c4b7fb434a6",
+                "reference": "f2bcff45c0da7c27991bbc1f90f47c4b7fb434a6",
+                "shasum": ""
+            },
+            "require": {
+                "phpoption/phpoption": "1.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "PhpCollection": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "Johannes M. Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "General-Purpose Collection Library for PHP",
+            "keywords": [
+                "collection",
+                "list",
+                "map",
+                "sequence",
+                "set"
+            ],
+            "time": "2015-05-17T12:39:23+00:00"
         },
         {
             "name": "phpcompatibility/php-compatibility",

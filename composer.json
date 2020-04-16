@@ -47,6 +47,7 @@
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
+        "axelerant/db-docker": "^1.0",
         "axelerant/drupal-quality-checker": "^1.0@beta",
         "phpunit/phpunit": "^7.0",
         "weitzman/drupal-test-traits": "^1.3"
