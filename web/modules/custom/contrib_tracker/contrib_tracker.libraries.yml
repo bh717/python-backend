@@ -1,0 +1,4 @@
+ct-style:
+  css:
+    theme:
+      css/ct-style.css: {}
