@@ -1,0 +1,22 @@
+/*
+* Styles for the contrib-tracker module
+*/
+.ct-height {
+  height: 60vh;
+}
+.ct-margin {
+  margin: 3em;
+}
+.ct-results {
+  padding: 2em;
+  margin: 0 0.5em;
+  border: 0.2em solid #fc4c02;
+  border-radius: 1em;
+}
+.ct-label {
+  font-size: 1.5em;
+}
+.ct-count {
+  font-size: 1.5em;
+  float: right;
+}

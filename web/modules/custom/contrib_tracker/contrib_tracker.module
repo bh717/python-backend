@@ -16,8 +16,11 @@ function contrib_tracker_cron() {
     ->condition('status', 1);
   $uids = $query->execute();
 
-  $users = \Drupal::entityTypeManager()->getStorage('user')->loadMultiple($uids);
-  \Drupal::logger('contrib_tracker')->notice('Queuing @count users for processing.', ['@count' => count($users)]);
+  $users = \Drupal::entityTypeManager()
+    ->getStorage('user')
+    ->loadMultiple($uids);
+  \Drupal::logger('contrib_tracker')
+    ->notice('Queuing @count users for processing.', ['@count' => count($users)]);
   array_walk($users, function ($user) use ($queue) {
     $queue->createItem($user);
   });
@@ -38,5 +41,38 @@ function contrib_tracker_mail_alter(&$message) {
   $branch = getenv('PLATFORM_BRANCH');
   if ($projectId && $branch != 'master') {
     $message['send'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function contrib_tracker_theme($existing) {
+  return [
+    'views_view__contribution_count__contribution_report' => [
+      'base hook' => 'views_view',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_views_view().
+ *
+ * CONT-7 Calculate patches and contributions based on filtered result .
+ */
+function contrib_tracker_preprocess_views_view(&$variables) {
+  $view = $variables['view'];
+  $rows = $variables['rows'][0]['#rows'] ?? [];
+  if ($view->storage->id() == 'contribution_count' &&
+    $view->current_display == 'contribution_report') {
+
+    // Total contributions.
+    $variables['totalContribution'] = $view->total_rows;
+
+    // Number of total patches.
+    $variables['totalPatches'] = array_sum(array_map(fn($rows) => $rows['#row']->_entity->get('field_code_contrib_patches_count')->value, $rows));
+
+    // Number of contributions with at least a single patch.
+    $variables['contributionWithPatches'] = count(array_filter($rows, fn($rows) => $rows['#row']->_entity->get('field_code_contrib_patches_count')->value >= 1));
   }
 }
