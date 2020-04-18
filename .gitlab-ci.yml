@@ -1,7 +1,7 @@
 stages:
-- build
-- test
-- deploy
+  - build
+  - test
+  - deploy
 
 drupal_codequality:
   image: hussainweb/drupalqa:php7.4
@@ -16,20 +16,16 @@ drupal_codequality:
 drupal_tests:
   image: hussainweb/drupal-base:php7.4
   services:
-    - mariadb:10.3
+    - name: registry.axl8.xyz/contrib-tracker/backend/db:latest
+      alias: mariadb
   stage: test
   tags:
     - docker
   variables:
     SITE_BASE_URL: 'http://localhost'
-    MYSQL_DATABASE: "contrib"
-    MYSQL_ROOT_PASSWORD: "contrib123"
+    ALLOW_EMPTY_PASSWORD: "yes"
 
   before_script:
-    # Install MySQL ourselves for now.
-    - apt-get update && apt-get install mariadb-client -y
-    - curl https://www.dropbox.com/s/6yamghdnewls2bo/contrib-tracker-db.sql.gz?dl=1 -L --output contrib-tracker-db.sql.gz
-    - gunzip < contrib-tracker-db.sql.gz | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mariadb "$MYSQL_DATABASE"
     - ./scripts/gitlab/ci.sh
 
   script:
