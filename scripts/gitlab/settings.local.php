@@ -2,9 +2,9 @@
 
 $databases['default']['default'] = [
   'driver' => 'mysql',
-  'database' => 'contrib',
-  'username' => 'root',
-  'password' => 'contrib123',
+  'database' => 'drupal8',
+  'username' => 'drupal8',
+  'password' => 'drupal8',
   'host' => 'mariadb'
 ];
 
