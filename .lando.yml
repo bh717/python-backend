@@ -23,7 +23,9 @@ tooling:
     cmd: /app/vendor/bin/drupal
   redis-cli:
     service: cache
-
+  phpunit:
+    service: appserver
+    cmd: /app/vendor/bin/phpunit 
 config:
   php: 7.4
   via: nginx
