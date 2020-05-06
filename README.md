@@ -5,12 +5,18 @@ Contribution tracker is a Drupal application built in Drupal 8 for managing comm
   - Event contributions
   - Non-code contributions
 
+## Table of Contents
+
+[[_TOC_]]
+
 ## Features
 
   - Imports Drupal.org contributions via API
   - Supports social login and authentication via google account.
 
-## Tools & Prerequisites
+## Development
+
+### Tools & Prerequisites
 
 The following tools are required for setting up the site. Ensure you are using the latest version or at least the minimum version mentioned below.
 
@@ -21,7 +27,7 @@ The following tools are required for setting up the site. Ensure you are using t
 
 *Note: Ensure you have sufficient RAM (ideally 16 GB, minimum 8 GB)*
 
-## Local environment setup
+### Local environment setup
 
 Once you have all the tools installed, proceed to run the following to clone the repository.
 
@@ -51,9 +57,9 @@ $ lando drush cim
 $ lando drush updb
 ```
 
-## Post Installation
+### Post Installation
 
-Generate a one time login link and reset the password through it. 
+Generate a one time login link and reset the password through it.
 
 ```bash
 $ lando drush uli
@@ -67,7 +73,7 @@ $ lando drush cr
 
 You can access the site at: [https://contribtracker.lndo.site/](https://contribtracker.lndo.site/).
 
-## Build and Deployment
+### Build and Deployment
 Before committing your changes, make sure you are working on the latest codebase by fetching or pulling to make sure you have all the work.
 
 ```bash
@@ -84,7 +90,7 @@ To initiate a build:
     ```
 
  2. Make the required changes and commit
- 
+
     ```bash
     $ git commit -m "commit-message"
     ```
@@ -93,16 +99,32 @@ To initiate a build:
 
     ```bash
     $ git push origin <branch-name>
-    ``` 
+    ```
 
 For a better understanding of the entire process and standards,  please refer to Axelerant's [Git workflow.](https://axelerant.atlassian.net/wiki/spaces/AH/pages/58982404/Git+Workflow)
 
 N.B. If provided with user account, you can use the management console of [platform.sh](https://platform.sh/) to handle your branch-merge requests. Please refer to the official [documentation](https://docs.platform.sh/frameworks/drupal8/developing-with-drupal.html#merge-code-changes-to-master) for further information.
 
+## About Contribution Retriever
+
+Contrib Tracker supports automatically retrieving and saving contributions from drupal.org and planned support for Github. This is a broad outline of the logic involved in the overall retrieval of contributions from drupal.org.
+
+Each user on contrib tracker may set their Drupal.org username in a field in their user profile. A cron job reads all such active users and queues them every 20 mins. This means that comments from drupal.org are retrieved for all users every 20 mins.
+
+This is the flow of a queued process for each user.
+
+1. Try to read more information about the user from drupal.org (especially the user ID). If it fails, throw an exception and leave. See [ProcessUser::processItem](web/modules/custom/contrib_tracker/src/Plugin/QueueWorker/ProcessUser.php).
+2. Retrieve all the comments by the user ([ContributionManager::storeCommentsByDrupalOrgUser](web/modules/custom/contrib_tracker/src/ContributionManager.php)). If the comments span multiple pages, they are read only if required ([ContributionRetriever::getDrupalOrgCommentsByAuthor](web/modules/custom/contrib_tracker/src/DrupalOrg/ContributionRetriever.php)).
+3. For each comment ([ContributionManager::storeCommentsByDrupalOrgUser](web/modules/custom/contrib_tracker/src/ContributionManager.php)),
+   1. If the comment is already present in the system, leave.
+   2. Get the comment's parent issue. Store the issue if it's not already present.
+   3. Determine the information about the comment such as the project and number of patches and files, if any.
+   4. Store all this information as a "Code contribution" content type.
+
 ## FAQs
 
 **1. Why do I get permission errors when running `lando start`?**\
-   Make sure that your have set the right group permission for Docker to run properly. Please take a look at the [Additional Setup Section](https://docs.lando.dev/basics/installation.html#additional-setup) when installing LANDO. 
+   Make sure that your have set the right group permission for Docker to run properly. Please take a look at the [Additional Setup Section](https://docs.lando.dev/basics/installation.html#additional-setup) when installing LANDO.
 
 ## Resources
 
