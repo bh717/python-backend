@@ -18,7 +18,7 @@ Contribution tracker is a Drupal application built in Drupal 8 for managing comm
 
 ### Tools & Prerequisites
 
-The following tools are required for setting up the site. Ensure you are using the latest version or at least the minimum version mentioned below.
+The following tools are required for setting up the site. Ensure you are using the latest version or at least the minimum version mentioned below. Also, ensure that you have added [your SSH key in your GitLab account settings](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account).
 
    * [Composer](https://getcomposer.org/download/) - v1.9.0
    * [Docker](https://docs.docker.com/install/) - v19.03.2
@@ -123,8 +123,14 @@ This is the flow of a queued process for each user.
 
 ## FAQs
 
-**1. Why do I get permission errors when running `lando start`?**\
+1. **Why do I get permission errors when running `lando start`?**
+
    Make sure that your have set the right group permission for Docker to run properly. Please take a look at the [Additional Setup Section](https://docs.lando.dev/basics/installation.html#additional-setup) when installing LANDO.
+
+2. **Ubuntu machine, If docker installed successfully but still throwing error `Unable to locate package docker-ce on a 64bit ubuntu`.**
+
+   Make sure that docker-ce package is available on the official docker.for that you need to add [docker add-apt
+   -repository](https://unix.stackexchange.com/questions/363048/unable-to-locate-package-docker-ce-on-a-64bit-ubuntu).
 
 ## Resources
 
