@@ -24,6 +24,11 @@ dependencies:
     php:
         "drush/drush": "^9.0"
 
+# Customize php environment variables.
+variables:
+    php:
+        memory_limit: 512M        
+
 # The relationships of the application with services or other applications.
 #
 # The left-hand side is the name of the relationship as it will be exposed
