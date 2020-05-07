@@ -24,7 +24,6 @@ class NodeCreationTraitTest extends ExistingSiteBase {
         'title' => 'This is unpublished',
         'type' => $value,
       ]);
-      $this->assertEquals($node->id(), $node->id());
       $this->assertEquals('This is unpublished', $node->getTitle());
       $this->assertEquals($value, $node->getType());
     }
