@@ -26,15 +26,13 @@ class TaxonomyCreationTraitTest extends ExistingSiteBase {
 
     // Load all vocabulary items.
     $vocabulary = Vocabulary::loadMultiple(NULL);
-    $i = 0;
-    // Iterate over vocabulary items to create terms.
+
+    // Iterate over existing  to check term creation.
     foreach ($vocabulary as $value) {
-      $term = $this->createTerm($value);
-      $this->assertEquals($term->id(), $this->cleanupEntities[$i]->id());
-      ++$i;
+      $term = $this->createTerm($value, ['name' => 'test-x']);
+      $this->assertEquals('test-x', $term->getName());
+      $this->assertEquals($value->id(), $term->getVocabularyId());
     }
-    // Check if terms are created for all vocabularies.
-    $this->assertCount(count($vocabulary), $this->cleanupEntities);
   }
 
 }
