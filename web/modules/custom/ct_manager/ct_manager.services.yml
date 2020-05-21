@@ -1,0 +1,10 @@
+services:
+  logger.channel.ct_manager:
+    parent: logger.channel_base
+    arguments: ['ct_manager']
+  plugin.manager.contribution_plugin_manager:
+    class: Drupal\ct_manager\ContributionSourcePluginManager
+    parent: default_plugin_manager
+  plugin.manager.contribution_storage:
+    class: Drupal\ct_manager\ContributionTrackerStorage
+    arguments: ['@entity_type.manager', '@logger.channel.ct_manager']

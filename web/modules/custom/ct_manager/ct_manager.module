@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contribution manager module.
+ */
+
+use Drupal\ct_manager\ContributionProcessQueueItem;
+
+/**
+ * @file
+ * Contribution manager module.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function ct_manager_cron() {
+
+  $queue = \Drupal::queue('ct_manager_process_users');
+  $pluginMgr = \Drupal::service('plugin.manager.contribution_plugin_manager');
+  $plugins = $pluginMgr->getDefinitions();
+
+  // Process users for each plugin implementation.
+  foreach ($plugins as $plugin) {
+    \Drupal::logger('ct_manager')->notice('Processing plugin @plugin', ['@plugin' => $plugin['id']]);
+    $plugin_instance = $pluginMgr->createInstance($plugin['id']);
+    $users = $plugin_instance->getUsers();
+
+    array_walk($users, function ($user) use ($queue, $plugin) {
+      $userObj = new ContributionProcessQueueItem($plugin['id'], $user);
+      $queue->createItem($userObj);
+    });
+  }
+
+}
