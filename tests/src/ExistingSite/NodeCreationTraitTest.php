@@ -3,6 +3,7 @@
 namespace tests\ExistingSite;
 
 use weitzman\DrupalTestTraits\ExistingSiteBase;
+use Drupal\Component\Serialization\Json;
 
 /**
  * Test the node creation trait.
@@ -29,6 +30,37 @@ class NodeCreationTraitTest extends ExistingSiteBase {
     }
     // Check if nodes are created for all types.
     $this->assertCount(count($content_type), $this->cleanupEntities);
+  }
+
+  /**
+   * Test non-code contribution workflow.
+   */
+  public function testNonCodeContribCreation() {
+
+    // Create a new user and make it current user.
+    $this->setUpCurrentUser();
+
+    // Create a non_code_contribution node.
+    $non_code_contribution_node = $this->createNode([
+      'title' => 'Test node',
+      'type' => 'non_code_contribution',
+      'field_non_code_contribution_type' => 'blog',
+    ]);
+    $non_code_contribution_node->setPublished()->save();
+
+    $this->assertEquals('Test node', $non_code_contribution_node->getTitle());
+    $this->assertEquals('non_code_contribution', $non_code_contribution_node->getType());
+
+    // Check if the node appears on relevant views.
+    $result = views_get_view_result('non_code_contributions', 'page_1');
+    $this->assertEquals($non_code_contribution_node->id(), $result[0]->_entity->id());
+
+    $result = views_get_view_result('all_contributions', 'page_1');
+    $this->assertEquals($non_code_contribution_node->id(), $result[0]->_entity->id());
+
+    $response = $this->drupalGet('/api/views/all-contributions');
+    $this->assertSession()->statusCodeEquals(200);
+    $this->assertEquals('Test node', Json::decode($response)[0]['title']);
   }
 
 }
