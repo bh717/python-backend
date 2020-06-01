@@ -1,0 +1,8 @@
+{
+    "name": "drupal/ct_github",
+    "type": "drupal-custom-module",
+    "description": "Tracks contributions from github.com",
+    "require": {
+        "knplabs/github-api": "^2.14"
+    }
+}

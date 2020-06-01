@@ -1,0 +1,4 @@
+services:
+  ct_github.client:
+    class: Drupal\ct_github\GithubClient
+    arguments: ['@config.factory']
