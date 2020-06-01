@@ -63,4 +63,37 @@ class NodeCreationTraitTest extends ExistingSiteBase {
     $this->assertEquals('Test node', Json::decode($response)[0]['title']);
   }
 
+  /**
+   * Test event contribution workflow.
+   */
+  public function testEventContribCreation() {
+
+    // Create a new user and make it current user.
+    $this->setUpCurrentUser();
+
+    // Create a non_code_contribution node.
+    $event_contribution_node = $this->createNode([
+      'title' => 'Test node',
+      'type' => 'event_contribution',
+      // Used in views with default sort as DESC of field_contribution_date
+      // to show the node at the top of results.
+      'field_contribution_date' => date('Y-m-d', time()),
+    ]);
+    $event_contribution_node->setPublished()->save();
+
+    $this->assertEquals('Test node', $event_contribution_node->getTitle());
+    $this->assertEquals('event_contribution', $event_contribution_node->getType());
+
+    // Check if the node appears on relevant views.
+    $result = views_get_view_result('event_contributions', 'page_1');
+    $this->assertEquals($event_contribution_node->id(), $result[0]->_entity->id());
+
+    $result = views_get_view_result('all_contributions', 'page_1');
+    $this->assertEquals($event_contribution_node->id(), $result[0]->_entity->id());
+
+    $response = $this->drupalGet('/api/views/all-contributions');
+    $this->assertSession()->statusCodeEquals(200);
+    $this->assertEquals('Test node', Json::decode($response)[0]['title']);
+  }
+
 }
