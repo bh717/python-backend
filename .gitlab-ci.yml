@@ -4,9 +4,16 @@ stages:
   - deploy
 
 include:
-  - local: '.platform/gitlab.yml'
+  - local: '.gitlab/platform.yml'
+
+.default-pipelines: &default-pipelines
+  only:
+    - branches
+    - tags
+    - merge_requests
 
 drupal_codequality:
+  <<: *default-pipelines
   image: hussainweb/drupalqa:php7.4
   stage: test
   script:
@@ -19,6 +26,7 @@ drupal_codequality:
     - schedule
 
 drupal_tests:
+  <<: *default-pipelines
   image: hussainweb/drupal-base:php7.4
   services:
     - name: registry.axl8.xyz/contrib-tracker/backend/db:latest
@@ -31,7 +39,7 @@ drupal_tests:
     ALLOW_EMPTY_PASSWORD: "yes"
 
   before_script:
-    - ./scripts/gitlab/ci.sh
+    - ./.gitlab/ci.sh
 
   script:
     - composer install -o
