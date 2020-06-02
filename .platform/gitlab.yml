@@ -1,0 +1,65 @@
+.deploy: &deploy
+  image: axelerant/platformsh-cli:latest
+  before_script:
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - mkdir -p ~/.ssh
+  script:
+    - platform project:set-remote ${PLATFORM_PROJECT_ID}
+    - platform push --verbose --activate --force --target ${CI_COMMIT_REF_NAME}
+    # Explicitly specify the environment as the CLI is not able to figure it out for some reason.
+    - PLATFORM_URL=$(platform url --primary --pipe --environment ${CI_COMMIT_REF_NAME})
+    - echo "PLATFORM_URL=$PLATFORM_URL" > dotenv
+  artifacts:
+    reports:
+      dotenv: dotenv
+  except:
+    - schedule
+
+review:
+  stage: deploy
+  <<: *deploy
+  tags:
+    - docker
+  only:
+    - merge_requests
+  except:
+    - master
+    - schedule
+  environment:
+    name: review/$CI_BUILD_REF_NAME
+    url: $PLATFORM_URL
+    on_stop: stop_review
+    auto_stop_in: 3 days
+
+platformsh:
+  stage: deploy
+  <<: *deploy
+  tags:
+    - docker
+  only:
+    - master
+  except:
+    - schedule
+  environment:
+    name: production
+    url: https://ks.axelerant.com
+
+stop_review:
+  stage: deploy
+  <<: *deploy
+  script:
+    - platform environment:delete -y -p $PLATFORM_PROJECT_ID $CI_COMMIT_REF_NAME
+  variables:
+    GIT_STRATEGY: none
+  when: manual
+  only:
+    - merge_requests
+  except:
+    - master
+    - schedule
+  environment:
+    name: review/$CI_BUILD_REF_NAME
+    action: stop
+  tags:
+    - docker
