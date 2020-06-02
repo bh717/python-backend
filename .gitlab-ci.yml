@@ -18,6 +18,8 @@ stages:
   artifacts:
     reports:
       dotenv: dotenv
+  except:
+    - schedule
 
 drupal_codequality:
   image: hussainweb/drupalqa:php7.4
@@ -28,6 +30,8 @@ drupal_codequality:
     - phpmd web/modules/custom/ text phpmd.xml
   tags:
     - docker
+  except:
+    - schedule
 
 drupal_tests:
   image: hussainweb/drupal-base:php7.4
@@ -54,6 +58,8 @@ drupal_tests:
 
     #  Phpunit execution
     - ./vendor/bin/phpunit --bootstrap=./vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php --configuration ./phpunit.xml --testsuite existing-site
+  except:
+    - schedule
 
 review:
   stage: deploy
@@ -61,9 +67,10 @@ review:
   tags:
     - docker
   only:
-    - branches
+    - merge_requests
   except:
     - master
+    - schedule
   environment:
     name: review/$CI_BUILD_REF_NAME
     url: $PLATFORM_URL
@@ -77,6 +84,8 @@ platformsh:
     - docker
   only:
     - master
+  except:
+    - schedule
   environment:
     name: production
     url: https://ks.axelerant.com
@@ -90,9 +99,10 @@ stop_review:
     GIT_STRATEGY: none
   when: manual
   only:
-    - branches
+    - merge_requests
   except:
     - master
+    - schedule
   environment:
     name: review/$CI_BUILD_REF_NAME
     action: stop
