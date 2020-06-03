@@ -1,17 +1,17 @@
-uuid: 901b536d-263e-4229-b3af-7bc6d31c928a
+uuid: 1d3badd5-4d4b-4b1e-8805-2807c27b45f7
 langcode: en
 status: true
 dependencies:
   module:
     - help
   theme:
-    - bartik
+    - gin
 _core:
-  default_config_hash: 8I8iACSa0sKO3k3jlvUG1ge52rfcKX7USJAQYnzuBgg
-id: bartik_help
-theme: bartik
-region: content
-weight: -7
+  default_config_hash: 8nOAry2oKqJOr0zbrlJ3sZHDFJLIO6j-0vT0K_TYca4
+id: gin_help
+theme: gin
+region: help
+weight: 0
 provider: null
 plugin: help_block
 settings:

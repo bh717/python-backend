@@ -1,15 +1,15 @@
-uuid: 871756a7-10ee-41c2-8ead-8f1526d469a0
+uuid: 624a3185-587d-491e-8802-f229853f5384
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - bartik
+    - gin
 _core:
-  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
-id: bartik_breadcrumbs
-theme: bartik
+  default_config_hash: y9X3xgCsO59pQyzNLzY1D3SDJJxCHILLWkpPnmuTJ2E
+id: gin_breadcrumbs
+theme: gin
 region: breadcrumb
 weight: 0
 provider: null

@@ -30,6 +30,7 @@
         "drupal/flag": "^4.0",
         "drupal/geocoder": "^3.0",
         "drupal/geofield": "^1.0",
+        "drupal/gin": "^3.0@alpha",
         "drupal/inline_entity_form": "^1.0",
         "drupal/raven": "^2.6",
         "drupal/redis": "^1.2",
