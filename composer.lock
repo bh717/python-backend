@@ -7196,16 +7196,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.39",
+            "version": "v3.4.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "ec47520778d524b1736e768e0678cd1f01c03019"
+                "reference": "0f625d0cb1e59c8c4ba61abb170125175218ff10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/ec47520778d524b1736e768e0678cd1f01c03019",
-                "reference": "ec47520778d524b1736e768e0678cd1f01c03019",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/0f625d0cb1e59c8c4ba61abb170125175218ff10",
+                "reference": "0f625d0cb1e59c8c4ba61abb170125175218ff10",
                 "shasum": ""
             },
             "require": {
@@ -7242,11 +7242,25 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2020-03-16T08:31:04+00:00"
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-30T17:48:24+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.39",
+            "version": "v3.4.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -7291,20 +7305,6 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-02-14T07:34:21+00:00"
         },
         {
@@ -9160,24 +9160,24 @@
     "packages-dev": [
         {
             "name": "axelerant/db-docker",
-            "version": "v1.0.0-beta2",
+            "version": "v1.0.0-beta5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axelerant/db-docker.git",
-                "reference": "6c5978ddf9d404d43b0494ca1189c2c719ce6623"
+                "reference": "32cdefdbfb1f05bcb084f829e94c161b8bd77379"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axelerant/db-docker/zipball/6c5978ddf9d404d43b0494ca1189c2c719ce6623",
-                "reference": "6c5978ddf9d404d43b0494ca1189c2c719ce6623",
+                "url": "https://api.github.com/repos/axelerant/db-docker/zipball/32cdefdbfb1f05bcb084f829e94c161b8bd77379",
+                "reference": "32cdefdbfb1f05bcb084f829e94c161b8bd77379",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.1",
+                "composer-plugin-api": "^1.1 || ^2.0",
                 "cypresslab/gitelephant": "^4.1"
             },
             "require-dev": {
-                "composer/composer": "^1.0"
+                "composer/composer": "^2.0"
             },
             "type": "composer-plugin",
             "extra": {
@@ -9202,7 +9202,7 @@
                 }
             ],
             "description": "Support tools for Database as docker images.",
-            "time": "2020-04-09T14:21:27+00:00"
+            "time": "2020-06-03T17:36:55+00:00"
         },
         {
             "name": "axelerant/drupal-quality-checker",
@@ -9674,32 +9674,33 @@
         },
         {
             "name": "cypresslab/gitelephant",
-            "version": "v4.1.2",
+            "version": "v4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matteosister/GitElephant.git",
-                "reference": "abec0aa26ce3d4f8932c352aa39e235f29c4a350"
+                "reference": "2c88a421bc7491643eddddcc44036a3f92b8d78c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/matteosister/GitElephant/zipball/abec0aa26ce3d4f8932c352aa39e235f29c4a350",
-                "reference": "abec0aa26ce3d4f8932c352aa39e235f29c4a350",
+                "url": "https://api.github.com/repos/matteosister/GitElephant/zipball/2c88a421bc7491643eddddcc44036a3f92b8d78c",
+                "reference": "2c88a421bc7491643eddddcc44036a3f92b8d78c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.0",
-                "phpcollection/phpcollection": "~0.4|~5.0",
-                "symfony/filesystem": "~2.8|~3.0|~4.0|~5.0",
-                "symfony/finder": "~2.8|~3.0|~4.0|~5.0",
-                "symfony/process": "~2.8|~3.0|~4.0|~5.0"
+                "phpcollection/phpcollection": "~0.4|~0.5",
+                "symfony/filesystem": "~3.4|~4.0|~5.0",
+                "symfony/finder": "~3.4|~4.0|~5.0",
+                "symfony/process": "~3.4|~4.0|~5.0"
             },
             "require-dev": {
                 "mockery/mockery": "~1.1",
                 "php": ">=7.2.0",
+                "phpstan/phpstan": "*",
+                "phpstan/phpstan-phpunit": "*",
                 "phpunit/phpunit": "~8.0|~9.0",
-                "rector/rector": "^0.7.6",
-                "symfony/var-dumper": "~3.0|~4.0|~5.0",
-                "symplify/easy-coding-standard": "^v7.2.5"
+                "rector/rector": "*",
+                "symplify/easy-coding-standard": "*"
             },
             "type": "library",
             "autoload": {
@@ -9722,7 +9723,7 @@
             "keywords": [
                 "git"
             ],
-            "time": "2020-03-23T13:42:51+00:00"
+            "time": "2020-05-01T05:16:25+00:00"
         },
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
