@@ -25,11 +25,16 @@ tooling:
     service: cache
   phpunit:
     service: appserver
-    cmd: /app/vendor/bin/phpunit 
+    cmd: /app/vendor/bin/phpunit
 config:
   php: 7.4
   via: nginx
   webroot: web
-  database: mariadb:10.3
   conf:
     php: .lando/php.ini
+
+events:
+  post-start:
+    - echo "Running post start scripts. Please be patient."
+    - cache: redis-cli flushall
+    - appserver: drush cr
