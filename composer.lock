@@ -2159,29 +2159,26 @@
         },
         {
             "name": "drupal/bootstrap",
-            "version": "3.21.0",
+            "version": "3.22.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/bootstrap.git",
-                "reference": "8.x-3.21"
+                "reference": "8.x-3.22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap-8.x-3.21.zip",
-                "reference": "8.x-3.21",
-                "shasum": "e431093eb4f64712b02e691660a85cfa4fb49c88"
+                "url": "https://ftp.drupal.org/files/projects/bootstrap-8.x-3.22.zip",
+                "reference": "8.x-3.22",
+                "shasum": "03cc41f810c30b73f74d4c8f31db460f7d0fadba"
             },
             "require": {
-                "drupal/core": "~8.0"
+                "drupal/core": "^8 || ^9"
             },
             "type": "drupal-theme",
             "extra": {
-                "branch-alias": {
-                    "dev-3.x": "3.x-dev"
-                },
                 "drupal": {
-                    "version": "8.x-3.21",
-                    "datestamp": "1574417581",
+                    "version": "8.x-3.22",
+                    "datestamp": "1591319896",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2190,7 +2187,7 @@
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
             "license": [
-                "GPL-2.0"
+                "GPL-2.0-or-later"
             ],
             "authors": [
                 {
@@ -2212,7 +2209,7 @@
             "description": "Built to use Bootstrap, a sleek, intuitive, and powerful front-end framework for faster and easier web development.",
             "homepage": "https://www.drupal.org/project/bootstrap",
             "support": {
-                "source": "http://cgit.drupalcode.org/bootstrap",
+                "source": "https://git.drupalcode.org/project/bootstrap",
                 "docs": "https://drupal-bootstrap.org",
                 "issues": "https://www.drupal.org/project/issues/bootstrap",
                 "irc": "irc://irc.freenode.org/drupal-bootstrap"
