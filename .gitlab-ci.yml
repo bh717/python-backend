@@ -8,7 +8,7 @@ include:
 
 .default-pipelines: &default-pipelines
   only:
-    - branches
+    - master
     - tags
     - merge_requests
 
