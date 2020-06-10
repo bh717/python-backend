@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\ct_manager;
 
+use Drupal\user\Entity\User;
+
 /**
  * An interface for all Contribution type plugins.
  */
@@ -17,16 +19,16 @@ interface ContributionSourceInterface {
   /**
    * Get user contributions from the platform.
    */
-  public function isUserValid($user);
+  public function isUserValid(User $user): bool;
 
   /**
    * Get issues from the total contribution data.
    */
-  public function getUserIssues($user);
+  public function getUserIssues(User $user);
 
   /**
    * Get comments from the total contribution data.
    */
-  public function getUserCodeContributions($user);
+  public function getUserCodeContributions(User $user);
 
 }

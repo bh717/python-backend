@@ -85,12 +85,12 @@ class GithubRetriever {
           $title = reset($message);
           $url = $node['commit']['url'];
           $date = $node['commit']['committedDate'];
-          $commit = new CodeContribution($title, $url, $date);
-          $commit->setDescription($node['commit']['message']);
-          $commit->setCreated($node['commit']['committedDate']);
-          $commit->setProject($node['commit']['repository']['name']);
-          $commit->setIssue($data['title'], $data['url']);
-          $commit->setPatchCount(1);
+          $commit = (new CodeContribution($title, $url, $date))
+            ->setDescription($node['commit']['message'])
+            ->setCreated($node['commit']['committedDate'])
+            ->setProject($node['commit']['repository']['name'])
+            ->setIssue($data['title'], $data['url'])
+            ->setPatchCount(1);
           $codeContribution[] = $commit;
         }
       }
@@ -101,10 +101,10 @@ class GithubRetriever {
       $title = 'Comment on ' . $node['issue']['title'];
       $url = $node['url'];
       $date = $node['createdAt'];
-      $comment = new CodeContribution($title, $url, $date);
-      $comment->setCreated($node['createdAt']);
-      $comment->setProject($node['issue']['repository']['name']);
-      $comment->setIssue($node['issue']['title'], $node['issue']['url']);
+      $comment = (new CodeContribution($title, $url, $date))
+        ->setCreated($node['createdAt'])
+        ->setProject($node['issue']['repository']['name'])
+        ->setIssue($node['issue']['title'], $node['issue']['url']);
       $codeContribution[] = $comment;
     }
     return $codeContribution;

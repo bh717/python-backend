@@ -8,6 +8,7 @@ use Drupal\ct_github\GithubQuery;
 use Drupal\ct_github\GithubRetriever;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\ct_manager\ContributionSourceInterface;
+use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Component\Plugin\PluginBase;
@@ -23,16 +24,14 @@ use Drupal\Component\Plugin\PluginBase;
 class GithubContribution extends PluginBase implements ContributionSourceInterface, ContainerFactoryPluginInterface {
 
   /**
-   * User Entity Storage.
-   *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
 
   /**
-   * User Entity Storage.
+   * Retrievers for each user
    *
-   * @var \Drupal\ct_github\GithubRetriever
+   * @var \Drupal\ct_github\GithubRetriever[]
    */
   protected $retriever = [];
 
@@ -89,7 +88,7 @@ class GithubContribution extends PluginBase implements ContributionSourceInterfa
   /**
    * {@inheritdoc}
    */
-  public function isUserValid($user) {
+  public function isUserValid(User $user): bool {
     $username = $user->field_github_username[0]->getValue()['value'];
     return $this->query->isUserValid($username);
   }
@@ -97,7 +96,7 @@ class GithubContribution extends PluginBase implements ContributionSourceInterfa
   /**
    * Returns a user retriever object.
    */
-  protected function getOrCreateRetriever($user) {
+  protected function getOrCreateRetriever(User $user): GithubRetriever {
     $username = $user->field_github_username[0]->getValue()['value'];
     if (isset($this->retriever[$username])) {
       return $this->retriever[$username];
@@ -109,14 +108,14 @@ class GithubContribution extends PluginBase implements ContributionSourceInterfa
   /**
    * {@inheritdoc}
    */
-  public function getUserIssues($user) {
+  public function getUserIssues(User $user) {
     return $this->getOrCreateRetriever($user)->getIssues();
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getUserCodeContributions($user) {
+  public function getUserCodeContributions(User $user) {
     return $this->getOrCreateRetriever($user)->getCodeContributions();
   }
 

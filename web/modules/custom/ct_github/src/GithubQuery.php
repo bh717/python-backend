@@ -57,7 +57,7 @@ class GithubQuery {
    * @return string
    *   Github Graphql query object
    */
-  public function getQuery($username) {
+  public function getQuery(string $username): string {
     $query = <<<QUERY
                   query{
                     user(login: "$username"){
@@ -110,7 +110,7 @@ class GithubQuery {
   /**
    * Check username validity.
    */
-  public function isUserValid($username) {
+  public function isUserValid(string $username): bool {
     $cid = 'ct_github:user:' . $username;
     $cache = $this->cache->get($cid);
     if ($cache) {
@@ -128,7 +128,7 @@ class GithubQuery {
   /**
    * API request to get user contributions.
    */
-  public function getUserContributions($username) {
+  public function getUserContributions(string $username) {
     $query = $this->getQuery($username);
     return $this->client->api('graphql')->execute($query);
   }
