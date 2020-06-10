@@ -35,6 +35,11 @@ class GithubContribution extends PluginBase implements ContributionSourceInterfa
   protected $retriever = [];
 
   /**
+   * @var \Drupal\ct_github\GithubQuery
+   */
+  protected GithubQuery $query;
+
+  /**
    * Constructs a Drupal\rest\Plugin\ResourceBase object.
    *
    * @param array $configuration
@@ -80,7 +85,7 @@ class GithubContribution extends PluginBase implements ContributionSourceInterfa
   }
 
   /**
-   * Get user information to validate the username.
+   * {@inheritdoc}
    */
   public function isUserValid($user) {
     $username = $user->field_github_username[0]->getValue()['value'];
@@ -100,16 +105,16 @@ class GithubContribution extends PluginBase implements ContributionSourceInterfa
   }
 
   /**
-   * Get issues and pull requests associated with a user.
+   * {@inheritdoc}
    */
-  public function getIssues($user) {
+  public function getUserIssues($user) {
     return $this->getOrCreateRetriever($user)->getIssues();
   }
 
   /**
-   * Get issue comments and PR commits associated with a user.
+   * {@inheritdoc}
    */
-  public function getCodeContributions($user) {
+  public function getUserCodeContributions($user) {
     return $this->getOrCreateRetriever($user)->getCodeContributions();
   }
 

@@ -44,7 +44,9 @@ class ProcessUsers extends QueueWorkerBase implements ContainerFactoryPluginInte
   /**
    * {@inheritdoc}
    */
-  public function __construct(ContributionSourcePluginManager $pluginManager, ContributionTrackerStorage $contribStorage, LoggerChannelInterface $logger) {
+  public function __construct(array $configuration, $pluginId, $pluginDefinition, ContributionSourcePluginManager $pluginManager, ContributionTrackerStorage $contribStorage, LoggerChannelInterface $logger) {
+    parent::__construct($configuration, $pluginId, $pluginDefinition);
+
     $this->pluginManager = $pluginManager;
     $this->contribStorage = $contribStorage;
     $this->logger = $logger;
@@ -55,6 +57,9 @@ class ProcessUsers extends QueueWorkerBase implements ContainerFactoryPluginInte
    */
   public static function create(ContainerInterface $container, array $configuration, $pluginId, $pluginDefinition) {
     return new static(
+      $configuration,
+      $pluginId,
+      $pluginDefinition,
       $container->get('plugin.manager.contribution_plugin_manager'),
       $container->get('plugin.manager.contribution_storage'),
       $container->get('logger.channel.ct_manager')
@@ -65,8 +70,11 @@ class ProcessUsers extends QueueWorkerBase implements ContainerFactoryPluginInte
    * Collects user contribution and stores it.
    */
   public function processItem($data) {
-    $plugin_id = $data->plugin_id;
-    $user = $data->user;
+    /** @var \Drupal\ct_manager\ContributionProcessQueueItem $data */
+    $plugin_id = $data->getPluginId();
+    $user = $data->getUser();
+
+    /** @var \Drupal\ct_manager\ContributionSourceInterface $plugin_instance */
     $plugin_instance = $this->pluginManager->createInstance($plugin_id);
     if (!($plugin_instance->isUserValid($user))) {
       $this->logger->error('@plugin username for @username is invalid.', ['@plugin' => $plugin_id, '@username' => $user->getUsername()]);
@@ -74,7 +82,7 @@ class ProcessUsers extends QueueWorkerBase implements ContainerFactoryPluginInte
     }
 
     $issues = $plugin_instance->getUserIssues($user);
-    $comments = $plugin_instance->getUserComments($user);
+    $comments = $plugin_instance->getUserCodeContributions($user);
 
     $this->logger->notice('Saving @plugin issues for @user', ['@plugin' => $plugin_id, '@user' => $user->getUsername()]);
     foreach ($issues as $issue) {

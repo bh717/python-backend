@@ -15,7 +15,7 @@ interface ContributionSourceInterface {
   /**
    * Get user contributions from the platform.
    */
-  public function getUserInformation($user);
+  public function isUserValid($user);
 
   /**
    * Get issues from the total contribution data.
@@ -25,6 +25,6 @@ interface ContributionSourceInterface {
   /**
    * Get comments from the total contribution data.
    */
-  public function getUserComments($user);
+  public function getUserCodeContributions($user);
 
 }
