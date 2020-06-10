@@ -49,6 +49,7 @@ drupal_tests:
     - ./vendor/drush/drush/drush -y config-import
 
     #  Phpunit execution
+    - ./vendor/bin/phpunit --testsuite unit
     - ./vendor/bin/phpunit --bootstrap=./vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php --configuration ./phpunit.xml --testsuite existing-site
   except:
     - schedule
