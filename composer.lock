@@ -3833,12 +3833,12 @@
             "version": "0.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/njh/easyrdf.git",
+                "url": "https://github.com/easyrdf/easyrdf.git",
                 "reference": "acd09dfe0555fbcfa254291e433c45fdd4652566"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/njh/easyrdf/zipball/acd09dfe0555fbcfa254291e433c45fdd4652566",
+                "url": "https://api.github.com/repos/easyrdf/easyrdf/zipball/acd09dfe0555fbcfa254291e433c45fdd4652566",
                 "reference": "acd09dfe0555fbcfa254291e433c45fdd4652566",
                 "shasum": ""
             },
@@ -9377,16 +9377,16 @@
         },
         {
             "name": "axelerant/drupal-quality-checker",
-            "version": "v1.0-beta7",
+            "version": "v1.0-beta8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axelerant/drupal-quality-checker.git",
-                "reference": "cd915936be1575743135d7bc89db65e7537406b8"
+                "reference": "a2c5303ddfc2a78af41afd8de37a06ae63387225"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axelerant/drupal-quality-checker/zipball/cd915936be1575743135d7bc89db65e7537406b8",
-                "reference": "cd915936be1575743135d7bc89db65e7537406b8",
+                "url": "https://api.github.com/repos/axelerant/drupal-quality-checker/zipball/a2c5303ddfc2a78af41afd8de37a06ae63387225",
+                "reference": "a2c5303ddfc2a78af41afd8de37a06ae63387225",
                 "shasum": ""
             },
             "require": {
@@ -9430,7 +9430,7 @@
             ],
             "description": "Code quality checking tools for Drupal project.",
             "homepage": "https://github.com/axelerant/drupal-quality-checker",
-            "time": "2020-04-24T20:13:10+00:00"
+            "time": "2020-06-10T04:34:54+00:00"
         },
         {
             "name": "behat/mink",
@@ -9607,16 +9607,16 @@
         },
         {
             "name": "composer/xdebug-handler",
-            "version": "1.4.1",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "1ab9842d69e64fb3a01be6b656501032d1b78cb7"
+                "reference": "fa2aaf99e2087f013a14f7432c1cd2dd7d8f1f51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/1ab9842d69e64fb3a01be6b656501032d1b78cb7",
-                "reference": "1ab9842d69e64fb3a01be6b656501032d1b78cb7",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/fa2aaf99e2087f013a14f7432c1cd2dd7d8f1f51",
+                "reference": "fa2aaf99e2087f013a14f7432c1cd2dd7d8f1f51",
                 "shasum": ""
             },
             "require": {
@@ -9651,9 +9651,17 @@
                 {
                     "url": "https://packagist.com",
                     "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
                 }
             ],
-            "time": "2020-03-01T12:26:26+00:00"
+            "time": "2020-06-04T11:16:35+00:00"
         },
         {
             "name": "cypresslab/gitelephant",

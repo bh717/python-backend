@@ -12,11 +12,18 @@ parameters:
     yamllint: ~
     composer: ~
     jsonlint: ~
+    twigcs:
+      path: 'web'
+      exclude:
+        - core
+        - modules/contrib
+        - themes/contrib
+        - profiles/contrib
     phpcpd:
       directory: ['./web/modules/custom']
     phpcs:
       standard:
-        - vendor/axelerant/drupal-quality-checker/phpcs.xml.dist
+        - phpcs.xml.dist
       ignore_patterns:
         - .github
         - .gitlab
@@ -34,7 +41,6 @@ parameters:
         - css
         - info
         - txt
-        - md
     phpmd:
       whitelist_patterns:
         - /^web\/modules\/custom\/(.*)/
