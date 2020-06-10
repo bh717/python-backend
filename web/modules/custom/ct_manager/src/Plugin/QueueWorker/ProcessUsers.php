@@ -68,11 +68,7 @@ class ProcessUsers extends QueueWorkerBase implements ContainerFactoryPluginInte
     $plugin_id = $data->plugin_id;
     $user = $data->user;
     $plugin_instance = $this->pluginManager->createInstance($plugin_id);
-    try {
-      $plugin_instance->getUserInformation($user);
-    }
-    catch (\RuntimeException $ex) {
-      // @TODO: Make exception classes more specific.
+    if (!($plugin_instance->isUserValid($user))) {
       $this->logger->error('@plugin username for @username is invalid.', ['@plugin' => $plugin_id, '@username' => $user->getUsername()]);
       return;
     }
