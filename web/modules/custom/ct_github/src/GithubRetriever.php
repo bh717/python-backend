@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\ct_github;
 
+use DateTimeImmutable;
 use Drupal\ct_manager\Data\CodeContribution;
 use Drupal\ct_manager\Data\Issue;
 
@@ -84,10 +85,9 @@ class GithubRetriever {
           $message = explode("\n", $node['commit']['message']);
           $title = reset($message);
           $url = $node['commit']['url'];
-          $date = $node['commit']['committedDate'];
+          $date = new DateTimeImmutable($node['commit']['committedDate']);
           $commit = (new CodeContribution($title, $url, $date))
             ->setDescription($node['commit']['message'])
-            ->setCreated($node['commit']['committedDate'])
             ->setProject($node['commit']['repository']['name'])
             ->setIssue(new Issue($data['title'], $data['url']))
             ->setPatchCount(1);
@@ -100,9 +100,8 @@ class GithubRetriever {
     foreach ($userContributions['issueComments']['nodes'] as $node) {
       $title = 'Comment on ' . $node['issue']['title'];
       $url = $node['url'];
-      $date = $node['createdAt'];
+      $date = new DateTimeImmutable($node['createdAt']);
       $comment = (new CodeContribution($title, $url, $date))
-        ->setCreated($node['createdAt'])
         ->setProject($node['issue']['repository']['name'])
         ->setIssue(new Issue($node['issue']['title'], $node['issue']['url']));
       $codeContribution[] = $comment;
