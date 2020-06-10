@@ -1,5 +1,5 @@
 {
-    "name": "drupal/ct_github",
+    "name": "axelerant/ct_github",
     "type": "drupal-custom-module",
     "description": "Tracks contributions from github.com",
     "require": {

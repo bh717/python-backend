@@ -13,10 +13,15 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "path",
+            "url": "web/modules/custom/ct_github"
         }
     ],
     "require": {
         "php": ">=7.4",
+        "axelerant/ct_github": "*",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
         "drupal/address": "^1.0",
