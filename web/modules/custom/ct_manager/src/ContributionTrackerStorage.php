@@ -6,6 +6,11 @@ namespace Drupal\ct_manager;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
+use Drupal\ct_manager\Data\CodeContribution;
+use Drupal\ct_manager\Data\Issue;
+use Drupal\node\Entity\Node;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\user\Entity\User;
 
 /**
  * Class implementation of the storage utility.
@@ -44,62 +49,63 @@ class ContributionTrackerStorage {
   /**
    * Save Issues.
    */
-  public function saveIssue($issue) {
-    $title = $issue['title'] ?: '(not found)';
+  public function saveIssue(Issue $issue): Node {
     // Create an issue.
     $node = $this->nodeStorage->create([
       'type' => 'issue',
-      'title' => $title,
-      'field_issue_link' => $issue['url'],
+      'title' => $issue->getTitle() ?: '(not found)',
+      'field_issue_link' => $issue->getUrl(),
+      'body' => [
+        'value' => $issue->getDescription(),
+        'format' => 'basic_html',
+      ],
     ]);
     $node->save();
     return $node;
-
   }
 
   /**
    * Save code contributions.
    */
-  public function saveCodeContribution($comment, $issueNode, $user) {
-    $commentBody = '';
+  public function saveCodeContribution(CodeContribution $comment, Node $issueNode, User $user): Node {
+    $title = $comment->getTitle();
+    $commentBody = $comment->getDescription();
 
-    if (empty($comment['title'])) {
-      $comment['title'] = 'Comment on ' . $issueNode->getTitle();
-      if (!empty($comment['description'])) {
-        $commentBody = $comment['description'];
-        $comment['title'] = strip_tags($commentBody);
-        if (strlen($comment['title']) > 80) {
-          $comment['title'] = substr($comment['title'], 0, 77) . '...';
+    if (empty($title)) {
+      $title = 'Comment on ' . $issueNode->getTitle();
+      if (!empty($commentBody)) {
+        $title = strip_tags($commentBody);
+        if (strlen($title) > 80) {
+          $title = substr($comment['title'], 0, 77) . '...';
         }
       }
     }
 
     $node = $this->nodeStorage->create([
       'type' => 'code_contribution',
-      'title' => $comment['title'],
-      'field_code_contrib_link' => $comment['url'],
+      'title' => $title,
+      'field_code_contrib_link' => $comment->getUrl(),
       'field_contribution_author' => $user->id(),
-      'field_contribution_date' => date('Y-m-d', $comment['created']),
+      'field_contribution_date' => $comment->getDate()->format('Y-m-d'),
       'field_contribution_description' => [
         'value' => $commentBody,
         'format' => 'basic_html',
       ],
       'field_code_contrib_issue_link' => $issueNode->id(),
-      'field_code_contrib_project' => $this->getOrCreateTerm($comment['project'], 'project')->id(),
-      'field_code_contrib_issue_status' => $comment['status'] ?: NULL,
-      'field_contribution_technology' => $comment['technology'] ?: NULL,
-      'field_code_contrib_files_count' => $comment['file'] ?: 0,
-      'field_code_contrib_patches_count' => $comment['patch'] ?: 0,
+      'field_code_contrib_project' => $this->getOrCreateTerm($comment->getProject(), 'project')->id(),
+      'field_code_contrib_issue_status' => $comment->getStatus() ?: NULL,
+      'field_contribution_technology' => $comment->getTechnology() ?: NULL,
+      'field_code_contrib_files_count' => $comment->getFilesCount() ?: 0,
+      'field_code_contrib_patches_count' => $comment->getPatchCount() ?: 0,
     ]);
     $node->save();
     return $node;
-
   }
 
   /**
    * Get issue of type issue.
    */
-  public function getNodeForIssue($issueLink) {
+  public function getNodeForIssue(string $issueLink): ?Node {
     $issues = $this->nodeStorage->getQuery()
       ->condition('type', 'issue')
       ->condition('field_issue_link', $issueLink)
@@ -111,7 +117,7 @@ class ContributionTrackerStorage {
   /**
    * Get node of type code_contribution.
    */
-  public function getNodeForCodeContribution($commentLink) {
+  public function getNodeForCodeContribution(string $commentLink): ?Node {
     $nodes = $this->nodeStorage->getQuery()
       ->condition('type', 'code_contribution')
       ->condition('field_code_contrib_link', $commentLink)
@@ -123,12 +129,9 @@ class ContributionTrackerStorage {
   /**
    * Retrieves the node detail for issues.
    */
-  public function getOrCreateIssueNode($issueUrl, $issueTitle) {
-    $issueNode = $this->getNodeForIssue($issueUrl);
+  public function getOrCreateIssueNode(Issue $issue): Node {
+    $issueNode = $this->getNodeForIssue($issue->getUrl());
     if (!$issueNode) {
-      $issue = [];
-      $issue['title'] = $issueTitle;
-      $issue['url'] = $issueUrl;
       $issueNode = $this->saveIssue($issue);
     }
     return $issueNode;
@@ -145,7 +148,7 @@ class ContributionTrackerStorage {
    * @return \Drupal\taxonomy\TermInterface
    *   The term with the given name in the given vocabulary.
    */
-  protected function getOrCreateTerm($termName, $vocabulary) {
+  protected function getOrCreateTerm(string $termName, string $vocabulary): Term {
     $terms = $this->termStorage->getQuery()
       ->condition('name', $termName)
       ->condition('vid', $vocabulary)

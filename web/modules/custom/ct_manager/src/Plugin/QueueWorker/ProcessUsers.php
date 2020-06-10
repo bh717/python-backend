@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Drupal\ct_manager\Plugin\QueueWorker;
 
+use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Queue\QueueWorkerBase;
-use Drupal\Core\Logger\LoggerChannelInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\ct_manager\ContributionSourcePluginManager;
 use Drupal\ct_manager\ContributionTrackerStorage;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Processes users for individual plugin implementations.
  *
  * @QueueWorker(
  *   id = "ct_manager_process_users",
- *   title = @Translation("Process users for each plugin implementation of ct_manager"),
- *   cron = {"time" = 600}
+ *   title = @Translation("Process users for each plugin implementation of
+ *   ct_manager"), cron = {"time" = 600}
  * )
  */
 class ProcessUsers extends QueueWorkerBase implements ContainerFactoryPluginInterface {
@@ -87,21 +87,23 @@ class ProcessUsers extends QueueWorkerBase implements ContainerFactoryPluginInte
     $comments = $plugin_instance->getUserCodeContributions($user);
 
     $this->logger->notice('Saving @plugin issues for @user', ['@plugin' => $plugin_id, '@user' => $user->getUsername()]);
+    /** @var \Drupal\ct_manager\Data\Issue $issue */
     foreach ($issues as $issue) {
-      if ($this->contribStorage->getNodeForIssue($issue['url'])) {
-        $this->logger->notice('Skipping issue @issue, and all after it.', ['@issue' => $issue['url']]);
+      if ($this->contribStorage->getNodeForIssue($issue->getUrl())) {
+        $this->logger->notice('Skipping issue @issue, and all after it.', ['@issue' => $issue->getUrl()]);
         break;
       }
       $this->contribStorage->saveIssue($issue);
     }
 
     $this->logger->notice('Saving @plugin code contributions for @user', ['@plugin' => $plugin_id, '@user' => $user->getUsername()]);
+    /** @var \Drupal\ct_manager\Data\CodeContribution $comment */
     foreach ($comments as $comment) {
-      if ($this->contribStorage->getNodeForCodeContribution($comment['url'])) {
+      if ($this->contribStorage->getNodeForCodeContribution($comment->getUrl())) {
         $this->logger->notice('Skipping code contribution @comment, and all after it.', ['@comment' => $comment['url']]);
         break;
       }
-      $issueNode = $this->contribStorage->getOrCreateIssueNode($comment['issueUrl'], $comment['issueTitle']);
+      $issueNode = $this->contribStorage->getOrCreateIssueNode($comment->getIssue());
       $this->contribStorage->saveCodeContribution($comment, $issueNode, $user);
     }
   }

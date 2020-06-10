@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Drupal\ct_github\Plugin\ContributionSource;
 
+use Drupal\Component\Plugin\PluginBase;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\ct_github\GithubQuery;
 use Drupal\ct_github\GithubRetriever;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\ct_manager\ContributionSourceInterface;
 use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Component\Plugin\PluginBase;
 
 /**
  * Retrieve and Store contributions from github.com.
