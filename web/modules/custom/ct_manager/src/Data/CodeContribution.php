@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Drupal\ct_manager\Data;
 
+use DateTimeImmutable;
+
 final class CodeContribution {
 
   /**
@@ -14,7 +16,7 @@ final class CodeContribution {
   /**
    * @var \DateTimeImmutable Date of the contribution.
    */
-  protected \DateTimeImmutable $date;
+  protected DateTimeImmutable $date;
 
   /**
    * @var string URL of the contribution.
@@ -25,11 +27,6 @@ final class CodeContribution {
    * @var string Description.
    */
   protected string $description;
-
-  /**
-   * @var \DateTimeImmutable Created date.
-   */
-  protected \DateTimeImmutable $created;
 
   /**
    * @var string Project.
@@ -47,9 +44,9 @@ final class CodeContribution {
   protected int $filesCount;
 
   /**
-   * @var int Status.
+   * @var string Status.
    */
-  protected int $status;
+  protected string $status;
 
   /**
    * @var string Technology.
@@ -75,7 +72,7 @@ final class CodeContribution {
     return $this->url;
   }
 
-  public function getDate(): \DateTimeImmutable {
+  public function getDate(): DateTimeImmutable {
     return $this->date;
   }
 
@@ -85,15 +82,6 @@ final class CodeContribution {
 
   public function setDescription(string $description): self {
     $this->description = $description;
-    return $this;
-  }
-
-  public function getCreated(): \DateTimeImmutable {
-    return $this->created;
-  }
-
-  public function setCreated(string $created): self {
-    $this->created = $created;
     return $this;
   }
 
@@ -110,8 +98,8 @@ final class CodeContribution {
     return $this->issue;
   }
 
-  public function setIssue(string $title, string $url): self {
-    $this->issue = new Issue($title, $url);
+  public function setIssue(Issue $issue): self {
+    $this->issue = $issue;
     return $this;
   }
 
@@ -133,11 +121,11 @@ final class CodeContribution {
     return $this;
   }
 
-  public function getStatus(): int {
+  public function getStatus(): string {
     return $this->status;
   }
 
-  public function setStatus(int $status): self {
+  public function setStatus(string $status): self {
     $this->status = $status;
     return $this;
   }

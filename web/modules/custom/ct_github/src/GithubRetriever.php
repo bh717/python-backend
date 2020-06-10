@@ -89,7 +89,7 @@ class GithubRetriever {
             ->setDescription($node['commit']['message'])
             ->setCreated($node['commit']['committedDate'])
             ->setProject($node['commit']['repository']['name'])
-            ->setIssue($data['title'], $data['url'])
+            ->setIssue(new Issue($data['title'], $data['url']))
             ->setPatchCount(1);
           $codeContribution[] = $commit;
         }
@@ -104,7 +104,7 @@ class GithubRetriever {
       $comment = (new CodeContribution($title, $url, $date))
         ->setCreated($node['createdAt'])
         ->setProject($node['issue']['repository']['name'])
-        ->setIssue($node['issue']['title'], $node['issue']['url']);
+        ->setIssue(new Issue($node['issue']['title'], $node['issue']['url']));
       $codeContribution[] = $comment;
     }
     return $codeContribution;
