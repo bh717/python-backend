@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\ct_github;
 
 use Github\Client;
@@ -58,13 +60,13 @@ class GithubQuery {
   public function getQuery($username) {
     $query = <<<QUERY
                   query{
-                    user(login: "$username"){ 
+                    user(login: "$username"){
                       issues(last: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
                         nodes {
                           url
                           title
-                        }  
-                      }  
+                        }
+                      }
                       pullRequests(last: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
                         nodes {
                           url
@@ -97,7 +99,7 @@ class GithubQuery {
                             }
                           }
                         }
-                      }                      
+                      }
                     }
                   }
                 QUERY;

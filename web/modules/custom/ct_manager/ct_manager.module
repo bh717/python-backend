@@ -5,6 +5,8 @@
  * Contribution manager module.
  */
 
+declare(strict_types=1);
+
 use Drupal\ct_manager\ContributionProcessQueueItem;
 
 /**

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\ct_manager;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
