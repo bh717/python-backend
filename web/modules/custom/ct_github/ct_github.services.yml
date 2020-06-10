@@ -1,4 +1,7 @@
 services:
-  ct_github.client:
-    class: Drupal\ct_github\GithubClient
-    arguments: ['@config.factory']
+  ct_github.query:
+    class: Drupal\ct_github\GithubQuery 
+    arguments: ['@config.factory', '@cache.data'] 
+  ct_github.loggerChannel:
+    parent: logger.channel_base
+    arguments: ['ct_github']

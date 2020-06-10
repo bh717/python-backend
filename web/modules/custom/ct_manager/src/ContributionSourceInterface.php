@@ -15,16 +15,16 @@ interface ContributionSourceInterface {
   /**
    * Get user contributions from the platform.
    */
-  public function getUserInformation();
+  public function getUserInformation($user);
 
   /**
    * Get issues from the total contribution data.
    */
-  public function getUserIssues();
+  public function getUserIssues($user);
 
   /**
    * Get comments from the total contribution data.
    */
-  public function getUserComments();
+  public function getUserComments($user);
 
 }
