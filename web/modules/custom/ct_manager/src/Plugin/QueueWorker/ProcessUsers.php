@@ -9,6 +9,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Queue\QueueWorkerBase;
 use Drupal\ct_manager\ContributionSourcePluginManager;
 use Drupal\ct_manager\ContributionTrackerStorage;
+use Drupal\ct_manager\Data\Issue;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -100,10 +101,11 @@ class ProcessUsers extends QueueWorkerBase implements ContainerFactoryPluginInte
     /** @var \Drupal\ct_manager\Data\CodeContribution $comment */
     foreach ($comments as $comment) {
       if ($this->contribStorage->getNodeForCodeContribution($comment->getUrl())) {
-        $this->logger->notice('Skipping code contribution @comment, and all after it.', ['@comment' => $comment['url']]);
+        $this->logger->notice('Skipping code contribution @comment, and all after it.', ['@comment' => $comment->getUrl()]);
         break;
       }
-      $issueNode = $this->contribStorage->getOrCreateIssueNode($comment->getIssue());
+      $issue = $comment->getIssue() ?: new Issue("(no issue)", "https://contrib.axelerant.com");
+      $issueNode = $this->contribStorage->getOrCreateIssueNode($issue);
       $this->contribStorage->saveCodeContribution($comment, $issueNode, $user);
     }
   }

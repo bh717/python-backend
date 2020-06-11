@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.user.user.field_drupalorg_username
+    - field.field.user.user.field_github_username
     - field.field.user.user.user_picture
     - image.style.thumbnail
   module:
@@ -18,9 +19,9 @@ mode: default
 content:
   account:
     weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
   contact:
     weight: 5
     region: content
@@ -32,22 +33,30 @@ content:
       placeholder: ''
     third_party_settings: {  }
     region: content
+  field_github_username:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   language:
-    weight: 3
-    settings: {  }
-    third_party_settings: {  }
-    region: content
-  timezone:
     weight: 4
+    region: content
     settings: {  }
     third_party_settings: {  }
+  timezone:
+    weight: 5
     region: content
+    settings: {  }
+    third_party_settings: {  }
   user_picture:
     type: image_image
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: content
 hidden: {  }

@@ -14,7 +14,7 @@ final class Issue {
   /**
    * @var string Description.
    */
-  protected string $description;
+  protected string $description = '';
 
   /**
    * @var string URL of the contribution.
