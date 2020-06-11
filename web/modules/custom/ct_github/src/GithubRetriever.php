@@ -91,21 +91,30 @@ class GithubRetriever {
             ->setProject($node['commit']['repository']['name'])
             ->setIssue(new Issue($data['title'], $data['url']))
             ->setPatchCount(1);
-          $codeContribution[] = $commit;
+          $codeContribution[$url] = $commit;
         }
       }
     }
 
     // Get all comments from PRs and issues associated with the user.
-    foreach ($userContributions['issueComments']['nodes'] as $node) {
+    foreach ($userContributions['data']['user']['issueComments']['nodes'] as $node) {
       $title = 'Comment on ' . $node['issue']['title'];
       $url = $node['url'];
       $date = new DateTimeImmutable($node['createdAt']);
       $comment = (new CodeContribution($title, $url, $date))
         ->setProject($node['issue']['repository']['name'])
         ->setIssue(new Issue($node['issue']['title'], $node['issue']['url']));
-      $codeContribution[] = $comment;
+      $codeContribution[$url] = $comment;
     }
+
+    // Contribution Storage in ct_manager expects this array to be sorted
+    // in descending order.
+    $codeContribution = array_values($codeContribution);
+    usort(
+      $codeContribution,
+      // phpcs:ignore
+      fn(CodeContribution $first, CodeContribution $second) => $second->getDate()->getTimestamp() <=> $first->getDate()->getTimestamp()
+    );
     return $codeContribution;
   }
 

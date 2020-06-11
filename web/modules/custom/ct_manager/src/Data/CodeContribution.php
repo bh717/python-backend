@@ -26,37 +26,37 @@ final class CodeContribution {
   /**
    * @var string Description.
    */
-  protected string $description;
+  protected string $description = '';
 
   /**
    * @var string Project.
    */
-  protected string $project;
+  protected string $project = '';
 
   /**
    * @var int Patch count.
    */
-  protected int $patchCount;
+  protected int $patchCount = 0;
 
   /**
   * @var int File count.
   */
-  protected int $filesCount;
+  protected int $filesCount = 0;
 
   /**
    * @var string Status.
    */
-  protected string $status;
+  protected string $status = '';
 
   /**
    * @var string Technology.
    */
-  protected string $technology;
+  protected string $technology = '';
 
   /**
    * @var \Drupal\ct_manager\Data\Issue Related issue.
    */
-  protected Issue $issue;
+  protected ?Issue $issue = NULL;
 
   public function __construct(string $title, string $url, \DateTimeImmutable $date) {
     $this->title = $title;
@@ -94,7 +94,7 @@ final class CodeContribution {
     return $this;
   }
 
-  public function getIssue(): Issue {
+  public function getIssue(): ?Issue {
     return $this->issue;
   }
 
