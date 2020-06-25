@@ -45,7 +45,7 @@
         "drush/drush": "^10.3.0",
         "geocoder-php/nominatim-provider": "^5.1",
         "platformsh/config-reader": "^2.3.0",
-        "vlucas/phpdotenv": "^4.0",
+        "vlucas/phpdotenv": "^5.0",
         "wikimedia/composer-merge-plugin": "^1.4",
         "zaporylie/composer-drupal-optimizations": "^1.1"
     },
