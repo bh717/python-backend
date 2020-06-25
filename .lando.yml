@@ -12,7 +12,7 @@ services:
   database:
     type: mariadb:10.4
     overrides:
-      image: registry.axl8.xyz/contrib-tracker/backend/db:latest
+      image: registry.gitorious.xyz/contrib-tracker/backend/db:latest
 
 tooling:
   drush:
