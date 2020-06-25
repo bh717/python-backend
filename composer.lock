@@ -6148,16 +6148,16 @@
         },
         {
             "name": "phpoption/phpoption",
-            "version": "1.7.3",
+            "version": "1.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/php-option.git",
-                "reference": "4acfd6a4b33a509d8c88f50e5222f734b6aeebae"
+                "reference": "b2ada2ad5d8a32b89088b8adc31ecd2e3a13baf3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/4acfd6a4b33a509d8c88f50e5222f734b6aeebae",
-                "reference": "4acfd6a4b33a509d8c88f50e5222f734b6aeebae",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/b2ada2ad5d8a32b89088b8adc31ecd2e3a13baf3",
+                "reference": "b2ada2ad5d8a32b89088b8adc31ecd2e3a13baf3",
                 "shasum": ""
             },
             "require": {
@@ -6199,7 +6199,17 @@
                 "php",
                 "type"
             ],
-            "time": "2020-03-21T18:07:53+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpoption/phpoption",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-06-07T10:40:07+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -7533,7 +7543,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.4.41",
+            "version": "v3.4.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -7597,7 +7607,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.41",
+            "version": "v3.4.42",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -7642,6 +7652,20 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-02-14T07:34:21+00:00"
         },
         {
@@ -9668,16 +9692,16 @@
     "packages-dev": [
         {
             "name": "axelerant/db-docker",
-            "version": "v1.0.0-beta5",
+            "version": "v1.0.0-beta7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axelerant/db-docker.git",
-                "reference": "32cdefdbfb1f05bcb084f829e94c161b8bd77379"
+                "reference": "682565f0a1a93fef9befb6155119ca4874035892"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axelerant/db-docker/zipball/32cdefdbfb1f05bcb084f829e94c161b8bd77379",
-                "reference": "32cdefdbfb1f05bcb084f829e94c161b8bd77379",
+                "url": "https://api.github.com/repos/axelerant/db-docker/zipball/682565f0a1a93fef9befb6155119ca4874035892",
+                "reference": "682565f0a1a93fef9befb6155119ca4874035892",
                 "shasum": ""
             },
             "require": {
@@ -9710,7 +9734,7 @@
                 }
             ],
             "description": "Support tools for Database as docker images.",
-            "time": "2020-06-03T17:36:55+00:00"
+            "time": "2020-06-25T18:07:05+00:00"
         },
         {
             "name": "axelerant/drupal-quality-checker",
