@@ -32,7 +32,7 @@ The following tools are required for setting up the site. Ensure you are using t
 Once you have all the tools installed, proceed to run the following to clone the repository.
 
 ```bash
-$ git clone git@gitlab.axl8.xyz:contrib-tracker/backend.git
+$ git clone git@gitorious.xyz:contrib-tracker/backend.git
 ```
 Change to the directory of repository and run lando to start.
 
