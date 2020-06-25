@@ -29,7 +29,7 @@ drupal_tests:
   <<: *default-pipelines
   image: hussainweb/drupal-base:php7.4
   services:
-    - name: registry.axl8.xyz/contrib-tracker/backend/db:latest
+    - name: registry.gitorious.xyz/contrib-tracker/backend/db:latest
       alias: mariadb
   stage: test
   tags:
