@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Drupal\ct_manager;
 
 use Drupal\user\Entity\User;
+use Drupal\ct_manager\Data\CodeContributionCollection;
+use Drupal\ct_manager\Data\IssueCollection;
 
 /**
  * An interface for all Contribution type plugins.
@@ -24,11 +26,11 @@ interface ContributionSourceInterface {
   /**
    * Get issues from the total contribution data.
    */
-  public function getUserIssues(User $user);
+  public function getUserIssues(User $user): IssueCollection;
 
   /**
    * Get comments from the total contribution data.
    */
-  public function getUserCodeContributions(User $user);
+  public function getUserCodeContributions(User $user): CodeContributionCollection;
 
 }
