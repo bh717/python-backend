@@ -30,16 +30,19 @@ class CodeContributionTest extends UnitTestCase {
     $date = new DateTimeImmutable();
     $issue = new Issue("issueTitle", "issueURL");
     $contribution = (new CodeContribution("Title", "https://drupal.org/example", $date))
+      ->setAccountUrl("https://drupal.org/user/1")
       ->setDescription("Description")
       ->setFilesCount(1)
       ->setIssue($issue)
       ->setPatchCount(1)
       ->setProject("Project")
+      ->setProjectUrl("https://drupal.org/project/example")
       ->setStatus("Status")
       ->setTechnology("Technology");
 
     $this->assertSame("Title", $contribution->getTitle());
     $this->assertSame("https://drupal.org/example", $contribution->getUrl());
+    $this->assertSame("https://drupal.org/user/1", $contribution->getAccountUrl());
     $this->assertSame("Description", $contribution->getDescription());
     $this->assertSame($date->format('c'), $contribution->getDate()->format('c'));
     $this->assertSame(1, $contribution->getFilesCount());
@@ -47,6 +50,7 @@ class CodeContributionTest extends UnitTestCase {
     $this->assertSame("issueURL", $contribution->getIssue()->getUrl());
     $this->assertSame(1, $contribution->getPatchCount());
     $this->assertSame("Project", $contribution->getProject());
+    $this->assertSame("https://drupal.org/project/example", $contribution->getProjectUrl());
     $this->assertSame("Status", $contribution->getStatus());
     $this->assertSame("Technology", $contribution->getTechnology());
   }
