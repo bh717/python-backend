@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\ct_manager;
 
 use Drupal\user\Entity\User;
+use Drupal\ct_manager\Data\CodeContribution;
 use Drupal\ct_manager\Data\CodeContributionCollection;
 use Drupal\ct_manager\Data\IssueCollection;
 
@@ -32,5 +33,10 @@ interface ContributionSourceInterface {
    * Get comments from the total contribution data.
    */
   public function getUserCodeContributions(User $user): CodeContributionCollection;
+
+  /**
+   * Get message for notification.
+   */
+  public function getNotificationMessage(CodeContribution $contribution, User $user): string;
 
 }

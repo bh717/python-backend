@@ -87,8 +87,10 @@ class GithubRetriever {
           $url = $node['commit']['url'];
           $date = new DateTimeImmutable($node['commit']['committedDate']);
           $commit = (new CodeContribution($title, $url, $date))
+            ->setAccountUrl('https://www.github.com/' . $this->username)
             ->setDescription($node['commit']['message'])
             ->setProject($node['commit']['repository']['name'])
+            ->setProjectUrl('https://github.com/' . $this->username . '/' . $node['commit']['repository']['name'])
             ->setIssue(new Issue($data['title'], $data['url']))
             ->setPatchCount(1);
           $codeContribution[$url] = $commit;
@@ -102,7 +104,9 @@ class GithubRetriever {
       $url = $node['url'];
       $date = new DateTimeImmutable($node['createdAt']);
       $comment = (new CodeContribution($title, $url, $date))
+        ->setAccountUrl('https://www.github.com/' . $this->username)
         ->setProject($node['issue']['repository']['name'])
+        ->setProjectUrl('https://github.com/' . $this->username . '/' . $node['issue']['repository']['name'])
         ->setIssue(new Issue($node['issue']['title'], $node['issue']['url']));
       $codeContribution[$url] = $comment;
     }
