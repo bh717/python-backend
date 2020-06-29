@@ -10,6 +10,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\ct_github\GithubQuery;
 use Drupal\ct_github\GithubRetriever;
 use Drupal\ct_manager\ContributionSourceInterface;
+use Drupal\ct_manager\Data\CodeContribution;
 use Drupal\ct_manager\Data\CodeContributionCollection;
 use Drupal\ct_manager\Data\IssueCollection;
 use Drupal\user\Entity\User;
@@ -123,6 +124,22 @@ class GithubContribution extends PluginBase implements ContributionSourceInterfa
    */
   public function getUserCodeContributions(User $user): CodeContributionCollection {
     return new CodeContributionCollection($this->getOrCreateRetriever($user)->getCodeContributions());
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getNotificationMessage(CodeContribution $contribution, User $user): string {
+    $commentBody = $contribution->getDescription() ?: '';
+    $commentBody = (strlen($commentBody) > 80) ? (substr($commentBody, 0, 77) . '...') : '';
+    $issue = $contribution->getIssue();
+    $msg = sprintf('<a href="%s">%s</a>', $contribution->getAccountUrl(), $user->getDisplayName());
+    $msg .= sprintf(' posted a comment on <a href="%s">%s</a>', $contribution->getUrl(), $issue->getTitle());
+    $msg .= sprintf(' in project <a href="%s">%s</a>.', $contribution->getProjectUrl(), $contribution->getProject());
+    $msg .= "\n";
+    $msg .= $commentBody;
+
+    return $msg;
   }
 
 }
