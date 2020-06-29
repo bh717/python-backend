@@ -24,6 +24,11 @@ final class CodeContribution {
   protected string $url;
 
   /**
+   * @var string URL of user account on the platform.
+   */
+  protected string $accountUrl;
+
+  /**
    * @var string Description.
    */
   protected string $description = '';
@@ -32,6 +37,11 @@ final class CodeContribution {
    * @var string Project.
    */
   protected string $project = '';
+
+  /**
+   * @var string ProjectUrl.
+   */
+  protected string $projectUrl = '';
 
   /**
    * @var int Patch count.
@@ -76,6 +86,15 @@ final class CodeContribution {
     return $this->date;
   }
 
+  public function getAccountUrl(): string {
+    return $this->accountUrl;
+  }
+
+  public function setAccountUrl(string $accountUrl): self {
+    $this->accountUrl = $accountUrl;
+    return $this;
+  }
+
   public function getDescription(): string {
     return $this->description;
   }
@@ -91,6 +110,15 @@ final class CodeContribution {
 
   public function setProject(string $project): self {
     $this->project = $project;
+    return $this;
+  }
+
+  public function getProjectUrl(): string {
+    return $this->projectUrl;
+  }
+
+  public function setProjectUrl(string $projectUrl): self {
+    $this->projectUrl = $projectUrl;
     return $this;
   }
 
