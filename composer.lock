@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e4c5e2a1512e0425f0ae4096679c66b4",
+    "content-hash": "6d357e4b9cceb8794bdc3d6f1157fc6f",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1986,9 +1986,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.8",
                     "datestamp": "1583988119",
@@ -2121,7 +2118,7 @@
                 "reference": "b2ad83c5510cd8aa3bb5e9819d99280b5287a00a"
             },
             "require": {
-                "drupal/core": "*"
+                "drupal/core": "^8"
             },
             "type": "drupal-module",
             "extra": {
@@ -2935,9 +2932,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-4.x": "4.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-4.0-beta1",
                     "datestamp": "1572442085",
@@ -3050,7 +3044,7 @@
             "extra": {
                 "drupal": {
                     "version": "8.x-3.2",
-                    "datestamp": "1590953985",
+                    "datestamp": "1591316428",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3414,9 +3408,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.4",
                     "datestamp": "1581504947",
@@ -3468,8 +3459,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2+14-dev",
-                    "datestamp": "1562750885",
+                    "version": "8.x-1.2+15-dev",
+                    "datestamp": "1575884580",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -3592,9 +3583,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.0-rc2",
                     "datestamp": "1576820588",
@@ -4413,59 +4401,6 @@
                 "url"
             ],
             "time": "2019-07-01T23:21:34+00:00"
-        },
-        {
-            "name": "hussainweb/drupal-api-client",
-            "version": "1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hussainweb/drupal-api-client.git",
-                "reference": "d15de9591a3d5181b4d44c2e50235fb98b3d3448"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hussainweb/drupal-api-client/zipball/d15de9591a3d5181b4d44c2e50235fb98b3d3448",
-                "reference": "d15de9591a3d5181b4d44c2e50235fb98b3d3448",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~6.1",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0|~5.0",
-                "squizlabs/php_codesniffer": "~2.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Hussainweb\\DrupalApi\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Hussain Abbas",
-                    "email": "hussainweb@gmail.com",
-                    "homepage": "http://hussainweb.me",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Convenient wrapper on Guzzle to access Drupal.org API",
-            "keywords": [
-                "Guzzle",
-                "api",
-                "drupal"
-            ],
-            "time": "2016-08-13T18:14:18+00:00"
         },
         {
             "name": "knplabs/github-api",
@@ -9964,6 +9899,59 @@
             "time": "2018-06-29T15:13:57+00:00"
         },
         {
+            "name": "hussainweb/drupal-api-client",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hussainweb/drupal-api-client.git",
+                "reference": "d15de9591a3d5181b4d44c2e50235fb98b3d3448"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hussainweb/drupal-api-client/zipball/d15de9591a3d5181b4d44c2e50235fb98b3d3448",
+                "reference": "d15de9591a3d5181b4d44c2e50235fb98b3d3448",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.1",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0|~5.0",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hussainweb\\DrupalApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Hussain Abbas",
+                    "email": "hussainweb@gmail.com",
+                    "homepage": "http://hussainweb.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Convenient wrapper on Guzzle to access Drupal.org API",
+            "keywords": [
+                "Guzzle",
+                "api",
+                "drupal"
+            ],
+            "time": "2016-08-13T18:14:18+00:00"
+        },
+        {
             "name": "jakub-onderka/php-parallel-lint",
             "version": "v1.0.0",
             "source": {
@@ -11923,8 +11911,7 @@
     "stability-flags": {
         "drupal/better_exposed_filters": 20,
         "drupal/gin": 15,
-        "axelerant/drupal-quality-checker": 10,
-        "drupal/slack": 20
+        "axelerant/drupal-quality-checker": 10
     },
     "prefer-stable": true,
     "prefer-lowest": false,
