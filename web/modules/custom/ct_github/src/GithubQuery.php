@@ -61,13 +61,13 @@ class GithubQuery {
     $query = <<<QUERY
                   query{
                     user(login: "$username"){
-                      issues(last: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
+                      issues(first: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
                         nodes {
                           url
                           title
                         }
                       }
-                      pullRequests(last: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
+                      pullRequests(first: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
                         nodes {
                           url
                           title
