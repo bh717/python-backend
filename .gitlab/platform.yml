@@ -26,6 +26,7 @@ review:
   except:
     - master
     - schedule
+    - /^(renovate/)?(skip|no)-review/.*$/
   environment:
     name: review/$CI_BUILD_REF_NAME
     url: $PLATFORM_URL
@@ -58,6 +59,7 @@ stop_review:
   except:
     - master
     - schedule
+    - /^(renovate/)?(skip|no)-review/.*$/
   environment:
     name: review/$CI_BUILD_REF_NAME
     action: stop
