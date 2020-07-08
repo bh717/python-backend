@@ -1,6 +1,6 @@
 # Github Contribution Tracker
 
-Provides functionality for tracking and processing of usercontribution from Github
+This module provides functionality for tracking issue and PR contributions on Github
 
 ## Table of Contents
 
@@ -8,8 +8,9 @@ Provides functionality for tracking and processing of usercontribution from Gith
 
 ## Introduction
 
-* This project is used to process users based on "Github Username" field value
-and track contribution from Github using GraphQL.
+This module provides a `ContributionSource` plugin which tracks contributions on
+GitHub using its GraphQL API. It also provides a field on user entity to store
+each user's GitHub username.
 
 ## Usage
 
@@ -17,9 +18,9 @@ Once Github Contribution Tracker module is installed, you need to edit the users
 and fill the github username in the field "Github Username" for whom you need to
 track contribution.
 
-Then, after filling user form field value you will have to hit cron which will
-fetch all the users having "Github Username" and process each user to fetch the 
-records from github.
+On the next cron run, the system will fetch all the users with this field set.
+For each user, it will use track all their latest contribution on Github on
+contrib-tracker.
 
 ### Composer dependencies
 
@@ -33,7 +34,7 @@ You need to obtain a [GitHub personal access token](https://github.com/settings/
 to use this module. The recommended approach is to set the token securely in
 an environment variable or by other means and load it in settings.php. As of
 this writing, the site is on platform.sh and uses the variables feature to load
-this in Drupal configuration.
+this in Drupal configuration. For more info regarding platform variable [check here](https://docs.platform.sh/development/variables.html)
 
 ## About Github Tracker
 
