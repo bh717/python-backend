@@ -45,4 +45,4 @@ These are the main areas of interest in the `ct_github` module.
 
 ## Processing logic for contributions
 
-The plugin manager in `ct_manager` would invoke the [plugin](web/modules/custom/ct_github/src/Plugin/ContributionSource/GithubContribution.php) in `ct_github`. This would invoke the API to return the latest 100 code contributions and 100 issues (with some caveats). All of this data is passed back to `ct_manager` which decides on how to store it. For more information, see the README file in `ct_manager`.
+The plugin manager in `ct_manager` would invoke the [plugin](web/modules/custom/ct_github/src/Plugin/ContributionSource/GithubContribution.php) in `ct_github`. This would invoke the API to return the latest 100 code contributions and 100 issues (with some caveats). All of this data is passed back to `ct_manager` which decides on how to store it. For more information, see the [README](web/modules/custom/ct_manager/README.md) in `ct_manager`.
