@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d36c69ae52484a993f19d09f00515037",
+    "content-hash": "07b67379b9c5063ae9cb06c82e83e8ff",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -3684,16 +3684,16 @@
         },
         {
             "name": "drush/drush",
-            "version": "10.3.0",
+            "version": "10.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drush-ops/drush.git",
-                "reference": "166dade258c1f1771354c001c0f73a37b3d214c9"
+                "reference": "aad2b17ad34801d9b55cff903e3e7db65d754b80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drush-ops/drush/zipball/166dade258c1f1771354c001c0f73a37b3d214c9",
-                "reference": "166dade258c1f1771354c001c0f73a37b3d214c9",
+                "url": "https://api.github.com/repos/drush-ops/drush/zipball/aad2b17ad34801d9b55cff903e3e7db65d754b80",
+                "reference": "aad2b17ad34801d9b55cff903e3e7db65d754b80",
                 "shasum": ""
             },
             "require": {
@@ -3816,7 +3816,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-06-22T14:57:31+00:00"
+            "time": "2020-06-30T19:43:45+00:00"
         },
         {
             "name": "easyrdf/easyrdf",
@@ -5024,16 +5024,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.5.0",
+            "version": "v4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "53c2753d756f5adb586dca79c2ec0e2654dd9463"
+                "reference": "c346bbfafe2ff60680258b631afb730d186ed864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/53c2753d756f5adb586dca79c2ec0e2654dd9463",
-                "reference": "53c2753d756f5adb586dca79c2ec0e2654dd9463",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/c346bbfafe2ff60680258b631afb730d186ed864",
+                "reference": "c346bbfafe2ff60680258b631afb730d186ed864",
                 "shasum": ""
             },
             "require": {
@@ -5072,7 +5072,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-06-03T07:24:19+00:00"
+            "time": "2020-07-02T17:12:47+00:00"
         },
         {
             "name": "paragonie/random_compat",
