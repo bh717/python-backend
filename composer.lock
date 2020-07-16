@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d95e86e1c89b3954bf5f3398d6835f7",
+    "content-hash": "e1d9086e843aa87ac220f68a74188868",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -8920,16 +8920,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v5.0.0",
+            "version": "v5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "fbb6a5f65512f21d0db9e21bd49e67f70a9bbd5e"
+                "reference": "448c76d7a9e30c341ff5bc367a923af74ae18467"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/fbb6a5f65512f21d0db9e21bd49e67f70a9bbd5e",
-                "reference": "fbb6a5f65512f21d0db9e21bd49e67f70a9bbd5e",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/448c76d7a9e30c341ff5bc367a923af74ae18467",
+                "reference": "448c76d7a9e30c341ff5bc367a923af74ae18467",
                 "shasum": ""
             },
             "require": {
@@ -8952,7 +8952,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0-dev"
+                    "dev-master": "5.1-dev"
                 }
             },
             "autoload": {
@@ -8992,7 +8992,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-07T19:04:14+00:00"
+            "time": "2020-07-14T19:26:25+00:00"
         },
         {
             "name": "webflo/drupal-finder",
