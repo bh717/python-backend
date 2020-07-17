@@ -51,7 +51,7 @@
     },
     "require-dev": {
         "axelerant/db-docker": "^1.0",
-        "axelerant/drupal-quality-checker": "^1.0.0-beta9@beta",
+        "axelerant/drupal-quality-checker": "1.0.0@beta",
         "phpunit/phpunit": "^7.5",
         "weitzman/drupal-test-traits": "^1.5"
     },
