@@ -1,0 +1,11 @@
+{
+    "name": "axelerant/ct_drupal",
+    "description": "Track contributions from drupal.org",
+    "type": "drupal-custom-module",
+    "license": "GPL-2.0",
+    "require": {
+        "php": ">=5.6",
+        "hussainweb/drupal-api-client": "~1.0",
+        "drupal/slack": "1.x-dev"
+    }
+}
