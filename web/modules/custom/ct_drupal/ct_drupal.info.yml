@@ -1,0 +1,7 @@
+name: Drupal.org Contribution Tracker
+type: module
+description: Tracks contribution of users from Drupal.org.
+core_version_requirement: ^8.8 || ^9.0
+package: Contrib Tracker
+dependencies:
+  - ct_manager:ct_manager

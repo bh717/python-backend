@@ -16,11 +16,16 @@
         },
         {
             "type": "path",
+            "url": "web/modules/custom/ct_drupal"
+        },
+        {
+            "type": "path",
             "url": "web/modules/custom/ct_github"
         }
     ],
     "require": {
         "php": ">=7.4",
+        "axelerant/ct_drupal": "*",
         "axelerant/ct_github": "*",
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6.7",
