@@ -1,6 +1,10 @@
 services:
+  contrib_tracker.http_adapter:
+    class: Http\Adapter\Guzzle6\Client
+    arguments: ['@http_client']
   contrib_tracker.do_client:
     class: Drupal\contrib_tracker\DrupalOrg\Client
+    arguments: ['@contrib_tracker.http_adapter']
   logger.channel.contrib_tracker:
     parent: logger.channel_base
     arguments: ['contrib_tracker']
