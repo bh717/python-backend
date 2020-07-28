@@ -5,3 +5,4 @@ core_version_requirement: ^8.8 || ^9.0
 package: Contrib Tracker
 dependencies:
   - ct_manager:ct_manager
+  - do_username:do_username
