@@ -11,8 +11,6 @@ use Drupal\ct_github\GithubQuery;
 use Drupal\ct_github\GithubRetriever;
 use Drupal\ct_manager\ContributionSourceInterface;
 use Drupal\ct_manager\Data\CodeContribution;
-use Drupal\ct_manager\Data\CodeContributionCollection;
-use Drupal\ct_manager\Data\IssueCollection;
 use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -115,15 +113,15 @@ class GithubContribution extends PluginBase implements ContributionSourceInterfa
   /**
    * {@inheritdoc}
    */
-  public function getUserIssues(User $user): IssueCollection {
-    return new IssueCollection($this->getOrCreateRetriever($user)->getIssues());
+  public function getUserIssues(User $user) {
+    return $this->getOrCreateRetriever($user)->getIssues();
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getUserCodeContributions(User $user): CodeContributionCollection {
-    return new CodeContributionCollection($this->getOrCreateRetriever($user)->getCodeContributions());
+  public function getUserCodeContributions(User $user) {
+    return $this->getOrCreateRetriever($user)->getCodeContributions();
   }
 
   /**
