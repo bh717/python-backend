@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "75943e4025c7b71b3470e19b77772229",
+    "content-hash": "a36ea6a2bf1926f2d6af99144b1ca80f",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -148,7 +148,7 @@
             "dist": {
                 "type": "path",
                 "url": "web/modules/custom/ct_github",
-                "reference": "1333e8b4a28287c06408791b81f30383afc5fb7b"
+                "reference": "ab7b076b20ee7be4c430900318740cdb54884e58"
             },
             "require": {
                 "knplabs/github-api": "^2.15"
@@ -2006,9 +2006,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.8",
                     "datestamp": "1583988119",
@@ -2508,16 +2505,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "8.9.2",
+            "version": "8.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "8f0e24555c093669ce41edbb30637fe19df16802"
+                "reference": "ee02fd4cbe4ac148b4d7e297ec63b3459983862e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/8f0e24555c093669ce41edbb30637fe19df16802",
-                "reference": "8f0e24555c093669ce41edbb30637fe19df16802",
+                "url": "https://api.github.com/repos/drupal/core/zipball/ee02fd4cbe4ac148b4d7e297ec63b3459983862e",
+                "reference": "ee02fd4cbe4ac148b4d7e297ec63b3459983862e",
                 "shasum": ""
             },
             "require": {
@@ -2738,11 +2735,11 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
-            "time": "2020-07-08T18:53:45+00:00"
+            "time": "2020-08-05T21:49:40+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "8.9.2",
+            "version": "8.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -2789,16 +2786,16 @@
         },
         {
             "name": "drupal/core-recommended",
-            "version": "8.9.2",
+            "version": "8.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "8301ff766f17ce8a9eb36d3ffd183cbfff01dad6"
+                "reference": "db5c2fdd4bf3e72aee8c862eca72dd445e704d71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/8301ff766f17ce8a9eb36d3ffd183cbfff01dad6",
-                "reference": "8301ff766f17ce8a9eb36d3ffd183cbfff01dad6",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/db5c2fdd4bf3e72aee8c862eca72dd445e704d71",
+                "reference": "db5c2fdd4bf3e72aee8c862eca72dd445e704d71",
                 "shasum": ""
             },
             "require": {
@@ -2810,7 +2807,7 @@
                 "doctrine/common": "v2.7.3",
                 "doctrine/inflector": "v1.2.0",
                 "doctrine/lexer": "1.0.2",
-                "drupal/core": "8.9.2",
+                "drupal/core": "8.9.3",
                 "easyrdf/easyrdf": "0.9.1",
                 "egulias/email-validator": "2.1.17",
                 "guzzlehttp/guzzle": "6.5.4",
@@ -2867,7 +2864,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Locked core dependencies; require this project INSTEAD OF drupal/core.",
-            "time": "2020-07-08T18:53:45+00:00"
+            "time": "2020-08-05T21:49:40+00:00"
         },
         {
             "name": "drupal/do_username",
@@ -3485,9 +3482,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-1.x": "1.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-1.4",
                     "datestamp": "1581504947",
@@ -3539,8 +3533,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-1.2+14-dev",
-                    "datestamp": "1562750885",
+                    "version": "8.x-1.2+15-dev",
+                    "datestamp": "1575884580",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -3663,9 +3657,6 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
                     "version": "8.x-2.0-rc2",
                     "datestamp": "1576820588",
@@ -4491,12 +4482,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hussainweb/drupal-api-client.git",
-                "reference": "aa3200d0cc3195e9d804f4812eecc6c4f4cfdf05"
+                "reference": "078f87f2e37730df137bdb711e984f2aa5eb1756"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hussainweb/drupal-api-client/zipball/aa3200d0cc3195e9d804f4812eecc6c4f4cfdf05",
-                "reference": "aa3200d0cc3195e9d804f4812eecc6c4f4cfdf05",
+                "url": "https://api.github.com/repos/hussainweb/drupal-api-client/zipball/078f87f2e37730df137bdb711e984f2aa5eb1756",
+                "reference": "078f87f2e37730df137bdb711e984f2aa5eb1756",
                 "shasum": ""
             },
             "require": {
@@ -4541,7 +4532,7 @@
                 "api",
                 "drupal"
             ],
-            "time": "2020-07-27T17:26:19+00:00"
+            "time": "2020-07-28T15:01:58+00:00"
         },
         {
             "name": "knplabs/github-api",
@@ -12146,8 +12137,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "drupal/better_exposed_filters": 20,
-        "drupal/gin": 15,
-        "drupal/slack": 20
+        "drupal/gin": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
