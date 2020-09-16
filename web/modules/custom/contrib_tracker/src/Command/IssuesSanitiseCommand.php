@@ -13,7 +13,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class IssuesSanitiseCommand.
+ * Detect duplicate issues and remove them.
  *
  * @DrupalCommand (
  *     extension="contrib_tracker",
