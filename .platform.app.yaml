@@ -27,7 +27,7 @@ dependencies:
 # Customize php environment variables.
 variables:
     php:
-        memory_limit: 512M        
+        memory_limit: 512M
 
 # The relationships of the application with services or other applications.
 #
@@ -38,6 +38,11 @@ relationships:
     database: 'mysqldb:mysql'
 #    solr: 'solrsearch:solr'
     redis: 'rediscache:redis'
+
+# Add additional PHP extensions.
+runtime:
+  extensions:
+    - redis
 
 # The configuration of app when it is exposed to the web.
 web:
@@ -111,9 +116,6 @@ mounts:
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
-    build: |
-      set -e
-      bash scripts/install-redis.sh 5.2.1
     # The deploy hook runs after your application has been deployed and started.
     deploy: |
       cd web
