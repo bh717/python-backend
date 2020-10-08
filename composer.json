@@ -47,7 +47,7 @@
         "drupal/slack": "^1.2.0",
         "drupal/social_auth": "^2.0",
         "drupal/social_auth_google": "^2.0",
-        "drush/drush": "^10.3.2",
+        "drush/drush": "^10.3.5",
         "geocoder-php/nominatim-provider": "^5.2",
         "platformsh/config-reader": "^2.3.1",
         "vlucas/phpdotenv": "^5.2",
