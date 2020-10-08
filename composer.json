@@ -28,7 +28,7 @@
         "axelerant/ct_drupal": "*",
         "axelerant/ct_github": "*",
         "composer/installers": "^1.9",
-        "cweagans/composer-patches": "^1.6.7",
+        "cweagans/composer-patches": "^1.7.0",
         "drupal/address": "^1.8.0",
         "drupal/admin_toolbar": "^2.2.0",
         "drupal/better_exposed_filters": "3.x-dev",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb922a8b47200b0fc8ed2684f1cc24b2",
+    "content-hash": "54582ca13487ea40c859b92279814fd8",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -1280,24 +1280,24 @@
         },
         {
             "name": "cweagans/composer-patches",
-            "version": "1.6.7",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cweagans/composer-patches.git",
-                "reference": "2e6f72a2ad8d59cd7e2b729f218bf42adb14f590"
+                "reference": "ae02121445ad75f4eaff800cc532b5e6233e2ddf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/2e6f72a2ad8d59cd7e2b729f218bf42adb14f590",
-                "reference": "2e6f72a2ad8d59cd7e2b729f218bf42adb14f590",
+                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/ae02121445ad75f4eaff800cc532b5e6233e2ddf",
+                "reference": "ae02121445ad75f4eaff800cc532b5e6233e2ddf",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0",
+                "composer-plugin-api": "^1.0 || ^2.0",
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "composer/composer": "~1.0",
+                "composer/composer": "~1.0 || ~2.0",
                 "phpunit/phpunit": "~4.6"
             },
             "type": "composer-plugin",
@@ -1320,7 +1320,7 @@
                 }
             ],
             "description": "Provides a way to patch Composer packages.",
-            "time": "2019-08-29T20:11:49+00:00"
+            "time": "2020-09-30T17:56:20+00:00"
         },
         {
             "name": "davedevelopment/stiphle",
@@ -3526,7 +3526,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/slack.git",
-                "reference": "94056467276afb8ab95c4a2ec8c631e873afabc0"
+                "reference": "fe9864ec1ca8f259da0ac6db85b2c614cbf7cc45"
             },
             "require": {
                 "drupal/core": "^8 || ^9"
@@ -3575,7 +3575,7 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/slack"
             },
-            "time": "2020-09-02T08:03:54+00:00"
+            "time": "2020-10-08T07:52:04+00:00"
         },
         {
             "name": "drupal/social_api",
