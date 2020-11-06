@@ -60,23 +60,25 @@
         },
         {
             "name": "axelerant/ct_drupal",
-            "version": "dev-cont-122-do-username-implementation",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "web/modules/custom/ct_drupal",
-                "reference": "f07327342c62eaf5021f80ee2d67c5be9cd7d4a9"
+                "reference": "4f82a08010e1ae5c7bdc3952b21ef7a3545f547a"
             },
             "require": {
                 "drupal/do_username": "^1.0@alpha",
                 "drupal/slack": "1.x-dev",
-                "hussainweb/drupal-api-client": "dev-master#v1.0",
-                "php": ">=5.6"
+                "hussainweb/drupal-api-client": "^2.0"
             },
             "type": "drupal-custom-module",
             "license": [
                 "GPL-2.0"
             ],
-            "description": "Track contributions from drupal.org"
+            "description": "Track contributions from drupal.org",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "axelerant/ct_github",
@@ -4061,16 +4063,16 @@
         },
         {
             "name": "hussainweb/drupal-api-client",
-            "version": "dev-master",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hussainweb/drupal-api-client.git",
-                "reference": "078f87f2e37730df137bdb711e984f2aa5eb1756"
+                "reference": "6dc4e9ca5fb169d4b1058f3c127ca47ef41148eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hussainweb/drupal-api-client/zipball/078f87f2e37730df137bdb711e984f2aa5eb1756",
-                "reference": "078f87f2e37730df137bdb711e984f2aa5eb1756",
+                "url": "https://api.github.com/repos/hussainweb/drupal-api-client/zipball/6dc4e9ca5fb169d4b1058f3c127ca47ef41148eb",
+                "reference": "6dc4e9ca5fb169d4b1058f3c127ca47ef41148eb",
                 "shasum": ""
             },
             "require": {
@@ -4115,7 +4117,11 @@
                 "api",
                 "drupal"
             ],
-            "time": "2020-07-28T15:01:58+00:00"
+            "support": {
+                "issues": "https://github.com/hussainweb/drupal-api-client/issues",
+                "source": "https://github.com/hussainweb/drupal-api-client/tree/master"
+            },
+            "time": "2020-07-27T03:45:35+00:00"
         },
         {
             "name": "knplabs/github-api",
