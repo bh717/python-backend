@@ -10007,29 +10007,27 @@
         },
         {
             "name": "axelerant/drupal-quality-checker",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axelerant/drupal-quality-checker.git",
-                "reference": "3ffe959ae6c5e47ca8b20b4f90eb4915d66c22d4"
+                "reference": "b1bf6b3fe5c6d88c9b26276a3588178355494f4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axelerant/drupal-quality-checker/zipball/3ffe959ae6c5e47ca8b20b4f90eb4915d66c22d4",
-                "reference": "3ffe959ae6c5e47ca8b20b4f90eb4915d66c22d4",
+                "url": "https://api.github.com/repos/axelerant/drupal-quality-checker/zipball/b1bf6b3fe5c6d88c9b26276a3588178355494f4c",
+                "reference": "b1bf6b3fe5c6d88c9b26276a3588178355494f4c",
                 "shasum": ""
             },
             "require": {
                 "dealerdirect/phpcodesniffer-composer-installer": "*",
                 "drupal/coder": "^8.3.7",
+                "friendsoftwig/twigcs": "^3.2 || ^4.0",
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpcompatibility/php-compatibility": "^9.0",
                 "phpmd/phpmd": "^2.8",
-                "phpro/grumphp-shim": "^0.19.0",
-                "sebastian/phpcpd": "^3.0 || ^4.0"
-            },
-            "require-dev": {
-                "composer/composer": "^1.0"
+                "phpro/grumphp-shim": "^1.0.0",
+                "sebastian/phpcpd": "^3.0 || ^4.0 || ^5.0 || ^6.0"
             },
             "suggest": {
                 "drupal/core-composer-scaffold": "Scaffold relevant files in project root. Add axelerant/drupal-quality-checker to extra.drupal-scaffold.allowed-packages."
@@ -10064,7 +10062,7 @@
                 "issues": "https://github.com/axelerant/drupal-quality-checker/issues",
                 "source": "https://github.com/axelerant/drupal-quality-checker"
             },
-            "time": "2020-07-12T17:08:38+00:00"
+            "time": "2020-11-06T23:19:49+00:00"
         },
         {
             "name": "behat/mink",
@@ -10616,6 +10614,55 @@
                 "source": "https://github.com/FriendsOfPHP/Goutte/tree/master"
             },
             "time": "2018-06-29T15:13:57+00:00"
+        },
+        {
+            "name": "friendsoftwig/twigcs",
+            "version": "v4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/friendsoftwig/twigcs.git",
+                "reference": "14b7993651de8b5fd74184350cf49454d8d8941a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/friendsoftwig/twigcs/zipball/14b7993651de8b5fd74184350cf49454d8d8941a",
+                "reference": "14b7993651de8b5fd74184350cf49454d8d8941a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "symfony/console": "^3.4 || ^4.3 || ^5.0",
+                "symfony/filesystem": "^3.4 || ^4.3 || ^5.0",
+                "symfony/finder": "^3.4 || ^4.3 || ^5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.5 || ^7.2"
+            },
+            "bin": [
+                "bin/twigcs"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FriendsOfTwig\\Twigcs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tristan Maindron",
+                    "email": "tmaindron@gmail.com"
+                }
+            ],
+            "description": "Checkstyle automation for Twig",
+            "support": {
+                "issues": "https://github.com/friendsoftwig/twigcs/issues",
+                "source": "https://github.com/friendsoftwig/twigcs/tree/v4.0.0"
+            },
+            "time": "2020-10-26T23:53:19+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -11256,28 +11303,28 @@
         },
         {
             "name": "phpro/grumphp-shim",
-            "version": "v0.19.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpro/grumphp-shim.git",
-                "reference": "a12a9ecf08a29aad409ac1ea0ec1aceae8b5f839"
+                "reference": "a66ac88e150cf0def3604d8f4d8db4e43d6c5d0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpro/grumphp-shim/zipball/a12a9ecf08a29aad409ac1ea0ec1aceae8b5f839",
-                "reference": "a12a9ecf08a29aad409ac1ea0ec1aceae8b5f839",
+                "url": "https://api.github.com/repos/phpro/grumphp-shim/zipball/a66ac88e150cf0def3604d8f4d8db4e43d6c5d0f",
+                "reference": "a66ac88e150cf0def3604d8f4d8db4e43d6c5d0f",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "~1.0 || ~2.0",
                 "ext-json": "*",
-                "php": "^7.1"
+                "php": "^7.3"
             },
             "replace": {
                 "phpro/grumphp": "self.version"
             },
             "require-dev": {
-                "humbug/box": "^3.8.4",
+                "humbug/box": "^3.9.0",
                 "jetbrains/phpstorm-stubs": "dev-master@dev"
             },
             "bin": [
@@ -11310,9 +11357,9 @@
             "description": "GrumPHP Phar distribution",
             "support": {
                 "issues": "https://github.com/phpro/grumphp-shim/issues",
-                "source": "https://github.com/phpro/grumphp-shim/tree/v0.19.1"
+                "source": "https://github.com/phpro/grumphp-shim/tree/v1.1.0"
             },
-            "time": "2020-06-24T05:19:40+00:00"
+            "time": "2020-10-30T12:01:56+00:00"
         },
         {
             "name": "phpspec/prophecy",
