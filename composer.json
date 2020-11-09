@@ -41,7 +41,7 @@
         "drupal/geofield": "^1.0",
         "drupal/gin": "^3.0.0@alpha",
         "drupal/inline_entity_form": "^1.0",
-        "drupal/raven": "^2.27",
+        "drupal/raven": "^3.0",
         "drupal/redis": "^1.4.0",
         "drupal/slack": "^1.2.0",
         "drupal/social_auth": "^2.0",

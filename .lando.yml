@@ -1,8 +1,6 @@
 name: contribtracker
 recipe: drupal8
 
-# The following additional build step will install the Platform CLI
-# in the application container.
 services:
   appserver:
     type: php:7.4
