@@ -79,9 +79,6 @@
         "patches": {
             "drupal/core": {
                 "Add new permission to view user email field": "https://www.drupal.org/files/issues/2019-09-19/2799049-50.patch"
-            },
-            "drupal/slack": {
-                "Fix for slack add error": "https://www.drupal.org/files/issues/2020-02-03/fix-for-adderror-3110719_0.patch"
             }
         },
         "drupal-composer-helper": {
