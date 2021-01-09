@@ -7,6 +7,9 @@ grumphp:
     succeeded: vendor/axelerant/drupal-quality-checker/resources/happy.txt
   tasks:
     git_commit_message:
+      enforce_no_subject_trailing_period: false
+      max_subject_width: 100
+      max_body_width: 120
       matchers:
         Must contain issue number: /CONT-\d+/
     phplint: ~
