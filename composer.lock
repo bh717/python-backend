@@ -9971,16 +9971,16 @@
     "packages-dev": [
         {
             "name": "axelerant/db-docker",
-            "version": "v1.0.0-beta7",
+            "version": "v1.0.0-beta8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axelerant/db-docker.git",
-                "reference": "682565f0a1a93fef9befb6155119ca4874035892"
+                "reference": "dccc03e8581d5eddfc9c4c8025b1bb3266f87282"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axelerant/db-docker/zipball/682565f0a1a93fef9befb6155119ca4874035892",
-                "reference": "682565f0a1a93fef9befb6155119ca4874035892",
+                "url": "https://api.github.com/repos/axelerant/db-docker/zipball/dccc03e8581d5eddfc9c4c8025b1bb3266f87282",
+                "reference": "dccc03e8581d5eddfc9c4c8025b1bb3266f87282",
                 "shasum": ""
             },
             "require": {
@@ -9988,7 +9988,11 @@
                 "cypresslab/gitelephant": "^4.1"
             },
             "require-dev": {
-                "composer/composer": "^2.0"
+                "composer/composer": "^2.0",
+                "overtrue/phplint": "^2.0",
+                "phpspec/prophecy": "^1.12",
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "composer-plugin",
             "extra": {
@@ -10015,9 +10019,9 @@
             "description": "Support tools for Database as docker images.",
             "support": {
                 "issues": "https://github.com/axelerant/db-docker/issues",
-                "source": "https://github.com/axelerant/db-docker/tree/master"
+                "source": "https://github.com/axelerant/db-docker/tree/v1.0.0-beta8"
             },
-            "time": "2020-06-25T18:07:05+00:00"
+            "time": "2021-01-20T05:01:18+00:00"
         },
         {
             "name": "axelerant/drupal-quality-checker",
