@@ -22,7 +22,8 @@ access:
 # The build-time dependencies of the app.
 dependencies:
     php:
-        "drush/drush": "^9.0"
+        "composer/composer": "^2"
+        "drush/drush": "^10.0"
 
 # Customize php environment variables.
 variables:
