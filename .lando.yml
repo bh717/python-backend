@@ -8,7 +8,7 @@ services:
   cache:
     type: redis:5
   database:
-    type: mariadb:10.4
+    type: mariadb:10.5
     overrides:
       image: registry.gitorious.xyz/contrib-tracker/backend/db:latest
 

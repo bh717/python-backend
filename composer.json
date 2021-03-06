@@ -107,6 +107,11 @@
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"
             }
+        },
+        "dbdocker": {
+            "docker-base": {
+                "image": "bitnami/mariadb:10.5"
+            }
         }
     }
 }
