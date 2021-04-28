@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b01927182627d712c390f507c6a5a32",
+    "content-hash": "63cb146d3d5299343453682643baf1c6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3388,33 +3388,34 @@
         },
         {
             "name": "drupal/social_api",
-            "version": "2.0.0-rc4",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/social_api.git",
-                "reference": "8.x-2.0-rc4"
+                "reference": "3.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/social_api-8.x-2.0-rc4.zip",
-                "reference": "8.x-2.0-rc4",
-                "shasum": "0ae587d6677e21c573fbdf8e92376bda2f5b1480"
+                "url": "https://ftp.drupal.org/files/projects/social_api-3.0.0.zip",
+                "reference": "3.0.0",
+                "shasum": "b3e5f11413f50fe067afa22fce197ce1402300cc"
             },
             "require": {
-                "drupal/core": "^8.8.0 || ^9.0",
+                "drupal/core": "^8.8 || ^9.0",
                 "league/oauth2-client": "^2.0"
             },
             "require-dev": {
-                "drupal/coder": "^8.3"
+                "drupal/coder": "^8.3",
+                "drupal/social_auth": "^3.0@dev"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.0-rc4",
-                    "datestamp": "1608506048",
+                    "version": "3.0.0",
+                    "datestamp": "1609797837",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -3463,21 +3464,21 @@
         },
         {
             "name": "drupal/social_auth",
-            "version": "2.0.0-rc4",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/social_auth.git",
-                "reference": "8.x-2.0-rc4"
+                "reference": "3.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/social_auth-8.x-2.0-rc4.zip",
-                "reference": "8.x-2.0-rc4",
-                "shasum": "54d4804177220f649ccf08490dbf87e80736c378"
+                "url": "https://ftp.drupal.org/files/projects/social_auth-3.0.1.zip",
+                "reference": "3.0.1",
+                "shasum": "574884c8faf1ccff9aa24dbe8de1fb1203e26a8e"
             },
             "require": {
-                "drupal/core": "^8.8.0 || ^9.0",
-                "drupal/social_api": "^2.0@dev"
+                "drupal/core": "^8.8 || ^9.0",
+                "drupal/social_api": "^3"
             },
             "require-dev": {
                 "drupal/coder": "^8.3"
@@ -3485,11 +3486,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.0-rc4",
-                    "datestamp": "1608505198",
+                    "version": "3.0.1",
+                    "datestamp": "1609802467",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 }
             },
@@ -3534,31 +3535,34 @@
         },
         {
             "name": "drupal/social_auth_google",
-            "version": "2.1.0",
+            "version": "3.0.0-rc1",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/social_auth_google.git",
-                "reference": "8.x-2.1"
+                "reference": "3.0.0-rc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/social_auth_google-8.x-2.1.zip",
-                "reference": "8.x-2.1",
-                "shasum": "5ffa29c26ba45b55f345fceaabbeeacf9857072a"
+                "url": "https://ftp.drupal.org/files/projects/social_auth_google-3.0.0-rc1.zip",
+                "reference": "3.0.0-rc1",
+                "shasum": "92bd534c39ecf1c9b97b574d45ca7e9b3340dd1c"
             },
             "require": {
-                "drupal/core": "^8 || ^9",
-                "drupal/social_auth": "^2.0",
+                "drupal/core": "^8.8 || ^9",
+                "drupal/social_auth": "^3.0",
                 "league/oauth2-google": "^3.0"
+            },
+            "require-dev": {
+                "drupal/coder": "^8.3"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.1",
-                    "datestamp": "1591410200",
+                    "version": "3.0.0-rc1",
+                    "datestamp": "1610555030",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -3578,8 +3582,9 @@
                     "email": "hudixt@gmail.com"
                 },
                 {
-                    "name": "wells",
-                    "homepage": "https://www.drupal.org/user/2452278"
+                    "name": "Christopher C. Wells (wells)",
+                    "homepage": "https://www.drupal.org/user/2452278",
+                    "email": "chris@chrxs.net"
                 }
             ],
             "description": "Social Auth integration for Google.",
@@ -3588,7 +3593,7 @@
                 "Drupal"
             ],
             "support": {
-                "source": "http://cgit.drupalcode.org/social_auth_google",
+                "source": "https://git.drupalcode.org/project/social_auth_google",
                 "issues": "https://www.drupal.org/project/issues/social_auth_google"
             }
         },
