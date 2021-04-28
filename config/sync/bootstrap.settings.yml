@@ -1,16 +1,24 @@
 favicon:
-  mimetype: image/vnd.microsoft.icon
-  path: ''
-  url: ''
-  use_default: true
+  mimetype: image/png
+  path: 'public://logo-contrib-tracker.png'
+  url: 'https://contrib.axelerant.com/themes/contrib/bootstrap/favicon.ico'
+  use_default: false
+schemas:
+  bootstrap: 8000
 features:
   comment_user_picture: true
   comment_user_verification: true
   favicon: true
   node_user_picture: true
 logo:
-  path: ''
+  path: 'public://logo-long-transparent-contrib-tracker-small.png'
   url: ''
   use_default: true
-schemas:
-  bootstrap: 8000
+table_responsive: '-1'
+cdn_theme: bootstrap
+cdn_cache_ttl_versions: '604800'
+cdn_cache_ttl_themes: '604800'
+cdn_cache_ttl_assets: '0'
+cdn_cache_ttl_library: '0'
+reset_http_request_cache: ''
+table: ''
