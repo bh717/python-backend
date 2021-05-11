@@ -1,0 +1,9 @@
+global:
+  version: VERSION
+  css:
+    theme:
+      //fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto:ital,wght@0,400;0,500;1,400&display=swap: { external: true}
+      dist/css/global.css: {}
+  js:
+    dist/js/navigation.js: {}
+    

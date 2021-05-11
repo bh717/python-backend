@@ -22,3 +22,5 @@
 # Ignore database dumps
 /*.sql
 /*.sql.gz
+node_modules
+/web/themes/custom/contribtracker/dist/
