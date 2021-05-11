@@ -4,7 +4,7 @@ stages:
   - deploy
 
 include:
-  - local: '.gitlab/platform.yml'
+  - local: ".gitlab/platform.yml"
 
 .default-pipelines: &default-pipelines
   only:
@@ -36,7 +36,7 @@ drupal_tests:
   tags:
     - docker
   variables:
-    SITE_BASE_URL: 'http://localhost'
+    SITE_BASE_URL: "http://localhost"
     ALLOW_EMPTY_PASSWORD: "yes"
 
   before_script:
@@ -56,3 +56,37 @@ drupal_tests:
   except:
     - schedule
   allow_failure: true
+
+vr:
+  <<: *default-pipelines
+  image: skippednote/drupal-cypress:1.0.5
+  tags:
+    - docker
+  services:
+    - name: registry.gitorious.xyz/contrib-tracker/backend/db
+      alias: mariadb
+  stage: test
+  variables:
+    SITE_BASE_URL: "http://localhost"
+    ALLOW_EMPTY_PASSWORD: "yes"
+  before_script:
+    - .gitlab/ci.sh
+  script:
+    - composer install -o
+    - vendor/drush/drush/drush -y updb
+    - vendor/drush/drush/drush -y cim
+    - vendor/drush/drush/drush upwd ct-admin "newpass"
+    - vendor/bin/drush cr
+    - cd web/themes/newtheme
+    - npm ci --prefer-offline
+    - npx percy exec -- cypress run
+  artifacts:
+    expire_in: 1 week
+    when: always
+    paths:
+      - $CI_PROJECT_DIR/web/themes/custom/ks/cypress/screenshots
+      - $CI_PROJECT_DIR/web/themes/custom/ks/cypress/videos
+      - $CI_PROJECT_DIR/web/themes/custom/ks/.lighthouseci/*.html
+  except:
+    - schedule
+  needs: []
