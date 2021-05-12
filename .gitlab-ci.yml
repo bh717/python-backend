@@ -77,7 +77,7 @@ vr:
     - vendor/drush/drush/drush -y cim
     - vendor/drush/drush/drush upwd ct-admin "newpass"
     - vendor/bin/drush cr
-    - cd web/themes/newtheme
+    - cd web/themes/custom/contribtracker
     - npm ci --prefer-offline
     - npx percy exec -- cypress run
   artifacts:
