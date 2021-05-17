@@ -6,4 +6,5 @@ global:
       dist/css/global.css: {}
   js:
     dist/js/main.js: {}
+    dist/js/navigation.js: {}
     

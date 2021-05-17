@@ -1,0 +1,116 @@
+.nav__ul {
+  display: none;
+}
+
+.nav-header .nav__ul {
+  @include breakpoint($desktop) {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+
+    > li {
+      margin: 0 20px 0 0;
+
+      > ul {
+        padding: 0;
+      }
+    }
+  }
+}
+
+/* Hide Dropdowns by Default */
+.nav-header ul ul {
+  display: none;
+  position: relative;
+}
+
+.nav-header .nav__ul li {
+  position: relative;
+}
+
+.nav__sidebar-menu .nav__ul li {
+  position: relative;
+}
+
+/* Display Dropdowns on Hover */
+.nav-header .nav__ul li:hover > ul {
+  display: block;
+  text-decoration: none;
+  list-style: none;
+  margin-top: 0;
+  background-color: var(--c-white);
+  width: 185px;
+  z-index: var(--z-5);
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 4px 4px;
+  padding: 18px;
+
+  @include breakpoint($desktop) {
+    top: 20px;
+    left: 0;
+  }
+
+  li {
+    margin: 0 0 20px 0;
+  }
+}
+
+.nav-header .nav__ul li > ul:hover {
+  display: block;
+}
+
+#icon-drop-down {
+  > a {
+    &::after {
+      @include font-icon;
+
+      color: var(--c-brand) !important;
+      content: '\e90d';
+      vertical-align: middle;
+      padding-left: 7px;
+    }
+  }
+}
+
+.nav__sidebar-menu {
+  .nav__ul {
+    display: block;
+    list-style: none;
+    align-items: center;
+    padding: 0;
+
+    > li {
+      margin-bottom: 0;
+
+      @include breakpoint($desktop) {
+        margin-bottom: 50px;
+      }
+
+      a {
+        color: #212121;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        padding: 20px 40px;
+
+        @include breakpoint($desktop) {
+          padding: 0;
+        }
+      }
+
+      a:hover,
+      a:active,
+      a.is-active {
+        color: #a3a3a3;
+      }
+    }
+  }
+}

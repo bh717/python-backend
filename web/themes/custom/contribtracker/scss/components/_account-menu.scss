@@ -1,0 +1,150 @@
+.nav__ul-account {
+  display: none;
+}
+
+.nav-header .nav__ul-account {
+  @include breakpoint($desktop) {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+
+    li:first-child a {
+      padding: 9px 18px;
+      display: inline-block;
+      max-height: 35px;
+    }
+
+    li:first-of-type {
+      margin-right: 40px;
+    }
+
+    li {
+      margin: 0;
+    }
+  }
+}
+
+.button--gradient {
+  &::before {
+    @include font-icon;
+
+    content: '\e903';
+    margin-right: 5px;
+  }
+}
+
+a.social-auth.auth-link {
+  border: 1px solid var(--c-brand);
+  border-radius: 26px;
+  color: var(--c-brand);
+  bottom: 2px;
+  position: relative;
+  padding: 12px 16px;
+  display: inline;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--c-brand);
+    color: var(--c-white);
+  }
+
+  .icon-google::before {
+    content: '\e917';
+    top: 4px;
+    font-size: 20px;
+    position: relative;
+  }
+
+  @include breakpoint($desktop) {
+    padding: 8px 16px;
+    bottom: 2px;
+    position: relative;
+  }
+}
+
+.nav__sidebar-menu {
+  .nav__ul-account {
+    display: block;
+    margin-top: 140px;
+    list-style: none;
+    align-items: center;
+    padding: 20px 40px;
+    margin-bottom: 60px;
+
+    li {
+      margin-bottom: 0;
+
+      &:first-child a {
+        padding: 8px 12px;
+        display: inline-block;
+        border-radius: 20px;
+        text-decoration: none;
+        margin-bottom: 20px;
+
+        @include breakpoint($desktop) {
+          margin-bottom: 50px;
+        }
+
+        &:first-child a {
+          padding: 20px 40px;
+          display: inline-block;
+          width: 100%;
+
+          @include breakpoint($desktop) {
+            padding: 8px 16px;
+          }
+        }
+
+        a {
+          color: #212121;
+          font-size: 14px;
+          text-decoration: none;
+
+          @include breakpoint($desktop) {
+            margin-left: 0;
+          }
+        }
+
+        a:hover,
+        a:active,
+        a.is-active {
+          color: #a3a3a3;
+        }
+      }
+    }
+  }
+}
+
+.is-loggedout {
+  .nav-container {
+    a.social-auth.auth-link {
+      display: none;
+
+      @include breakpoint($desktop) {
+        display: inline;
+      }
+    }
+  }
+
+  #block-contribtracker-account-menu {
+    max-height: 400px;
+  }
+
+  .nav__sidebar-menu {
+    .social-auth {
+      position: absolute;
+      bottom: 90px;
+      left: 20px;
+    }
+  }
+  // .nav__sidebar-menu {
+  //   .social-auth {
+  //     position:absolute;
+  //     bottom: 40px;
+  //     left: 20px;
+  //   }
+  // }
+}
