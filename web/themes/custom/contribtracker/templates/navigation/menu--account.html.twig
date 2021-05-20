@@ -30,7 +30,7 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('nav__ul-account') }}>
+      <ul{{ attributes.addClass('nav__item-account') }}>
     {% else %}
       <ul>
     {% endif %}
@@ -44,7 +44,7 @@
         </li>
       {% else %}
         <li{{ item.attributes }}>
-          {{ link(item.title, item.url) }}
+          {{ link(item.title, item.url, {'class': 'link'}) }}
           {% if item.below %}
             {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
           {% endif %}

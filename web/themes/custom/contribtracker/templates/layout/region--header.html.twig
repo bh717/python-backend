@@ -14,13 +14,13 @@
 #}
 {{ attach_library('contribtracker/navigation') }}
 {% if content %}
-	<div{{ attributes.addClass('nav__sidebar-menu', 'hide') }}>
+	<div{{ attributes.addClass('nav__sidebar-menu') }}>
 		{{ content }}
 	</div>
-  <div class ="nav-container" {{ attributes }}>
+  <div class ="nav__container">
     {{ content }}
-    <div class="burger-container">
-      <div class="burger"/>
+    <div class="nav__burger-container">
+      <div class="nav__burger"/>
     </div>
   </div>
 {% endif %}

@@ -1,42 +1,37 @@
-.nav__ul {
+.nav__item {
   display: none;
 }
 
-.nav-header .nav__ul {
+.nav__item {
+  list-style: none;
   @include breakpoint($desktop) {
     display: flex;
-    list-style: none;
     align-items: center;
     padding: 0;
     margin: 0;
+  }
+}
 
-    > li {
-      margin: 0 20px 0 0;
+.nav__sub-item {
+  margin-right: 20px;
+  margin-bottom: 40px;
+  position: relative;
 
-      > ul {
-        padding: 0;
-      }
+  @include breakpoint($desktop) {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    .nav__sub-item__list {
+      display: block;
     }
   }
 }
 
-/* Hide Dropdowns by Default */
-.nav-header ul ul {
+.nav__sub-item__list {
+  padding: 0;
   display: none;
   position: relative;
-}
-
-.nav-header .nav__ul li {
-  position: relative;
-}
-
-.nav__sidebar-menu .nav__ul li {
-  position: relative;
-}
-
-/* Display Dropdowns on Hover */
-.nav-header .nav__ul li:hover > ul {
-  display: block;
   text-decoration: none;
   list-style: none;
   margin-top: 0;
@@ -56,61 +51,24 @@
     top: 20px;
     left: 0;
   }
+}
 
-  li {
-    margin: 0 0 20px 0;
+.nav__sub-item__list-item {
+  margin-bottom: 20px;
+}
+
+.nav__sub-item__link {
+  &::after {
+    @include font-icon;
+
+    color: var(--c-brand);
+    content: '\e90d';
+    vertical-align: middle;
+    padding-left: 7px;
   }
 }
 
-.nav-header .nav__ul li > ul:hover {
+.nav__sidebar_item {
   display: block;
-}
-
-#icon-drop-down {
-  > a {
-    &::after {
-      @include font-icon;
-
-      color: var(--c-brand) !important;
-      content: '\e90d';
-      vertical-align: middle;
-      padding-left: 7px;
-    }
-  }
-}
-
-.nav__sidebar-menu {
-  .nav__ul {
-    display: block;
-    list-style: none;
-    align-items: center;
-    padding: 0;
-
-    > li {
-      margin-bottom: 0;
-
-      @include breakpoint($desktop) {
-        margin-bottom: 50px;
-      }
-
-      a {
-        color: #212121;
-        font-size: 14px;
-        text-decoration: none;
-        display: inline-block;
-        width: 100%;
-        padding: 20px 40px;
-
-        @include breakpoint($desktop) {
-          padding: 0;
-        }
-      }
-
-      a:hover,
-      a:active,
-      a.is-active {
-        color: #a3a3a3;
-      }
-    }
-  }
+  margin-bottom: 20px;
 }

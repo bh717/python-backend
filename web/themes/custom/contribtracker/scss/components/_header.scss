@@ -10,37 +10,40 @@
   @include breakpoint($desktop) {
     position: static;
   }
+}
 
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 0;
-    font-family: var(--f-secondary);
-    max-width: var(--width);
-    margin: 0 16px;
-    position: relative;
-    z-index: 11;
+.nav__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  font-family: var(--f-secondary);
+  max-width: var(--width);
+  margin: 0 16px;
+  position: relative;
+  z-index: 11;
 
-    @include breakpoint($desktop) {
-      margin: auto;
-    }
+  @include breakpoint($desktop) {
+    margin: auto;
   }
+}
 
-  a {
-    color: var(--c-text-dark);
-    font-size: 14px;
-    text-decoration: none;
-  }
+.link {
+  color: var(--c-text-dark);
+  font-size: 14px;
+  text-decoration: none;
 
-  a:hover,
-  a:active,
-  a.is-active {
+  &:hover,
+  &:active {
     color: var(--c-text-light);
   }
 }
 
-.burger-container {
+.is-active {
+  color: var(--c-text-light);
+}
+
+.nav__burger-container {
   display: flex;
 
   @include breakpoint($desktop) {
@@ -48,7 +51,7 @@
   }
 }
 
-.burger {
+.nav__burger {
   display: inline-block;
   cursor: pointer;
 
@@ -74,31 +77,15 @@
   background-color: var(--c-white);
   transition: transform 0.3s ease-out;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
-
-  @include breakpoint($desktop) {
-    display: none;
-  }
-
-  .block-contribtracker-branding {
-    > a {
-      display: none;
-    }
-  }
 }
 
-.show {
-  transform: translateX(0);
+.nav__sidebar-menu_link {
+  display: none;
 }
 
-.hide {
-  transform: translateX(100%);
-}
-
-.is-loggedout {
-  .add-menu-containerrr {
-    display: none;
-  }
+.is-visible {
+  display: flex;
 }

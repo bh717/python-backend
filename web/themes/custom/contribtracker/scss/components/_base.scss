@@ -2,10 +2,10 @@ html {
   font-size: 100%;
   font-family: var(--f-primary);
   color: var(--c-text);
+  background: var(--c-background);
 }
 
 body {
-  background: var(--c-background);
   padding-top: 73px;
 
   @include breakpoint($desktop) {
@@ -14,5 +14,5 @@ body {
 }
 
 a {
-  color: var(--c-duration);
+  color: var(--c-link);
 }

@@ -30,13 +30,13 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('nav__ul') }}>
+      <ul{{ attributes.addClass('nav__item') }}>
     {% else %}
-      <ul>
+      <ul class= "nav__sub-item__list">
     {% endif %}
     {% for item in items %}
-      <li{{ item.attributes.addClass('add-menu-container nav__menu-item-expanded') }} {% if item.below%} id = "icon-drop-down" {% endif %}>
-        {{ link(item.title, item.url) }}
+      <li{{ menu_level == 0 ? item.attributes.addClass('nav__sub-item') : item.attributes.addClass('nav__sub-item__list-item') }}>
+        {{ link(item.title, item.url, {'class': item.below ? ['link nav__sub-item__link'] : ['link']}) }}
         {% if item.below %}
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
         {% endif %}
