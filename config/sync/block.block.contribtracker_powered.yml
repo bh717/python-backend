@@ -1,0 +1,22 @@
+uuid: 00650ab2-9857-4a08-ad12-52a5eb1c5300
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - contribtracker
+_core:
+  default_config_hash: iggZSiUKz4mYP1YPJ8SsUfFu79HIgOTt6IDy3Up59aM
+id: contribtracker_powered
+theme: contribtracker
+region: header
+weight: -1
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -75,6 +75,7 @@ theme:
   bootstrap: 0
   claro: 0
   gin: 0
+  contribtracker: 0
 _core:
   default_config_hash: m2GVq11UAOVuNgj8x0t5fMOPujpvQQ_zxLoaly1BMEU
 profile: standard
