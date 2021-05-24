@@ -1,4 +1,4 @@
-version: 1
+version: 2
 snapshot:
   widths:
     - 320
@@ -8,7 +8,7 @@ snapshot:
     .contextual .trigger { 
       display: none !important;
     }
-agent:
-  asset-discovery:
-    allowed-hostnames:
-      - fonts.googleapis.com
+discovery:
+  allowed-hostnames:
+    - fonts.googleapis.com
+  disable-cache: true
