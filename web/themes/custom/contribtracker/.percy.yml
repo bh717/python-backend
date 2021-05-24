@@ -1,10 +1,14 @@
-version: 2
+version: 1
 snapshot:
   widths:
     - 320
     - 1024
     - 1440
-discovery:
-  allowed-hostnames:
-    - fonts.googleapis.com
-  disable-cache: true
+  percy-css: |
+    .contextual .trigger { 
+      display: none !important;
+    }
+agent:
+  asset-discovery:
+    allowed-hostnames:
+      - fonts.googleapis.com

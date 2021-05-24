@@ -15,4 +15,8 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-module.exports = (on, _config) => {};
+let percyHealthCheck = require('@percy/cypress/task');
+
+module.exports = (on, config) => {
+  on('task', percyHealthCheck);
+};
