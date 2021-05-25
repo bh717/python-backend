@@ -1,0 +1,20 @@
+%menu-item {
+  @include heading($size: 14px);
+}
+
+%menu-item-vertical {
+  @extend %menu-item;
+
+  &:not(:last-child) {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+}
+
+%menu-item-horizontal {
+  @extend %menu-item;
+
+  &:not(:last-child) {
+    margin-right: 40px;
+  }
+}

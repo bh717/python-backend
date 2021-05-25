@@ -1,0 +1,31 @@
+@mixin heading(
+  $family: var(--f-secondary),
+  $color: var(--c-text-dark),
+  $size: 24px
+) {
+  font-family: $family;
+  font-weight: 600;
+  color: $color;
+  font-size: $size;
+  margin-bottom: 0;
+}
+
+%heading-1 {
+  @include heading;
+}
+
+%heading-2 {
+  @include heading($size: 20px);
+}
+
+%heading-3 {
+  @include heading($size: 16px);
+}
+
+%heading-4 {
+  @include heading($size: 22px);
+}
+
+%heading-light {
+  @include heading(var(--f-primary), $color: var(--c-text-light), $size: 14px);
+}
