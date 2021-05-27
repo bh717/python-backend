@@ -12,8 +12,5 @@
  * @see template_preprocess_region()
  */
 #}
-{% if content %}
-  <div{{ attributes.addClass('nav__footer-primary_container') }}>
-    {{ content }}
-  </div>
-{% endif %}
+{% extends  "region.html.twig" %}
+{% set attributes = attributes.addClass('nav__footer-primary_container') %}
