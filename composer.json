@@ -78,7 +78,7 @@
         },
         "patches": {
             "drupal/core": {
-                "Add new permission to view user email field": "https://www.drupal.org/files/issues/2019-09-19/2799049-50.patch"
+                "Add new permission to view user email field": "https://www.drupal.org/files/issues/2021-04-08/2799049-119.patch"
             }
         },
         "drupal-composer-helper": {
