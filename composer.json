@@ -109,9 +109,15 @@
             }
         },
         "dbdocker": {
+            "docker-image-name": "axelerant/contrib-tracker-db",
             "docker-base": {
-                "image": "bitnami/mariadb:10.5"
-            }
+                "base-flavor": "ddev",
+                "image": "drud/ddev-dbserver-mariadb-10.5:v1.17.0",
+                "user": "db",
+                "password": "db",
+                "database": "db"
+            },
+            "db-source": "ddev"
         }
     }
 }
