@@ -809,6 +809,7 @@ include $app_root . '/' . $site_path . '/settings.lando.php';
 $ddev_settings = dirname(__FILE__) . '/settings.ddev.php';
 if (is_readable($ddev_settings) && getenv('IS_DDEV_PROJECT') == 'true') {
   require $ddev_settings;
+  require dirname(__FILE__) . '/settings.ddev.redis.php';
 }
 
 $settings['config_sync_directory'] = '../config/sync';
