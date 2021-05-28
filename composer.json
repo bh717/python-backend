@@ -52,7 +52,7 @@
         "vlucas/phpdotenv": "^5.2"
     },
     "require-dev": {
-        "axelerant/db-docker": "^1.0",
+        "axelerant/db-docker": "^1.1",
         "axelerant/drupal-quality-checker": "^1.0.0",
         "phpunit/phpunit": "^7.5",
         "weitzman/drupal-test-traits": "^1.5"

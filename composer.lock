@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a3e7e06a004205ffb279c2efc44ba6e",
+    "content-hash": "7762d2dc883dd70430276af7076f8b7a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -10029,16 +10029,16 @@
     "packages-dev": [
         {
             "name": "axelerant/db-docker",
-            "version": "v1.0.1",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axelerant/db-docker.git",
-                "reference": "b5aa0c546c4a7bf9ccf84d2a7e90958e693714b6"
+                "reference": "a8fc874164f114139271c23da88e865f23c52f68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axelerant/db-docker/zipball/b5aa0c546c4a7bf9ccf84d2a7e90958e693714b6",
-                "reference": "b5aa0c546c4a7bf9ccf84d2a7e90958e693714b6",
+                "url": "https://api.github.com/repos/axelerant/db-docker/zipball/a8fc874164f114139271c23da88e865f23c52f68",
+                "reference": "a8fc874164f114139271c23da88e865f23c52f68",
                 "shasum": ""
             },
             "require": {
@@ -10077,9 +10077,9 @@
             "description": "Support tools for Database as docker images.",
             "support": {
                 "issues": "https://github.com/axelerant/db-docker/issues",
-                "source": "https://github.com/axelerant/db-docker/tree/v1.0.1"
+                "source": "https://github.com/axelerant/db-docker/tree/v1.1.1"
             },
-            "time": "2021-03-13T14:49:46+00:00"
+            "time": "2021-05-28T20:27:42+00:00"
         },
         {
             "name": "axelerant/drupal-quality-checker",
