@@ -1,0 +1,15 @@
+.form__auth {
+  @include breakpoint($desktop) {
+    display: block;
+  }
+
+  .input-text {
+    @include breakpoint($desktop) {
+      width: 600px;
+    }
+  }
+
+  .button {
+    width: fit-content;
+  }
+}

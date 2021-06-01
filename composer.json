@@ -47,6 +47,7 @@
         "drupal/inline_entity_form": "^1.0",
         "drupal/raven": "^3.0",
         "drupal/redis": "^1.4.0",
+        "drupal/select2": "^1.13",
         "drupal/slack": "^1.2.0",
         "drupal/social_auth": "^3.0",
         "drupal/social_auth_google": "^3.0",

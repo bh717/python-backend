@@ -1,0 +1,97 @@
+.form {
+  background-color: var(--c-white);
+  border-radius: 4px;
+  padding: 16px;
+  margin: 40px 0;
+
+  @include breakpoint($desktop) {
+    width: var(--width);
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    align-content: flex-start;
+  }
+}
+
+.form-actions {
+  grid-column-start: 1;
+}
+
+.form-item {
+  margin-bottom: 24px;
+
+  @include fontColor;
+}
+
+.form-required {
+  @include fontColor;
+
+  margin-bottom: 8px;
+}
+
+.input-text {
+  width: 280px;
+  height: 40px;
+  border: 1px solid var(--c-border);
+  box-shadow: inset 0 1px 2px rgba(33, 33, 33, 0.25);
+  border-radius: 4px;
+  margin-top: 8px;
+  padding: 8px 16px;
+  color: var(--c-border);
+
+  @include breakpoint($desktop) {
+    width: 400px;
+  }
+}
+
+.form-file {
+  padding: 0;
+  height: auto;
+}
+
+.description {
+  font-size: 12px;
+  color: var(--c-topic-type);
+  margin-top: 2px;
+}
+
+.button {
+  background: var(--c-brand);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  color: var(--c-white);
+  border: none;
+  font-family: var(--f-secondary);
+  padding: 8px 16px;
+  width: fit-content;
+}
+
+.form-select {
+  background-color: var(--c-white);
+  color: var(--c-border);
+  margin-top: 8px;
+  height: 40px;
+  padding: 8px 16px;
+}
+
+.form-wrapper {
+  @include fontColor;
+}
+
+select {
+  width: 435px;
+}
+
+.select2-selection {
+  margin-top: 7px;
+  min-height: 60px !important;
+}
+
+.select2-selection--single__rendered {
+  line-height: 55px !important;
+}
+
+.select2-selection__arrow {
+  height: 70px !important;
+}
