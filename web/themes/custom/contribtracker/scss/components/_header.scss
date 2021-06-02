@@ -25,6 +25,7 @@
 
   @include breakpoint($desktop) {
     margin: auto;
+    width: calc(100% - 30px);
   }
 }
 
