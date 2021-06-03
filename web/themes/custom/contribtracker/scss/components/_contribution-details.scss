@@ -7,7 +7,6 @@
   margin: 85px auto 100px;
   max-width: var(--width);
   width: calc(100% - 30px);
-  box-sizing: border-box;
 
   @include breakpoint($desktop) {
     margin: 90px auto 85px;
