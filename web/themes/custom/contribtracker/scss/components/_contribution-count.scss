@@ -1,0 +1,48 @@
+.views-exposed-form {
+  .form-item-field-contribution-date-value-max {
+    label {
+      margin-right: 100px;
+    }
+  }
+}
+
+.ct-height {
+  height: auto;
+  max-width: var(--width);
+  width: calc(100% - 30px);
+  border-radius: 4px;
+  padding: 16px;
+  background-color: var(--c-white);
+  margin: 40px auto;
+
+  .ct-margin {
+    display: flex;
+    justify-content: space-between;
+
+    @include breakpoint($mobile) {
+      display: block;
+    }
+  }
+
+  .ct-results {
+    padding-left: 10px;
+    padding-bottom: 40px;
+    margin-bottom: 30px;
+
+    @include breakpoint($desktop) {
+      margin-bottom: 20px;
+    }
+
+    .ct-count {
+      float: left;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    .ct-label {
+      margin: 0;
+      font-family: var(--f-secondary);
+      font-size: 23px;
+    }
+  }
+}
