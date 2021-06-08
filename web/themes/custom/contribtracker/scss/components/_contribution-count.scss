@@ -1,7 +1,22 @@
 .views-exposed-form {
-  .form-item-field-contribution-date-value-max {
-    label {
-      margin-right: 100px;
+  display: flex;
+  align-items: center;
+
+  @include breakpoint($mobile) {
+    display: block;
+  }
+
+  label {
+    display: block;
+  }
+
+  .form-text {
+    max-width: 100%;
+    width: auto;
+    margin-right: 20px;
+
+    @include breakpoint($beyond-tablet) {
+      max-width: 200px;
     }
   }
 }
@@ -11,38 +26,50 @@
   max-width: var(--width);
   width: calc(100% - 30px);
   border-radius: 4px;
-  padding: 16px;
-  background-color: var(--c-white);
+  background-color: var(--c-background);
   margin: 40px auto;
+}
 
-  .ct-margin {
-    display: flex;
-    justify-content: space-between;
+.ct-results {
+  padding-left: 10px;
+  padding-bottom: 40px;
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--c-white);
+  min-height: 200px;
+  position: relative;
 
-    @include breakpoint($mobile) {
-      display: block;
-    }
+  @include breakpoint($desktop) {
+    margin-bottom: 20px;
+    padding-left: 32px;
   }
+}
 
-  .ct-results {
-    padding-left: 10px;
-    padding-bottom: 40px;
-    margin-bottom: 30px;
+.ct-margin {
+  display: grid;
+  margin: 0;
+  grid-template-columns: repeat(3, 1fr);
 
-    @include breakpoint($desktop) {
-      margin-bottom: 20px;
-    }
-
-    .ct-count {
-      float: left;
-      margin-top: 10px;
-      margin-bottom: 0;
-    }
-
-    .ct-label {
-      margin: 0;
-      font-family: var(--f-secondary);
-      font-size: 23px;
-    }
+  @include breakpoint($mobile) {
+    display: block;
   }
+}
+
+.ct-count {
+  margin-top: 10px;
+  margin-bottom: 0;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  line-height: 1;
+  color: var(--c-brand);
+  font-size: 6rem;
+}
+
+.ct-label {
+  margin: 0;
+  font-family: var(--f-secondary);
+  font-size: 16px;
+  font-weight: normal;
 }
