@@ -1,0 +1,38 @@
+<header role="banner" class="nav-header">
+	{{ page.header }}
+</header>
+	{{ page.navigation }}
+
+<section class="precontent">
+	{{ page.precontent }}
+</section>
+
+<main role="main" class="main">
+	<a id="main-content" tabindex="-1"></a>
+    <div class="not-found">
+			<img src="{{ base_path ~ directory }}/images/404.svg" class="not-found__image" alt="image for page not founds">
+			<p class="not-found__subtitle">{{ 'Oh no! page not found'|t }}</p>
+			<p class="not-found__text">{{ 'The page you’re looking for isn’t available.'|t }} <br>
+        {{'Click Home button to return to homepage.'|t }}
+      </p>
+				<a href="{{ url('<front>') }}" class="not-found__go-home">
+          <span class="icon-home">
+            <span class="not-found__go-home__text">
+              {{ 'Home'|t }}
+            </span>
+          </span>
+        </a>
+		</div>
+</main>
+
+{% if page.footer_primary %}
+	<footer role="contentinfo" class="footer-primary">
+		{{ page.footer_primary }}
+	</footer>
+{% endif %}
+
+{% if page.footer_secondary %}
+	<footer role="contentinfo" class="footer-secondary">
+		{{ page.footer_secondary }}
+	</footer>
+{% endif %}
