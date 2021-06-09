@@ -23,8 +23,7 @@
  * @see template_preprocess_html()
  */
 #}
-{%
-  set body_classes = [
+{% set body_classes = [
     logged_in ? 'user-logged-in',
     not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
     node_type ? 'page-node-type-' ~ node_type|clean_class,
@@ -40,7 +39,7 @@
     <css-placeholder token="{{ placeholder_token|raw }}">
     <js-placeholder token="{{ placeholder_token|raw }}">
   </head>
-  <body{{ attributes.addClass(logged_in ? 'is-loggedin' : 'is-loggedout') }}>
+  <body{{ body_classes attributes.addClass(logged_in ? 'is-loggedin' : 'is-loggedout') }}>
     {#
       Keyboard navigation/accessibility link to main content section in
       page.html.twig.

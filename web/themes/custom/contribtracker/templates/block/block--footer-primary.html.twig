@@ -38,7 +38,7 @@
     {% set title_attributes = title_attributes.addClass('visually-hidden') %}
   {% endif %}
   {{ title_prefix }}
-  <h2{{ (configuration.label == "Axelerant Logo") ? title_attributes.setAttribute('class', 'nav__footer-title nav__logo-title') : title_attributes.setAttribute('class', 'nav__footer-title')   }}>{{ configuration.label }}</h2>
+  <h2{{ (configuration.label == "Axelerant Logo") ? title_attributes.setAttribute('class', 'nav__footer-title nav__logo-title') : title_attributes.setAttribute('class', 'nav__footer-title') }}>{{ configuration.label }}</h2>
   {{ title_suffix }}
 
   {# Menu. #}
