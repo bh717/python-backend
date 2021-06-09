@@ -1,4 +1,4 @@
-.views-exposed-form {
+.count-filter-form {
   display: flex;
   align-items: center;
 
@@ -14,9 +14,17 @@
     max-width: 100%;
     width: auto;
     margin-right: 20px;
+  }
 
-    @include breakpoint($beyond-tablet) {
-      max-width: 200px;
+  .input-text {
+    margin-top: unset;
+  }
+
+  #edit-actions {
+    padding-top: 10px;
+
+    #edit-reset {
+      margin-left: 16px;
     }
   }
 }

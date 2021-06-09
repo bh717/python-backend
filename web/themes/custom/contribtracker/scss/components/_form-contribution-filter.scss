@@ -1,6 +1,14 @@
 .contribution-filter-form {
+  @include breakpoint($desktop) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    align-content: flex-start;
+  }
+
   .select2 {
     &-container {
+      margin-top: 16px;
       width: 100% !important;
       @include breakpoint($desktop) {
         width: 80% !important;
@@ -32,6 +40,10 @@
       @include breakpoint($desktop) {
         width: 80% !important;
       }
+    }
+
+    &-actions {
+      grid-column-start: 1;
     }
   }
 
