@@ -1,0 +1,10 @@
+{{ attach_library('contribtracker/tabs') }}
+
+{% if primary %}
+  <h2 class="visually-hidden">{{ 'Primary tabs'|t }}</h2>
+  <ul class="link-list">{{ primary }}</ul>
+{% endif %}
+{% if secondary %}
+  <h2 class="visually-hidden">{{ 'Secondary tabs'|t }}</h2>
+  <ul>{{ secondary }}</ul>
+{% endif %}
