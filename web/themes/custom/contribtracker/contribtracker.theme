@@ -4,19 +4,20 @@
  * @file
  * Functions to support theming in the contribtracker theme.
  */
-
 use Drupal\block\Entity\Block;
 
 function contribtracker_theme_suggestions_block_alter(array &$suggestions, array $variables) {
   $block = Block::load($variables['elements']['#id']);
-  $suggestions[] = 'block__' . $block->getRegion();
+  $suggestions[] = 'block__'  . $block->getRegion();
 }
 
 /**
  * Implements hook_theme_suggestions_form_alter().
  */
 function contribtracker_theme_suggestions_form_alter(array &$suggestions, array $variables) {
-  $suggestions[] = 'form__' . str_replace('-','_', $variables['element']['#id']);
+  if (!empty($variables['element']['#id'])) {
+    $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
+  }
 }
 
 /**

@@ -1,0 +1,41 @@
+.contribution-filter-form {
+  .select2 {
+    &-container {
+      width: 100% !important;
+      @include breakpoint($desktop) {
+        width: 80% !important;
+      }
+    }
+
+    &-selection {
+      min-height: 60px !important;
+    }
+
+    &-selection--single__rendered {
+      line-height: 55px !important;
+    }
+
+    &-selection__arrow {
+      height: 58px !important;
+    }
+
+    &-selection--multiple {
+      padding: unset !important;
+    }
+  }
+
+  .form {
+    &-text {
+      width: 100% !important;
+      max-width: unset !important;
+
+      @include breakpoint($desktop) {
+        width: 80% !important;
+      }
+    }
+  }
+
+  #edit-reset {
+    margin-left: 16px;
+  }
+}
