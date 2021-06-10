@@ -17,6 +17,7 @@ include:
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
+    - /root/.cache/Cypress/
     - web/themes/custom/contribtracker/node_modules/
     - web/themes/custom/contribtracker/dist/
 
