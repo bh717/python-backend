@@ -110,7 +110,7 @@ frontend_vr:
     - vendor/bin/drush cr
     - cd web/themes/custom/contribtracker
     # - npm ci --prefer-offline
-    # - npm run build
+    - npm run build
     - npm run vr
   artifacts:
     expire_in: 1 week
