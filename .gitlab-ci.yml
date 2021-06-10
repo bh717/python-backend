@@ -1,5 +1,6 @@
 stages:
   - build
+  - lint
   - test
   - deploy
 
@@ -22,7 +23,7 @@ cache:
 drupal_codequality:
   <<: *default-pipelines
   image: hussainweb/drupalqa:php7.4
-  stage: test
+  stage: lint
   script:
     - composer validate
     - phplint --no-cache -v web/modules/custom/
@@ -68,7 +69,7 @@ drupal_tests:
 frontend_codequality:
   <<: *default-pipelines
   image: node:lts
-  stage: test
+  stage: lint
   variables:
     CYPRESS_INSTALL_BINARY: 0
     PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 0
