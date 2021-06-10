@@ -18,7 +18,6 @@ cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - ~/.npm
-    - vendor/
     - web/themes/custom/contribtracker/node_modules/
     - web/themes/custom/contribtracker/dist/
 
@@ -103,7 +102,7 @@ frontend_vr:
   before_script:
     - .gitlab/ci.sh
   script:
-    # - composer install -o
+    - composer install -o
     - vendor/bin/drush -y updb
     - vendor/bin/drush -y cim
     - vendor/bin/drush upwd ct-admin "ct-admin"
