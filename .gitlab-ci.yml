@@ -73,13 +73,13 @@ vr:
     - .gitlab/ci.sh
   script:
     - composer install -o
-    - vendor/drush/drush/drush -y updb
-    - vendor/drush/drush/drush -y cim
-    - vendor/drush/drush/drush upwd ct-admin "newpass"
+    - vendor/bin/drush -y updb
+    - vendor/bin/drush -y cim
     - vendor/bin/drush cr
     - cd web/themes/custom/contribtracker
     - npm ci --prefer-offline
-    - npx percy exec -- cypress run
+    - npm run build
+    - npm run vr
   artifacts:
     expire_in: 1 week
     when: always

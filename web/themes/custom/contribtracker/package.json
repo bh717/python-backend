@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "build": "gulp watch"
+    "build": "gulp",
+    "vr": "percy exec -- cypress run"
   },
   "devDependencies": {
     "@percy/cli": "^1.0.0-beta.50",
