@@ -57,3 +57,18 @@
     }
   }
 }
+
+.drupal__user--details > div {
+  margin-bottom: 30px;
+  display: block;
+
+  @include breakpoint($beyond-tablet) {
+    display: grid;
+    grid-template-columns: var(--grid-template-columns);
+    margin-bottom: 15px;
+  }
+
+  .label {
+    margin-top: 0;
+  }
+}

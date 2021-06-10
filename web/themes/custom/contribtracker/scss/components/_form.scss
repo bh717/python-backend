@@ -1,51 +1,24 @@
 .form {
+  max-width: var(--width);
+  width: calc(100% - 30px);
+  margin: 40px auto;
   background-color: var(--c-white);
   border-radius: 4px;
   padding: 16px;
-  margin: 40px 0;
-
-  @include breakpoint($desktop) {
-    width: var(--width);
-    margin: 40px auto;
-  }
-
-  &-item {
-    margin-bottom: 24px;
-
-    @include fontColor;
-  }
-
-  &-required {
-    @include fontColor;
-  }
-
-  &-file {
-    padding: 0;
-    height: auto;
-  }
-
-  &-wrapper {
-    @include fontColor;
-  }
-
-  &-select {
-    background-color: var(--c-white);
-    color: var(--c-border);
-    margin-top: 8px;
-    padding: 8px 16px;
-  }
-
-  &-item-title {
-    align-self: baseline;
-  }
 }
 
-.input-text {
-  border: 1px solid var(--c-border);
-  border-radius: 4px;
-  margin-top: 16px;
-  padding: 8px 16px;
-  color: var(--c-border);
+.form-item {
+  margin-bottom: 24px;
+  color: var(--c-topic-type);
+  font-family: var(--f-secondary);
+  font-size: 14px;
+}
+
+.form-required {
+  color: var(--c-topic-type);
+  font-family: var(--f-secondary);
+  font-size: 14px;
+  margin-bottom: 8px;
 }
 
 .description {
@@ -54,9 +27,29 @@
   margin-top: 2px;
 }
 
+.form-wrapper {
+  color: var(--c-topic-type);
+  font-family: var(--f-secondary);
+  font-size: 14px;
+}
+
+.form-text {
+  height: 40px;
+  border: 1px solid var(--c-border);
+  border-radius: 4px;
+  margin-top: 8px;
+  padding: 8px 16px;
+  color: var(--c-border);
+  max-width: 100%;
+  width: auto;
+}
+
+input[type='submit'] {
+  cursor: pointer;
+}
+
 .button {
   background: var(--c-brand);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
   border-radius: 20px;
   color: var(--c-white);
   border: none;
