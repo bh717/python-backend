@@ -9,6 +9,7 @@ include:
 .default-pipelines: &default-pipelines
   only:
     - master
+    - theme
     - tags
     - merge_requests
 
