@@ -21,7 +21,6 @@ select2:
   dependencies:
     - core/jQuery
 
-
   tabs:
     js:
       dist/js/tabs.js: {}
