@@ -102,10 +102,11 @@ frontend_vr:
     - composer install -o
     - vendor/bin/drush -y updb
     - vendor/bin/drush -y cim
+    - vendor/bin/drush upwd ct-admin "ct-admin"
     - vendor/bin/drush cr
     - cd web/themes/custom/contribtracker
-    - npm ci --prefer-offline
-    - npm run build
+    # - npm ci --prefer-offline
+    # - npm run build
     - npm run vr
   artifacts:
     expire_in: 1 week
