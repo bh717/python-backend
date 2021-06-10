@@ -73,9 +73,9 @@ frontend_codequality:
   <<: *default-pipelines
   image: node:lts
   stage: lint
-  variables:
-    CYPRESS_INSTALL_BINARY: 0
-    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 0
+  # variables:
+  #   CYPRESS_INSTALL_BINARY: 0
+  #   PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 0
   script:
     - cd web/themes/custom/contribtracker
     - npm ci --prefer-offline
