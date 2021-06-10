@@ -64,6 +64,8 @@ drupal_tests:
   except:
     - schedule
   allow_failure: true
+  needs:
+    - drupal_codequality
 
 
 frontend_codequality:
