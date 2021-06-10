@@ -17,10 +17,9 @@ include:
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - /root/.cache/Cypress
-    - /root/.npm
+    # - /root/.cache/Cypress
+    # - /root/.npm
     - web/themes/custom/contribtracker/node_modules/
-    - web/themes/custom/contribtracker/dist/
 
 drupal_codequality:
   <<: *default-pipelines
