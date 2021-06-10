@@ -13,6 +13,12 @@ include:
     - tags
     - merge_requests
 
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - web/themes/custom/contribtracker/node_modules/
+    - web/themes/custom/contribtracker/dist/
+
 drupal_codequality:
   <<: *default-pipelines
   image: hussainweb/drupalqa:php7.4
@@ -58,7 +64,24 @@ drupal_tests:
     - schedule
   allow_failure: true
 
-vr:
+
+frontend_codequality:
+  <<: *default-pipelines
+  image: node:lts
+  stage: test
+  variables:
+    CYPRESS_INSTALL_BINARY: 0
+    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 0
+  script:
+    - cd web/themes/custom/contribtracker
+    - npm ci --prefer-offline
+    - npm run lint
+  tags:
+    - docker
+  except:
+    - schedule
+
+frontend_vr:
   <<: *default-pipelines
   image: skippednote/drupal-cypress:1.0.5
   tags:
@@ -85,9 +108,11 @@ vr:
     expire_in: 1 week
     when: always
     paths:
-      - $CI_PROJECT_DIR/web/themes/custom/ks/cypress/screenshots
-      - $CI_PROJECT_DIR/web/themes/custom/ks/cypress/videos
-      - $CI_PROJECT_DIR/web/themes/custom/ks/.lighthouseci/*.html
+      - $CI_PROJECT_DIR/web/themes/custom/contribtracker/cypress/screenshots
+      - $CI_PROJECT_DIR/web/themes/custom/contribtracker/cypress/videos
+  tags:
+    - docker
   except:
     - schedule
-  needs: []
+  needs:
+    - frontend_codequality
