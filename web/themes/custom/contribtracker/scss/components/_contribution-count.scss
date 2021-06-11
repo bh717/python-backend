@@ -47,10 +47,11 @@
   background-color: var(--c-white);
   min-height: 200px;
   position: relative;
+  margin: 0 0 30px;
 
   @include breakpoint($desktop) {
-    margin-bottom: 20px;
     padding-left: 32px;
+    margin: 0 0 20px;
   }
 }
 
@@ -58,6 +59,7 @@
   display: grid;
   margin: 0;
   grid-template-columns: repeat(3, 1fr);
+  grid-gap: 8px;
 
   @include breakpoint($mobile) {
     display: block;
