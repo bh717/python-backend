@@ -1,0 +1,22 @@
+uuid: 4d3a094d-d537-4318-addc-290ee5ed53d8
+langcode: en
+status: true
+dependencies:
+  module:
+    - do_username
+    - user
+_core:
+  default_config_hash: v_X0squsB7GP1G0bc2tL01HzskqkQhvTjEcBkc95f6k
+id: user.field_do_username
+field_name: field_do_username
+entity_type: user
+type: do_username
+settings:
+  max_length: 60
+module: do_username
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

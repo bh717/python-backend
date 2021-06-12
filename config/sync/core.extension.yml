@@ -20,6 +20,7 @@ module:
   datetime: 0
   datetime_range: 0
   dblog: 0
+  do_username: 0
   dynamic_page_cache: 0
   editor: 0
   field: 0

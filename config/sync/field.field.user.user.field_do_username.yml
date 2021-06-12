@@ -1,0 +1,23 @@
+uuid: 7d95d109-88f0-4773-ab11-f00ad203fb40
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_do_username
+  module:
+    - do_username
+    - user
+_core:
+  default_config_hash: z566G3McT9JHFjj2HtcSy3PxYYWli3BOb8VuhBNms7E
+id: user.user.field_do_username
+field_name: field_do_username
+entity_type: user
+bundle: user
+label: 'Drupal.org username'
+description: 'Your drupal.org username. This lets us receive information from drupal.org which may be displayed on this site.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: do_username
