@@ -1,20 +1,4 @@
 services:
-  contrib_tracker.http_adapter:
-    class: Http\Adapter\Guzzle6\Client
-    arguments: ['@http_client']
-  contrib_tracker.do_client:
-    class: Drupal\contrib_tracker\DrupalOrg\Client
-    arguments: ['@contrib_tracker.http_adapter']
   logger.channel.contrib_tracker:
     parent: logger.channel_base
     arguments: ['contrib_tracker']
-  contrib_tracker_storage:
-    class: Drupal\contrib_tracker\ContributionStorage
-    parent: container.trait
-    arguments: ['@entity_type.manager']
-  contrib_tracker_retriever:
-    class: Drupal\contrib_tracker\DrupalOrg\ContributionRetriever
-    arguments: ['@contrib_tracker.do_client', '@cache.data']
-  contrib_tracker_manager:
-    class: Drupal\contrib_tracker\ContributionManager
-    arguments: ['@contrib_tracker_storage', '@contrib_tracker_retriever', '@slack.slack_service', '@logger.channel.contrib_tracker']
