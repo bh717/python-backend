@@ -5,13 +5,13 @@ namespace Drupal\Tests\ct_manager\Unit\Data;
 use DateTimeImmutable;
 use Drupal\ct_manager\Data\CodeContribution;
 use Drupal\ct_manager\Data\Issue;
-use Drupal\Tests\UnitTestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group ct_manager
  * @coversDefaultClass \Drupal\ct_manager\Data\CodeContribution
  */
-class CodeContributionTest extends UnitTestCase {
+class CodeContributionTest extends TestCase {
 
   /**
    * Test simple code contribution creation.

@@ -31,7 +31,7 @@ class TaxonomyCreationTraitTest extends ExistingSiteBase {
     foreach ($vocabulary as $value) {
       $term = $this->createTerm($value, ['name' => 'test-x']);
       $this->assertEquals('test-x', $term->getName());
-      $this->assertEquals($value->id(), $term->getVocabularyId());
+      $this->assertEquals($value->id(), $term->bundle());
     }
   }
 

@@ -3,13 +3,13 @@
 namespace Drupal\Tests\ct_manager\Unit\Data;
 
 use Drupal\ct_manager\Data\Issue;
-use Drupal\Tests\UnitTestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group ct_manager
  * @coversDefaultClass \Drupal\ct_manager\Data\Issue
  */
-class IssueTest extends UnitTestCase {
+class IssueTest extends TestCase {
 
   /**
    * Test simple issue creation.
