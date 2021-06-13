@@ -73,7 +73,7 @@ class ProcessUsers extends QueueWorkerBase implements ContainerFactoryPluginInte
       $pluginId,
       $pluginDefinition,
       $container->get('plugin.manager.contribution_plugin_manager'),
-      $container->get('plugin.manager.contribution_storage'),
+      $container->get('ct_manager.contribution_storage'),
       $container->get('logger.channel.ct_manager'),
       $container->get('slack.slack_service')
     );
