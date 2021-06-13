@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace Drupal\ct_drupal\Plugin\ContributionSource;
 
+use DateTimeImmutable;
 use Drupal\Component\Plugin\PluginBase;
-use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\ct_drupal\Client;
-use Drupal\ct_drupal\DrupalOrgRetriever;
+use Drupal\ct_drupal\CommentDetails;
+use Drupal\ct_drupal\DrupalRetrieverInterface;
 use Drupal\ct_manager\ContributionSourceInterface;
+use Drupal\ct_manager\ContributionTrackerStorage;
 use Drupal\ct_manager\Data\CodeContribution;
+use Drupal\ct_manager\Data\Issue;
 use Drupal\do_username\DOUserInfoRetriever;
 use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -34,25 +37,11 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
   protected $entityTypeManager;
 
   /**
-   * Drupal.org client service.
-   *
-   * @var \Drupal\ct_drupal\Client
-   */
-  protected $client;
-
-  /**
-   * Cache backend service.
-   *
-   * @var \Drupal\Core\Cache\CacheBackendInterface
-   */
-  protected $cache;
-
-  /**
    * Retrievers for each user.
    *
-   * @var \Drupal\ct_drupal\DrupalOrgRetriever[]
+   * @var \Drupal\ct_drupal\DrupalOrgRetriever
    */
-  protected $retrievers;
+  protected $doRetriever;
 
   /**
    * do_username service.
@@ -60,6 +49,20 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
    * @var \Drupal\do_username\DOUserInfoRetriever
    */
   protected $doUserInfoRetriever;
+
+  /**
+   * Contribution Storage service.
+   *
+   * @var \Drupal\ct_manager\ContributionTrackerStorage
+   */
+  protected $contributionStorage;
+
+  /**
+   * Logger.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelInterface
+   */
+  protected $logger;
 
   /**
    * Constructs a Drupal\rest\Plugin\ResourceBase object.
@@ -72,19 +75,22 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
    *   The plugin_definition for the plugin instance.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The injected entity type manager service.
-   * @param \Drupal\ct_drupal\Client $client
-   *   The injected drupal.org client.
-   * @param \Drupal\Core\Cache\CacheBackendInterface $cacheBackend
-   *   The injected cache backend service.
+   * @param \Drupal\ct_drupal\DrupalOrgRetriever $doRetriever
+   *   Wrapper for Drupal.org API.
    * @param \Drupal\do_username\DOUserInfoRetriever $doUserInfoRetriever
    *   The injected DO UserInfoRetriever service.
+   * @param \Drupal\ct_manager\ContributionTrackerStorage $contributionStorage
+   *   The contribution storage service.
+   * @param \Drupal\Core\Logger\LoggerChannelInterface $loggerChannel
+   *   The logger service.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, Client $client, CacheBackendInterface $cacheBackend, DOUserInfoRetriever $doUserInfoRetriever) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, DrupalRetrieverInterface $doRetriever, DOUserInfoRetriever $doUserInfoRetriever, ContributionTrackerStorage $contributionStorage, LoggerChannelInterface $loggerChannel) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entityTypeManager;
-    $this->client = $client;
-    $this->cache = $cacheBackend;
+    $this->doRetriever = $doRetriever;
     $this->doUserInfoRetriever = $doUserInfoRetriever;
+    $this->contributionStorage = $contributionStorage;
+    $this->logger = $loggerChannel;
   }
 
   /**
@@ -96,9 +102,10 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
       $plugin_id,
       $plugin_definition,
       $container->get('entity.manager'),
-      $container->get('ct_drupal.client'),
-      $container->get('cache.data'),
+      $container->get('ct_drupal.retriever'),
       $container->get('do_username.user_service'),
+      $container->get('ct_manager.contribution_storage'),
+      $container->get('logger.channel.ct_drupal')
     );
   }
 
@@ -115,18 +122,6 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
   }
 
   /**
-   * Returns a user retriever object.
-   */
-  protected function getOrCreateRetriever(User $user): DrupalOrgRetriever {
-    $username = $user->field_do_username[0]->getValue()['value'];
-    if (isset($this->retrievers[$username])) {
-      return $this->retrievers[$username];
-    }
-    $this->retrievers[$username] = new DrupalOrgRetriever($this->client, $username, $this->cache);
-    return $this->retrievers[$username];
-  }
-
-  /**
    * {@inheritdoc}
    */
   public function isUserValid(User $user): bool {
@@ -137,6 +132,8 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
 
   /**
    * Get issues from the total contribution data.
+   *
+   * @SuppressWarnings(PHPMD.UnusedFormalParameter)
    */
   public function getUserIssues(User $user) {
     return [];
@@ -146,7 +143,67 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
    * Get comments from the total contribution data.
    */
   public function getUserCodeContributions(User $user) {
-    return $this->getOrCreateRetriever($user)->getCodeContribution();
+    $do_username = $user->field_do_username[0]->getValue()['value'];
+    $userInformation = $this->doUserInfoRetriever->getUserInformation($do_username);
+
+    $retriever = $this->doRetriever;
+
+    $codeContribution = [];
+    foreach ($retriever->getCommentsByAuthor($userInformation->uid) as $comment) {
+      // If we have stored this comment, we have stored everything after it.
+      if ($this->contributionStorage->getNodeForCodeContribution($comment->url)) {
+        $this->logger->notice('Skipping @comment, and all after it.', ['@comment' => $comment->url]);
+        break;
+      }
+
+      $issueNode = $retriever->getDrupalOrgNode($comment->node->id, REQUEST_TIME + 1800);
+      $issueData = $issueNode->getData();
+      if (!isset($issueData->type) || $issueData->type != 'project_issue') {
+        // This is not an issue. Skip it.
+        continue;
+      }
+      $commentDetails = new CommentDetails($retriever, $comment);
+
+      // Now, get the project for the issue.
+      $projectData = $retriever->getDrupalOrgNode($issueData->field_project->id, REQUEST_TIME + (6 * 3600))->getData();
+      if (empty($projectData->title)) {
+        // We couldn't get the project details for some reason.
+        // Skip the rest of the steps.
+        continue;
+      }
+
+      $commentBody = $commentDetails->getDescription();
+      $title = 'Comment on ' . $issueData->title;
+      if (!empty($commentBody)) {
+        $title = strip_tags($commentBody);
+      }
+      if (strlen($title) > 80) {
+        $title = substr($title, 0, 77) . '...';
+      }
+
+      $issue_url = sprintf("https://www.drupal.org/node/%s", $issueNode->getId());
+      $date = (new DateTimeImmutable())->setTimestamp((int) $issueData->created);
+      $commit = (new CodeContribution($title, $comment->url, $date))
+        ->setAccountUrl('https://www.drupal.org/user/' . $comment->author->id)
+        ->setDescription($commentBody)
+        ->setProject($projectData->title)
+        ->setTechnology('Drupal')
+        ->setProjectUrl($projectData->url)
+        ->setIssue(new Issue($issueData->title, $issue_url))
+        ->setPatchCount($commentDetails->getPatchFilesCount())
+        ->setFilesCount($commentDetails->getTotalFilesCount())
+        ->setStatus($commentDetails->getIssueStatus());
+      $codeContribution[] = $commit;
+    }
+    // Contribution Storage in ct_manager expects this array to be sorted
+    // in descending order.
+    $codeContribution = array_values($codeContribution);
+    usort(
+      $codeContribution,
+      // phpcs:ignore
+      fn(CodeContribution $first, CodeContribution $second) => $second->getDate()->getTimestamp() <=> $first->getDate()->getTimestamp()
+    );
+    return $codeContribution;
   }
 
   /**

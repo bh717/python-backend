@@ -37,10 +37,13 @@ interface DrupalRetrieverInterface {
   /**
    * Get comments by an user on drupal.org.
    *
+   * @param int $uid
+   *   The user ID of the author.
+   *
    * @return \Hussainweb\DrupalApi\Entity\Collection\CommentCollection
    *   List of comments from drupal.org.
    */
-  public function getCommentsByAuthor();
+  public function getCommentsByAuthor($uid);
 
   /**
    * Get file data from drupal.org.

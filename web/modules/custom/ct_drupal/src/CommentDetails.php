@@ -2,9 +2,8 @@
 
 namespace Drupal\ct_drupal;
 
-use Hussainweb\DrupalApi\Entity\File as DrupalOrgFile;
 use Hussainweb\DrupalApi\Entity\Comment as DrupalOrgComment;
-use Hussainweb\DrupalApi\Entity\Node as DrupalOrgNode;
+use Hussainweb\DrupalApi\Entity\File as DrupalOrgFile;
 
 /**
  * Instance of Drupal.org Comment.
@@ -33,7 +32,7 @@ class CommentDetails {
    *
    * @var \Hussainweb\DrupalApi\Entity\Node
    */
-  protected $issueData;
+  protected $issueData = NULL;
 
   /**
    * Number of patches attached to the comment.
@@ -57,28 +56,34 @@ class CommentDetails {
   protected $issueStatus;
 
   /**
+   * Is the comment processed?
+   *
+   * @var bool
+   */
+  protected $commentProcessed = FALSE;
+
+  /**
    * DrupalOrgCommentDetails constructor.
    *
    * @param \Drupal\ct_drupal\DrupalRetrieverInterface $retriever
    *   The injected contribution retriever service.
    * @param \Hussainweb\DrupalApi\Entity\Comment $comment
    *   The comment data from drupal.org.
-   * @param \Hussainweb\DrupalApi\Entity\Node $issueData
-   *   The issue data.
    */
-  public function __construct(DrupalRetrieverInterface $retriever, DrupalOrgComment $comment, DrupalOrgNode $issueData) {
+  public function __construct(DrupalRetrieverInterface $retriever, DrupalOrgComment $comment) {
     $this->contribRetriever = $retriever;
     $this->comment = $comment;
-    $this->issueData = $issueData;
-
-    $this->processFileDetails();
-    $this->determineIssueStatus();
   }
 
   /**
    * Get the number of patch files in this comment.
    */
   public function getPatchFilesCount(): int {
+    if (!$this->commentProcessed) {
+      $this->processFileDetails();
+      $this->determineIssueStatus();
+      $this->commentProcessed = TRUE;
+    }
     return $this->patchFilesCount;
   }
 
@@ -86,6 +91,11 @@ class CommentDetails {
    * Get the number of all files in this comment.
    */
   public function getTotalFilesCount(): int {
+    if (!$this->commentProcessed) {
+      $this->processFileDetails();
+      $this->determineIssueStatus();
+      $this->commentProcessed = TRUE;
+    }
     return $this->totalFilesCount;
   }
 
@@ -93,13 +103,36 @@ class CommentDetails {
    * Get the issue status.
    */
   public function getIssueStatus(): string {
+    if (!$this->commentProcessed) {
+      $this->processFileDetails();
+      $this->determineIssueStatus();
+      $this->commentProcessed = TRUE;
+    }
     return $this->issueStatus;
+  }
+
+  /**
+   * Get comment Description.
+   *
+   * Fix for relative user url used in comment section.
+   */
+  public function getDescription(): string {
+    if (!empty($this->comment->comment_body->value)) {
+      $commentBody = $this->comment->comment_body->value;
+      $commentBody = preg_replace('/href="(\/)?([\w_\-\/\.\?&=@%#]*)"/i', 'href="https://www.drupal.org/$2"', $commentBody);
+      return $commentBody;
+    }
+    return '';
   }
 
   /**
    * Check the type and number of files attached to a comment under a issue.
    */
   protected function processFileDetails(): void {
+    if (!$this->issueData) {
+      $this->issueData = $this->contribRetriever->getDrupalOrgNode($this->comment->node->id, REQUEST_TIME + 1800);
+    }
+
     // Get the files in the reverse order.
     $this->patchFilesCount = $this->totalFilesCount = 0;
     $matched = FALSE;
@@ -127,6 +160,10 @@ class CommentDetails {
    * Determine the status of the issue.
    */
   protected function determineIssueStatus(): void {
+    if (!$this->issueData) {
+      $this->issueData = $this->contribRetriever->getDrupalOrgNode($this->comment->node->id, REQUEST_TIME + 1800);
+    }
+
     // Try to determine the status.
     // Since we cannot access the revisions directly, we will see if the
     // issue was updated at the same time as this comment (by using the

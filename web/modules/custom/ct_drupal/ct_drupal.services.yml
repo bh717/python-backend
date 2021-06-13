@@ -1,7 +1,13 @@
 services:
+  logger.channel.ct_drupal:
+    parent: logger.channel_base
+    arguments: ['ct_drupal']
   ct_drupal.client:
     class: Drupal\ct_drupal\Client
     arguments: ['@ct_drupal.http_adapter']
   ct_drupal.http_adapter:
     class: Http\Adapter\Guzzle6\Client
     arguments: ['@http_client']
+  ct_drupal.retriever:
+    class: Drupal\ct_drupal\DrupalOrgRetriever
+    arguments: ['@ct_drupal.client', '@cache.data']
