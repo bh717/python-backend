@@ -6,27 +6,6 @@
  */
 
 /**
- * Implements hook_cron().
- */
-function contrib_tracker_cron() {
-  $queue = \Drupal::queue('contrib_tracker_process_users');
-
-  $query = \Drupal::entityQuery('user')
-    ->condition('field_drupalorg_username', '', '!=')
-    ->condition('status', 1);
-  $uids = $query->execute();
-
-  $users = \Drupal::entityTypeManager()
-    ->getStorage('user')
-    ->loadMultiple($uids);
-  \Drupal::logger('contrib_tracker')
-    ->notice('Queuing @count users for processing.', ['@count' => count($users)]);
-  array_walk($users, function ($user) use ($queue) {
-    $queue->createItem($user);
-  });
-}
-
-/**
  * Implements hook_mail_alter().
  *
  * CONT-36 Disable all mails in non prod environments.
