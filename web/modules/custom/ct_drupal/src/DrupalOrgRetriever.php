@@ -1,33 +1,30 @@
 <?php
 
-namespace Drupal\ct_drupal\DrupalOrg;
+namespace Drupal\ct_drupal;
 
-use Drupal\ct_drupal\DrupalRetrieverInterface;
+use DateTimeImmutable;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Cache\CacheBackendInterface;
-use Hussainweb\DrupalApi\Request\Collection\CommentCollectionRequest;
-use Hussainweb\DrupalApi\Request\FileRequest;
-use Hussainweb\DrupalApi\Request\NodeRequest;
-use Hussainweb\DrupalApi\Entity\Comment as DrupalOrgComment;
 use Drupal\ct_manager\Data\CodeContribution;
 use Drupal\ct_manager\Data\Issue;
-use DateTimeImmutable;
+use Hussainweb\DrupalApi\Entity\Comment as DrupalOrgComment;
+use Hussainweb\DrupalApi\Entity\Node as DrupalOrgNode;
+use Hussainweb\DrupalApi\Request\Collection\CommentCollectionRequest;
+use Hussainweb\DrupalApi\Request\Collection\UserCollectionRequest;
+use Hussainweb\DrupalApi\Request\FileRequest;
+use Hussainweb\DrupalApi\Request\NodeRequest;
+use RuntimeException;
 
 /**
- * Drupal retriever service class.
+ * DrupalOrg Contribution retriever service class.
  *
  * This class is responsible for retrieving data from drupal.org API's using
  * the drupal.org client service. It provides methods to return information
  * relevant to the application.
+ *
+ * @SuppressWarnings(PHPMD)
  */
-class DrupalRetriever implements DrupalRetrieverInterface {
-
-  /**
-   * User Entity Storage.
-   *
-   * @var array
-   */
-  protected $userContributions;
+class DrupalOrgRetriever implements DrupalRetrieverInterface {
 
   /**
    * Drupal.org client service.
@@ -37,6 +34,20 @@ class DrupalRetriever implements DrupalRetrieverInterface {
   protected $client;
 
   /**
+   * Drupal username.
+   *
+   * @var string
+   */
+  protected $username;
+
+  /**
+   * Drupal.org UID.
+   *
+   * @var int
+   */
+  protected $uid;
+
+  /**
    * Cache backend service.
    *
    * @var \Drupal\Core\Cache\CacheBackendInterface
@@ -44,16 +55,38 @@ class DrupalRetriever implements DrupalRetrieverInterface {
   protected $cache;
 
   /**
-   * DrupalRetriever constructor.
+   * ContributionRetriever constructor.
    *
-   * @param \Drupal\ct_drupal\DrupalOrg\Client $client
+   * @param \Drupal\ct_drupal\Client $client
    *   The injected drupal.org client.
+   * @param string $user
+   *   The user name.
    * @param \Drupal\Core\Cache\CacheBackendInterface $cacheBackend
    *   The injected cache backend service.
    */
-  public function __construct(Client $client, CacheBackendInterface $cacheBackend) {
+  public function __construct(Client $client, string $user, CacheBackendInterface $cacheBackend) {
     $this->client = $client;
+    $this->username = $user;
     $this->cache = $cacheBackend;
+  }
+
+  /**
+   * TODO: Add comment.
+   */
+  public function getUserInformation($username) {
+    $request = new UserCollectionRequest([
+      'name' => $username,
+    ]);
+
+    /** @var \Hussainweb\DrupalApi\Entity\Collection\UserCollection $users */
+    $users = $this->client->getEntity($request);
+    if (count($users) != 1) {
+      throw new RuntimeException("No user found");
+    }
+
+    $user = $users->current();
+
+    return $user;
   }
 
   /**
@@ -76,7 +109,7 @@ class DrupalRetriever implements DrupalRetrieverInterface {
   /**
    * {@inheritdoc}
    */
-  public function getDrupalOrgNodeFromApi($nid) {
+  public function getDrupalOrgNodeFromApi($nid): DrupalOrgNode {
     $req = new NodeRequest($nid);
     return $this->client->getEntity($req);
   }
@@ -84,7 +117,9 @@ class DrupalRetriever implements DrupalRetrieverInterface {
   /**
    * {@inheritdoc}
    */
-  public function getDrupalOrgCommentsByAuthor($uid) {
+  public function getCommentsByAuthor() {
+    $doUser = $this->getUserInformation($this->username);
+    $uid = $doUser->getId();
     $page = 0;
     do {
       $req = new CommentCollectionRequest([
@@ -95,6 +130,7 @@ class DrupalRetriever implements DrupalRetrieverInterface {
       ]);
       /** @var \Hussainweb\DrupalApi\Entity\Collection\CommentCollection $comments */
       $comments = $this->client->getEntity($req);
+
       foreach ($comments as $comment) {
         yield $comment;
       }
@@ -112,48 +148,12 @@ class DrupalRetriever implements DrupalRetrieverInterface {
   }
 
   /**
-   * {@inheritdoc}
+   * TODO: Add comment.
    */
-  public function getFile($fid) {
-    $cid = 'ct_drupal:file:' . $fid;
-
-    $cache = $this->cache->get($cid);
-    if ($cache) {
-      return $cache->data;
-    }
-
-    $req = new FileRequest($fid);
-    $file = $this->client->getEntity($req);
-
-    if ($file) {
-      $this->cache->set($cid, $file, Cache::PERMANENT);
-    }
-
-    return $file;
-  }
-
-  /**
-  * Get comment Description.
-  * Fix for relative user url used in comment section
-  */
-  public function getDescription(DrupalOrgComment $comment): string {
-    if (!empty($comment->comment_body->value)) {
-      $commentBody = $comment->comment_body->value;
-      $commentBody = preg_replace('/href="(\/)?([\w_\-\/\.\?&=@%#]*)"/i', 'href="https://www.drupal.org/$2"', $commentBody);
-      return $commentBody;
-    }
-    return '';
-  }
-
-  /**
-   * Get PR commits and issue comments for user.
-   */
-  public function getCodeContributions(int $uid) {
+  public function getCodeContribution() {
     $codeContribution = [];
-    // Get all commits associated with the user and set the title accodingly.
-    foreach ($this->getDrupalOrgCommentsByAuthor($uid) as $comment) {
-      $nid = $comment->node->id;
-      $issueNode = $this->getDrupalOrgNode($nid, REQUEST_TIME + 180);
+    foreach ($this->getCommentsByAuthor() as $comment) {
+      $issueNode = $this->getDrupalOrgNode($comment->node->id, REQUEST_TIME + 180);
       $issueData = $issueNode->getData();
       if (!isset($issueData->type) || $issueData->type != 'project_issue') {
         // This is not an issue. Skip it.
@@ -179,19 +179,19 @@ class DrupalRetriever implements DrupalRetrieverInterface {
           $title = substr($title, 0, 77) . '...';
         }
       }
-      $url = $issueData->url;
+      $issue_url = sprintf("https://www.drupal.org/node/%s", $issueData->getId());
       $date = (new DateTimeImmutable())->setTimestamp($issueData->created);
-      $commit = (new CodeContribution($title, $url, $date))
-        ->setAccountUrl('https://www.drupal.org/user/' . $uid)
+      $commit = (new CodeContribution($title, $comment->url, $date))
+        ->setAccountUrl('https://www.drupal.org/user/' . $comment->author->id)
         ->setDescription($commentBody)
         ->setProject($projectTerm)
         ->setTechnology('Drupal')
         ->setProjectUrl($projectData->url)
-        ->setIssue(new Issue($issueData->title, $issueData->url))
+        ->setIssue(new Issue($issueData->title, $issue_url))
         ->setPatchCount($commentDetails->getPatchFilesCount())
         ->setFilesCount($commentDetails->getTotalFilesCount())
         ->setStatus($commentDetails->getIssueStatus());
-      $codeContribution[$url] = $commit;
+      $codeContribution[] = $commit;
     }
     // Contribution Storage in ct_manager expects this array to be sorted
     // in descending order.
@@ -202,6 +202,47 @@ class DrupalRetriever implements DrupalRetrieverInterface {
       fn(CodeContribution $first, CodeContribution $second) => $second->getDate()->getTimestamp() <=> $first->getDate()->getTimestamp()
     );
     return $codeContribution;
+  }
+
+  /**
+   * Get file data from drupal.org.
+   *
+   * @param int $fid
+   *   The fid of the file on drupal.org.
+   *
+   * @return \Hussainweb\DrupalApi\Entity\File
+   *   The file data from drupal.org.
+   */
+  public function getFile($fid) {
+    $cid = 'ct_drupal:file:' . $fid;
+
+    $cache = $this->cache->get($cid);
+    if ($cache) {
+      return $cache->data;
+    }
+
+    $req = new FileRequest($fid);
+    $file = $this->client->getEntity($req);
+
+    if ($file) {
+      $this->cache->set($cid, $file, Cache::PERMANENT);
+    }
+
+    return $file;
+  }
+
+  /**
+   * Get comment Description.
+   *
+   * Fix for relative user url used in comment section.
+   */
+  public function getDescription(DrupalOrgComment $comment): string {
+    if (!empty($comment->comment_body->value)) {
+      $commentBody = $comment->comment_body->value;
+      $commentBody = preg_replace('/href="(\/)?([\w_\-\/\.\?&=@%#]*)"/i', 'href="https://www.drupal.org/$2"', $commentBody);
+      return $commentBody;
+    }
+    return '';
   }
 
 }

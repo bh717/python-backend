@@ -1,8 +1,7 @@
 <?php
 
-namespace Drupal\ct_drupal\DrupalOrg;
+namespace Drupal\ct_drupal;
 
-use Drupal\ct_drupal\DrupalRetrieverInterface;
 use Hussainweb\DrupalApi\Entity\File as DrupalOrgFile;
 use Hussainweb\DrupalApi\Entity\Comment as DrupalOrgComment;
 use Hussainweb\DrupalApi\Entity\Node as DrupalOrgNode;
