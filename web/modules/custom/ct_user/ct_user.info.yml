@@ -1,7 +1,7 @@
 name: 'Contrib Tracker Users'
 type: module
 description: 'Handles user related processing in Contrib Tracker'
-core: 8.x
+core_version_requirement: ^8.9 || ^9
 package: Contrib Tracker
 dependencies:
   - social_auth
