@@ -61,16 +61,6 @@ display:
               text_input_required_format: basic_html
               allow_secondary: false
               secondary_label: 'Advanced options'
-            filter:
-              field_contribution_date_value:
-                plugin_id: bef_datepicker
-                advanced:
-                  collapsible: false
-                  is_secondary: false
-                  placeholder_text: ''
-                  rewrite:
-                    filter_rewrite_values: ''
-                  sort_options: false
           text_input_required_format: basic_html
       pager:
         type: none
