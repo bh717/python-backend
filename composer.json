@@ -15,6 +15,10 @@
             "url": "https://packages.drupal.org/8"
         },
         {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
             "type": "path",
             "url": "web/modules/custom/ct_drupal"
         },
@@ -31,7 +35,7 @@
         "cweagans/composer-patches": "^1.7.0",
         "drupal/address": "^1.8.0",
         "drupal/admin_toolbar": "^3.0.0",
-        "drupal/better_exposed_filters": "3.x-dev",
+        "drupal/better_exposed_filters": "^5.0",
         "drupal/bootstrap": "^3.0",
         "drupal/core-composer-scaffold": "^8.9.8",
         "drupal/core-recommended": "^8.9.8",
@@ -48,6 +52,8 @@
         "drupal/social_auth_google": "^3.0",
         "drush/drush": "^10.3.5",
         "geocoder-php/nominatim-provider": "^5.2",
+        "npm-asset/jquery-ui-touch-punch": "^0.2.3",
+        "oomphinc/composer-installers-extender": "^2.0",
         "platformsh/config-reader": "^2.3.1",
         "vlucas/phpdotenv": "^5.2"
     },
@@ -84,9 +90,14 @@
         "drupal-composer-helper": {
             "web-prefix": "web"
         },
+        "installer-types": ["npm-asset", "bower-asset"],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/libraries/{$name}": [
+                "type:drupal-library",
+                "vendor:npm-asset",
+                "vendor:bower-asset"
+            ],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],

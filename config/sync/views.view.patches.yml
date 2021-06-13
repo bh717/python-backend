@@ -55,16 +55,22 @@ display:
           sort_desc_label: Desc
           bef:
             general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: false
+              input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
-              autosubmit: false
-              autosubmit_hide: false
-            field_contribution_date_value:
-              bef_format: bef_datepicker
-              more_options:
-                is_secondary: false
-                rewrite:
-                  filter_rewrite_values: ''
+            filter:
+              field_contribution_date_value:
+                plugin_id: bef_datepicker
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                  sort_options: false
       pager:
         type: mini
         options:
