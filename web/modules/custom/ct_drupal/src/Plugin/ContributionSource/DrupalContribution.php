@@ -12,8 +12,6 @@ use Drupal\ct_drupal\Client;
 use Drupal\ct_drupal\DrupalOrgRetriever;
 use Drupal\ct_manager\ContributionSourceInterface;
 use Drupal\ct_manager\Data\CodeContribution;
-use Drupal\ct_manager\Data\CodeContributionCollection;
-use Drupal\ct_manager\Data\IssueCollection;
 use Drupal\do_username\DOUserInfoRetriever;
 use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -140,15 +138,15 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
   /**
    * Get issues from the total contribution data.
    */
-  public function getUserIssues(User $user): IssueCollection {
-    return new IssueCollection([]);
+  public function getUserIssues(User $user) {
+    return [];
   }
 
   /**
    * Get comments from the total contribution data.
    */
-  public function getUserCodeContributions(User $user): CodeContributionCollection {
-    return new CodeContributionCollection($this->getOrCreateRetriever($user)->getCodeContribution());
+  public function getUserCodeContributions(User $user) {
+    return $this->getOrCreateRetriever($user)->getCodeContribution();
   }
 
   /**
