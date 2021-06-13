@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\ct_drupal\DrupalOrg;
+namespace Drupal\ct_drupal;
 
 use Hussainweb\DrupalApi\Client as DrupalOrgClient;
 use Hussainweb\DrupalApi\Request\Request;
@@ -18,7 +18,7 @@ class Client extends DrupalOrgClient {
    * {@inheritdoc}
    */
   public function getEntity(Request $request) {
-    return parent::getEntity($request->withHeader('User-Agent', 'Drupal Contribution Tracker'));
+    return parent::getEntity($request->withHeader('User-Agent', 'Contribution Tracker'));
   }
 
 }

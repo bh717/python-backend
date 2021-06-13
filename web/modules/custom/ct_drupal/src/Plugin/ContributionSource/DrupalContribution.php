@@ -5,14 +5,18 @@ declare(strict_types=1);
 namespace Drupal\ct_drupal\Plugin\ContributionSource;
 
 use Drupal\Component\Plugin\PluginBase;
+use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\ct_drupal\Client;
+use Drupal\ct_drupal\DrupalOrgRetriever;
 use Drupal\ct_manager\ContributionSourceInterface;
-use Drupal\user\Entity\User;
 use Drupal\ct_manager\Data\CodeContribution;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\ct_manager\Data\CodeContributionCollection;
+use Drupal\ct_manager\Data\IssueCollection;
 use Drupal\do_username\DOUserInfoRetriever;
-use Drupal\ct_drupal\DrupalRetrieverInterface;
+use Drupal\user\Entity\User;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Retrieve and Store contributions from drupal.org.
@@ -32,18 +36,32 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
   protected $entityTypeManager;
 
   /**
+   * Drupal.org client service.
+   *
+   * @var \Drupal\ct_drupal\Client
+   */
+  protected $client;
+
+  /**
+   * Cache backend service.
+   *
+   * @var \Drupal\Core\Cache\CacheBackendInterface
+   */
+  protected $cache;
+
+  /**
+   * Retrievers for each user.
+   *
+   * @var \Drupal\ct_drupal\DrupalOrgRetriever[]
+   */
+  protected $retrievers;
+
+  /**
    * do_username service.
    *
    * @var \Drupal\do_username\DOUserInfoRetriever
    */
   protected $doUserInfoRetriever;
-
-  /**
-   * Contribution retriever service.
-   *
-   * @var \Drupal\ct_drupal\DrupalRetrieverInterface
-   */
-  protected $contribRetriever;
 
   /**
    * Constructs a Drupal\rest\Plugin\ResourceBase object.
@@ -56,16 +74,19 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
    *   The plugin_definition for the plugin instance.
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   The injected entity type manager service.
+   * @param \Drupal\ct_drupal\Client $client
+   *   The injected drupal.org client.
+   * @param \Drupal\Core\Cache\CacheBackendInterface $cacheBackend
+   *   The injected cache backend service.
    * @param \Drupal\do_username\DOUserInfoRetriever $doUserInfoRetriever
    *   The injected DO UserInfoRetriever service.
-   * @param \Drupal\do_username\DrupalRetrieverInterface $retriever
-   *   The injected DrupalRetrieverInterface service.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, DOUserInfoRetriever $doUserInfoRetriever, DrupalRetrieverInterface $retriever) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, EntityTypeManagerInterface $entityTypeManager, Client $client, CacheBackendInterface $cacheBackend, DOUserInfoRetriever $doUserInfoRetriever) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->entityTypeManager = $entityTypeManager;
+    $this->client = $client;
+    $this->cache = $cacheBackend;
     $this->doUserInfoRetriever = $doUserInfoRetriever;
-    $this->contribRetriever = $retriever;
   }
 
   /**
@@ -77,8 +98,9 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
       $plugin_id,
       $plugin_definition,
       $container->get('entity.manager'),
+      $container->get('ct_drupal.client'),
+      $container->get('cache.data'),
       $container->get('do_username.user_service'),
-      $container->get('ct_drupal_retriever'),
     );
   }
 
@@ -95,6 +117,18 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
   }
 
   /**
+   * Returns a user retriever object.
+   */
+  protected function getOrCreateRetriever(User $user): DrupalOrgRetriever {
+    $username = $user->field_do_username[0]->getValue()['value'];
+    if (isset($this->retrievers[$username])) {
+      return $this->retrievers[$username];
+    }
+    $this->retrievers[$username] = new DrupalOrgRetriever($this->client, $username, $this->cache);
+    return $this->retrievers[$username];
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function isUserValid(User $user): bool {
@@ -105,21 +139,16 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
 
   /**
    * Get issues from the total contribution data.
-   * Returns an empty array as issues are included
-   * during Drupal.org CodeContributions retrieval.
    */
-  public function getUserIssues(User $user) {
-    return [];
+  public function getUserIssues(User $user): IssueCollection {
+    return new IssueCollection([]);
   }
 
   /**
    * Get comments from the total contribution data.
    */
-  public function getUserCodeContributions(User $user) {
-    $do_username = $user->field_do_username[0]->getValue()['value'];
-    $userInformation = $this->doUserInfoRetriever->getUserInformation($do_username);
-    $uid = $userInformation->getId();
-    return $this->contribRetriever->getCodeContributions($uid);
+  public function getUserCodeContributions(User $user): CodeContributionCollection {
+    return new CodeContributionCollection($this->getOrCreateRetriever($user)->getCodeContribution());
   }
 
   /**

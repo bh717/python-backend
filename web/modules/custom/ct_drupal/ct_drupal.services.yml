@@ -1,10 +1,7 @@
 services:
+  ct_drupal.client:
+    class: Drupal\ct_drupal\Client
+    arguments: ['@ct_drupal.http_adapter']
   ct_drupal.http_adapter:
     class: Http\Adapter\Guzzle6\Client
     arguments: ['@http_client']
-  ct_drupal.do_client:
-    class: Drupal\ct_drupal\DrupalOrg\Client
-    arguments: ['@ct_drupal.http_adapter']
-  ct_drupal_retriever:
-    class: Drupal\ct_drupal\DrupalOrg\DrupalRetriever
-    arguments: ['@ct_drupal.do_client', '@cache.data']

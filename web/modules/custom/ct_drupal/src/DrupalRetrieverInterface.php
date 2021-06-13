@@ -3,6 +3,7 @@
 namespace Drupal\ct_drupal;
 
 use Drupal\Core\Cache\Cache;
+use Hussainweb\DrupalApi\Entity\Node as DrupalOrgNode;
 
 /**
  * Interface for Drupal Retriever service.
@@ -31,18 +32,15 @@ interface DrupalRetrieverInterface {
    * @return \Hussainweb\DrupalApi\Entity\Node
    *   The node data from drupal.org.
    */
-  public function getDrupalOrgNodeFromApi($nid);
+  public function getDrupalOrgNodeFromApi($nid): DrupalOrgNode;
 
   /**
    * Get comments by an user on drupal.org.
    *
-   * @param int $uid
-   *   The uid of the user on drupal.org.
-   *
    * @return \Hussainweb\DrupalApi\Entity\Collection\CommentCollection
    *   List of comments from drupal.org.
    */
-  public function getDrupalOrgCommentsByAuthor($uid);
+  public function getCommentsByAuthor();
 
   /**
    * Get file data from drupal.org.
