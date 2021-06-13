@@ -14,6 +14,7 @@ module:
   config: 0
   contextual: 0
   contrib_tracker: 0
+  ct_drupal: 0
   ct_github: 0
   ct_manager: 0
   ct_user: 0
