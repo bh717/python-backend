@@ -179,7 +179,7 @@ class DrupalOrgRetriever implements DrupalRetrieverInterface {
           $title = substr($title, 0, 77) . '...';
         }
       }
-      $issue_url = sprintf("https://www.drupal.org/node/%s", $issueData->getId());
+      $issue_url = sprintf("https://www.drupal.org/node/%s", $issueNode->getId());
       $date = (new DateTimeImmutable())->setTimestamp($issueData->created);
       $commit = (new CodeContribution($title, $comment->url, $date))
         ->setAccountUrl('https://www.drupal.org/user/' . $comment->author->id)
