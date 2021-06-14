@@ -2,6 +2,7 @@ name: contribtracker
 description: Contribution tracker is a Drupal application built in Drupal 8 for managing community contributions done by the team members. It allows to log various contributions mentioned.   - Code contributions   - Event contributions   - Non-code contributions
 type: theme
 core_version_requirement: ^8.8 || ^9.0
+base theme: stable
 
 regions:
   header: Header
