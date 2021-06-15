@@ -819,7 +819,7 @@ display:
         title: 'Non Code Contributions'
         description: ''
         expanded: false
-        parent: 'views_view:views.all_contributions.page_1'
+        parent: 'views_view:views.all_contributions.allcontributions'
         weight: -48
         context: '0'
         menu_name: main

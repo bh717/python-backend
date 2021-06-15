@@ -1079,7 +1079,7 @@ display:
         title: 'Code Contribution'
         description: ''
         expanded: false
-        parent: 'views_view:views.all_contributions.page_1'
+        parent: 'views_view:views.all_contributions.allcontributions'
         weight: -50
         context: '0'
         menu_name: main

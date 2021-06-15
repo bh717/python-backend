@@ -8,7 +8,6 @@ dependencies:
     - field.storage.node.field_contribution_technology
     - field.storage.node.field_event_contrib_event_type
     - field.storage.node.field_event_contribution_link
-    - field.storage.node.field_event_location
     - node.type.event_contribution
     - system.menu.main
     - taxonomy.vocabulary.event_type
@@ -792,7 +791,7 @@ display:
         title: 'Event Contributions'
         description: ''
         expanded: false
-        parent: 'views_view:views.all_contributions.page_1'
+        parent: 'views_view:views.all_contributions.allcontributions'
         weight: -49
         context: '0'
         menu_name: main
