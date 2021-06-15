@@ -1,6 +1,7 @@
 .count-filter-form {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 
   @include breakpoint($mobile) {
     display: block;
@@ -21,10 +22,22 @@
   }
 
   #edit-actions {
-    padding-top: 10px;
+    padding-left: 10px;
 
     #edit-reset {
       margin-left: 16px;
+    }
+  }
+
+  .form-wrapper {
+    border: 0;
+  }
+
+  .fieldset-wrapper {
+    display: block;
+
+    @include breakpoint($beyond-tablet) {
+      display: flex;
     }
   }
 }

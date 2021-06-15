@@ -45,3 +45,12 @@ function contribtracker_theme_preprocess_page_alter(array &$suggestions, array $
     $suggestions[] = 'page__' . $error;
   }
 }
+
+/**
+* Implements hook_theme_suggestions_input_alter().
+*/
+function contribtracker_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  if ($element = $variables['element'] ['#id']) {
+    $suggestions[] = 'input__' . str_replace('-', '_', $variables['element']['#id']);
+  }
+}

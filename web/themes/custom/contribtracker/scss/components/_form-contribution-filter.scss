@@ -60,4 +60,50 @@
   #edit-reset {
     margin-left: 16px;
   }
+
+  .fieldset-wrapper {
+    display: block;
+
+    @include breakpoint($tablet) {
+      justify-content: space-between;
+    }
+
+    @include breakpoint($beyond-tablet) {
+      display: flex;
+    }
+  }
+
+  .input--date {
+    width: 100% !important;
+  }
+
+  .form-wrapper {
+    border: 0;
+    width: 100%;
+    padding: 0;
+
+    @include breakpoint($mobile) {
+      padding: 0;
+    }
+
+    @include breakpoint($tablet) {
+      width: 100%;
+    }
+
+    @include breakpoint($desktop) {
+      width: 88%;
+    }
+  }
+}
+
+.contributions__event {
+  .form-item-uid {
+    margin-top: 24px;
+  }
+}
+
+#edit-field-contribution-date-value-max {
+  @include breakpoint($desktop) {
+    margin-left: 22px;
+  }
 }
