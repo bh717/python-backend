@@ -1,9 +1,20 @@
-.contrib__wrapper {
+.contrib__listing {
   @include breakpoint($desktop) {
     max-width: var(--width);
     width: calc(100% - 30px);
     margin: 40px auto;
     border-radius: 4px;
+  }
+
+  &--title {
+    margin: 40px auto 24px 16px;
+    font-size: 24px;
+    font-family: var(--f-secondary);
+    color: var(--c-title);
+    @include breakpoint($desktop) {
+      width: var(--width);
+      margin: 40px auto 24px auto;
+    }
   }
 
   .contrib__card {
