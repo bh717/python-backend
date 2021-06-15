@@ -20,7 +20,7 @@
     }
 
     &.is-active {
-      background: var(--c-topic-type);
+      background: var(--c-dim-grey);
 
       a {
         color: var(--c-white);
@@ -30,7 +30,7 @@
 
   a {
     text-decoration: none;
-    color: var(--c-topic-type);
+    color: var(--c-dim-grey);
     font-size: 16px;
     display: block;
     padding: 12px 14px;

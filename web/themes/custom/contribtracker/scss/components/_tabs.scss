@@ -39,7 +39,7 @@
       background-color: var(--c-white);
       text-decoration: none;
       transition: all 0.3s ease-in-out;
-      color: var(--c-topic-type);
+      color: var(--c-dim-grey);
       display: block;
 
       @include breakpoint($beyond-tablet) {
@@ -52,7 +52,7 @@
       &:hover,
       &.is-active {
         color: var(--c-white);
-        background-color: var(--c-topic-type);
+        background-color: var(--c-dim-grey);
       }
     }
   }

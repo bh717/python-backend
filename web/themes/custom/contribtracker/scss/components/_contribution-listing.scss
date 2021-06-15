@@ -1,0 +1,137 @@
+.contrib__wrapper {
+  @include breakpoint($desktop) {
+    max-width: var(--width);
+    width: calc(100% - 30px);
+    margin: 40px auto;
+    border-radius: 4px;
+  }
+
+  .contrib__card {
+    border: 1px solid var(--c-white);
+    border-radius: 5px;
+    padding: 16px;
+    margin: 8px 16px;
+    background: var(--c-white);
+    min-height: 95px;
+    position: relative;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+      background: var(--c-hover);
+    }
+
+    a {
+      &:hover {
+        text-decoration: underline;
+        color: var(--c-type);
+      }
+    }
+
+    @include breakpoint($desktop) {
+      max-width: var(--width);
+      margin: 0 auto;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      min-height: 82px;
+    }
+
+    &_date {
+      display: flex;
+      align-items: center;
+    }
+
+    &_date__day {
+      font-size: 32px;
+      font-family: var(--f-secondary);
+      height: 40px;
+      width: 50px;
+      color: var(--c-text-dark);
+    }
+
+    &_date__month--year {
+      font-size: 14px;
+      font-family: var(--f-primary);
+      color: var(--c-text-dark);
+
+      @include breakpoint($desktop) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    &_title {
+      margin: 0 0 8px 50px;
+      font-size: 16px;
+      position: relative;
+      z-index: var(--z-2);
+
+      a {
+        font-family: var(--f-primary);
+        color: var(--c-text);
+        text-decoration: none;
+        line-height: 1.3;
+        display: block;
+        padding: 12px 0;
+      }
+
+      @include breakpoint($desktop) {
+        margin: 0 0 0 50px;
+        width: 60%;
+      }
+    }
+
+    &_contributer-tags {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &_contributer-tags {
+      margin-left: 50px;
+
+      @include breakpoint($desktop) {
+        margin-left: 0;
+      }
+    }
+
+    &_contributer,
+    &_tags {
+      font-family: var(--f-secondary);
+      font-size: 12px;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    &_contributer {
+      a {
+        color: var(--c-brand);
+      }
+    }
+
+    &_tags {
+      a {
+        color: var(--c-blue-navy);
+      }
+    }
+
+    &_type {
+      font-size: 12px;
+      border: 1px solid var(--c-aqua-green);
+      border-radius: 14px;
+      color: var(--c-aqua-green);
+      text-align: center;
+      width: fit-content;
+      margin-left: auto;
+      margin-top: -22px;
+      padding: 6px;
+
+      @include breakpoint($desktop) {
+        margin-top: 0;
+      }
+    }
+  }
+}
