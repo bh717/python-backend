@@ -61,6 +61,7 @@
         "axelerant/db-docker": "^1.1",
         "axelerant/drupal-quality-checker": "^1.0.0",
         "phpunit/phpunit": "^9.0",
+        "symfony/phpunit-bridge": "^5.3",
         "weitzman/drupal-test-traits": "^1.5"
     },
     "conflict": {
