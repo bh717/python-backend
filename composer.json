@@ -83,9 +83,6 @@
             "drupal/core": "-p2"
         },
         "patches": {
-            "drupal/core": {
-                "Add new permission to view user email field": "https://www.drupal.org/files/issues/2021-04-08/2799049-119.patch"
-            }
         },
         "installer-types": ["npm-asset", "bower-asset"],
         "installer-paths": {
