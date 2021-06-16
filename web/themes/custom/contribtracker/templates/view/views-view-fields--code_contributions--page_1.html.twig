@@ -29,6 +29,7 @@
  * @see template_preprocess_views_view_fields()
  */
 #}
+
 <div class="contrib__card">
   <div class="contrib__card_date">
     <div class="contrib__card_date__day">
@@ -49,7 +50,14 @@
       {{ fields.field_contribution_technology.content }}
     </div>
   </div>
-  <div class="contrib__card_type">
-    {{ fields.type.content }}
+  <div class="contrib__card_status-project">
+    {% if fields.field_code_contrib_issue_status.content %}
+    <div class="contrib__card_status">
+      {{ fields.field_code_contrib_issue_status.content }}
+    </div>
+    {% endif %}
+    <div class="contrib__card_project">
+      {{ fields.field_code_contrib_project.content }}
+    </div>
   </div>
 </div>

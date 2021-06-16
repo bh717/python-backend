@@ -27,6 +27,8 @@
     position: relative;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
     transition: background 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
 
     &:hover {
       background: var(--c-hover);
@@ -43,7 +45,7 @@
       max-width: var(--width);
       margin: 0 auto;
       margin-bottom: 8px;
-      display: flex;
+      flex-direction: row;
       align-items: center;
       min-height: 82px;
     }
@@ -96,6 +98,7 @@
     &_contributer-tags {
       display: flex;
       flex-direction: column;
+      flex: 1;
       gap: 16px;
     }
 
@@ -108,7 +111,8 @@
     }
 
     &_contributer,
-    &_tags {
+    &_tags,
+    &_project {
       font-family: var(--f-secondary);
       font-size: 12px;
 
@@ -117,7 +121,8 @@
       }
     }
 
-    &_contributer {
+    &_contributer,
+    &_project {
       a {
         color: var(--c-brand);
         text-transform: capitalize;
@@ -130,7 +135,8 @@
       }
     }
 
-    &_type {
+    &_type,
+    &_status {
       font-size: 12px;
       border: 1px solid var(--c-aqua-green);
       border-radius: 14px;
@@ -143,6 +149,30 @@
 
       @include breakpoint($desktop) {
         margin-top: 0;
+      }
+    }
+
+    &_status-project {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+      flex: 1;
+      text-align: right;
+      margin-left: 50px;
+
+      @include breakpoint($desktop) {
+        text-align: center;
+        margin-left: unset;
+      }
+    }
+
+    &_status {
+      @include breakpoint($desktop) {
+        margin-right: auto;
+      }
+
+      @include breakpoint($mobile) {
+        margin-top: unset;
       }
     }
   }

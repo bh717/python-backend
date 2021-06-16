@@ -13,7 +13,7 @@
       <img src="{{ base_path ~ directory }}/images/403.svg" class="not-found__image" alt="image for page forbidden">
       <p class="not-found__subtitle">{{ 'Access denied/Forbidden!'|t }}</p>
       <p class="not-found__text">{{ 'The page you’re trying to reach is forbidden.'|t }} <br>
-        {{'Click Home button to go back to homepage.'|t }}
+        {{ 'Click Home button to go back to homepage.'|t }}
       </p>
       <a href="{{ url('<front>') }}" class="not-found__go-home">
         <span class="icon-home">
