@@ -105,7 +105,8 @@
     &_contributer,
     &_tags,
     &_project,
-    &_link {
+    &_link,
+    &_profile {
       font-family: var(--f-secondary);
       font-size: 12px;
 
@@ -129,7 +130,9 @@
 
     &_type,
     &_status,
-    &_eventcontribtype {
+    &_eventcontribtype,
+    &_ncctype,
+    &_credits {
       font-size: 12px;
       border: 1px solid var(--c-aqua-green);
       border-radius: 14px;
@@ -146,13 +149,13 @@
     }
 
     &_status-project,
-    &_eventcontribtype-link {
+    &_eventcontribtype-link,
+    &_ncctype-profile {
       display: flex;
       gap: 8px;
       flex-direction: column;
       flex: 1;
       text-align: right;
-      margin-left: 50px;
 
       @include breakpoint($desktop) {
         margin-left: unset;
@@ -166,12 +169,22 @@
     }
 
     &_project,
-    &_link a {
+    &_link a,
+    &_profile a {
       color: var(--c-brand);
     }
 
     &_project {
       text-transform: capitalize;
+    }
+
+    &_ncctype--wrapper {
+      display: flex;
+    }
+
+    &_credits {
+      border: 1px solid var(--c-blue-navy);
+      color: var(--c-blue-navy);
     }
   }
 }

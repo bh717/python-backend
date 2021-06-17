@@ -49,16 +49,19 @@
       {{ fields.field_contribution_technology.content }}
     </div>
   </div>
-  <div class="contrib__card_status-project">
-    <div class="contrib__card_status--wrapper">
-      {% if fields.field_code_contrib_issue_status.content %}
-      <div class="contrib__card_status">
-        {{ fields.field_code_contrib_issue_status.content }}
+  <div class="contrib__card_ncctype-profile">
+    <div class="contrib__card_ncctype--wrapper">
+      {% if fields.field_non_code_contrib_credit.content %}
+      <div class="contrib__card_credits">
+        {{ fields.field_non_code_contrib_credit.content }}
       </div>
       {% endif %}
+      <div class="contrib__card_ncctype">
+        {{ fields.field_non_code_contribution_type.content }}
+      </div>
     </div>
-    <div class="contrib__card_project">
-      {{ fields.field_code_contrib_project.content|trim|truncate(25, true) }}
+    <div class="contrib__card_profile">
+      {{ fields.field_non_code_contrib_profile.content }}
     </div>
   </div>
 </div>
