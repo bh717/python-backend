@@ -144,7 +144,7 @@
       text-align: center;
       width: fit-content;
       margin-left: auto;
-      margin-top: -22px;
+      margin-top: 8px;
       padding: 6px;
 
       @include breakpoint($desktop) {
@@ -169,10 +169,6 @@
     &_status {
       @include breakpoint($desktop) {
         margin-right: auto;
-      }
-
-      @include breakpoint($mobile) {
-        margin-top: unset;
       }
     }
   }
