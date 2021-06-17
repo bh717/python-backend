@@ -104,7 +104,8 @@
 
     &_contributer,
     &_tags,
-    &_project {
+    &_project,
+    &_link {
       font-family: var(--f-secondary);
       font-size: 12px;
 
@@ -127,7 +128,8 @@
     }
 
     &_type,
-    &_status {
+    &_status,
+    &_eventcontribtype {
       font-size: 12px;
       border: 1px solid var(--c-aqua-green);
       border-radius: 14px;
@@ -143,7 +145,8 @@
       }
     }
 
-    &_status-project {
+    &_status-project,
+    &_eventcontribtype-link {
       display: flex;
       gap: 8px;
       flex-direction: column;
@@ -162,8 +165,12 @@
       }
     }
 
-    &_project {
+    &_project,
+    &_link a {
       color: var(--c-brand);
+    }
+
+    &_project {
       text-transform: capitalize;
     }
   }
