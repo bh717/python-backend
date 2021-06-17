@@ -94,6 +94,14 @@
       width: 88%;
     }
   }
+
+  .js-form-item-field-contribution-date-value-max {
+    label {
+      @include breakpoint($desktop) {
+        margin-left: 22px;
+      }
+    }
+  }
 }
 
 .contributions__event {
