@@ -28,8 +28,7 @@
  *
  * @see template_preprocess_views_view_fields()
  */
-#}
-
+#}s
 <div class="contrib__card">
   <div class="contrib__card_date">
     <div class="contrib__card_date__day">
@@ -51,13 +50,15 @@
     </div>
   </div>
   <div class="contrib__card_status-project">
-    {% if fields.field_code_contrib_issue_status.content %}
-    <div class="contrib__card_status">
-      {{ fields.field_code_contrib_issue_status.content }}
+    <div class="contrib__card_status--wrapper">
+      {% if fields.field_code_contrib_issue_status.content %}
+      <div class="contrib__card_status">
+        {{ fields.field_code_contrib_issue_status.content }}
+      </div>
+      {% endif %}
     </div>
-    {% endif %}
     <div class="contrib__card_project">
-      {{ fields.field_code_contrib_project.content }}
+      {{ fields.field_code_contrib_project.content|trim|truncate(25, true) }}
     </div>
   </div>
 </div>

@@ -75,7 +75,7 @@
     }
 
     &_title {
-      margin: 0 0 8px 50px;
+      margin: 0 0 8px 0;
       font-size: 16px;
       position: relative;
       z-index: var(--z-2);
@@ -102,14 +102,6 @@
       gap: 16px;
     }
 
-    &_contributer-tags {
-      margin-left: 50px;
-
-      @include breakpoint($desktop) {
-        margin-left: 0;
-      }
-    }
-
     &_contributer,
     &_tags,
     &_project {
@@ -121,8 +113,7 @@
       }
     }
 
-    &_contributer,
-    &_project {
+    &_contributer {
       a {
         color: var(--c-brand);
         text-transform: capitalize;
@@ -161,15 +152,19 @@
       margin-left: 50px;
 
       @include breakpoint($desktop) {
-        text-align: center;
         margin-left: unset;
       }
     }
 
-    &_status {
+    &_status--wrapper {
       @include breakpoint($desktop) {
-        margin-right: auto;
+        min-height: 28px;
       }
+    }
+
+    &_project {
+      color: var(--c-brand);
+      text-transform: capitalize;
     }
   }
 }
