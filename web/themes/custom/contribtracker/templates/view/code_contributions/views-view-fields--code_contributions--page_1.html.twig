@@ -51,14 +51,14 @@
   </div>
   <div class="contrib__card_status-project">
     <div class="contrib__card_status--wrapper">
-      {% if fields.field_code_contrib_issue_status.content %}
+      {% if fields.field_code_contrib_issue_status.content|striptags %}
       <div class="contrib__card_status">
-        {{ fields.field_code_contrib_issue_status.content }}
+        {{ fields.field_code_contrib_issue_status.content|striptags }}
       </div>
       {% endif %}
     </div>
     <div class="contrib__card_project">
-      {{ fields.field_code_contrib_project.content|trim|truncate(25, true) }}
+      {{ fields.field_code_contrib_project.content|striptags|trim|truncate(25, true) }}
     </div>
   </div>
 </div>
