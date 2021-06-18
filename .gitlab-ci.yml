@@ -92,7 +92,7 @@ frontend_vr:
   tags:
     - docker
   services:
-    - name: registry.gitorious.xyz/contrib-tracker/backend/db:CONT-130
+    - name: registry.gitorious.xyz/contrib-tracker/backend/db
       alias: mariadb
   stage: test
   variables:
