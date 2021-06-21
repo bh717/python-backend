@@ -95,11 +95,16 @@
       }
     }
 
-    &_contributer-tags {
+    &_contributer-tags,
+    &_patch_file_count—wrapper {
       display: flex;
       flex-direction: column;
       flex: 1;
       gap: 16px;
+    }
+
+    &_patch_file_count—wrapper {
+      gap: 8px;
     }
 
     &_contributer,
@@ -132,7 +137,9 @@
     &_status,
     &_eventcontribtype,
     &_ncctype,
-    &_credits {
+    &_credits,
+    &_fileCount,
+    &_patchCount {
       font-size: 12px;
       border: 1px solid var(--c-aqua-green);
       border-radius: 14px;
@@ -182,7 +189,8 @@
       display: flex;
     }
 
-    &_credits {
+    &_credits,
+    &_fileCount {
       border: 1px solid var(--c-blue-navy);
       color: var(--c-blue-navy);
     }
