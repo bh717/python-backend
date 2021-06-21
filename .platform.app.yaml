@@ -123,7 +123,6 @@ hooks:
       drush -y cache-rebuild
       drush -y updatedb
       drush -y config-import
-      drush -y entup
 
 # The configuration of scheduled execution.
 crons:
