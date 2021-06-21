@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_code_contrib_project
+    - field.storage.node.field_contribution_date
     - field.storage.node.field_contribution_technology
     - node.type.issue
   module:
+    - datetime
     - node
     - user
 id: patches_on_issues
@@ -49,12 +51,17 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       pager:
-        type: mini
+        type: full
         options:
-          items_per_page: 50
+          items_per_page: 25
           offset: 0
           id: 0
           total_pages: null
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -63,56 +70,13 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          tags:
-            previous: ‹‹
-            next: ››
+          quantity: 9
       style:
-        type: table
+        type: default
         options:
           grouping: {  }
           row_class: ''
-          default_row_class: true
-          override: true
-          sticky: false
-          caption: ''
-          summary: ''
-          description: ''
-          columns:
-            title: title
-            field_code_contrib_patches_count: field_code_contrib_patches_count
-            field_contribution_technology: field_contribution_technology
-            field_code_contrib_project: field_code_contrib_project
-          info:
-            title:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_code_contrib_patches_count:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_contribution_technology:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-low
-            field_code_contrib_project:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: priority-medium
-          default: '-1'
-          empty_table: false
+          default_row_class: false
       row:
         type: fields
       fields:
@@ -123,7 +87,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Title
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -156,7 +120,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -188,7 +152,7 @@ display:
           relationship: reverse__node__field_code_contrib_issue_link
           group_type: sum
           admin_label: ''
-          label: 'Patches count'
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -221,7 +185,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -234,7 +198,7 @@ display:
           decimal: .
           separator: ', '
           format_plural: 0
-          format_plural_string: MQNAY291bnQ=
+          format_plural_string: !!binary TVFOQVkyOTFiblE9Aw==
           prefix: ''
           suffix: ''
           click_sort_column: value
@@ -259,7 +223,7 @@ display:
           relationship: reverse__node__field_code_contrib_issue_link
           group_type: group
           admin_label: ''
-          label: Technology
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -292,7 +256,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -322,7 +286,7 @@ display:
           relationship: reverse__node__field_code_contrib_issue_link
           group_type: group
           admin_label: ''
-          label: Project
+          label: ''
           exclude: false
           alter:
             alter_text: false
@@ -355,7 +319,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -366,8 +330,72 @@ display:
           click_sort_column: target_id
           type: entity_reference_label
           settings:
-            link: true
+            link: false
           group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          plugin_id: field
+        field_contribution_date:
+          id: field_contribution_date
+          table: node__field_contribution_date
+          field: field_contribution_date
+          relationship: reverse__node__field_code_contrib_issue_link
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: html_date
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -531,6 +559,7 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_code_contrib_project'
+        - 'config:field.storage.node.field_contribution_date'
         - 'config:field.storage.node.field_contribution_technology'
   page:
     display_plugin: page
@@ -560,4 +589,5 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_code_contrib_project'
+        - 'config:field.storage.node.field_contribution_date'
         - 'config:field.storage.node.field_contribution_technology'
