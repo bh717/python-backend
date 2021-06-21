@@ -1,0 +1,25 @@
+uuid: 37f83e77-a052-4b50-b51e-3797aff4287f
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:a9f02a4c-735d-474b-9319-6a2aa5bf240c'
+  module:
+    - block_content
+  theme:
+    - contribtracker
+id: blog
+theme: contribtracker
+region: footer_primary
+weight: -7
+provider: null
+plugin: 'block_content:a9f02a4c-735d-474b-9319-6a2aa5bf240c'
+settings:
+  id: 'block_content:a9f02a4c-735d-474b-9319-6a2aa5bf240c'
+  label: BLOG
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }
