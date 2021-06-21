@@ -90,14 +90,14 @@ class ProcessUsers extends QueueWorkerBase implements ContainerFactoryPluginInte
     /** @var \Drupal\ct_manager\ContributionSourceInterface $plugin_instance */
     $plugin_instance = $this->pluginManager->createInstance($plugin_id);
     if (!($plugin_instance->isUserValid($user))) {
-      $this->logger->error('@plugin username for @username is invalid.', ['@plugin' => $plugin_id, '@username' => $user->getUsername()]);
+      $this->logger->error('@plugin username for @username is invalid.', ['@plugin' => $plugin_id, '@username' => $user->getAccountName()]);
       return;
     }
 
     $issues = $plugin_instance->getUserIssues($user);
     $comments = $plugin_instance->getUserCodeContributions($user);
 
-    $this->logger->notice('Saving @plugin issues for @user', ['@plugin' => $plugin_id, '@user' => $user->getUsername()]);
+    $this->logger->notice('Saving @plugin issues for @user', ['@plugin' => $plugin_id, '@user' => $user->getAccountName()]);
     /** @var \Drupal\ct_manager\Data\Issue $issue */
     foreach ($issues as $issue) {
       if ($this->contribStorage->getNodeForIssue($issue->getUrl())) {
@@ -107,7 +107,7 @@ class ProcessUsers extends QueueWorkerBase implements ContainerFactoryPluginInte
       $this->contribStorage->saveIssue($issue);
     }
 
-    $this->logger->notice('Saving @plugin code contributions for @user', ['@plugin' => $plugin_id, '@user' => $user->getUsername()]);
+    $this->logger->notice('Saving @plugin code contributions for @user', ['@plugin' => $plugin_id, '@user' => $user->getAccountName()]);
     /** @var \Drupal\ct_manager\Data\CodeContribution $comment */
     foreach ($comments as $comment) {
       if ($this->contribStorage->getNodeForCodeContribution($comment->getUrl())) {
