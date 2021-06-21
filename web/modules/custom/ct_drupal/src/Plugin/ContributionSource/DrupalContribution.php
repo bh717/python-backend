@@ -101,7 +101,7 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('entity.manager'),
+      $container->get('entity_type.manager'),
       $container->get('ct_drupal.retriever'),
       $container->get('do_username.user_service'),
       $container->get('ct_manager.contribution_storage'),
