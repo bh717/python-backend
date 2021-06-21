@@ -182,7 +182,7 @@ class DrupalContribution extends PluginBase implements ContributionSourceInterfa
       }
 
       $issue_url = sprintf("https://www.drupal.org/node/%s", $issueNode->getId());
-      $date = (new DateTimeImmutable())->setTimestamp((int) $issueData->created);
+      $date = (new DateTimeImmutable())->setTimestamp((int) $comment->created);
       $commit = (new CodeContribution($title, $comment->url, $date))
         ->setAccountUrl('https://www.drupal.org/user/' . $comment->author->id)
         ->setDescription($commentBody)
