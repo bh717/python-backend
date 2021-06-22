@@ -14,7 +14,6 @@
 
 .nav__sub-item {
   margin-right: 20px;
-  margin-bottom: 40px;
   position: relative;
 
   @include breakpoint($desktop) {
@@ -29,32 +28,30 @@
 }
 
 .nav__sub-item__list {
-  padding: 0;
-  display: none;
-  position: relative;
+  display: block;
   text-decoration: none;
   list-style: none;
   margin-top: 0;
   background-color: var(--c-white);
   width: 185px;
-  z-index: var(--z-5);
-  position: absolute;
-  top: 20px;
-  right: 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--f-primary);
   font-size: 14px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 4px 4px;
   padding: 18px;
 
   @include breakpoint($desktop) {
+    display: none;
+    position: absolute;
     top: 20px;
     left: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 4px 4px;
   }
 }
 
 .nav__sub-item__list-item {
-  margin-bottom: 20px;
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
 }
 
 .nav__sub-item__link {
@@ -71,4 +68,8 @@
 .nav__sidebar_item {
   display: block;
   margin-bottom: 20px;
+
+  @include breakpoint($upto-tablet) {
+    margin-top: 245px;
+  }
 }
