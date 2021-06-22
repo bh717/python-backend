@@ -70,9 +70,23 @@
   }
 }
 
+.is-loggedout .nav__sidebar_ul-account {
+  @include breakpoint($upto-tablet) {
+    margin-bottom: 100px;
+
+    li:first-of-type {
+      margin-left: 0;
+    }
+  }
+}
+
 .nav__sidebar_auth-link {
   display: inline;
   position: absolute;
   bottom: 90px;
   left: 20px;
+
+  @include breakpoint($upto-tablet) {
+    left: 40px;
+  }
 }
