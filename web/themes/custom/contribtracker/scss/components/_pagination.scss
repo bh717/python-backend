@@ -10,7 +10,7 @@
     border: 1px solid var(--c-background);
     background: var(--c-white);
 
-    @include breakpoint($tablet) {
+    @include breakpoint($beyond-tablet) {
       display: unset;
     }
 
