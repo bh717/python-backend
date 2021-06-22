@@ -6,6 +6,11 @@
     align-content: flex-start;
   }
 
+  input[type='date'],
+  input[type='time'] {
+    -webkit-appearance: none;
+  }
+
   .select2 {
     &-selection {
       border: 1px solid var(--c-border);
@@ -64,12 +69,13 @@
   .fieldset-wrapper {
     display: block;
 
-    @include breakpoint($tablet) {
+    @include breakpoint($desktop) {
       justify-content: space-between;
     }
 
-    @include breakpoint($beyond-tablet) {
+    @include breakpoint($desktop) {
       display: flex;
+      width: 90%;
     }
   }
 
@@ -99,19 +105,5 @@
 .contributions__event {
   .form-item-uid {
     margin-top: 24px;
-  }
-}
-
-#edit-field-contribution-date-value-max {
-  @include breakpoint($desktop) {
-    margin-left: 22px;
-  }
-}
-
-.js-form-item-field-contribution-date-value-max {
-  label {
-    @include breakpoint($desktop) {
-      margin-left: 22px;
-    }
   }
 }

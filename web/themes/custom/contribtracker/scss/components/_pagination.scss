@@ -6,8 +6,13 @@
   margin: 0;
 
   li {
+    display: none;
     border: 1px solid var(--c-background);
     background: var(--c-white);
+
+    @include breakpoint($tablet) {
+      display: unset;
+    }
 
     &:first-child {
       border-top-left-radius: 20px;
@@ -21,6 +26,7 @@
 
     &.is-active {
       background: var(--c-dim-grey);
+      display: unset;
 
       a {
         color: var(--c-white);
@@ -39,6 +45,7 @@
   .pager__item--previous {
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    display: unset;
 
     & a::before {
       font-family: 'font-icons' !important;
@@ -59,6 +66,7 @@
   .pager__item--next {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    display: unset;
 
     & a::before {
       font-family: 'font-icons' !important;
