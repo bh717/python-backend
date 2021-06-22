@@ -90,3 +90,42 @@
 .is-visible {
   display: flex;
 }
+
+.is-loggedin {
+  @include breakpoint($mobile) {
+    .nav-header {
+      top: 73.8px;
+    }
+
+    .precontent {
+      padding-top: 100px;
+    }
+  }
+  @include breakpoint($tablet) {
+    .nav-header {
+      padding-top: 39px;
+    }
+
+    .precontent {
+      padding-top: 68px;
+    }
+  }
+
+  .toolbar-oriented .toolbar-bar {
+    @include breakpoint($mobile) {
+      position: fixed;
+    }
+  }
+
+  &.toolbar-horizontal.toolbar-tray-open {
+    @include breakpoint($tablet) {
+      .nav-header {
+        padding-top: 78px;
+      }
+
+      .precontent {
+        padding-top: 72px;
+      }
+    }
+  }
+}
