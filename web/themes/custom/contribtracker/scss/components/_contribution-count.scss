@@ -40,6 +40,17 @@
       display: flex;
     }
   }
+
+  .js-form-item-field-contribution-date-value-min,
+  .js-form-item-field-contribution-date-value-max {
+    @include breakpoint($desktop) {
+      width: 50%;
+    }
+
+    input {
+      -webkit-appearance: none;
+    }
+  }
 }
 
 .ct-height {
