@@ -1,22 +1,22 @@
-uuid: 0c759e03-1f48-4712-bd47-345a56094bdb
+uuid: 8e176f24-8e16-461f-b044-cba8b6597eaf
 langcode: en
 status: true
 dependencies:
   config:
-    - fixed_block_content.fixed_block_content.axelerant_logo
+    - fixed_block_content.fixed_block_content.quick_links
   module:
     - fixed_block_content
   theme:
     - contribtracker
-id: axelerantlogo
+id: quicklinks
 theme: contribtracker
 region: footer_primary
-weight: -5
+weight: -7
 provider: null
-plugin: 'fixed_block_content:axelerant_logo'
+plugin: 'fixed_block_content:quick_links'
 settings:
-  id: 'fixed_block_content:axelerant_logo'
-  label: 'Axelerant Logo'
+  id: 'fixed_block_content:quick_links'
+  label: 'QUICK LINKS'
   provider: fixed_block_content
   label_display: '0'
   view_mode: ''

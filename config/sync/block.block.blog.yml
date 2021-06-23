@@ -1,22 +1,22 @@
-uuid: 0c759e03-1f48-4712-bd47-345a56094bdb
+uuid: f0a8ff45-8a79-419a-be95-8d732065f12c
 langcode: en
 status: true
 dependencies:
   config:
-    - fixed_block_content.fixed_block_content.axelerant_logo
+    - fixed_block_content.fixed_block_content.blog
   module:
     - fixed_block_content
   theme:
     - contribtracker
-id: axelerantlogo
+id: blog
 theme: contribtracker
 region: footer_primary
-weight: -5
+weight: -8
 provider: null
-plugin: 'fixed_block_content:axelerant_logo'
+plugin: 'fixed_block_content:blog'
 settings:
-  id: 'fixed_block_content:axelerant_logo'
-  label: 'Axelerant Logo'
+  id: 'fixed_block_content:blog'
+  label: BLOG
   provider: fixed_block_content
   label_display: '0'
   view_mode: ''

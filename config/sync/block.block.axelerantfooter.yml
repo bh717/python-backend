@@ -1,25 +1,23 @@
-uuid: e091a02d-5d0e-4440-8a87-65240a861a2f
+uuid: f30bfc9c-b6fe-4d52-a7a9-a4fb5bd2a541
 langcode: en
 status: true
 dependencies:
-  content:
-    - 'block_content:basic:b894a361-27a2-448d-b35b-6f4a10335977'
+  config:
+    - fixed_block_content.fixed_block_content.axelerant_footer
   module:
-    - block_content
+    - fixed_block_content
   theme:
     - contribtracker
 id: axelerantfooter
 theme: contribtracker
 region: footer_secondary
-weight: -8
+weight: 0
 provider: null
-plugin: 'block_content:b894a361-27a2-448d-b35b-6f4a10335977'
+plugin: 'fixed_block_content:axelerant_footer'
 settings:
-  id: 'block_content:b894a361-27a2-448d-b35b-6f4a10335977'
+  id: 'fixed_block_content:axelerant_footer'
   label: 'Axelerant Footer'
-  provider: block_content
+  provider: fixed_block_content
   label_display: '0'
-  status: true
-  info: ''
-  view_mode: full
+  view_mode: ''
 visibility: {  }
