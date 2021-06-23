@@ -11,7 +11,7 @@ dependencies:
 id: quicklinks
 theme: contribtracker
 region: footer_primary
-weight: -7
+weight: -8
 provider: null
 plugin: 'fixed_block_content:quick_links'
 settings:
