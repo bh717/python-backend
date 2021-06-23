@@ -75,8 +75,6 @@ frontend_codequality:
   stage: lint
   variables:
     CYPRESS_CACHE_FOLDER: $CI_PROJECT_DIR/web/themes/custom/contribtracker/node_modules/CYPRESS_CACHE
-  #   CYPRESS_INSTALL_BINARY: 0
-  #   PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 0
   script:
     - cd web/themes/custom/contribtracker
     - npm ci --prefer-offline
@@ -117,8 +115,6 @@ frontend_vr:
     paths:
       - $CI_PROJECT_DIR/web/themes/custom/contribtracker/cypress/screenshots
       - $CI_PROJECT_DIR/web/themes/custom/contribtracker/cypress/videos
-  tags:
-    - docker
   except:
     - schedule
   needs:
