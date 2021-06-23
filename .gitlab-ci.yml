@@ -14,13 +14,6 @@ include:
     - tags
     - merge_requests
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    # - /root/.cache/Cypress
-    # - /root/.npm
-    - web/themes/custom/contribtracker/node_modules/
-
 drupal_codequality:
   <<: *default-pipelines
   image: hussainweb/drupalqa:php7.4
@@ -75,6 +68,10 @@ frontend_codequality:
   stage: lint
   variables:
     CYPRESS_CACHE_FOLDER: $CI_PROJECT_DIR/web/themes/custom/contribtracker/node_modules/CYPRESS_CACHE
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - web/themes/custom/contribtracker/node_modules/
   script:
     - cd web/themes/custom/contribtracker
     - npm ci --prefer-offline
