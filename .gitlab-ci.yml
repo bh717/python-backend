@@ -103,6 +103,7 @@ frontend_vr:
     - vendor/bin/drush upwd ct-admin "ct-admin"
     - vendor/bin/drush cr
     - cd web/themes/custom/contribtracker
+    - ls -r node_modules
     # - npm ci --prefer-offline
     - npm run build
     - npm run vr
