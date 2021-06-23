@@ -88,4 +88,10 @@
   .pager__item--last {
     display: none;
   }
+
+  .pager__item--ellipsis {
+    @include breakpoint($beyond-tablet) {
+      padding: 8px;
+    }
+  }
 }
