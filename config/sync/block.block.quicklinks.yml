@@ -1,0 +1,25 @@
+uuid: 200eb4bf-3856-4406-8c72-7d905509a2d3
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:14e0edf0-fa0c-45b4-a4f7-608f36938bc6'
+  module:
+    - block_content
+  theme:
+    - contribtracker
+id: quicklinks
+theme: contribtracker
+region: footer_primary
+weight: -8
+provider: null
+plugin: 'block_content:14e0edf0-fa0c-45b4-a4f7-608f36938bc6'
+settings:
+  id: 'block_content:14e0edf0-fa0c-45b4-a4f7-608f36938bc6'
+  label: 'QUICK LINKS'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

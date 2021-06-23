@@ -1,0 +1,12 @@
+.status-messages {
+  padding: 16px 0 16px 16px;
+  border-radius: 4px;
+  background-color: var(--c-white);
+  margin: 0 16px;
+
+  @include breakpoint($desktop) {
+    width: var(--width);
+    margin: 20px auto;
+    padding: 16px;
+  }
+}

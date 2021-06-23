@@ -1,0 +1,15 @@
+.branding {
+  display: flex;
+  align-items: center;
+}
+
+.branding__link {
+  display: none;
+
+  @include breakpoint($desktop) {
+    display: inline;
+    margin-top: 8px;
+    color: var(--c-brand);
+    font-size: 20px;
+  }
+}

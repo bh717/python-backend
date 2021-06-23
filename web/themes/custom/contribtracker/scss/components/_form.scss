@@ -1,0 +1,67 @@
+.form {
+  max-width: var(--width);
+  width: calc(100% - 30px);
+  margin: 40px auto;
+  background-color: var(--c-white);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.form-item {
+  margin-bottom: 24px;
+  color: var(--c-dim-grey);
+  font-family: var(--f-secondary);
+  font-size: 14px;
+}
+
+.form-required {
+  color: var(--c-dim-grey);
+  font-family: var(--f-secondary);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.description {
+  font-size: 12px;
+  color: var(--c-dim-grey);
+  margin-top: 8px;
+  @include breakpoint($desktop) {
+    max-width: 45%;
+  }
+}
+
+.form-wrapper {
+  color: var(--c-dim-grey);
+  font-family: var(--f-secondary);
+  font-size: 14px;
+}
+
+.form-text,
+.form-email {
+  height: 40px;
+  border: 1px solid var(--c-border);
+  border-radius: 4px;
+  margin-top: 8px;
+  padding: 8px 16px;
+  color: var(--c-border);
+  max-width: 100%;
+  width: auto;
+}
+
+#edit-field-do-username-0-value {
+  width: 330px;
+}
+
+input[type='submit'] {
+  cursor: pointer;
+}
+
+.button {
+  background: var(--c-brand);
+  border-radius: 20px;
+  color: var(--c-white);
+  border: none;
+  font-family: var(--f-secondary);
+  padding: 8px 16px;
+  width: fit-content;
+}

@@ -1,0 +1,109 @@
+.contribution-filter-form {
+  @include breakpoint($desktop) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    align-content: flex-start;
+  }
+
+  input[type='date'],
+  input[type='time'] {
+    -webkit-appearance: none;
+  }
+
+  .select2 {
+    &-selection {
+      border: 1px solid var(--c-border);
+    }
+
+    &-container {
+      margin-top: 16px;
+      width: 100% !important;
+      @include breakpoint($desktop) {
+        width: 80% !important;
+      }
+    }
+
+    &-selection--multiple {
+      padding: 4px 8px;
+    }
+
+    &-selection__choice {
+      margin: 4px;
+    }
+
+    &-selection--single {
+      height: auto;
+      padding: 8px 16px;
+
+      &__rendered {
+        line-height: unset !important;
+      }
+    }
+
+    &-selection__arrow {
+      top: 7px !important;
+      right: 8px !important;
+    }
+  }
+
+  .form {
+    &-text {
+      width: 100% !important;
+      max-width: unset !important;
+
+      @include breakpoint($desktop) {
+        width: 80% !important;
+      }
+    }
+
+    &-actions {
+      grid-column-start: 1;
+    }
+  }
+
+  #edit-reset {
+    margin-left: 16px;
+  }
+
+  .fieldset-wrapper {
+    display: block;
+
+    @include breakpoint($desktop) {
+      justify-content: space-between;
+    }
+
+    @include breakpoint($desktop) {
+      display: flex;
+      width: 90%;
+    }
+  }
+
+  .input--date {
+    width: 100% !important;
+  }
+
+  .form-wrapper {
+    border: 0;
+    width: 100%;
+    padding: 0;
+
+    @include breakpoint($mobile) {
+      padding: 0;
+    }
+
+    @include breakpoint($tablet) {
+      width: 100%;
+    }
+
+    @include breakpoint($desktop) {
+      width: 88%;
+    }
+  }
+}
+
+.contributions__event {
+  .form-item-uid {
+    margin-top: 24px;
+  }
+}

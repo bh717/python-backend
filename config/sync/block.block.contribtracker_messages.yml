@@ -1,0 +1,22 @@
+uuid: e2945233-87ca-4910-9156-205e90b6a51a
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - contribtracker
+_core:
+  default_config_hash: 9RnnTUBcn0WRWXfrGOnId2H0Q31uQUeu_F5TnDxl2yg
+id: contribtracker_messages
+theme: contribtracker
+region: header
+weight: 1
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

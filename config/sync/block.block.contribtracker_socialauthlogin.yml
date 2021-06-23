@@ -1,0 +1,28 @@
+uuid: 2383cf3b-81fb-47ea-9b96-59e8c14175f1
+langcode: en
+status: true
+dependencies:
+  module:
+    - social_auth
+    - user
+  theme:
+    - contribtracker
+id: contribtracker_socialauthlogin
+theme: contribtracker
+region: header
+weight: -3
+provider: null
+plugin: social_auth_login
+settings:
+  id: social_auth_login
+  label: 'Social Auth Login'
+  provider: social_auth
+  label_display: '0'
+visibility:
+  user_role:
+    id: user_role
+    roles:
+      anonymous: anonymous
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

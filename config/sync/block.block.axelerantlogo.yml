@@ -1,0 +1,25 @@
+uuid: fba1005e-d361-4520-a790-3bb2745b67e6
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:24927d57-d7a5-461d-9a15-5e8c23fcc275'
+  module:
+    - block_content
+  theme:
+    - contribtracker
+id: axelerantlogo
+theme: contribtracker
+region: footer_primary
+weight: -5
+provider: null
+plugin: 'block_content:24927d57-d7a5-461d-9a15-5e8c23fcc275'
+settings:
+  id: 'block_content:24927d57-d7a5-461d-9a15-5e8c23fcc275'
+  label: 'Axelerant Logo'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

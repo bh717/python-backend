@@ -1,0 +1,45 @@
+html {
+  font-size: 100%;
+  font-family: var(--f-primary);
+  color: var(--c-text);
+  background: var(--c-background);
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding-top: 73px;
+
+  @include breakpoint($desktop) {
+    padding-top: 0;
+  }
+}
+
+a {
+  color: var(--c-link);
+}
+
+#block-contribtracker-page-title {
+  @include breakpoint($desktop) {
+    max-width: var(--width);
+    width: calc(100% - 30px);
+    margin: 40px auto;
+    border-radius: 4px;
+  }
+
+  h1 {
+    margin: 40px auto 24px 16px;
+    font-size: 24px;
+    font-family: var(--f-secondary);
+    color: var(--c-title);
+    @include breakpoint($desktop) {
+      width: var(--width);
+      margin: 40px auto 24px auto;
+    }
+  }
+}

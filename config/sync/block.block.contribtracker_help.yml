@@ -1,0 +1,22 @@
+uuid: 5b2c6073-929a-4d53-8d5e-7028ae9b84b4
+langcode: en
+status: false
+dependencies:
+  module:
+    - help
+  theme:
+    - contribtracker
+_core:
+  default_config_hash: MhtNdV__HKRTab0ZPjkPNfYL4Ng4UPBucDLoC7Rg5Eo
+id: contribtracker_help
+theme: contribtracker
+region: header
+weight: -2
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  provider: help
+  label_display: '0'
+visibility: {  }

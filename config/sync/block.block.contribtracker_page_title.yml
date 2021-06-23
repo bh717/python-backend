@@ -1,0 +1,26 @@
+uuid: dd98c125-2265-4fac-a7c2-3f0c5b8b862f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - contribtracker
+_core:
+  default_config_hash: 1TQP4b3ZnlzvIH9bj6cpCz_SyUHdJjLQkZnHpikjjhw
+id: contribtracker_page_title
+theme: contribtracker
+region: content
+weight: -6
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: '/taxonomy/term/*'
+    negate: false

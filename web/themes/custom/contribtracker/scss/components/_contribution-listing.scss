@@ -1,0 +1,199 @@
+.contrib__listing {
+  @include breakpoint($desktop) {
+    max-width: var(--width);
+    width: calc(100% - 30px);
+    margin: 40px auto;
+    border-radius: 4px;
+  }
+
+  &--title {
+    margin: 40px auto 24px 16px;
+    font-size: 24px;
+    font-family: var(--f-secondary);
+    color: var(--c-title);
+    @include breakpoint($desktop) {
+      width: var(--width);
+      margin: 40px auto 24px auto;
+    }
+  }
+
+  .contrib__card {
+    border: 1px solid var(--c-white);
+    border-radius: 5px;
+    padding: 16px;
+    margin: 8px 16px;
+    background: var(--c-white);
+    min-height: 95px;
+    position: relative;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      background: var(--c-hover);
+    }
+
+    a {
+      &:hover {
+        text-decoration: underline;
+        color: var(--c-type);
+      }
+    }
+
+    @include breakpoint($desktop) {
+      max-width: var(--width);
+      margin: 0 auto;
+      margin-bottom: 8px;
+      flex-direction: row;
+      align-items: center;
+      min-height: 82px;
+    }
+
+    &_date {
+      display: flex;
+      align-items: center;
+    }
+
+    &_date__day {
+      font-size: 32px;
+      font-family: var(--f-secondary);
+      height: 40px;
+      width: 50px;
+      color: var(--c-text-dark);
+    }
+
+    &_date__month--year {
+      font-size: 14px;
+      font-family: var(--f-primary);
+      color: var(--c-text-dark);
+
+      @include breakpoint($desktop) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    &_title {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+      position: relative;
+      z-index: var(--z-2);
+
+      a {
+        font-family: var(--f-primary);
+        color: var(--c-text);
+        text-decoration: none;
+        line-height: 1.3;
+        display: block;
+        padding: 12px 0;
+        word-break: break-word;
+      }
+
+      @include breakpoint($desktop) {
+        margin: 0 0 0 50px;
+        width: 60%;
+      }
+    }
+
+    &_contributer-tags,
+    &_patch_file_count—wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 16px;
+    }
+
+    &_patch_file_count—wrapper {
+      gap: 8px;
+    }
+
+    &_contributer,
+    &_tags,
+    &_project,
+    &_link,
+    &_profile {
+      font-family: var(--f-secondary);
+      font-size: 12px;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    &_contributer {
+      a {
+        color: var(--c-brand);
+        text-transform: capitalize;
+      }
+    }
+
+    &_tags {
+      a {
+        color: var(--c-blue-navy);
+      }
+    }
+
+    &_type,
+    &_status,
+    &_eventcontribtype,
+    &_ncctype,
+    &_credits,
+    &_fileCount,
+    &_patchCount {
+      font-size: 12px;
+      border: 1px solid var(--c-aqua-green);
+      border-radius: 14px;
+      color: var(--c-aqua-green);
+      text-align: center;
+      width: fit-content;
+      margin-left: auto;
+      margin-top: 8px;
+      padding: 6px;
+
+      @include breakpoint($desktop) {
+        margin-top: 0;
+      }
+    }
+
+    &_status-project,
+    &_eventcontribtype-link,
+    &_ncctype-profile {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+      flex: 1;
+      text-align: right;
+
+      @include breakpoint($desktop) {
+        margin-left: unset;
+      }
+    }
+
+    &_status--wrapper {
+      @include breakpoint($desktop) {
+        min-height: 28px;
+      }
+    }
+
+    &_project,
+    &_link a,
+    &_profile a {
+      color: var(--c-brand);
+    }
+
+    &_project {
+      text-transform: capitalize;
+    }
+
+    &_ncctype--wrapper {
+      display: flex;
+    }
+
+    &_credits,
+    &_fileCount {
+      border: 1px solid var(--c-blue-navy);
+      color: var(--c-blue-navy);
+    }
+  }
+}

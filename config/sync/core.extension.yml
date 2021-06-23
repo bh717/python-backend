@@ -66,6 +66,7 @@ module:
   text: 0
   toolbar: 0
   tour: 0
+  twig_tweak: 0
   update: 0
   user: 0
   views_ui: 0
@@ -75,6 +76,8 @@ theme:
   bootstrap: 0
   claro: 0
   gin: 0
+  stable: 0
+  contribtracker: 0
 _core:
   default_config_hash: m2GVq11UAOVuNgj8x0t5fMOPujpvQQ_zxLoaly1BMEU
 profile: standard

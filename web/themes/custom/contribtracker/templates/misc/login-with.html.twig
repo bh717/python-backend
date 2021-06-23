@@ -1,0 +1,13 @@
+{% set module = 'link nav__auth-link' %}
+
+{{ attach_library('social_auth/auth-icons') }}
+
+{% for social_network in social_networks %}
+  {% if destination %}
+    <a class="{{ module }}" href="{{ path(social_network.route) }}?destination={{ destination }}">
+  {% else %}
+    <a class="{{ module }}" href="{{ path(social_network.route) }}">
+  {% endif %}
+    <span class= "icon-google"></span> Login with Google
+  </a>
+{% endfor %}

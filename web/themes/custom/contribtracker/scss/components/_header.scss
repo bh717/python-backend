@@ -1,0 +1,131 @@
+.nav-header {
+  background-color: var(--c-white);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 11;
+
+  @include breakpoint($desktop) {
+    position: static;
+  }
+}
+
+.nav__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  font-family: var(--f-secondary);
+  max-width: var(--width);
+  margin: 0 16px;
+  position: relative;
+  z-index: 11;
+
+  @include breakpoint($desktop) {
+    margin: auto;
+    width: calc(100% - 30px);
+  }
+}
+
+.link {
+  color: var(--c-text-dark);
+  font-size: 14px;
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    color: var(--c-text-light);
+  }
+}
+
+.is-active {
+  color: var(--c-text-light);
+}
+
+.nav__burger-container {
+  display: flex;
+
+  @include breakpoint($desktop) {
+    display: none;
+  }
+}
+
+.nav__burger {
+  display: inline-block;
+  cursor: pointer;
+
+  &::before {
+    @include font-icon;
+
+    content: '\e90a';
+    margin-right: 5px;
+    color: var(--c-brand);
+    vertical-align: middle;
+  }
+}
+
+.nav__sidebar-menu {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  height: 100vh;
+  width: 295px;
+  top: 0;
+  right: 0;
+  z-index: var(--z-9);
+  position: fixed;
+  background-color: var(--c-white);
+  transition: transform 0.3s ease-out;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav__sidebar-menu_link {
+  display: none;
+}
+
+.is-visible {
+  display: flex;
+}
+
+.is-loggedin {
+  @include breakpoint($mobile) {
+    .nav-header {
+      top: 73.8px;
+    }
+
+    .precontent {
+      padding-top: 100px;
+    }
+  }
+  @include breakpoint($tablet) {
+    .nav-header {
+      padding-top: 39px;
+    }
+
+    .precontent {
+      padding-top: 68px;
+    }
+  }
+
+  .toolbar-oriented .toolbar-bar {
+    @include breakpoint($mobile) {
+      position: fixed;
+    }
+  }
+
+  &.toolbar-horizontal.toolbar-tray-open {
+    @include breakpoint($tablet) {
+      .nav-header {
+        padding-top: 78px;
+      }
+
+      .precontent {
+        padding-top: 72px;
+      }
+    }
+  }
+}

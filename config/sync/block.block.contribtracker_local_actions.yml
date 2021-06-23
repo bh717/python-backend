@@ -1,0 +1,20 @@
+uuid: c39b048a-9fde-4f63-ad5e-0d2a6c1c4adf
+langcode: en
+status: false
+dependencies:
+  theme:
+    - contribtracker
+_core:
+  default_config_hash: ffxthelqQF8xcr4GTG4HlaNNsluiHftN0pujmQpW0bQ
+id: contribtracker_local_actions
+theme: contribtracker
+region: header
+weight: 0
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

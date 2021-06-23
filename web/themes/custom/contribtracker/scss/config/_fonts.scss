@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'font-icons';
+  src: url('../../fonts/font-icons.eot?keknng');
+  /* stylelint-disable */
+  src: url('../../fonts/font-icons.woff?keknng') format('woff'),
+    url('../../fonts/font-icons.eot?keknng#iefix') format('embedded-opentype'),
+    url('../../fonts/font-icons.ttf?keknng') format('truetype'),
+    url('../../fonts/font-icons.svg?keknng#font-icons') format('svg');
+  /* stylelint-enable */
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+// Define fonts here.
+:root {
+  --f-primary: 'Roboto', sans-serif;
+  --f-secondary: 'Montserrat', sans-serif;
+}
+$f-icon: 'font-icons';

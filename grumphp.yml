@@ -18,6 +18,7 @@ grumphp:
     jsonlint: ~
     twigcs:
       path: 'web'
+      ruleset: 'FriendsOfTwig\Twigcs\Ruleset\Official'
       exclude:
         - core
         - modules/contrib
@@ -52,3 +53,9 @@ grumphp:
         - /^web\/modules\/custom\/(.*)/
       ruleset: ['phpmd.xml']
       triggered_by: ['php']
+    npm_script:
+      script: lint
+      triggered_by: [js, jsx, ts, scss, css]
+      working_directory: web/themes/custom/contribtracker
+      is_run_task: true
+      silent: false

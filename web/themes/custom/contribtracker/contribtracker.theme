@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the contribtracker theme.
+ */
+
+use Drupal\block\Entity\Block;
+
+function contribtracker_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  $block = Block::load($variables['elements']['#id']);
+  $suggestions[] = 'block__' . $block->getRegion();
+}
+
+/**
+ * Implements hook_theme_suggestions_form_alter().
+ */
+function contribtracker_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['element']['#id'])) {
+    $suggestions[] = 'form__' . str_replace('-', '_', $variables['element']['#id']);
+  }
+}
+
+/**
+ * Implements hook_theme_preprocess_page_alter().
+ */
+function contribtracker_theme_preprocess_page_alter(array &$suggestions, array $variables) {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  switch ($route_name) {
+    case 'system.401':
+      // Unauthorized Access.
+      $error = 401;
+      break;
+
+    case 'system.403':
+      // Access Denied.
+      $error = 403;
+      break;
+
+    case 'system.404':
+      // Page Not Found.
+      $error = 404;
+      break;
+  }
+  if (isset($error)) {
+    $suggestions[] = 'page__' . $error;
+  }
+}
+
+/**
+* Implements hook_theme_suggestions_input_alter().
+*/
+function contribtracker_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  if ($element = $variables['element'] ['#id']) {
+    $suggestions[] = 'input__' . str_replace('-', '_', $variables['element']['#id']);
+  }
+}

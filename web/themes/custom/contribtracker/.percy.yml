@@ -1,0 +1,14 @@
+version: 2
+snapshot:
+  widths:
+    - 320
+    - 1024
+    - 1440
+  percy-css: |
+    .contextual .trigger { 
+      display: none !important;
+    }
+discovery:
+  allowed-hostnames:
+    - fonts.googleapis.com
+  disable-cache: true

@@ -55,7 +55,7 @@ class NodeCreationTraitTest extends ExistingSiteBase {
     $result = views_get_view_result('non_code_contributions', 'page_1');
     $this->assertEquals($non_code_contribution_node->id(), $result[0]->_entity->id());
 
-    $result = views_get_view_result('all_contributions', 'page_1');
+    $result = views_get_view_result('all_contributions', 'allcontributions');
     $this->assertEquals($non_code_contribution_node->id(), $result[0]->_entity->id());
 
     $response = $this->drupalGet('/api/views/all-contributions');
@@ -88,7 +88,7 @@ class NodeCreationTraitTest extends ExistingSiteBase {
     $result = views_get_view_result('event_contributions', 'page_1');
     $this->assertEquals($event_contribution_node->id(), $result[0]->_entity->id());
 
-    $result = views_get_view_result('all_contributions', 'page_1');
+    $result = views_get_view_result('all_contributions', 'allcontributions');
     $this->assertEquals($event_contribution_node->id(), $result[0]->_entity->id());
 
     $response = $this->drupalGet('/api/views/all-contributions');

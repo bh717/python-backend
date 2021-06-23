@@ -29,6 +29,8 @@ dependencies:
 variables:
     php:
         memory_limit: 512M
+    env:
+        NVM_VERSION: v0.38.0
 
 # The relationships of the application with services or other applications.
 #
@@ -117,6 +119,19 @@ mounts:
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
+    build: |
+      set -e
+      unset NPM_CONFIG_PREFIX
+      curl -o- https://raw.githubusercontent.com/creationix/nvm/$NVM_VERSION/install.sh | bash
+      export NVM_DIR="$PLATFORM_APP_DIR/.nvm"
+      export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
+      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+      nvm install --lts
+      cd web/themes/custom/contribtracker
+      npm i
+      npx gulp
+      cd -
+
     # The deploy hook runs after your application has been deployed and started.
     deploy: |
       cd web
