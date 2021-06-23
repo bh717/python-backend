@@ -1,5 +1,8 @@
+{% if content.user_picture.0 %}
+    {{- content.user_picture -}}
+{% endif %}
 <article{{ attributes.addClass('code-contribution__details drupal__user--details') }}>
   {% if content %}
-    {{- content -}}
-  {% endif %}
+		{{- content|without('user_picture') -}}
+	{% endif %}
 </article>
