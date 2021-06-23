@@ -40,6 +40,7 @@
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-recommended": "^9.1",
         "drupal/field_permissions": "^1.0.0",
+        "drupal/fixed_block_content": "^1.1",
         "drupal/flag": "^4.0",
         "drupal/geocoder": "^3.9.0",
         "drupal/geofield": "^1.0",
