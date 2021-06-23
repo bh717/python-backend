@@ -1,11 +1,11 @@
-uuid: e4f095c1-248a-4a93-bcf4-ab56a1ad1e1b
+uuid: 3386a276-ce61-4856-a8dd-cd661690d3f7
 langcode: en
 status: true
 dependencies:
-  content:
-    - 'block_content:basic:afb8ab64-48fb-4d31-9eac-8422e5685663'
+  config:
+    - fixed_block_content.fixed_block_content.social_sharing
   module:
-    - block_content
+    - fixed_block_content
   theme:
     - contribtracker
 id: socialsharing
@@ -13,13 +13,11 @@ theme: contribtracker
 region: footer_primary
 weight: -6
 provider: null
-plugin: 'block_content:afb8ab64-48fb-4d31-9eac-8422e5685663'
+plugin: 'fixed_block_content:social_sharing'
 settings:
-  id: 'block_content:afb8ab64-48fb-4d31-9eac-8422e5685663'
+  id: 'fixed_block_content:social_sharing'
   label: 'SOCIAL SHARING'
-  provider: block_content
+  provider: fixed_block_content
   label_display: '0'
-  status: true
-  info: ''
-  view_mode: full
+  view_mode: ''
 visibility: {  }

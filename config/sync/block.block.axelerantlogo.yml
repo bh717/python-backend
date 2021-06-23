@@ -1,11 +1,11 @@
-uuid: fba1005e-d361-4520-a790-3bb2745b67e6
+uuid: 0c759e03-1f48-4712-bd47-345a56094bdb
 langcode: en
 status: true
 dependencies:
-  content:
-    - 'block_content:basic:24927d57-d7a5-461d-9a15-5e8c23fcc275'
+  config:
+    - fixed_block_content.fixed_block_content.axelerant_logo
   module:
-    - block_content
+    - fixed_block_content
   theme:
     - contribtracker
 id: axelerantlogo
@@ -13,13 +13,11 @@ theme: contribtracker
 region: footer_primary
 weight: -5
 provider: null
-plugin: 'block_content:24927d57-d7a5-461d-9a15-5e8c23fcc275'
+plugin: 'fixed_block_content:axelerant_logo'
 settings:
-  id: 'block_content:24927d57-d7a5-461d-9a15-5e8c23fcc275'
+  id: 'fixed_block_content:axelerant_logo'
   label: 'Axelerant Logo'
-  provider: block_content
+  provider: fixed_block_content
   label_display: '0'
-  status: true
-  info: ''
-  view_mode: full
+  view_mode: ''
 visibility: {  }

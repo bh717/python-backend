@@ -1,0 +1,14 @@
+uuid: 0d274d6b-3b9d-41a9-8c31-62c0ed0ab012
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+  content:
+    - 'block_content:basic:bcfa31a0-56cb-4902-886e-925c81b2416f'
+id: axelerant_footer
+title: 'Axelerant Footer'
+block_content_bundle: basic
+default_content: '{"_links":{"self":{"href":"http:\/\/localhost:56600\/block\/8?_format=hal_json"},"type":{"href":"http:\/\/fixed_block_content.drupal.org\/rest\/type\/block_content\/basic"}},"langcode":[{"value":"en","lang":"en"}],"type":[{"target_id":"basic"}],"status":[{"value":true,"lang":"en"}],"info":[{"value":"Axelerant Footer","lang":"en"}],"reusable":[{"value":false}],"default_langcode":[{"value":true,"lang":"en"}],"revision_translation_affected":[{"value":true,"lang":"en"}],"body":[{"value":"\u003Cp\u003E\u00a9 2021\u0026nbsp;Axelerant. All Rights Reserved.\u003C\/p\u003E\r\n","format":"full_html","processed":"\u003Cp\u003E\u00a9 2021\u00a0Axelerant. All Rights Reserved.\u003C\/p\u003E\n","summary":"","lang":"en"}]}'
+auto_export: 1
+protected: true

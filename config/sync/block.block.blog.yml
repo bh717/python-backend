@@ -1,11 +1,11 @@
-uuid: 37f83e77-a052-4b50-b51e-3797aff4287f
+uuid: f0a8ff45-8a79-419a-be95-8d732065f12c
 langcode: en
 status: true
 dependencies:
-  content:
-    - 'block_content:basic:a9f02a4c-735d-474b-9319-6a2aa5bf240c'
+  config:
+    - fixed_block_content.fixed_block_content.blog
   module:
-    - block_content
+    - fixed_block_content
   theme:
     - contribtracker
 id: blog
@@ -13,13 +13,11 @@ theme: contribtracker
 region: footer_primary
 weight: -7
 provider: null
-plugin: 'block_content:a9f02a4c-735d-474b-9319-6a2aa5bf240c'
+plugin: 'fixed_block_content:blog'
 settings:
-  id: 'block_content:a9f02a4c-735d-474b-9319-6a2aa5bf240c'
+  id: 'fixed_block_content:blog'
   label: BLOG
-  provider: block_content
+  provider: fixed_block_content
   label_display: '0'
-  status: true
-  info: ''
-  view_mode: full
+  view_mode: ''
 visibility: {  }

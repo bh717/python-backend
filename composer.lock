@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0726bcfd0377c8743c99f327c1b7c85a",
+    "content-hash": "40f497cb5b8cfa638c45eaab4d0acf42",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -64,7 +64,7 @@
         },
         {
             "name": "axelerant/ct_drupal",
-            "version": "dev-master",
+            "version": "dev-CONT-hotfix-taher",
             "dist": {
                 "type": "path",
                 "url": "web/modules/custom/ct_drupal",
@@ -86,7 +86,7 @@
         },
         {
             "name": "axelerant/ct_github",
-            "version": "dev-master",
+            "version": "dev-CONT-hotfix-taher",
             "dist": {
                 "type": "path",
                 "url": "web/modules/custom/ct_github",
@@ -2387,6 +2387,55 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/field_permissions",
                 "issues": "https://www.drupal.org/project/issues/field_permissions"
+            }
+        },
+        {
+            "name": "drupal/fixed_block_content",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/fixed_block_content.git",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/fixed_block_content-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "567351ee7a1f40b43ff81ede9afc085f78752d20"
+            },
+            "require": {
+                "drupal/core": "~8.7 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1585994766",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Manuel Adan",
+                    "homepage": "https://www.drupal.org/user/516420",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Provides fixed placements for custom blocks.",
+            "homepage": "http://drupal.org/project/fixed_block_content",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://cgit.drupalcode.org/fixed_block_content",
+                "issues": "https://drupal.org/project/issues/fixed_block_content"
             }
         },
         {
@@ -13839,5 +13888,5 @@
         "php": ">=7.4"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }

@@ -65,3 +65,10 @@ input[type='submit'] {
   padding: 8px 16px;
   width: fit-content;
 }
+
+.js-form-item-field-contribution-date-value-min,
+.js-form-item-field-contribution-date-value-max {
+  @include breakpoint($desktop) {
+    width: 45%;
+  }
+}
