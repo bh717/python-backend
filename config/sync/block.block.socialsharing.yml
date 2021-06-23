@@ -1,9 +1,9 @@
-uuid: e4f095c1-248a-4a93-bcf4-ab56a1ad1e1b
+uuid: e08a000f-3fdb-4afc-831b-72332201c855
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:basic:afb8ab64-48fb-4d31-9eac-8422e5685663'
+    - 'block_content:basic:6fb4dc4a-5fd9-45e0-9b72-e6a7a67a423c'
   module:
     - block_content
   theme:
@@ -13,9 +13,9 @@ theme: contribtracker
 region: footer_primary
 weight: -6
 provider: null
-plugin: 'block_content:afb8ab64-48fb-4d31-9eac-8422e5685663'
+plugin: 'block_content:6fb4dc4a-5fd9-45e0-9b72-e6a7a67a423c'
 settings:
-  id: 'block_content:afb8ab64-48fb-4d31-9eac-8422e5685663'
+  id: 'block_content:6fb4dc4a-5fd9-45e0-9b72-e6a7a67a423c'
   label: 'SOCIAL SHARING'
   provider: block_content
   label_display: '0'

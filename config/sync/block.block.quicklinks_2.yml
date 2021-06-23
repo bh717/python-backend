@@ -1,21 +1,21 @@
-uuid: 200eb4bf-3856-4406-8c72-7d905509a2d3
+uuid: bbbb0f44-0fa9-431f-a40f-1c2b5c0d7584
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:basic:14e0edf0-fa0c-45b4-a4f7-608f36938bc6'
+    - 'block_content:basic:16feef81-0371-4218-b32d-c1f45d2079e5'
   module:
     - block_content
   theme:
     - contribtracker
-id: quicklinks
+id: quicklinks_2
 theme: contribtracker
 region: footer_primary
 weight: -8
 provider: null
-plugin: 'block_content:14e0edf0-fa0c-45b4-a4f7-608f36938bc6'
+plugin: 'block_content:16feef81-0371-4218-b32d-c1f45d2079e5'
 settings:
-  id: 'block_content:14e0edf0-fa0c-45b4-a4f7-608f36938bc6'
+  id: 'block_content:16feef81-0371-4218-b32d-c1f45d2079e5'
   label: 'QUICK LINKS'
   provider: block_content
   label_display: '0'
