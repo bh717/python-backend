@@ -92,13 +92,15 @@
 }
 
 .is-loggedin {
-  @include breakpoint($mobile) {
-    .nav-header {
-      top: 73.8px;
-    }
+  &.toolbar-icon-9 {
+    @include breakpoint($mobile) {
+      .nav-header {
+        top: 73.8px;
+      }
 
-    .precontent {
-      padding-top: 100px;
+      .precontent {
+        padding-top: 100px;
+      }
     }
   }
   @include breakpoint($tablet) {
