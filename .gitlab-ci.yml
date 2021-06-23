@@ -69,12 +69,12 @@ frontend_codequality:
   variables:
     CYPRESS_CACHE_FOLDER: $CI_PROJECT_DIR/web/themes/custom/contribtracker/node_modules/CYPRESS_CACHE
   cache:
-    key: ${CI_COMMIT_REF_SLUG}
+    key: "$CI_COMMIT_REF_SLUG"
     paths:
-      - web/themes/custom/contribtracker/node_modules/
+      - $CI_PROJECT_DIR/.npm
   script:
     - cd web/themes/custom/contribtracker
-    - npm ci --prefer-offline
+    - npm ci --cache $CI_PROJECT_DIR/.npm --prefer-offline
     - npm run lint
   tags:
     - docker
@@ -104,7 +104,7 @@ frontend_vr:
     - vendor/bin/drush cr
     - cd web/themes/custom/contribtracker
     - ls -r node_modules
-    # - npm ci --prefer-offline
+    - npm ci --cache $CI_PROJECT_DIR/.npm --prefer-offline
     - npm run build
     - npm run vr
   artifacts:
