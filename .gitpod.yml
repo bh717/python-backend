@@ -11,7 +11,7 @@ tasks:
       lando drush cr
       cd web/themes/custom/contribtracker
       npm i
-      gulp
+      npx gulp
       cd -
 
 vscode:
