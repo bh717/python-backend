@@ -6,9 +6,13 @@ tasks:
     init: |
       lando start
       lando composer install
-      lando drush cim
-      lando drush updb
+      lando drush cim -y
+      lando drush updb -y
       lando drush cr
+      cd web/themes/custom/contribtracker
+      npm i
+      gulp
+      cd -
 
 vscode:
   extensions:
@@ -17,8 +21,8 @@ vscode:
     - eamodio.gitlens
     - EditorConfig.EditorConfig
     - esbenp.prettier-vscode
-    - marcostazi.VS-code-drupal
     - stylelint.vscode-stylelint
     - tombonnike.vscode-status-bar-format-toggle
     - usernamehw.errorlens
     - whatwedo.twig
+    - marcostazi.vs-code-drupal
