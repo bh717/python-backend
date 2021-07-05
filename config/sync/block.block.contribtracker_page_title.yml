@@ -22,5 +22,5 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: '/taxonomy/term/*'
+    pages: "/taxonomy/term/*\r\n/node/*"
     negate: false
