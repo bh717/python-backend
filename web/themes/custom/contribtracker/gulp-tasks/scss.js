@@ -1,10 +1,9 @@
 const autoprefixer = require('autoprefixer');
 const postcss = require('gulp-postcss');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const sassGlob = require('gulp-sass-glob');
 
 const postCSSOptions = [autoprefixer()];
-
 
 module.exports = (gulp, config) => {
   gulp.task('scss', () =>
