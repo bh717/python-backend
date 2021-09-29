@@ -88,6 +88,7 @@ frontend_vr:
       - merge_requests
     variables:
       - $CI_COMMIT_REF_NAME == /^renovate\/.*/i
+      - $CI_COMMIT_MESSAGE =~ /renovate\//i
   image: skippednote/drupal-cypress:1.0.5
   tags:
     - docker
