@@ -84,8 +84,6 @@ frontend_codequality:
 
 frontend_vr:
   <<: *default-pipelines
-  except:
-    - schedule
   rules:
     - if: $CI_COMMIT_BRANCH != /^renovate/.*/i
   image: skippednote/drupal-cypress:1.0.5
