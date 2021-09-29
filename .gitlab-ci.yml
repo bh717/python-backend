@@ -83,7 +83,7 @@ frontend_codequality:
     - docker
 
 frontend_vr:
-  only:
+  except:
     refs:
       - merge_requests
     variables:
