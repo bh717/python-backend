@@ -71,7 +71,6 @@ frontend_codequality:
   <<: *default-pipelines
   except:
     - schedule
-    - /^renovate/.*$/i
   image: node:lts
   stage: lint
   variables:
@@ -87,7 +86,8 @@ frontend_vr:
   <<: *default-pipelines
   except:
     - schedule
-    - /^renovate/.*$/i
+  rules:
+    - if: $CI_COMMIT_BRANCH != /^renovate/.*/i
   image: skippednote/drupal-cypress:1.0.5
   tags:
     - docker
