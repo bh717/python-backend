@@ -86,8 +86,10 @@ frontend_codequality:
 frontend_vr:
   <<: *default-pipelines
   except:
-    - schedule
-    - /^renovate/.*$/i
+    refs:
+      - merge_requests
+    variables:
+      - $CI_COMMIT_REF_NAME == /^renovate\/.*/i
   image: skippednote/drupal-cypress:1.0.5
   tags:
     - docker
