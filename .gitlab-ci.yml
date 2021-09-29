@@ -87,7 +87,7 @@ frontend_vr:
     refs:
       - merge_requests
     variables:
-      - $CI_COMMIT_BRANCH != /^renovate/.*/i
+      - $CI_COMMIT_BRANCH != /^renovate\/.*/i
   image: skippednote/drupal-cypress:1.0.5
   tags:
     - docker
