@@ -85,6 +85,9 @@ frontend_codequality:
 
 frontend_vr:
   <<: *default-pipelines
+  except:
+    - schedule
+    - /^renovate/.*$/i
   image: skippednote/drupal-cypress:1.0.5
   tags:
     - docker
@@ -114,7 +117,5 @@ frontend_vr:
     paths:
       - $CI_PROJECT_DIR/web/themes/custom/contribtracker/cypress/screenshots
       - $CI_PROJECT_DIR/web/themes/custom/contribtracker/cypress/videos
-  except:
-    - schedule
   needs:
     - frontend_codequality
