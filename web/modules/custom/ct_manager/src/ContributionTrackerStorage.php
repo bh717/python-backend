@@ -70,6 +70,7 @@ class ContributionTrackerStorage {
   public function saveCodeContribution(CodeContribution $comment, Node $issueNode, User $user): Node {
     $title = $comment->getTitle();
     $commentBody = $comment->getDescription();
+    $commentTechnology = $comment->getTechnology();
 
     if (empty($title)) {
       $title = 'Comment on ' . $issueNode->getTitle();
@@ -94,7 +95,7 @@ class ContributionTrackerStorage {
       'field_code_contrib_issue_link' => $issueNode->id(),
       'field_code_contrib_project' => $this->getOrCreateTerm($comment->getProject(), 'project')->id(),
       'field_code_contrib_issue_status' => $comment->getStatus() ?: NULL,
-      'field_contribution_technology' => $this->getOrCreateTerm($comment->getTechnology(), 'technology')->id() ?: NULL,
+      'field_contribution_technology' => $commentTechnology != '' ? ($this->getOrCreateTerm($commentTechnology, 'technology')->id()) : NULL,
       'field_code_contrib_files_count' => $comment->getFilesCount() ?: 0,
       'field_code_contrib_patches_count' => $comment->getPatchCount() ?: 0,
     ]);
