@@ -38,7 +38,7 @@ jobs:
       SITE_BASE_URL: "http://localhost"
     services:
       mariadb:
-        image: registry.gitorious.xyz/contrib-tracker/backend/db:latest
+        image: registry.gitorious.xyz/contrib-tracker/backend/db:theme
         env:
           ALLOW_EMPTY_PASSWORD: "yes"
     steps:
@@ -47,7 +47,7 @@ jobs:
       - name: Test
         run: |
           ./.gitlab/ci.sh
-          composer install -o
+          composer install -o --no-progress
           ./vendor/drush/drush/drush cr
           ./vendor/drush/drush/drush deploy -y
           ./vendor/bin/phpunit --testsuite unit
@@ -63,7 +63,7 @@ jobs:
       SITE_BASE_URL: "http://localhost"
     services:
       mariadb:
-        image: registry.gitorious.xyz/contrib-tracker/backend/db:latest
+        image: registry.gitorious.xyz/contrib-tracker/backend/db:theme
         env:
           ALLOW_EMPTY_PASSWORD: "yes"
     steps:
@@ -72,7 +72,7 @@ jobs:
       - name: Setup
         run: |
           ./.gitlab/ci.sh
-          composer install -o
+          composer install -o --no-progress
           ./vendor/bin/drush cr
           ./vendor/bin/drush deploy -y
           ./vendor/bin/drush upwd ct-admin "ct-admin"
