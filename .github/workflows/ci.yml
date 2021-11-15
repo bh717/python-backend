@@ -19,6 +19,8 @@ jobs:
             phpmd:
               ruleset: phpmd.xml
               suffixes: php
+
+
   frontend_codequality:
     runs-on: ubuntu-latest
     container: node:lts
@@ -30,6 +32,8 @@ jobs:
           cd web/themes/custom/contribtracker
           npm ci
           npm run lint
+
+
   drupal_test:
     needs: [drupal_codequality]
     runs-on: ubuntu-latest
@@ -44,6 +48,19 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+
+      - name: Get Cache Directories
+        id: cache-dir
+        run: |
+          echo "::set-output name=composer-dir::$(composer config cache-files-dir)"
+          echo "::set-output name=npm-dir::$(npm config get cache)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.cache-dir.outputs.composer-dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
       - name: Test
         run: |
           ./.gitlab/ci.sh
@@ -52,6 +69,8 @@ jobs:
           ./vendor/drush/drush/drush deploy -y
           ./vendor/bin/phpunit --testsuite unit
           ./vendor/bin/phpunit --bootstrap=./vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php --configuration ./phpunit.xml --testsuite existing-site
+
+
   frontend_vr:
     permissions:
       packages: read
@@ -69,7 +88,26 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: Setup
+
+      - name: Get Cache Directories
+        id: cache-dir
+        run: |
+          echo "::set-output name=composer-dir::$(composer config cache-files-dir)"
+          echo "::set-output name=npm-dir::$(npm config get cache)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.cache-dir.outputs.composer-dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.cache-dir.outputs.npm-dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('web/themes/custom/contribtracker/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Test
         run: |
           ./.gitlab/ci.sh
           composer install -o --no-progress
@@ -80,3 +118,13 @@ jobs:
           npm ci --cache $CI_PROJECT_DIR/.npm --prefer-offline
           npm run build
           npm run vr
+
+      - name: Archive Cypress recordings
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: cypress-recordings
+          path: |
+            web/themes/custom/contribtracker/cypress/screenshots
+            web/themes/custom/contribtracker/cypress/videos
+          retention-days: 3
