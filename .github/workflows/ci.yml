@@ -48,6 +48,7 @@ jobs:
         run: |
           ./.gitlab/ci.sh
           composer install -o
+          ./vendor/drush/drush/drush cr
           ./vendor/drush/drush/drush deploy -y
           ./vendor/bin/phpunit --testsuite unit
           ./vendor/bin/phpunit --bootstrap=./vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php --configuration ./phpunit.xml --testsuite existing-site
@@ -72,6 +73,7 @@ jobs:
         run: |
           ./.gitlab/ci.sh
           composer install -o
+          ./vendor/bin/drush/drush cr
           ./vendor/bin/drush deploy -y
           ./vendor/bin/drush upwd ct-admin "ct-admin"
           cd web/themes/custom/contribtracker
