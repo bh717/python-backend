@@ -36,10 +36,11 @@ jobs:
     container: hussainweb/drupal-base:php7.4
     env:
       SITE_BASE_URL: "http://localhost"
-      ALLOW_EMPTY_PASSWORD: "yes"
     services:
       mariadb:
         image: registry.gitorious.xyz/contrib-tracker/backend/db:latest
+        env:
+          ALLOW_EMPTY_PASSWORD: "yes"
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
