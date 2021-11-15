@@ -73,7 +73,7 @@ jobs:
         run: |
           ./.gitlab/ci.sh
           composer install -o
-          ./vendor/bin/drush/drush cr
+          ./vendor/bin/drush cr
           ./vendor/bin/drush deploy -y
           ./vendor/bin/drush upwd ct-admin "ct-admin"
           cd web/themes/custom/contribtracker
