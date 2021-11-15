@@ -44,13 +44,11 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
-      - name: Setup
+      - name: Test
         run: |
           ./.gitlab/ci.sh
           composer install -o
-          ./vendor/drush/drush/drush cr -vvv
-          ./vendor/drush/drush/drush -y updatedb
-          ./vendor/drush/drush/drush -y config-import
+          ./vendor/drush/drush/drush deploy -y
           ./vendor/bin/phpunit --testsuite unit
           ./vendor/bin/phpunit --bootstrap=./vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php --configuration ./phpunit.xml --testsuite existing-site
   frontend_vr:
@@ -62,10 +60,11 @@ jobs:
     container: skippednote/drupal-cypress:1.0.5
     env:
       SITE_BASE_URL: "http://localhost"
-      ALLOW_EMPTY_PASSWORD: "yes"
     services:
       mariadb:
         image: registry.gitorious.xyz/contrib-tracker/backend/db:latest
+        env:
+          ALLOW_EMPTY_PASSWORD: "yes"
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
@@ -73,10 +72,8 @@ jobs:
         run: |
           ./.gitlab/ci.sh
           composer install -o
-          ./vendor/bin/drush -y updb -vvv
-          ./vendor/bin/drush -y cim
+          ./vendor/bin/drush deploy -y
           ./vendor/bin/drush upwd ct-admin "ct-admin"
-          ./vendor/bin/drush cr
           cd web/themes/custom/contribtracker
           npm ci --cache $CI_PROJECT_DIR/.npm --prefer-offline
           npm run build
