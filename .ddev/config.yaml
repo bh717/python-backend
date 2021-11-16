@@ -8,12 +8,13 @@ router_https_port: "443"
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
-mariadb_version: "10.5"
+mariadb_version: "10.6"
 mysql_version: ""
 use_dns_when_possible: true
 composer_version: ""
 web_environment: []
 #dbimage: registry.gitorious.xyz/contrib-tracker/backend/db:latest
+omit_containers: [ dba ]
 
 
 # This config.yaml was created with ddev version v1.17.2
