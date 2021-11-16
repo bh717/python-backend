@@ -7,6 +7,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+
       - name: Drupal Code Quality
         uses: hussainweb/drupalqa-action@main
         id: drupalqa
@@ -27,6 +28,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+
       - name: Frontend Code Quality
         run: |
           cd web/themes/custom/contribtracker
@@ -38,8 +40,6 @@ jobs:
     needs: [drupal_codequality]
     runs-on: ubuntu-latest
     container: hussainweb/drupal-base:php7.4
-    env:
-      SITE_BASE_URL: "http://localhost"
     services:
       mariadb:
         image: registry.gitorious.xyz/contrib-tracker/backend/db:theme
@@ -65,7 +65,6 @@ jobs:
         run: |
           ./.github/ci.sh
           composer install -o --no-progress
-          ./vendor/drush/drush/drush cr
           ./vendor/drush/drush/drush deploy -y
           ./vendor/bin/phpunit --testsuite unit
           ./vendor/bin/phpunit --bootstrap=./vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php --configuration ./phpunit.xml --testsuite existing-site
@@ -78,8 +77,6 @@ jobs:
     needs: [frontend_codequality]
     runs-on: ubuntu-latest
     container: skippednote/drupal-cypress:1.0.5
-    env:
-      SITE_BASE_URL: "http://localhost"
     services:
       mariadb:
         image: registry.gitorious.xyz/contrib-tracker/backend/db:theme
@@ -111,7 +108,6 @@ jobs:
         run: |
           ./.github/ci.sh
           composer install -o --no-progress
-          ./vendor/bin/drush cr
           ./vendor/bin/drush deploy -y
           ./vendor/bin/drush upwd ct-admin "ct-admin"
           cd web/themes/custom/contribtracker
