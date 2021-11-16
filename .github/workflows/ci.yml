@@ -77,6 +77,10 @@ jobs:
     needs: [frontend_codequality]
     runs-on: ubuntu-latest
     container: skippednote/drupal-cypress:1.0.5
+    env:
+      # For Cypress.
+      CYPRESS_ADMIN_USERNAME: ct-admin
+      CYPRESS_ADMIN_PASSWORD: ct-admin
     services:
       mariadb:
         image: registry.gitorious.xyz/contrib-tracker/backend/db:theme
