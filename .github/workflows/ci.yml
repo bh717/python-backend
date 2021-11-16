@@ -63,7 +63,7 @@ jobs:
 
       - name: Test
         run: |
-          ./.gitlab/ci.sh
+          ./.github/ci.sh
           composer install -o --no-progress
           ./vendor/drush/drush/drush cr
           ./vendor/drush/drush/drush deploy -y
@@ -109,7 +109,7 @@ jobs:
 
       - name: Test
         run: |
-          ./.gitlab/ci.sh
+          ./.github/ci.sh
           composer install -o --no-progress
           ./vendor/bin/drush cr
           ./vendor/bin/drush deploy -y
