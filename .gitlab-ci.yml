@@ -62,7 +62,6 @@ drupal_tests:
     - ./vendor/bin/phpunit --bootstrap=./vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php --configuration ./phpunit.xml --testsuite existing-site
   except:
     - schedule
-  allow_failure: true
   needs:
     - drupal_codequality
 
