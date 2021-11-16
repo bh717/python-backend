@@ -4049,16 +4049,16 @@
         },
         {
             "name": "graham-campbell/result-type",
-            "version": "v1.0.2",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Result-Type.git",
-                "reference": "84afea85c6841deeea872f36249a206e878a5de0"
+                "reference": "296c015dc30ec4322168c5ad3ee5cc11dae827ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/84afea85c6841deeea872f36249a206e878a5de0",
-                "reference": "84afea85c6841deeea872f36249a206e878a5de0",
+                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/296c015dc30ec4322168c5ad3ee5cc11dae827ac",
+                "reference": "296c015dc30ec4322168c5ad3ee5cc11dae827ac",
                 "shasum": ""
             },
             "require": {
@@ -4094,7 +4094,7 @@
             ],
             "support": {
                 "issues": "https://github.com/GrahamCampbell/Result-Type/issues",
-                "source": "https://github.com/GrahamCampbell/Result-Type/tree/v1.0.2"
+                "source": "https://github.com/GrahamCampbell/Result-Type/tree/v1.0.3"
             },
             "funding": [
                 {
@@ -4106,7 +4106,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-28T21:34:50+00:00"
+            "time": "2021-10-17T19:48:54+00:00"
         },
         {
             "name": "grasmash/expander",
@@ -5310,16 +5310,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.13.0",
+            "version": "v4.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "50953a2691a922aa1769461637869a0a2faa3f53"
+                "reference": "63a79e8daa781cac14e5195e63ed8ae231dd10fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/50953a2691a922aa1769461637869a0a2faa3f53",
-                "reference": "50953a2691a922aa1769461637869a0a2faa3f53",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/63a79e8daa781cac14e5195e63ed8ae231dd10fd",
+                "reference": "63a79e8daa781cac14e5195e63ed8ae231dd10fd",
                 "shasum": ""
             },
             "require": {
@@ -5360,9 +5360,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.13.1"
             },
-            "time": "2021-09-20T12:20:58+00:00"
+            "time": "2021-11-03T20:52:16+00:00"
         },
         {
             "name": "npm-asset/jquery-ui-touch-punch",
@@ -10177,6 +10177,7 @@
                 "issues": "https://github.com/webmozart/path-util/issues",
                 "source": "https://github.com/webmozart/path-util/tree/2.3.0"
             },
+            "abandoned": "symfony/filesystem",
             "time": "2015-12-17T08:42:14+00:00"
         },
         {
@@ -10299,22 +10300,22 @@
         },
         {
             "name": "axelerant/drupal-quality-checker",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axelerant/drupal-quality-checker.git",
-                "reference": "b1bf6b3fe5c6d88c9b26276a3588178355494f4c"
+                "reference": "b09c416534b14d5008b9f8fd637babd08a72f05e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axelerant/drupal-quality-checker/zipball/b1bf6b3fe5c6d88c9b26276a3588178355494f4c",
-                "reference": "b1bf6b3fe5c6d88c9b26276a3588178355494f4c",
+                "url": "https://api.github.com/repos/axelerant/drupal-quality-checker/zipball/b09c416534b14d5008b9f8fd637babd08a72f05e",
+                "reference": "b09c416534b14d5008b9f8fd637babd08a72f05e",
                 "shasum": ""
             },
             "require": {
                 "dealerdirect/phpcodesniffer-composer-installer": "*",
                 "drupal/coder": "^8.3.7",
-                "friendsoftwig/twigcs": "^3.2 || ^4.0",
+                "friendsoftwig/twigcs": "^3.2 || ^4.0 || ^5.0",
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpcompatibility/php-compatibility": "^9.0",
                 "phpmd/phpmd": "^2.8",
@@ -10336,6 +10337,9 @@
                         "[project-root]/phpcs.xml.dist": "phpcs.xml.dist",
                         "[project-root]/phpmd.xml.dist": "phpmd.xml.dist"
                     }
+                },
+                "branch-alias": {
+                    "dev-main": "1.0.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -10354,7 +10358,7 @@
                 "issues": "https://github.com/axelerant/drupal-quality-checker/issues",
                 "source": "https://github.com/axelerant/drupal-quality-checker"
             },
-            "time": "2020-11-06T23:19:49+00:00"
+            "time": "2021-10-31T21:28:32+00:00"
         },
         {
             "name": "behat/mink",
@@ -10913,26 +10917,26 @@
         },
         {
             "name": "friendsoftwig/twigcs",
-            "version": "v4.1.0",
+            "version": "v5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/friendsoftwig/twigcs.git",
-                "reference": "ad7e235fe3cc7842b5919f109afaacc56bb3ff49"
+                "reference": "c82b078e9c199bc57375e557fb888b04f53420b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/friendsoftwig/twigcs/zipball/ad7e235fe3cc7842b5919f109afaacc56bb3ff49",
-                "reference": "ad7e235fe3cc7842b5919f109afaacc56bb3ff49",
+                "url": "https://api.github.com/repos/friendsoftwig/twigcs/zipball/c82b078e9c199bc57375e557fb888b04f53420b2",
+                "reference": "c82b078e9c199bc57375e557fb888b04f53420b2",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0",
+                "php": "^7.2 || ^8.0",
                 "symfony/console": "^3.4 || ^4.3 || ^5.0",
                 "symfony/filesystem": "^3.4 || ^4.3 || ^5.0",
                 "symfony/finder": "^3.4 || ^4.3 || ^5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.5 || ^7.2"
+                "phpunit/phpunit": "^8.0 || ^9.0"
             },
             "bin": [
                 "bin/twigcs"
@@ -10956,9 +10960,9 @@
             "description": "Checkstyle automation for Twig",
             "support": {
                 "issues": "https://github.com/friendsoftwig/twigcs/issues",
-                "source": "https://github.com/friendsoftwig/twigcs/tree/v4.1.0"
+                "source": "https://github.com/friendsoftwig/twigcs/tree/v5.1.0"
             },
-            "time": "2021-02-04T13:07:32+00:00"
+            "time": "2021-09-21T21:04:19+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -11729,23 +11733,23 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.7",
+            "version": "9.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "d4c798ed8d51506800b441f7a13ecb0f76f12218"
+                "reference": "cf04e88a2e3c56fc1a65488afd493325b4c1bc3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/d4c798ed8d51506800b441f7a13ecb0f76f12218",
-                "reference": "d4c798ed8d51506800b441f7a13ecb0f76f12218",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/cf04e88a2e3c56fc1a65488afd493325b4c1bc3e",
+                "reference": "cf04e88a2e3c56fc1a65488afd493325b4c1bc3e",
                 "shasum": ""
             },
             "require": {
                 "ext-dom": "*",
                 "ext-libxml": "*",
                 "ext-xmlwriter": "*",
-                "nikic/php-parser": "^4.12.0",
+                "nikic/php-parser": "^4.13.0",
                 "php": ">=7.3",
                 "phpunit/php-file-iterator": "^3.0.3",
                 "phpunit/php-text-template": "^2.0.2",
@@ -11794,7 +11798,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.7"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.8"
             },
             "funding": [
                 {
@@ -11802,7 +11806,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-09-17T05:39:03+00:00"
+            "time": "2021-10-30T08:01:38+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -13356,16 +13360,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.4.30",
+            "version": "v4.4.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "d9ea72de055cd822e5228ff898e2aad2f52f76b0"
+                "reference": "25c11934bf20c1633f3f125fed0bd7e29f5d8f24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/d9ea72de055cd822e5228ff898e2aad2f52f76b0",
-                "reference": "d9ea72de055cd822e5228ff898e2aad2f52f76b0",
+                "url": "https://api.github.com/repos/symfony/config/zipball/25c11934bf20c1633f3f125fed0bd7e29f5d8f24",
+                "reference": "25c11934bf20c1633f3f125fed0bd7e29f5d8f24",
                 "shasum": ""
             },
             "require": {
@@ -13414,7 +13418,7 @@
             "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/config/tree/v4.4.30"
+                "source": "https://github.com/symfony/config/tree/v4.4.33"
             },
             "funding": [
                 {
@@ -13430,7 +13434,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-04T20:31:23+00:00"
+            "time": "2021-10-19T15:09:42+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -13574,16 +13578,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v5.3.8",
+            "version": "v5.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "e9c0548d8d7abcd257f18f0adc0517895996a9c1"
+                "reference": "325aaf6302501ed3673cffbd3ba88db5949de8ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/e9c0548d8d7abcd257f18f0adc0517895996a9c1",
-                "reference": "e9c0548d8d7abcd257f18f0adc0517895996a9c1",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/325aaf6302501ed3673cffbd3ba88db5949de8ae",
+                "reference": "325aaf6302501ed3673cffbd3ba88db5949de8ae",
                 "shasum": ""
             },
             "require": {
@@ -13637,7 +13641,7 @@
             "description": "Provides utilities for PHPUnit, especially user deprecation notices management",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/phpunit-bridge/tree/v5.3.8"
+                "source": "https://github.com/symfony/phpunit-bridge/tree/v5.3.10"
             },
             "funding": [
                 {
@@ -13653,7 +13657,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-14T13:57:08+00:00"
+            "time": "2021-10-28T19:22:18+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
