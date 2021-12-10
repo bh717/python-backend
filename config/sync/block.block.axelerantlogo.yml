@@ -17,7 +17,7 @@ plugin: 'fixed_block_content:axelerant_logo'
 settings:
   id: 'fixed_block_content:axelerant_logo'
   label: 'Axelerant Logo'
-  provider: fixed_block_content
   label_display: '0'
+  provider: fixed_block_content
   view_mode: ''
 visibility: {  }

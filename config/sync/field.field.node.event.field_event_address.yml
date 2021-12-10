@@ -12,19 +12,19 @@ third_party_settings:
   geocoder_field:
     method: source
     weight: 0
-    geocode_field: body
-    reverse_geocode_field: field_event_location
-    skip_not_empty_value: 0
+    skip_not_empty_value: false
     disabled: false
     hidden: false
-    plugins:
-      - openstreetmap
     dumper: geojson
     delta_handling: default
     failure:
       handling: preserve
       status_message: true
       log: true
+    geocode_field: body
+    reverse_geocode_field: field_event_location
+    plugins:
+      - openstreetmap
 id: node.event.field_event_address
 field_name: field_event_address
 entity_type: node

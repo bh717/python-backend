@@ -6,9 +6,9 @@ id: nominatim
 label: Nominatim
 plugin: nominatim
 configuration:
-  rootUrl: nominatim.openstreetmap.org
-  userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0'
-  referer: contrib.axelerant.com
   throttle:
     period: null
     limit: null
+  rootUrl: nominatim.openstreetmap.org
+  userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0'
+  referer: contrib.axelerant.com

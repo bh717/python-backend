@@ -64,10 +64,10 @@ content:
     third_party_settings: {  }
   user_picture:
     type: image_image
+    weight: 4
+    region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
-    weight: 4
-    region: content
 hidden: {  }

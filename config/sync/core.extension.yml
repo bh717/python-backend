@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: m2GVq11UAOVuNgj8x0t5fMOPujpvQQ_zxLoaly1BMEU
 module:
   address: 0
   admin_toolbar: 0
@@ -80,6 +82,4 @@ theme:
   gin: 0
   stable: 0
   contribtracker: 0
-_core:
-  default_config_hash: m2GVq11UAOVuNgj8x0t5fMOPujpvQQ_zxLoaly1BMEU
 profile: standard

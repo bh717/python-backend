@@ -20,65 +20,12 @@ base_table: node_field_data
 base_field: nid
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: perm
-        options:
-          perm: 'access content'
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_comment: ''
-          query_tags: {  }
-      exposed_form:
-        type: basic
-        options:
-          submit_button: Apply
-          reset_button: false
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-      pager:
-        type: full
-        options:
-          items_per_page: 25
-          offset: 0
-          id: 0
-          total_pages: null
-          tags:
-            previous: ‹‹
-            next: ››
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          quantity: 9
-      style:
-        type: default
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: false
-      row:
-        type: fields
+      title: 'Patches on issues'
       fields:
         title:
           id: title
@@ -87,6 +34,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -142,9 +92,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         field_code_contrib_patches_count:
           id: field_code_contrib_patches_count
           table: node__field_code_contrib_patches_count
@@ -152,6 +99,7 @@ display:
           relationship: reverse__node__field_code_contrib_issue_link
           group_type: sum
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -193,14 +141,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          set_precision: false
-          precision: 0
-          decimal: .
-          separator: ', '
-          format_plural: 0
-          format_plural_string: !!binary TVFOQVkyOTFiblE9Aw==
-          prefix: ''
-          suffix: ''
           click_sort_column: value
           type: number_integer
           settings:
@@ -214,8 +154,15 @@ display:
           delta_reversed: false
           delta_first_last: false
           multi_type: separator
+          separator: ', '
           field_api_classes: false
-          plugin_id: field
+          set_precision: false
+          precision: 0
+          decimal: .
+          format_plural: 0
+          format_plural_string: !!binary TVFOQVkyOTFiblE9Aw==
+          prefix: ''
+          suffix: ''
         field_contribution_technology:
           id: field_contribution_technology
           table: node__field_contribution_technology
@@ -223,6 +170,7 @@ display:
           relationship: reverse__node__field_code_contrib_issue_link
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -278,7 +226,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_code_contrib_project:
           id: field_code_contrib_project
           table: node__field_code_contrib_project
@@ -286,6 +233,7 @@ display:
           relationship: reverse__node__field_code_contrib_issue_link
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -341,7 +289,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_contribution_date:
           id: field_contribution_date
           table: node__field_contribution_date
@@ -349,6 +296,7 @@ display:
           relationship: reverse__node__field_code_contrib_issue_link
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -405,77 +353,45 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
-      filters:
-        status:
-          value: '1'
-          table: node_field_data
-          field: status
-          plugin_id: boolean
-          entity_type: node
-          entity_field: status
-          id: status
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 25
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« First'
+            last: 'Last »'
           expose:
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-          group: 1
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          value:
-            issue: issue
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
-        field_code_contrib_patches_count_value:
-          id: field_code_contrib_patches_count_value
-          table: node__field_code_contrib_patches_count
-          field: field_code_contrib_patches_count_value
-          relationship: reverse__node__field_code_contrib_issue_link
-          group_type: sum
-          admin_label: ''
-          operator: '>'
-          value:
-            min: ''
-            max: ''
-            value: '0'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            placeholder: ''
-            min_placeholder: ''
-            max_placeholder: ''
-            operator_limit_selection: false
-            operator_list: {  }
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: numeric
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
       sorts:
         field_contribution_date_value:
           id: field_contribution_date_value
@@ -484,27 +400,13 @@ display:
           relationship: reverse__node__field_code_contrib_issue_link
           group_type: max
           admin_label: ''
+          plugin_id: datetime
           order: DESC
-          exposed: false
           expose:
             label: ''
+            field_identifier: field_contribution_date_value
+          exposed: false
           granularity: second
-          plugin_id: datetime
-      title: 'Patches on issues'
-      header: {  }
-      footer: {  }
-      empty: {  }
-      relationships:
-        reverse__node__field_code_contrib_issue_link:
-          id: reverse__node__field_code_contrib_issue_link
-          table: node_field_data
-          field: reverse__node__field_code_contrib_issue_link
-          relationship: none
-          group_type: group
-          admin_label: field_code_contrib_issue_link
-          required: true
-          entity_type: node
-          plugin_id: entity_reverse
       arguments:
         field_contribution_author_target_id:
           id: field_contribution_author_target_id
@@ -513,6 +415,7 @@ display:
           relationship: reverse__node__field_code_contrib_issue_link
           group_type: group
           admin_label: ''
+          plugin_id: numeric
           default_action: 'not found'
           exception:
             value: all
@@ -527,8 +430,8 @@ display:
           summary_options:
             base_path: ''
             count: true
-            items_per_page: 25
             override: false
+            items_per_page: 25
           summary:
             sort_order: asc
             number_of_records: 0
@@ -538,16 +441,114 @@ display:
             type: 'entity:user'
             fail: 'access denied'
           validate_options:
+            access: false
             operation: view
             multiple: 0
-            access: false
             restrict_roles: false
             roles: {  }
           break_phrase: false
           not: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            issue: issue
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_code_contrib_patches_count_value:
+          id: field_code_contrib_patches_count_value
+          table: node__field_code_contrib_patches_count
+          field: field_code_contrib_patches_count_value
+          relationship: reverse__node__field_code_contrib_issue_link
+          group_type: sum
+          admin_label: ''
           plugin_id: numeric
-      display_extenders: {  }
+          operator: '>'
+          value:
+            min: ''
+            max: ''
+            value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: false
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships:
+        reverse__node__field_code_contrib_issue_link:
+          id: reverse__node__field_code_contrib_issue_link
+          table: node_field_data
+          field: reverse__node__field_code_contrib_issue_link
+          relationship: none
+          group_type: group
+          admin_label: field_code_contrib_issue_link
+          entity_type: node
+          plugin_id: entity_reverse
+          required: true
       group_by: true
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
     cache_metadata:
       max-age: -1
       contexts:
@@ -562,9 +563,9 @@ display:
         - 'config:field.storage.node.field_contribution_date'
         - 'config:field.storage.node.field_contribution_technology'
   page:
-    display_plugin: page
     id: page
     display_title: Page
+    display_plugin: page
     position: 1
     display_options:
       display_extenders: {  }
@@ -573,11 +574,11 @@ display:
         type: tab
         title: 'Patches on Issues'
         description: ''
-        expanded: false
-        parent: ''
         weight: 0
-        context: '0'
+        expanded: false
         menu_name: main
+        parent: ''
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:

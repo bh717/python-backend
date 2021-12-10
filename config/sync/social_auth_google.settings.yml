@@ -1,5 +1,5 @@
 client_id: env
 client_secret: env
-endpoints: ''
 scopes: ''
+endpoints: ''
 restricted_domain: ''

@@ -2,11 +2,11 @@ uuid: 2a017604-62ed-41b8-98f2-83cb697d17fe
 langcode: en
 status: true
 dependencies:
+  module:
+    - user
   enforced:
     module:
       - contrib_tracker
-  module:
-    - user
 _core:
   default_config_hash: leyinUInv6KVAyrgL6za8JnBPsXU2Crdeqb39yjtKqs
 id: user.field_drupalorg_username
@@ -15,8 +15,8 @@ entity_type: user
 type: string
 settings:
   max_length: 255
-  is_ascii: false
   case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: 1

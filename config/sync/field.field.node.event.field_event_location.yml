@@ -12,18 +12,18 @@ third_party_settings:
   geocoder_field:
     method: geocode
     weight: 0
-    skip_not_empty_value: 0
+    field: field_event_address
+    skip_not_empty_value: false
     disabled: false
     hidden: true
     providers:
       - nominatim
     dumper: wkt
+    delta_handling: default
     failure:
       handling: preserve
       status_message: true
       log: true
-    field: field_event_address
-    delta_handling: default
 id: node.event.field_event_location
 field_name: field_event_location
 entity_type: node

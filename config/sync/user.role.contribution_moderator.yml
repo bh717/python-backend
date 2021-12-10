@@ -1,7 +1,26 @@
 uuid: 3c27aa02-460b-42bd-91b4-27c43e4f8fa9
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.code_contribution
+    - node.type.event
+    - node.type.event_contribution
+    - node.type.issue
+    - node.type.non_code_contribution
+    - taxonomy.vocabulary.contribution_type
+    - taxonomy.vocabulary.event_contribution_type
+    - taxonomy.vocabulary.event_type
+    - taxonomy.vocabulary.project
+    - taxonomy.vocabulary.tags
+    - taxonomy.vocabulary.technology
+  module:
+    - field_permissions
+    - flag
+    - node
+    - system
+    - taxonomy
+    - toolbar
 id: contribution_moderator
 label: 'Contribution Moderator'
 weight: -8

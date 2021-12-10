@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - field.storage.user.field_drupalorg_username
+  module:
+    - user
   enforced:
     module:
       - contrib_tracker
-  module:
-    - user
 _core:
   default_config_hash: a93pD99mIPNnv55Be9E9_vY2ir2NYaQiqaq-6DW_VDA
 id: user.user.field_drupalorg_username

@@ -32,78 +32,12 @@ base_table: node_field_data
 base_field: nid
 display:
   default:
-    display_plugin: default
     id: default
     display_title: Master
+    display_plugin: default
     position: 0
     display_options:
-      access:
-        type: perm
-        options:
-          perm: 'access content'
-      cache:
-        type: tag
-        options: {  }
-      query:
-        type: views_query
-        options:
-          disable_sql_rewrite: false
-          distinct: false
-          replica: false
-          query_comment: ''
-          query_tags: {  }
-      exposed_form:
-        type: bef
-        options:
-          submit_button: Apply
-          reset_button: true
-          reset_button_label: Reset
-          exposed_sorts_label: 'Sort by'
-          expose_sort_order: true
-          sort_asc_label: Asc
-          sort_desc_label: Desc
-          bef:
-            general:
-              autosubmit: false
-              autosubmit_exclude_textfield: false
-              autosubmit_hide: false
-              input_required: false
-              allow_secondary: false
-              secondary_label: 'Advanced options'
-      pager:
-        type: full
-        options:
-          items_per_page: 25
-          offset: 0
-          id: 0
-          total_pages: null
-          tags:
-            previous: ‹‹
-            next: ››
-            first: '« First'
-            last: 'Last »'
-          expose:
-            items_per_page: false
-            items_per_page_label: 'Items per page'
-            items_per_page_options: '5, 10, 25, 50'
-            items_per_page_options_all: false
-            items_per_page_options_all_label: '- All -'
-            offset: false
-            offset_label: Offset
-          quantity: 9
-      style:
-        type: default
-        options:
-          row_class: ''
-          default_row_class: false
-          uses_fields: false
-      row:
-        type: fields
-        options:
-          default_field_elements: true
-          inline: {  }
-          separator: ''
-          hide_empty: false
+      title: 'Code Contributions'
       fields:
         title:
           id: title
@@ -112,6 +46,9 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -167,9 +104,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
         field_code_contrib_files_count:
           id: field_code_contrib_files_count
           table: node__field_code_contrib_files_count
@@ -177,6 +111,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -233,7 +168,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_code_contrib_patches_count:
           id: field_code_contrib_patches_count
           table: node__field_code_contrib_patches_count
@@ -241,6 +175,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: true
           alter:
@@ -297,7 +232,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_contribution_date:
           id: field_contribution_date
           table: node__field_contribution_date
@@ -305,6 +239,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -361,7 +296,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_code_contrib_link:
           id: field_code_contrib_link
           table: node__field_code_contrib_link
@@ -369,6 +303,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -428,7 +363,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_contribution_author:
           id: field_contribution_author
           table: node__field_contribution_author
@@ -436,6 +370,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -491,7 +426,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_code_contrib_project:
           id: field_code_contrib_project
           table: node__field_code_contrib_project
@@ -499,6 +433,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -554,7 +489,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_code_contrib_issue_status:
           id: field_code_contrib_issue_status
           table: node__field_code_contrib_issue_status
@@ -562,6 +496,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -616,7 +551,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
         field_contribution_technology:
           id: field_contribution_technology
           table: node__field_contribution_technology
@@ -624,6 +558,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: field
           label: ''
           exclude: false
           alter:
@@ -679,30 +614,92 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          plugin_id: field
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 25
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        field_contribution_date_value:
+          id: field_contribution_date_value
+          table: node__field_contribution_date
+          field: field_contribution_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: field_contribution_date_value
+          exposed: false
+          granularity: second
+      arguments: {  }
       filters:
         status:
-          value: '1'
+          id: status
           table: node_field_data
           field: status
-          plugin_id: boolean
           entity_type: node
           entity_field: status
-          id: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
           expose:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-          group: 1
         type:
           id: type
           table: node_field_data
           field: type
-          value:
-            code_contribution: code_contribution
           entity_type: node
           entity_field: type
           plugin_id: bundle
+          value:
+            code_contribution: code_contribution
           group: 1
           expose:
             operator_limit_selection: false
@@ -714,6 +711,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: list_field
           operator: or
           value: {  }
           group: 1
@@ -724,6 +722,8 @@ display:
             description: ''
             use_operator: false
             operator: field_code_contrib_issue_status_value_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: field_code_contrib_issue_status_value
             required: false
             remember: false
@@ -734,8 +734,6 @@ display:
               administrator: '0'
               contribution_moderator: '0'
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -749,7 +747,6 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          plugin_id: list_field
         field_contribution_technology_target_id:
           id: field_contribution_technology_target_id
           table: node__field_contribution_technology
@@ -757,6 +754,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value: {  }
           group: 1
@@ -767,6 +765,8 @@ display:
             description: ''
             use_operator: false
             operator: field_contribution_technology_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: field_contribution_technology_target_id
             required: false
             remember: false
@@ -777,8 +777,6 @@ display:
               administrator: '0'
               contribution_moderator: '0'
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -792,12 +790,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: select
-          limit: true
           vid: technology
+          type: select
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
         field_code_contrib_project_target_id:
           id: field_code_contrib_project_target_id
           table: node__field_code_contrib_project
@@ -805,6 +802,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: taxonomy_index_tid
           operator: or
           value: {  }
           group: 1
@@ -815,6 +813,8 @@ display:
             description: ''
             use_operator: false
             operator: field_code_contrib_project_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: field_code_contrib_project_target_id
             required: false
             remember: false
@@ -825,8 +825,6 @@ display:
               administrator: '0'
               contribution_moderator: '0'
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -840,12 +838,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          type: select
-          limit: true
           vid: project
+          type: select
           hierarchy: false
+          limit: true
           error_message: true
-          plugin_id: taxonomy_index_tid
         uid:
           id: uid
           table: users_field_data
@@ -853,6 +850,9 @@ display:
           relationship: field_contribution_author
           group_type: group
           admin_label: ''
+          entity_type: user
+          entity_field: uid
+          plugin_id: user_name
           operator: in
           value: {  }
           group: 1
@@ -863,6 +863,8 @@ display:
             description: ''
             use_operator: false
             operator: uid_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: uid
             required: false
             remember: false
@@ -873,8 +875,6 @@ display:
               administrator: '0'
               contribution_moderator: '0'
             reduce: false
-            operator_limit_selection: false
-            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -887,9 +887,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          entity_type: user
-          entity_field: uid
-          plugin_id: user_name
         field_contribution_date_value:
           id: field_contribution_date_value
           table: node__field_contribution_date
@@ -897,6 +894,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
+          plugin_id: datetime
           operator: between
           value:
             min: ''
@@ -911,6 +909,8 @@ display:
             description: ''
             use_operator: false
             operator: field_contribution_date_value_op
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: field_contribution_date_value
             required: false
             remember: false
@@ -920,11 +920,9 @@ display:
               anonymous: '0'
               administrator: '0'
               contribution_moderator: '0'
-            placeholder: ''
             min_placeholder: ''
             max_placeholder: ''
-            operator_limit_selection: false
-            operator_list: {  }
+            placeholder: ''
           is_grouped: false
           group_info:
             label: ''
@@ -937,25 +935,31 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-          plugin_id: datetime
-      sorts:
-        field_contribution_date_value:
-          id: field_contribution_date_value
-          table: node__field_contribution_date
-          field: field_contribution_date_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          order: DESC
-          exposed: false
-          expose:
-            label: ''
-          granularity: second
-          plugin_id: datetime
-      title: 'Code Contributions'
-      header: {  }
-      footer: {  }
-      empty: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: false
+          uses_fields: false
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
       relationships:
         field_contribution_author:
           id: field_contribution_author
@@ -964,14 +968,11 @@ display:
           relationship: none
           group_type: group
           admin_label: 'field_contribution_author: User'
-          required: false
           plugin_id: standard
-      arguments: {  }
+          required: false
+      header: {  }
+      footer: {  }
       display_extenders: {  }
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
     cache_metadata:
       max-age: -1
       contexts:
@@ -992,9 +993,9 @@ display:
         - 'config:field.storage.node.field_contribution_date'
         - 'config:field.storage.node.field_contribution_technology'
   page_1:
-    display_plugin: page
     id: page_1
     display_title: Page
+    display_plugin: page
     position: 1
     display_options:
       display_extenders: {  }
@@ -1003,11 +1004,11 @@ display:
         type: normal
         title: 'Code Contribution'
         description: ''
-        expanded: false
-        parent: 'views_view:views.all_contributions.allcontributions'
         weight: -50
-        context: '0'
+        expanded: false
         menu_name: main
+        parent: 'views_view:views.all_contributions.allcontributions'
+        context: '0'
     cache_metadata:
       max-age: -1
       contexts:

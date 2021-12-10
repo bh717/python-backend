@@ -21,41 +21,41 @@ mode: default
 content:
   field_do_username:
     type: do_username_default
-    weight: 1
-    region: content
     label: inline
     settings:
       rel: ''
       target: ''
     third_party_settings: {  }
+    weight: 1
+    region: content
   field_drupalorg_username:
     type: string
-    weight: 0
-    region: content
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 0
+    region: content
   field_github_username:
     type: string
-    weight: 2
-    region: content
     label: inline
     settings:
       link_to_entity: false
     third_party_settings: {  }
-  member_for:
-    weight: 4
+    weight: 2
     region: content
+  member_for:
     settings: {  }
     third_party_settings: {  }
+    weight: 4
+    region: content
   user_picture:
     type: image
-    weight: 3
-    settings:
-      image_style: thumbnail
-      image_link: content
-    third_party_settings: {  }
     label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+    third_party_settings: {  }
+    weight: 3
     region: content
 hidden: {  }

@@ -23,54 +23,54 @@ bundle: event_contribution
 mode: default
 content:
   field_contrib_moderator_comment:
-    weight: 109
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 109
     region: content
   field_contribution_author:
-    weight: 108
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 108
     region: content
   field_contribution_comments:
-    weight: 104
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 104
     region: content
   field_contribution_date:
-    weight: 106
+    type: datetime_default
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
-    type: datetime_default
+    weight: 106
     region: content
   field_contribution_technology:
-    weight: 103
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 103
     region: content
   field_event:
-    weight: 110
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 110
     region: content
   field_event_contribution_link:
-    weight: 112
+    type: link
     label: above
     settings:
       trim_length: 80
@@ -79,24 +79,24 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    type: link
+    weight: 112
     region: content
   field_event_contribution_type:
-    weight: 111
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 111
     region: content
   flag_contribution_approval:
+    settings: {  }
+    third_party_settings: {  }
     weight: 10
     region: content
+  links:
     settings: {  }
     third_party_settings: {  }
-  links:
     weight: 100
     region: content
-    settings: {  }
-    third_party_settings: {  }
 hidden: {  }

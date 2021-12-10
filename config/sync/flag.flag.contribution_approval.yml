@@ -12,7 +12,6 @@ bundles:
   - non_code_contribution
 entity_type: node
 global: false
-weight: 0
 flag_short: Approve
 flag_long: 'Approve Contribution'
 flag_message: ''
@@ -20,6 +19,7 @@ unflag_short: Unapprove
 unflag_long: 'Unapprove Contribution'
 unflag_message: ''
 unflag_denied_text: ''
+weight: 0
 flag_type: 'entity:node'
 link_type: ajax_link
 flagTypeConfig:

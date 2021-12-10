@@ -1,8 +1,8 @@
+_core:
+  default_config_hash: bFamv6RfelnqY1J3G4wWSf02pL3GghIcwyKzZIoGniQ
 preset_accent_color: blue
 preset_focus_color: gin
 enable_darkmode: false
-classic_toolbar: false
+classic_toolbar: ''
 icon_default: true
 icon_path: ''
-_core:
-  default_config_hash: bFamv6RfelnqY1J3G4wWSf02pL3GghIcwyKzZIoGniQ
