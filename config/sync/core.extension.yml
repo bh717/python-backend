@@ -77,7 +77,6 @@ module:
   menu_link_content: 1
   views: 10
 theme:
-  bootstrap: 0
   claro: 0
   gin: 0
   stable: 0
