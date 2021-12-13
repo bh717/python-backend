@@ -10,7 +10,7 @@ services:
   database:
     type: mariadb:10.5
     overrides:
-      image: registry.gitorious.xyz/contrib-tracker/backend/db:latest
+      image: ghcr.io/contrib-tracker/backend-db:main
 
 tooling:
   drush:
