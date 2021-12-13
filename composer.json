@@ -112,7 +112,7 @@
             }
         },
         "dbdocker": {
-            "docker-image-name": "axelerant/contrib-tracker-db",
+            "docker-image-name": "ghcr.io/contrib-tracker/backend-db",
             "docker-base": {
                 "image": "bitnami/mariadb:10.5"
             }

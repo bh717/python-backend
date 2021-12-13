@@ -42,7 +42,7 @@ jobs:
     container: hussainweb/drupal-base:php7.4
     services:
       mariadb:
-        image: registry.gitorious.xyz/contrib-tracker/backend/db:theme
+        image: ghcr.io/contrib-tracker/backend-db:main
         env:
           ALLOW_EMPTY_PASSWORD: "yes"
     steps:
@@ -83,7 +83,7 @@ jobs:
       CYPRESS_ADMIN_PASSWORD: ct-admin
     services:
       mariadb:
-        image: registry.gitorious.xyz/contrib-tracker/backend/db:theme
+        image: ghcr.io/contrib-tracker/backend-db:main
         env:
           ALLOW_EMPTY_PASSWORD: "yes"
     steps:
