@@ -3,6 +3,6 @@
     "type": "drupal-custom-module",
     "description": "Tracks contributions from github.com",
     "require": {
-        "knplabs/github-api": "^2.15"
+        "knplabs/github-api": "^3.0"
     }
 }
