@@ -2,3 +2,6 @@ services:
   logger.channel.contrib_tracker:
     parent: logger.channel_base
     arguments: ['contrib_tracker']
+  contrib_tracker.statistics:
+    class: Drupal\contrib_tracker\ContributionStatistics
+    arguments: ['@entity_type.manager']

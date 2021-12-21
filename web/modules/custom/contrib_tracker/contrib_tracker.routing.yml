@@ -1,0 +1,7 @@
+contrib_tracker.count:
+  path: '/contribution-count'
+  defaults:
+    _controller: '\Drupal\contrib_tracker\Controller\ContributionCountController::content'
+    _title: 'Contribution Count'
+  requirements:
+    _permission: 'access content'
