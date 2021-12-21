@@ -5,7 +5,6 @@ dependencies:
   config:
     - core.entity_view_mode.user.compact
     - field.field.user.user.field_do_username
-    - field.field.user.user.field_drupalorg_username
     - field.field.user.user.field_github_username
     - field.field.user.user.user_picture
     - image.style.thumbnail
@@ -30,6 +29,5 @@ content:
     region: content
 hidden:
   field_do_username: true
-  field_drupalorg_username: true
   field_github_username: true
   member_for: true

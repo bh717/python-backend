@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.field.user.user.field_do_username
-    - field.field.user.user.field_drupalorg_username
     - field.field.user.user.field_github_username
     - field.field.user.user.user_picture
     - image.style.thumbnail
@@ -35,14 +34,6 @@ content:
       size: 60
       placeholder: ''
       prefix: 'https://www.drupal.org/u/'
-    third_party_settings: {  }
-  field_drupalorg_username:
-    type: string_textfield
-    weight: 1
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   field_github_username:
     type: string_textfield
