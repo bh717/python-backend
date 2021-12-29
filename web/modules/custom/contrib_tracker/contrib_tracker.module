@@ -22,18 +22,3 @@ function contrib_tracker_mail_alter(&$message) {
     $message['send'] = FALSE;
   }
 }
-
-/**
- * Implements hook_theme().
- */
-function contrib_tracker_theme($existing) {
-  return [
-    'contrib_tracker_contribution_count' => [
-      'variables' => [
-        'totalContribution' => 0,
-        'contributionWithPatches' => 0,
-        'totalPatches' => 0,
-      ],
-    ],
-  ];
-}

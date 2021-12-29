@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Module for contribution tracker reports module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function ct_reports_theme($existing) {
+  return [
+    'ct_reports_contribution_count' => [
+      'variables' => [
+        'totalContributions' => 0,
+        'codeContributions' => 0,
+        'totalContributors' => 0,
+      ],
+    ],
+  ];
+}

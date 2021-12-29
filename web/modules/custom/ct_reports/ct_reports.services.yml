@@ -1,0 +1,4 @@
+services:
+  ct_reports.statistics:
+    class: Drupal\ct_reports\ContributionStatistics
+    arguments: ['@entity_type.manager', '@database']

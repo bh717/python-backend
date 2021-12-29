@@ -7,7 +7,7 @@
  */
 #}
 
-{{ attach_library('contrib_tracker/ct-style') }}
+{{ attach_library('ct_reports/ct-style') }}
 
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
@@ -26,16 +26,16 @@
   <div class="row ct-height">
     <div class="col-md-12 ct-margin">
       <div class="col-md-3 ct-results">
-        <p class="ct-label">Total contribution</p>
-        <p class="ct-count">{{ totalContribution }}</p>
+        <p class="ct-label">Total Contributions</p>
+        <p class="ct-count">{{ totalContributions }}</p>
       </div>
       <div class="col-md-3 ct-results">
-        <p class="ct-label">Contribution with patches</p>
-        <p class="ct-count">{{ contributionWithPatches }}</p>
+        <p class="ct-label">Code Contributions</p>
+        <p class="ct-count">{{ codeContributions }}</p>
       </div>
       <div class="col-md-3 ct-results">
-        <p class="ct-label">Total Patches</p>
-        <p class="ct-count">{{ totalPatches }}</p>
+        <p class="ct-label">Total Contributors</p>
+        <p class="ct-count">{{ totalContributors }}</p>
       </div>
     </div>
   </div>

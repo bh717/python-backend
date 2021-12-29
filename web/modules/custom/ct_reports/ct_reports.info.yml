@@ -1,0 +1,4 @@
+name: Contribution Tracker Reports
+type: module
+description: Provides functionality to generate reports based on contribution data.
+core_version_requirement: ^8.9 || ^9

@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\contrib_tracker\Controller;
+namespace Drupal\ct_reports\Controller;
 
-use Drupal\contrib_tracker\ContributionStatistics;
+use Drupal\ct_reports\ContributionStatistics;
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -32,7 +32,7 @@ class ContributionCountController extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('contrib_tracker.statistics')
+      $container->get('ct_reports.statistics')
     );
   }
 
@@ -40,11 +40,12 @@ class ContributionCountController extends ControllerBase {
    * Returns a render-able array with contribution statistics.
    */
   public function content() {
+
     $build = [
-      '#theme' => 'contrib_tracker_contribution_count',
-      '#totalContribution' => $this->contribStats->totalContributions(),
-      '#contributionWithPatches' => $this->contribStats->contributionWithPatches(),
-      '#totalPatches' => $this->contribStats->totalPatches(),
+      '#theme' => 'ct_reports_contribution_count',
+      '#totalContributions' => $this->contribStats->totalContributions(),
+      '#codeContributions' => $this->contribStats->codeContributions(),
+      '#totalContributors' => $this->contribStats->totalContributors(),
     ];
     return $build;
   }
