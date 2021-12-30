@@ -46,6 +46,9 @@ class ContributionCountController extends ControllerBase {
       '#totalContributions' => $this->contribStats->totalContributions(),
       '#codeContributions' => $this->contribStats->codeContributions(),
       '#totalContributors' => $this->contribStats->totalContributors(),
+      '#cache' => [
+        'tags'=> ['node_list:code_contribution'],
+      ],
     ];
     return $build;
   }
