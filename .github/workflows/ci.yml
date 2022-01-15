@@ -140,6 +140,3 @@ jobs:
           project-id: 'brbqplxd7ycq6'
           cli-token: ${{ secrets.PLATFORM_CLI_TOKEN }}
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Setup upterm session
-        if: failure()
-        uses: lhotari/action-upterm@v1
