@@ -128,3 +128,15 @@ jobs:
             web/themes/custom/contribtracker/cypress/screenshots
             web/themes/custom/contribtracker/cypress/videos
           retention-days: 3
+
+  deploy:
+    needs:
+      - drupal_test
+      - frontend_vr
+    runs-on: ubuntu-latest
+    steps:
+      - uses: axelerant/platformsh-deploy-action@main
+        with:
+          project-id: 'brbqplxd7ycq6'
+          cli-token: ${{ secrets.PLATFORM_CLI_TOKEN }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
