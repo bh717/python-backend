@@ -135,7 +135,6 @@ jobs:
       - frontend_vr
     runs-on: ubuntu-latest
     steps:
-      - run: ssh-keyscan -H git.us-4.platform.sh >> ~/.ssh/known_hosts
       - uses: axelerant/platformsh-deploy-action@main
         with:
           project-id: 'brbqplxd7ycq6'
