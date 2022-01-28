@@ -74,7 +74,16 @@
     "config": {
         "sort-packages": true,
         "optimize-autoloader": true,
-        "apcu-autoloader": true
+        "apcu-autoloader": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "phpro/grumphp-shim": true,
+            "axelerant/db-docker": true,
+            "oomphinc/composer-installers-extender": true
+        }
     },
     "autoload": {
         "files": ["load.environment.php"]
