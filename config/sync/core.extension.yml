@@ -12,7 +12,6 @@ module:
   block_content: 0
   breakpoint: 0
   ckeditor: 0
-  color: 0
   config: 0
   contextual: 0
   contrib_tracker: 0

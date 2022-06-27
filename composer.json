@@ -52,7 +52,7 @@
         "drupal/social_auth": "^3.0",
         "drupal/social_auth_google": "^3.0",
         "drupal/twig_tweak": "^3.1",
-        "drush/drush": "^10.3.5",
+        "drush/drush": "^11.0",
         "geocoder-php/nominatim-provider": "^5.2",
         "npm-asset/jquery-ui-touch-punch": "^0.2.3",
         "oomphinc/composer-installers-extender": "^2.0",
