@@ -39,7 +39,7 @@ jobs:
   drupal_test:
     needs: [drupal_codequality]
     runs-on: ubuntu-latest
-    container: hussainweb/drupal-base:php7.4
+    container: hussainweb/drupal-base:php8.1
     services:
       mariadb:
         image: ghcr.io/contrib-tracker/backend-db:main
