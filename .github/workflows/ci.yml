@@ -145,7 +145,7 @@ jobs:
       - frontend_vr
     runs-on: ubuntu-latest
     # Dependabot PR's can't access secrets, so we can't deploy.
-    if: github.actor != "dependabot[bot]"
+    if: github.actor != 'dependabot[bot]'
     steps:
       - uses: axelerant/platformsh-deploy-action@main
         with:
