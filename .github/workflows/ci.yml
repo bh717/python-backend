@@ -1,5 +1,11 @@
 name: CI
-on: ["push", "pull_request"]
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+  pull_request:
 
 jobs:
   drupal_codequality:
