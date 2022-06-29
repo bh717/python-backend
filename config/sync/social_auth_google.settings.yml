@@ -2,4 +2,4 @@ client_id: env
 client_secret: env
 scopes: ''
 endpoints: ''
-restricted_domain: ''
+restricted_domain: axelerant.com
