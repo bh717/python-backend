@@ -27,15 +27,15 @@
     <div class="col-md-12 ct-margin">
       <div class="col-md-3 ct-results">
         <p class="ct-label">Total Contributions</p>
-        <p class="ct-count">{{ totalContributions }}</p>
+        <p class="ct-count">{{ totalContributions | number_format }}</p>
       </div>
       <div class="col-md-3 ct-results">
         <p class="ct-label">Code Contributions</p>
-        <p class="ct-count">{{ codeContributions }}</p>
+        <p class="ct-count">{{ codeContributions | number_format }}</p>
       </div>
       <div class="col-md-3 ct-results">
         <p class="ct-label">Total Contributors</p>
-        <p class="ct-count">{{ totalContributors }}</p>
+        <p class="ct-count">{{ totalContributors | number_format }}</p>
       </div>
     </div>
   </div>
