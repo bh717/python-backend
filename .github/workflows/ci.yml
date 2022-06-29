@@ -47,7 +47,6 @@ jobs:
 
 
   drupal_test:
-    needs: [drupal_codequality]
     runs-on: ubuntu-latest
     container: hussainweb/drupal-base:php8.1
     services:
@@ -141,6 +140,7 @@ jobs:
 
   deploy:
     needs:
+      - drupal_codequality
       - drupal_test
       - frontend_vr
     runs-on: ubuntu-latest
