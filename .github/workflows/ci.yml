@@ -82,7 +82,7 @@ jobs:
       contents: read
     needs: [frontend_codequality]
     runs-on: ubuntu-latest
-    container: skippednote/drupal-cypress:1.0.5
+    container: skippednote/drupal-cypress:1.0.6
     env:
       # For Cypress.
       CYPRESS_ADMIN_USERNAME: ct-admin
