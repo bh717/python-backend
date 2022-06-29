@@ -54,7 +54,7 @@ jobs:
         run: |
           echo "::set-output name=composer-dir::$(composer config cache-files-dir)"
           echo "::set-output name=npm-dir::$(npm config get cache)"
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ${{ steps.cache-dir.outputs.composer-dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
@@ -95,13 +95,13 @@ jobs:
         run: |
           echo "::set-output name=composer-dir::$(composer config cache-files-dir)"
           echo "::set-output name=npm-dir::$(npm config get cache)"
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ${{ steps.cache-dir.outputs.composer-dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ${{ steps.cache-dir.outputs.npm-dir }}
           key: ${{ runner.os }}-node-${{ hashFiles('web/themes/custom/contribtracker/package-lock.json') }}
