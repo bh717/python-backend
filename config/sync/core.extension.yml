@@ -18,6 +18,7 @@ module:
   ct_drupal: 0
   ct_github: 0
   ct_manager: 0
+  ct_reports: 0
   ct_user: 0
   datetime: 0
   datetime_range: 0

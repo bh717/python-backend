@@ -1,0 +1,7 @@
+ct_reports.count:
+  path: '/contribution-count'
+  defaults:
+    _controller: '\Drupal\ct_reports\Controller\ContributionCountController::content'
+    _title: 'Contribution Count'
+  requirements:
+    _permission: 'access content'
