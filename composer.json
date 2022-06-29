@@ -31,7 +31,7 @@
         "php": ">=7.4",
         "axelerant/ct_drupal": "*",
         "axelerant/ct_github": "*",
-        "composer/installers": "^1.9",
+        "composer/installers": "^2.1",
         "cweagans/composer-patches": "^1.7.0",
         "drupal/address": "^1.8.0",
         "drupal/admin_toolbar": "^3.0.0",
