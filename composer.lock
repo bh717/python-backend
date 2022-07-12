@@ -1696,17 +1696,17 @@
         },
         {
             "name": "drupal/better_exposed_filters",
-            "version": "5.1.0",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/better_exposed_filters.git",
-                "reference": "8.x-5.1"
+                "reference": "8.x-5.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/better_exposed_filters-8.x-5.1.zip",
-                "reference": "8.x-5.1",
-                "shasum": "ab9b124b5cf44dfb8164b66673bcf767986a64b2"
+                "url": "https://ftp.drupal.org/files/projects/better_exposed_filters-8.x-5.2.zip",
+                "reference": "8.x-5.2",
+                "shasum": "43f0d013d78ab72c29d797ac5fe9be682ffbfb85"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9",
@@ -1718,8 +1718,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-5.1",
-                    "datestamp": "1654277146",
+                    "version": "8.x-5.2",
+                    "datestamp": "1657172286",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
