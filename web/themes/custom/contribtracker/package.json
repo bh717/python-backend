@@ -5,7 +5,7 @@
     "vr": "percy exec -- cypress run"
   },
   "devDependencies": {
-    "@percy/cli": "1.6.0",
+    "@percy/cli": "1.6.1",
     "@percy/cypress": "^3.1.2",
     "@types/autoprefixer": "^10.2.0",
     "@types/gulp": "^4.0.9",
