@@ -10454,16 +10454,16 @@
     "packages-dev": [
         {
             "name": "axelerant/db-docker",
-            "version": "v1.1.2",
+            "version": "v1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axelerant/db-docker.git",
-                "reference": "a5e17759a7e99afe81f1d3d142c6d39d1421598b"
+                "reference": "847060f93b714a77559e23fc866452b9729b990e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axelerant/db-docker/zipball/a5e17759a7e99afe81f1d3d142c6d39d1421598b",
-                "reference": "a5e17759a7e99afe81f1d3d142c6d39d1421598b",
+                "url": "https://api.github.com/repos/axelerant/db-docker/zipball/847060f93b714a77559e23fc866452b9729b990e",
+                "reference": "847060f93b714a77559e23fc866452b9729b990e",
                 "shasum": ""
             },
             "require": {
@@ -10502,9 +10502,9 @@
             "description": "Support tools for Database as docker images.",
             "support": {
                 "issues": "https://github.com/axelerant/db-docker/issues",
-                "source": "https://github.com/axelerant/db-docker/tree/v1.1.2"
+                "source": "https://github.com/axelerant/db-docker/tree/v1.1.3"
             },
-            "time": "2022-02-17T01:44:47+00:00"
+            "time": "2022-07-15T22:32:36+00:00"
         },
         {
             "name": "axelerant/drupal-quality-checker",
