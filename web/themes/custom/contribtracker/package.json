@@ -15,7 +15,7 @@
     "@types/node": "^18.0.6",
     "@types/select2": "^4.0.55",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
-    "@typescript-eslint/parser": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.7",
     "autoprefixer": "10.4.7",
     "breakpoint-sass": "^2.7.1",
     "browser-sync": "2.27.10",
