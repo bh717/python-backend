@@ -23,14 +23,14 @@ access:
 dependencies:
     php:
         "composer/composer": "^2"
-        "drush/drush": "^10.0"
+        "drush/drush": "^11.0"
 
 # Customize php environment variables.
 variables:
     php:
         memory_limit: 512M
     env:
-        NVM_VERSION: v0.38.0
+        NVM_VERSION: v0.39.1
 
 # The relationships of the application with services or other applications.
 #
@@ -129,15 +129,13 @@ hooks:
       nvm install --lts
       cd web/themes/custom/contribtracker
       npm i
-      npx gulp
+      npm run build
       cd -
 
     # The deploy hook runs after your application has been deployed and started.
     deploy: |
       cd web
-      drush -y cache-rebuild
-      drush -y updatedb
-      drush -y config-import
+      drush -y deploy
 
 # The configuration of scheduled execution.
 crons:
