@@ -128,12 +128,14 @@ hooks:
       [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
       nvm install --lts
       cd web/themes/custom/contribtracker
-      npm i
+      npm ci --prefer-offline
       npm run build
       cd -
 
     # The deploy hook runs after your application has been deployed and started.
     deploy: |
+      set -e
+      php ./drush/platformsh_generate_drush_yml.php
       cd web
       drush -y deploy
 
