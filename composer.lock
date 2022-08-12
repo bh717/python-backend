@@ -3194,33 +3194,32 @@
         },
         {
             "name": "drupal/social_api",
-            "version": "3.0.3",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/social_api.git",
-                "reference": "3.0.3"
+                "reference": "3.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/social_api-3.0.3.zip",
-                "reference": "3.0.3",
-                "shasum": "33db9b3e33c04d53220fd2f218802bf66178a4c5"
+                "url": "https://ftp.drupal.org/files/projects/social_api-3.1.0.zip",
+                "reference": "3.1.0",
+                "shasum": "ceb8b35f718657a8f3d67d2e9a8384d4b35687ea"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9.0",
+                "drupal/core": "^9.1 || ^10",
                 "ext-openssl": "*",
                 "league/oauth2-client": "^2.0"
             },
             "require-dev": {
                 "drupal/coder": "^8.3",
-                "drupal/social_auth": "^3.0@dev",
                 "phpcompatibility/php-compatibility": "^9.3"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.3",
-                    "datestamp": "1646578799",
+                    "version": "3.1.0",
+                    "datestamp": "1660188487",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3272,20 +3271,20 @@
         },
         {
             "name": "drupal/social_auth",
-            "version": "3.0.2",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/social_auth.git",
-                "reference": "3.0.2"
+                "reference": "3.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/social_auth-3.0.2.zip",
-                "reference": "3.0.2",
-                "shasum": "50daa69961433dfea8c4f23747b2bc81ef4ebaba"
+                "url": "https://ftp.drupal.org/files/projects/social_auth-3.1.0.zip",
+                "reference": "3.1.0",
+                "shasum": "9225e99d2a482ca82bb7faeefd2eb92867bf0f1a"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9.0",
+                "drupal/core": "^9.3 || ^10",
                 "drupal/social_api": "^3"
             },
             "require-dev": {
@@ -3294,8 +3293,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "3.0.2",
-                    "datestamp": "1629547533",
+                    "version": "3.1.0",
+                    "datestamp": "1660225275",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
