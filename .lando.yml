@@ -3,13 +3,7 @@ recipe: drupal9
 
 services:
   appserver:
-    type: php:8.1
-    via: nginx
-  cache:
-    type: redis:6
-  database:
-    type: mariadb:10.6
-    overrides:
+   
       image: ghcr.io/contrib-tracker/backend-db:main
 
 tooling:
