@@ -36,7 +36,7 @@
         "drupal/address": "^1.8.0",
         "drupal/admin_toolbar": "^3.0.0",
         "drupal/better_exposed_filters": "^6.0",
-        "drupal/core-composer-scaffold": "^9.1",
+        "drupal/core-composer-scaffold": "^10.0",
         "drupal/core-recommended": "^9.1",
         "drupal/field_permissions": "^1.0.0",
         "drupal/fixed_block_content": "^1.1",
