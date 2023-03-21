@@ -39,7 +39,7 @@
     "sass": "^1.58.1",
     "sass-toolkit": "^2.10.2",
     "stylelint": "^13.13.1",
-    "stylelint-config-prettier": "^9.0.4",
+    "stylelint-config-prettier": "^9.0.5",
     "stylelint-prettier": "^1.2.0",
     "stylelint-scss": "^4.5.0",
     "typescript": "^4.8.4"
