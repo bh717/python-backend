@@ -13,7 +13,7 @@
     "@types/jquery": "^3.5.14",
     "@types/jqueryui": "^1.12.16",
     "@types/node": "^18.8.2",
-    "@types/select2": "^4.0.55",
+    "@types/select2": "^4.0.57",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.47.1",
     "autoprefixer": "^10.4.8",
