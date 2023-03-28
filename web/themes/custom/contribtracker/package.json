@@ -19,7 +19,7 @@
     "autoprefixer": "^10.4.8",
     "breakpoint-sass": "^3.0.0",
     "browser-sync": "^2.29.1",
-    "cypress": "^10.6.0",
+    "cypress": "^12.8.1",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
