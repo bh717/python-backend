@@ -3927,16 +3927,16 @@
         },
         {
             "name": "geocoder-php/nominatim-provider",
-            "version": "5.6.0",
+            "version": "5.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/geocoder-php/nominatim-provider.git",
-                "reference": "a59c34388542e25e3ba3eecd4f07d731b1fa98fe"
+                "reference": "a50486161f6babad7b1ed7ee7bf86147b0844413"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/geocoder-php/nominatim-provider/zipball/a59c34388542e25e3ba3eecd4f07d731b1fa98fe",
-                "reference": "a59c34388542e25e3ba3eecd4f07d731b1fa98fe",
+                "url": "https://api.github.com/repos/geocoder-php/nominatim-provider/zipball/a50486161f6babad7b1ed7ee7bf86147b0844413",
+                "reference": "a50486161f6babad7b1ed7ee7bf86147b0844413",
                 "shasum": ""
             },
             "require": {
@@ -3980,9 +3980,9 @@
             "description": "Geocoder Nominatim adapter",
             "homepage": "http://geocoder-php.org/Geocoder/",
             "support": {
-                "source": "https://github.com/geocoder-php/nominatim-provider/tree/5.6.0"
+                "source": "https://github.com/geocoder-php/nominatim-provider/tree/5.7.0"
             },
-            "time": "2022-07-30T12:09:30+00:00"
+            "time": "2023-03-01T10:18:27+00:00"
         },
         {
             "name": "graham-campbell/result-type",
