@@ -64,7 +64,7 @@
         "axelerant/drupal-quality-checker": "^1.0.0",
         "phpunit/phpunit": "^9.0",
         "symfony/phpunit-bridge": "^6.1",
-        "weitzman/drupal-test-traits": "^1.5"
+        "weitzman/drupal-test-traits": "^2.0"
     },
     "conflict": {
         "drupal/drupal": "*"
