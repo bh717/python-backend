@@ -43,7 +43,7 @@
         "drupal/flag": "^4.0",
         "drupal/geocoder": "^3.9.0",
         "drupal/geofield": "^1.0",
-        "drupal/gin": "^3.0.0@alpha",
+        "drupal/gin": "^3.0.0-rc2@alpha",
         "drupal/inline_entity_form": "^1.0",
         "drupal/raven": "^4.0",
         "drupal/redis": "^1.4.0",
