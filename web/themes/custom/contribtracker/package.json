@@ -34,7 +34,7 @@
     "gulp-stylelint": "^13.0.0",
     "gulp-svgstore": "^9.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
-    "postcss": "^8.4.20",
+    "postcss": "^8.4.21",
     "prettier": "^2.8.7",
     "sass": "^1.60.0",
     "sass-toolkit": "^2.10.2",
