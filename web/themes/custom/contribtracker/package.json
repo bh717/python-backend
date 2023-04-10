@@ -20,7 +20,7 @@
     "breakpoint-sass": "^3.0.0",
     "browser-sync": "^2.29.1",
     "cypress": "^12.9.0",
-    "eslint": "^8.37.0",
+    "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "gulp": "^4.0.2",
