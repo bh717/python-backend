@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Drupal Code Quality
         uses: hussainweb/drupalqa-action@v1
@@ -37,7 +37,7 @@ jobs:
     container: node:lts
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Frontend Code Quality
         run: |
@@ -56,7 +56,7 @@ jobs:
           ALLOW_EMPTY_PASSWORD: "yes"
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get Cache Directories
         id: cache-dir
@@ -97,7 +97,7 @@ jobs:
           ALLOW_EMPTY_PASSWORD: "yes"
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get Cache Directories
         id: cache-dir
